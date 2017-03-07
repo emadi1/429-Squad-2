@@ -1,3 +1,3 @@
 # 429-Squad-2
 
-I changed some shit
+It's gonna be lit ladies and gentleman 
