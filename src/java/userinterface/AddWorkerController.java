@@ -18,6 +18,7 @@ import java.util.ResourceBundle;
 public class AddWorkerController implements Initializable {
     ArrayList<TextField> textFieldList;
     ObservableList<String> statusList = FXCollections.observableArrayList("Active", "Inactive");
+    ObservableList<String> credentialsList = FXCollections.observableArrayList("Administrator", "Ordinary");
     @FXML
     private TextField bannerId;
     @FXML
@@ -31,11 +32,11 @@ public class AddWorkerController implements Initializable {
     @FXML
     private TextField email;
     @FXML
-    private TextField credentials;
-    @FXML
     private TextField dateOfLatestCredentialStatus;
     @FXML
     private TextField dateOfHire;
+    @FXML
+    private ComboBox<String> credentials;
     @FXML
     private ComboBox<String> status;
 
@@ -52,9 +53,10 @@ public class AddWorkerController implements Initializable {
         textFieldList.add(lastName);
         textFieldList.add(phoneNumber);
         textFieldList.add(email);
-        textFieldList.add(credentials);
         textFieldList.add(dateOfLatestCredentialStatus);
         textFieldList.add(dateOfHire);
+        credentials.setValue("Ordinary");
+        credentials.setItems(credentialsList);
         status.setValue("Active");
         status.setItems(statusList);
     }
