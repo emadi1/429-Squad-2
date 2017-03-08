@@ -26,7 +26,7 @@ public class MainViewController implements Initializable{
     public void menuClickListener(ActionEvent event) throws IOException {
         if (root != null) {
             Button button = (Button) event.getSource();
-            //System.out.println(button.getId());
+            System.out.println(button.getId());
             Parent pane = null;
 
             switch (button.getId()) {

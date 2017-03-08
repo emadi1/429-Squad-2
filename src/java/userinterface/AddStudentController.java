@@ -72,7 +72,6 @@ public class AddStudentController implements Initializable {
     }
 
     /**
-     *
      * @param actionEvent
      */
     public void submit(ActionEvent actionEvent) {
