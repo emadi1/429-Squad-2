@@ -13,8 +13,8 @@
 
 <AnchorPane prefHeight="750" prefWidth="926" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userinterface.AddBookController">
     <children>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#006a00" layoutX="-1.0" height="62.0" stroke="green" strokeType="INSIDE" width="930.0"/>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#006a00" height="762.0" layoutX="-1.0" stroke="green" strokeType="INSIDE" width="11.0"/>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="green" layoutX="-1.0" height="62.0" stroke="green" strokeType="INSIDE" width="930.0"/>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="green" height="762.0" layoutX="-1.0" stroke="green" strokeType="INSIDE" width="11.0"/>
         <Text fill="WHITE" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add New Book" textAlignment="CENTER" wrappingWidth="926">
             <font>
                 <Font size="40.0" />
