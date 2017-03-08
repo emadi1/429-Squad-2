@@ -20,9 +20,8 @@ public class Main extends Application {
         primaryStage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
         Parent root = FXMLLoader.load(getClass().getResource("mainview.fxml"));
         Scene scene = new Scene(root);
-
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Squad 2 Library System");
+        primaryStage.setTitle("Brockport Library System");
         primaryStage.setResizable(false);
         primaryStage.show();
     }
