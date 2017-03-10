@@ -1,15 +1,16 @@
 package models;
 
 public class MaxDueDate {
-
     String currentMaxDueDate;
 
-    public void MaxDueDate() {
+    // Constructors
+    MaxDueDate() {
         this.currentMaxDueDate = "";
     }
 
-    public String getCurrentMaxDueDate() {return currentMaxDueDate;}
+    // Setters & Getters
 
+    public String getCurrentMaxDueDate() { return currentMaxDueDate; }
     public void setCurrentMaxDueDate(String currentMaxDueDate) {
         this.currentMaxDueDate = currentMaxDueDate;
     }
