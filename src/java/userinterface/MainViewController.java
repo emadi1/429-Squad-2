@@ -30,40 +30,16 @@ public class MainViewController implements Initializable{
             Parent pane = null;
 
             switch (button.getId()) {
-                case "addBook":
-                    pane = FXMLLoader.load(getClass().getClassLoader().getResource("addbookview.fxml"));
+                case "bookTransactions":
+                    pane = FXMLLoader.load(getClass().getClassLoader().getResource("booktransactionsview.fxml"));
                     break;
 
-                case "modifyBook":
-                    pane = FXMLLoader.load(getClass().getClassLoader().getResource("modifybookview.fxml"));
+                case "studentBorrowerTransactions":
+                    pane = FXMLLoader.load(getClass().getClassLoader().getResource("studentborrowertransactionsview.fxml"));
                     break;
 
-                case "deleteBook":
-                    pane = FXMLLoader.load(getClass().getClassLoader().getResource("deletebookview.fxml"));
-                    break;
-
-                case "addStudent":
-                    pane = FXMLLoader.load(getClass().getClassLoader().getResource("addstudentview.fxml"));
-                    break;
-
-                case "modifyStudent":
-                    pane = FXMLLoader.load(getClass().getClassLoader().getResource("modifystudentview.fxml"));
-                    break;
-
-                case "deleteStudent":
-                    pane = FXMLLoader.load(getClass().getClassLoader().getResource("deletestudentview.fxml"));
-                    break;
-
-                case "addWorker":
-                    pane = FXMLLoader.load(getClass().getClassLoader().getResource("addworkerview.fxml"));
-                    break;
-
-                case "modifyWorker":
-                    pane = FXMLLoader.load(getClass().getClassLoader().getResource("modifyworkerview.fxml"));
-                    break;
-
-                case "deleteWorker":
-                    pane = FXMLLoader.load(getClass().getClassLoader().getResource("deleteworkerview.fxml"));
+                case "workerTransactions":
+                    pane = FXMLLoader.load(getClass().getClassLoader().getResource("workertransactionsview.fxml"));
                     break;
 
                 case "checkOutBook":
