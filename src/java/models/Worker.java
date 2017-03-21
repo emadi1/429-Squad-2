@@ -1,11 +1,7 @@
 package models;
-
-
 import exception.InvalidPrimaryKeyException;
-
 import java.sql.SQLException;
 import java.util.Enumeration;
-import java.util.Objects;
 import java.util.Properties;
 import java.util.Vector;
 
@@ -19,7 +15,7 @@ public class Worker extends EntityBase {
 
     public Worker(String bannerId) throws InvalidPrimaryKeyException {
         super(myTableName);
-        //setDependencies();
+        setDependencies();
         String query = "SELECT * FROM " + myTableName + " WHERE (bannerId = " + bannerId + ")";
         Vector<Properties> allDataRetrieved = getSelectQueryResult(query);
 
@@ -47,7 +43,7 @@ public class Worker extends EntityBase {
 
     public Worker(Properties props) {
         super(myTableName);
-        //setDependencies();
+        setDependencies();
         persistentState = new Properties();
         Enumeration allKeys = props.propertyNames();
         while (allKeys.hasMoreElements() == true) {
@@ -93,7 +89,7 @@ public class Worker extends EntityBase {
                 updateStatusMessage = "Worker data for worker number: " + persistentState.getProperty("bannerId")
                         + " installed successfully in database!";
             } else {
-                Integer bannerId = insertAutoIncrementalPersistentState(mySchema, persistentState);
+                Integer bannerId = insertPersistentState(mySchema, persistentState);
                 persistentState.setProperty("bannerId", "" + bannerId.intValue());
                 updateStatusMessage = "Worker data for new worker: " + persistentState.getProperty("bannerId")
                         + " installed successfully in database!";
@@ -108,16 +104,16 @@ public class Worker extends EntityBase {
     }
 
     public String toString() {
-        return  persistentState.getProperty("bannerId") + "; " +
-                persistentState.getProperty("password") + "; " +
-                persistentState.getProperty("firstName") + "; " +
-                persistentState.getProperty("lastName") + "; " +
-                persistentState.getProperty("contactPhone") + "; " +
-                persistentState.getProperty("email") + "; " +
-                persistentState.getProperty("credentials") + "; " +
-                persistentState.getProperty("dateOfLatestCredentialsStatus") + "; " +
-                persistentState.getProperty("dateOfHire") + "; " +
-                persistentState.getProperty("status");
+        return  persistentState.getProperty("BannerId") + "; " +
+                persistentState.getProperty("Password") + "; " +
+                persistentState.getProperty("FirstName") + "; " +
+                persistentState.getProperty("LastName") + "; " +
+                persistentState.getProperty("ContactPhone") + "; " +
+                persistentState.getProperty("Email") + "; " +
+                persistentState.getProperty("Credentials") + "; " +
+                persistentState.getProperty("DateOfLatestCredentialsStatus") + "; " +
+                persistentState.getProperty("DateOfHire") + "; " +
+                persistentState.getProperty("Status");
     }
 
     protected void initializeSchema(String tableName)

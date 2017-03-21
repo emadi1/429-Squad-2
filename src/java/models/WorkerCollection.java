@@ -21,7 +21,7 @@ public class WorkerCollection extends EntityBase {
         try {
             Vector allDataRetrieved = getSelectQueryResult(query);
             if (allDataRetrieved != null) {
-                workers = new Vector<Worker>();
+                workers = new Vector();
                 for (int index = 0; index < allDataRetrieved.size(); index++) {
                     Properties data = (Properties) allDataRetrieved.elementAt(index);
                     Worker worker = new Worker(data);
@@ -34,6 +34,16 @@ public class WorkerCollection extends EntityBase {
             System.out.println("Exception: " + e);
         }
         return workers;
+    }
+
+    public Vector findAllWorkers() {
+        String query = "SELECT * FROM " + myTableName + " ORDER BY lastName ASC";
+        return runQuery(query);
+    }
+
+    public Vector findBannerPassword(String bannerId) {
+        String query = "SELECT BannerId, Password FROM " + myTableName + " WHERE (BannerId = " + bannerId + ")";
+        return runQuery(query);
     }
 
     public Vector findWorkersByBannerId(String bannerId) {

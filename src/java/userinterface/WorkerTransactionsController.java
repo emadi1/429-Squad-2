@@ -8,6 +8,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import models.Worker;
+import models.WorkerCollection;
+
+import java.util.Vector;
 
 /**
  * Created by kevph on 3/11/2017.
@@ -60,8 +63,12 @@ public class WorkerTransactionsController extends SearchController {
      * @param actionEvent
      * @return
      */
-    public static boolean deleteBook(ActionEvent actionEvent) {
-        return false;
+    public static void delete(ActionEvent actionEvent) {
+
+    }
+
+    public static void modify(ActionEvent actionEvent) {
+
     }
 
     protected ObservableList querySelector() {
@@ -69,7 +76,17 @@ public class WorkerTransactionsController extends SearchController {
         switch (searchChoice.getSelectionModel().getSelectedItem()) {
 
             case "BannerID":
-                break;
+                String bannerId = searchField.getText();
+                if (bannerId == null || bannerId.equals("") || !isNumeric(bannerId)) {
+                    alertMessage.setText("Please enter a numeric BannerID in the search field");
+                    searchField.clear();
+                    break;
+                } else {
+                    WorkerCollection workerCollection = new WorkerCollection();
+                    Vector workers = workerCollection.findWorkersByBannerId(bannerId);
+                    searchField.clear();
+                    return FXCollections.observableList(workers);
+                }
 
             case "First Name":
                 break;
