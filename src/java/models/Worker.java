@@ -13,6 +13,11 @@ public class Worker extends EntityBase {
     private String updateStatusMessage = "";
     protected Properties dependencies;
 
+    /**
+     *
+     * @param bannerId
+     * @throws InvalidPrimaryKeyException
+     */
     public Worker(String bannerId) throws InvalidPrimaryKeyException {
         super(myTableName);
         setDependencies();
@@ -41,6 +46,10 @@ public class Worker extends EntityBase {
         }
     }
 
+    /**
+     *
+     * @param props
+     */
     public Worker(Properties props) {
         super(myTableName);
         setDependencies();
@@ -55,31 +64,58 @@ public class Worker extends EntityBase {
         }
     }
 
+    /**
+     *
+     * @param first
+     * @param second
+     * @return
+     */
     public static int compare(Worker first, Worker second) {
         String firstWorker = (String) first.getState("bannerId");
         String secondWorker = (String) second.getState("bennerId");
         return firstWorker.compareTo(secondWorker);
     }
 
+    /**
+     *
+     */
     private void setDependencies() {
         dependencies = new Properties();
         myRegistry.setDependencies(dependencies);
     }
 
+    /**
+     *
+     * @param key
+     * @return
+     */
     public Object getState(String key) {
         if (key.equals("UpdateStatusMessage") == true)
             return updateStatusMessage;
         return persistentState.getProperty(key);
     }
 
+    /**
+     *
+     * @param key
+     * @param value
+     */
     public void stateChangeRequest(String key, Object value) {
         myRegistry.updateSubscribers(key, this);
     }
 
+    /**
+     *
+     * @param key
+     * @param value
+     */
     public void updateState(String key, Object value) {
         stateChangeRequest(key, value);
     }
 
+    /**
+     *
+     */
     public void updateStateInDatabase() {
         try {
             if (persistentState.getProperty("bannerId") != null) {
@@ -99,10 +135,97 @@ public class Worker extends EntityBase {
         }
     }
 
+    /**
+     *
+     * @return
+     */
+    public String getBannerId() {
+        return persistentState.getProperty("BannerId");
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getPassword() {
+        return persistentState.getProperty("Password");
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getFirstName() {
+        return persistentState.getProperty("FirstName");
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getLastName() {
+        return persistentState.getProperty("LastName");
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getContactPhone() {
+        return persistentState.getProperty("ContactPhone");
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getEmail() {
+        return persistentState.getProperty("Email");
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getCredentials() {
+        return persistentState.getProperty("Credentials");
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getDateOfLatestCredentialsStatus() {
+        return persistentState.getProperty("DateOfLatestCredentialsStatus");
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getDateOfHire() {
+        return persistentState.getProperty("DateOfHire");
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getStatus() {
+        return persistentState.getProperty("Status");
+    }
+
+    /**
+     *
+     */
     public void update() {
         updateStateInDatabase();
     }
 
+    /**
+     *
+     * @return
+     */
     public String toString() {
         return  persistentState.getProperty("BannerId") + "; " +
                 persistentState.getProperty("Password") + "; " +
@@ -116,6 +239,10 @@ public class Worker extends EntityBase {
                 persistentState.getProperty("Status");
     }
 
+    /**
+     *
+     * @param tableName
+     */
     protected void initializeSchema(String tableName)
     {
         if(mySchema == null)

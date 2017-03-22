@@ -30,25 +30,28 @@ public class SignInController implements Initializable {
     TextField password;
     @FXML
     private Text alertMessage;
+    @FXML
+    private Button signIn;
 
     public SignInController() {
 
     }
 
     public void initialize(URL location, ResourceBundle resources) {
-        // TO DO
+
     }
 
     /**
      * @param actionEvent
      */
     public void signIn(ActionEvent actionEvent) throws IOException {
+        signIn = (Button)actionEvent.getSource();
         if (bannerId.getText().equals("") || password.getText().equals(""))
             alertMessage.setText("Please enter BannerID/Password");
         else {
             // Query DB to create worker object.
             WorkerCollection workerCollection = new WorkerCollection();
-            Worker worker = (Worker) workerCollection.findWorkersByBannerId(bannerId.getText()).elementAt(0);
+            Worker worker = (Worker)workerCollection.findWorkersByBannerId(bannerId.getText()).elementAt(0);
             String pw = (String)worker.getState("Password");
             if (!pw.equals(password.getText()))
                 alertMessage.setText("Password Invalid");

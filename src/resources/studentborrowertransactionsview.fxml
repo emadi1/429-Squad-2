@@ -23,22 +23,42 @@
         </Text>
         <GridPane layoutX="10.0" layoutY="75.0" prefHeight="150.0" prefWidth="926.0">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="15.0" prefWidth="54.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="382.0" minWidth="200.0" prefWidth="311.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="455.0" minWidth="376.0" prefWidth="434.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="15.0" prefWidth="119.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="15.0" prefWidth="38.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="382.0" minWidth="200.0" prefWidth="298.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="483.0" minWidth="376.0" prefWidth="470.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="15.0" prefWidth="120.0" />
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
                 <ChoiceBox fx:id="searchChoice" prefHeight="31.0" prefWidth="266.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                 <TextField fx:id="searchField" prefHeight="31.0" prefWidth="375.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                 <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#search" prefHeight="31.0" prefWidth="98.0" text="Search" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="100" text="Add" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            </children>
+        </GridPane>
+        <GridPane layoutX="10.0" layoutY="621.0" prefHeight="143.0" prefWidth="926">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="202.0" minWidth="15.0" prefWidth="50.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="406.0" minWidth="121.0" prefWidth="121.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="624.0" minWidth="334.0" prefWidth="624.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="255.0" minWidth="15.0" prefWidth="120.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="16.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="56.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="55.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Button mnemonicParsing="false" prefWidth="100" text="Modify" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                <Button mnemonicParsing="false" prefWidth="100" text="Delete" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
             </children>
         </GridPane>
         <TableView fx:id="tableView" layoutX="10.0" layoutY="225.0" prefHeight="396.0" prefWidth="926" />
+        <Text fx:id="alertMessage" layoutX="229.0" layoutY="699.0" wrappingWidth="488.0" />
     </children>
 </AnchorPane>
