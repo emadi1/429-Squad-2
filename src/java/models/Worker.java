@@ -5,9 +5,7 @@ import java.util.Enumeration;
 import java.util.Properties;
 import java.util.Vector;
 
-/**
- * Created by kevph on 3/20/2017.
- */
+
 public class Worker extends EntityBase {
     private static final String myTableName = "Worker";
     private String updateStatusMessage = "";
@@ -89,9 +87,9 @@ public class Worker extends EntityBase {
                 updateStatusMessage = "Worker data for worker number: " + persistentState.getProperty("bannerId")
                         + " installed successfully in database!";
             } else {
-                Integer bannerId = insertPersistentState(mySchema, persistentState);
-                persistentState.setProperty("bannerId", "" + bannerId.intValue());
-                updateStatusMessage = "Worker data for new worker: " + persistentState.getProperty("bannerId")
+                Integer BannerId = insertPersistentState(mySchema, persistentState);
+                persistentState.setProperty("BannerId", "" + BannerId.intValue());
+                updateStatusMessage = "Worker data for new worker: " + persistentState.getProperty("BannerId")
                         + " installed successfully in database!";
             }
         } catch (SQLException e) {
