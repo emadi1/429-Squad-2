@@ -36,7 +36,7 @@ public class SignInController implements Initializable {
     }
 
     public void initialize(URL location, ResourceBundle resources) {
-        // TO DO
+        // TODO
     }
 
     /**
