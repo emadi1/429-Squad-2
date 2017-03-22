@@ -74,5 +74,22 @@ public class SignInController implements Initializable {
      */
     public void skip(ActionEvent actionEvent) {
 
+        try {
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("mainview.fxml"));
+            Stage primaryStage = new Stage();
+            Scene scene = new Scene(root);
+            primaryStage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Brockport Library System");
+            primaryStage.setResizable(false);
+            primaryStage.show();
+        } catch (Exception e) {
+            System.out.println("Can't open new window.");
+        }
+
+
+
+
+
     }
 }
