@@ -1,8 +1,6 @@
 import models.StudentBorrower;
-import models.StudentBorrowerCollection;
 import models.Worker;
 import models.WorkerCollection;
-
 import java.util.Properties;
 import java.util.Scanner;
 import java.util.Vector;
@@ -46,7 +44,6 @@ public class Test {
                 input = 0;
             }
         } while (input != 0);
-
     }
 
 
@@ -92,8 +89,16 @@ public class Test {
         String bannerId, password, pw;
         System.out.print("BannerID: ");
         bannerId = keyboard.nextLine();
-        
-        return true;
+        System.out.print("Password: ");
+        password = keyboard.nextLine();
+        WorkerCollection workerCollection = new WorkerCollection();
+        Worker worker = (Worker)workerCollection.findWorkersByBannerId(bannerId).elementAt(0);
+        pw = (String)worker.getState("Password");
+        if (password.equals(pw)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static void printStudentBorrowers() {

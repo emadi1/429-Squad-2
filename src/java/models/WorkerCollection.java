@@ -23,7 +23,7 @@ public class WorkerCollection extends EntityBase {
             if (allDataRetrieved != null) {
                 workers = new Vector();
                 for (int index = 0; index < allDataRetrieved.size(); index++) {
-                    Properties data = (Properties) allDataRetrieved.elementAt(index);
+                    Properties data = (Properties)allDataRetrieved.elementAt(index);
                     Worker worker = new Worker(data);
                     if (worker != null) {
                         addWorker(worker);
