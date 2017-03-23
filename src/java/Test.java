@@ -10,9 +10,10 @@ import java.util.Vector;
  */
 public class Test {
     public static void main(String[] args) {
+        int m = 1;
         int input;
         do {
-            if (signIn()) {
+            if (m == 1) {
                 Scanner keyboard = new Scanner(System.in);
                 System.out.println("Welcome to the Library System");
                 System.out.print("Press...\n'1' to insert Worker.\n" +
@@ -50,12 +51,14 @@ public class Test {
     public static void insertWorkerIntoDatabase() {
         String[] workerArray = {"BannerId", "Password", "FirstName", "LastName", "ContactPhone",
                 "Email", "Credentials", "DateOfLatestCredentialsStatus", "DateOfHire", "Status"};
-        Scanner keyboard = new Scanner(System.in);
+        String[] workerData = {"800123456", "1234567", "Anders", "Lindquist", "111111111111111", "awlindquist@gmail.com",
+                "Administrator", "3-21-2017", "4-17-2007", "Active"};
+//        Scanner keyboard = new Scanner(System.in);
         Properties props = new Properties();
         for (int i = 0; i < workerArray.length; i++) {
-            System.out.print("Please enter " + workerArray[i] + ": ");
-            String workerData = keyboard.nextLine();
-            props.put(workerArray[i], workerData);
+//            System.out.print("Please enter " + workerArray[i] + ": ");
+//            String workerData = keyboard.nextLine();
+            props.put(workerArray[i], workerData[i]);
         }
         Worker worker = new Worker(props);
         worker.update();

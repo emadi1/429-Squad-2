@@ -63,6 +63,9 @@ public class WorkerDataFieldViewController implements Initializable{
 
         Properties prop = new Properties();
 
+        alertMessage.setText("");
+
+        // TODO field checks
         for (TextField textField : textFieldList) {
 
             if (textField.getText().equals("")) {
@@ -83,6 +86,38 @@ public class WorkerDataFieldViewController implements Initializable{
         alertMessage.setText("Worker has been submitted");
 
         for (TextField t : textFieldList) { t.clear(); }
+
+    }
+
+    public void modify(ActionEvent event) {
+
+        Properties prop = new Properties();
+
+        alertMessage.setText("");
+
+        // TODO field checks
+        for (TextField textField : textFieldList) {
+
+            if (textField.getText().equals("")) {
+                alertMessage.setText("Please complete all fields");
+                return;
+            }
+            else {
+                prop.put(textField.getId(), textField.getText());
+            }
+        }
+
+        prop.put(Status.getId(), Status.getSelectionModel().getSelectedItem());
+        prop.put(Credentials.getId(), Credentials.getSelectionModel().getSelectedItem());
+
+        Worker newWorker = new Worker(prop);
+        newWorker.update();
+
+        alertMessage.setText("Worker has been modified");
+
+        for (TextField t : textFieldList) { t.clear(); }
+
+
 
     }
 

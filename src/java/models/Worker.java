@@ -26,7 +26,7 @@ public class Worker extends EntityBase {
         if (allDataRetrieved != null) {
             int size = allDataRetrieved.size();
             if (size != 1) {
-                throw new InvalidPrimaryKeyException("Multiple accounts mathcing ID : "
+                throw new InvalidPrimaryKeyException("Multiple accounts matching ID : "
                         + bannerId + " found.");
             } else {
                 Properties retrievedWorkerData = allDataRetrieved.elementAt(0);
@@ -112,11 +112,11 @@ public class Worker extends EntityBase {
      */
     public void updateStateInDatabase() {
         try {
-            if (persistentState.getProperty("bannerId") != null) {
+            if (persistentState.getProperty("BannerId") != null) {
                 Properties whereClause = new Properties();
-                whereClause.setProperty("bannerId", persistentState.getProperty("bannerId"));
+                whereClause.setProperty("BannerId", persistentState.getProperty("BannerId"));
                 updatePersistentState(mySchema, persistentState, whereClause);
-                updateStatusMessage = "Worker data for worker number: " + persistentState.getProperty("bannerId")
+                updateStatusMessage = "Worker data for worker number: " + persistentState.getProperty("BannerId")
                         + " installed successfully in database!";
             } else {
                 Integer BannerId = insertPersistentState(mySchema, persistentState);

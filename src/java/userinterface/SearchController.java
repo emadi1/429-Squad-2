@@ -42,6 +42,30 @@ public abstract class SearchController implements Initializable {
         if (observableList != null) {
             tableView.setItems(observableList);
         }
+
+//        // define a simple boolean cell value for the action column so that the column will only be shown for non-empty rows.
+//        actionCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Person, Boolean>, ObservableValue<Boolean>>() {
+//            @Override public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Person, Boolean> features) {
+//                return new SimpleBooleanProperty(features.getValue() != null);
+//            }
+//        });
+//
+//        // create a cell value factory with an add button for each row in the table.
+//        actionCol.setCellFactory(new Callback<TableColumn<Person, Boolean>, TableCell<Person, Boolean>>() {
+//            @Override public TableCell<Person, Boolean> call(TableColumn<Person, Boolean> personBooleanTableColumn) {
+//                return new AddPersonCell(stage, table);
+//            }
+
+
+
+
+
+
+
+
+
+
+
     }
 
     protected static boolean isNumeric(String string) {

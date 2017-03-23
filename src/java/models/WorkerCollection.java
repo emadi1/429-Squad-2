@@ -1,12 +1,8 @@
 package models;
 
-
 import java.util.Properties;
 import java.util.Vector;
 
-/**
- * Created by kevph on 3/20/2017.
- */
 public class WorkerCollection extends EntityBase {
     private static final String myTableName = "Worker";
     private Vector<Worker> workers;
