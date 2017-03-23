@@ -54,7 +54,7 @@
                 <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
             </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" prefWidth="100" text="Modify" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <Button fx:id="modify" onAction="#modify" mnemonicParsing="false" prefWidth="100" text="Modify" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
             <Button mnemonicParsing="false" prefWidth="100" text="Delete" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
          </children>
         </GridPane>

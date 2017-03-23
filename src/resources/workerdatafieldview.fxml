@@ -48,8 +48,9 @@
       <TextField fx:id="DateOfLatestCredentialsStatus" GridPane.columnIndex="1" GridPane.rowIndex="8" />
       <TextField fx:id="DateOfHire" GridPane.columnIndex="1" GridPane.rowIndex="9" />
       <ComboBox fx:id="Credentials" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-      <Button id="submit" fx:id="submit" mnemonicParsing="false" onAction="#submit" text="Submit" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+      <Button id="submit" fx:id="submit" mnemonicParsing="false" onAction="#submit" text="Add" GridPane.columnIndex="1" GridPane.rowIndex="11" />
       <ComboBox fx:id="Status" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
       <Text fx:id="alertMessage" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="12" />
+      <Button mnemonicParsing="false" onAction="#modify" text="Modify" GridPane.columnIndex="1" GridPane.rowIndex="12" />
    </children>
 </GridPane>

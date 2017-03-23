@@ -116,11 +116,11 @@ public class Worker extends EntityBase {
      */
     public void updateStateInDatabase() {
         try {
-            if (persistentState.getProperty("bannerId") != null) {
+            if (persistentState.getProperty("BannerId") != null) {
                 Properties whereClause = new Properties();
-                whereClause.setProperty("bannerId", persistentState.getProperty("bannerId"));
+                whereClause.setProperty("BannerId", persistentState.getProperty("BannerId"));
                 updatePersistentState(mySchema, persistentState, whereClause);
-                updateStatusMessage = "Worker data for worker number: " + persistentState.getProperty("bannerId")
+                updateStatusMessage = "Worker data for worker number: " + persistentState.getProperty("BannerId")
                         + " installed successfully in database!";
             } else {
                 Integer BannerId = insertPersistentState(mySchema, persistentState);

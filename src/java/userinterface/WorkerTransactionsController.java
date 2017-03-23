@@ -1,5 +1,7 @@
 package userinterface;
 
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -7,11 +9,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import models.Worker;
 import models.WorkerCollection;
 
@@ -23,10 +27,7 @@ public class WorkerTransactionsController extends SearchController {
     @FXML
     private Text alertMessage;
 
-    /**
-     *
-     * @return
-     */
+
     @Override
     public ObservableList<String> itemsSearchChoiceArray() {
         return FXCollections.observableArrayList(
@@ -41,39 +42,53 @@ public class WorkerTransactionsController extends SearchController {
                 "Status");
     }
 
-    /**
-     *
-     */
+
     protected void setTableView() {
         TableColumn column;
         for (String property : properties) {
             column = new TableColumn(property);
-            column.setMinWidth(100);
+            column.setMinWidth(92);
             column.setCellValueFactory(new PropertyValueFactory<Worker, String>(property));
             tableView.getColumns().add(column);
         }
-    }
 
-    /**
-     *
-     * @param actionEvent
-     */
+        TableColumn<Worker, Boolean> actionCol = new TableColumn<>("Action");
+        actionCol.setSortable(false);
+        tableView.getColumns().add(actionCol);
+
+        // define a simple boolean cell value for the action column so that the column will only be shown for non-empty rows.
+        actionCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Worker, Boolean>, ObservableValue<Boolean>>() {
+            @Override public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Worker, Boolean> features) {
+                return new SimpleBooleanProperty(features.getValue() != null);
+            }
+        });
+
+        // create a cell value factory with an add button for each row in the table.
+        actionCol.setCellFactory(new Callback<TableColumn<Worker, Boolean>, TableCell<Worker, Boolean>>() {
+            @Override public TableCell<Worker, Boolean> call(TableColumn<Worker, Boolean> workerBooleanTableColumn) {
+                return new AddWorkerCell( (Stage) tableView.getScene().getWindow(), tableView);
+            }
+        });
+
+}
+
+
     public static void changeScene(ActionEvent actionEvent) {
 
     }
 
-    /**
-     *
-     * @param actionEvent
-     * @return
-     */
+
     public static void delete(ActionEvent actionEvent) {
 
     }
 
-    public static void modify(ActionEvent actionEvent) {
+    public void modify(ActionEvent actionEvent) {
+
+
+
 
     }
+
 
     public void addWorker(ActionEvent actionEvent) {
 
@@ -91,9 +106,8 @@ public class WorkerTransactionsController extends SearchController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
+
 
     protected ObservableList querySelector() {
 
@@ -205,6 +219,10 @@ public class WorkerTransactionsController extends SearchController {
                 break;
         }
         searchField.clear();
+
+//        Worker w = (Worker) tableView.getSelectionModel().getSelectedItems();
+//        alertMessage.setText(w.getBannerId());
+
         return null;
     }
 }
