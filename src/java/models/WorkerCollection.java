@@ -37,11 +37,6 @@ public class WorkerCollection extends EntityBase {
         return runQuery(query);
     }
 
-    public Vector findBannerPassword(String bannerId) {
-        String query = "SELECT BannerId, Password FROM " + myTableName + " WHERE (BannerId = " + bannerId + ")";
-        return runQuery(query);
-    }
-
     public Vector findWorkersByBannerId(String bannerId) {
         String query = "SELECT * FROM " + myTableName + " WHERE (BannerId = " + bannerId + ") ORDER BY lastName ASC";
         return runQuery(query);
@@ -62,14 +57,24 @@ public class WorkerCollection extends EntityBase {
         return runQuery(query);
     }
 
+    public Vector findWorkersByEmail(String email) {
+        String query = "SELECT * FROM " + myTableName + " WHERE Email LIKE '%" + email + "%' ORDER BY LastName ASC";
+        return runQuery(query);
+    }
+
     public Vector findWorkersByCredentials(String credentials) {
         String query = "SELECT * FROM " + myTableName + " WHERE credentials LIKE '%" + credentials + "%' ORDER BY lastName ASC";
         return runQuery(query);
     }
 
-    public Vector findWorkerByCredentials(String status) {
+    public Vector findWorkerByStatus(String status) {
         String query = "SELECT * FROM " + myTableName + " WHERE status LIKE '%" + status + "%' ORDER BY lastName ASC";
         return runQuery(query);
+    }
+
+    public void deleteWorker(String bannerId) {
+        String query = "DELETE * FROM " + myTableName + " WHERE (BannerId = " + bannerId + ")";
+        runQuery(query);
     }
 
     public void addWorker(Worker worker) {
