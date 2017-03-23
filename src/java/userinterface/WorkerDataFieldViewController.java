@@ -63,6 +63,9 @@ public class WorkerDataFieldViewController implements Initializable{
 
         Properties prop = new Properties();
 
+        alertMessage.setText("");
+
+        // TODO field checks
         for (TextField textField : textFieldList) {
 
             if (textField.getText().equals("")) {
