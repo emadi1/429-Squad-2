@@ -26,9 +26,9 @@ public class BookTransactionsController extends SearchController {
                 "Discipline",
                 "Author",
                 "Publisher",
-                "Publication Year",
+                "PublicationYear",
                 "ISBN",
-                "Suggested Price",
+                "SuggestedPrice",
                 "Status");
     }
 
@@ -86,13 +86,13 @@ public class BookTransactionsController extends SearchController {
             case "Publisher":
                 break;
 
-            case "Publication Year":
+            case "PublicationYear":
                 break;
 
             case "ISBN":
                 break;
 
-            case "Suggested Price":
+            case "SuggestedPrice":
                 break;
 
             case "Status":

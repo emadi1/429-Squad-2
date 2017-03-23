@@ -2,12 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5374f5b7-d27f-4133-bc52-c6540ab79edd" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/java/userinterface/WorkerDataFieldViewController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/resources/workerdatafieldview.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/429-Squad-2/mainview.fxml" afterPath="$PROJECT_DIR$/out/production/429-Squad-2/mainview.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/models/Worker.java" afterPath="$PROJECT_DIR$/src/java/models/Worker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/models/WorkerCollection.java" afterPath="$PROJECT_DIR$/src/java/models/WorkerCollection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/userinterface/BookTransactionsController.java" afterPath="$PROJECT_DIR$/src/java/userinterface/BookTransactionsController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/userinterface/SignInController.java" afterPath="$PROJECT_DIR$/src/java/userinterface/SignInController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/userinterface/StudentBorrowerTransactionsController.java" afterPath="$PROJECT_DIR$/src/java/userinterface/StudentBorrowerTransactionsController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/userinterface/WorkerTransactionsController.java" afterPath="$PROJECT_DIR$/src/java/userinterface/WorkerTransactionsController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/resources/booktransactionsview.fxml" afterPath="$PROJECT_DIR$/src/resources/booktransactionsview.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/resources/mainview.fxml" afterPath="$PROJECT_DIR$/src/resources/mainview.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/resources/signinview.fxml" afterPath="$PROJECT_DIR$/src/resources/signinview.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/resources/studentborrowertransactionsview.fxml" afterPath="$PROJECT_DIR$/src/resources/studentborrowertransactionsview.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/resources/workertransactionsview.fxml" afterPath="$PROJECT_DIR$/src/resources/workertransactionsview.fxml" />
     </list>
@@ -27,78 +34,60 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="workertransactionsview.fxml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="workertransactionsview.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/resources/workertransactionsview.fxml">
           <provider editor-type-id="JavaFX-Scene-Builder">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
-              <caret line="42" column="84" lean-forward="false" selection-start-line="42" selection-start-column="84" selection-end-line="42" selection-end-column="84" />
+            <state relative-caret-position="302">
+              <caret line="57" column="101" lean-forward="false" selection-start-line="57" selection-start-column="101" selection-end-line="57" selection-end-column="101" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Worker.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/models/Worker.java">
+      <file leaf-file-name="mainview.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/resources/mainview.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="142" column="52" lean-forward="false" selection-start-line="142" selection-start-column="52" selection-end-line="142" selection-end-column="52" />
-              <folding>
-                <element signature="docComment;method#Worker#0;class#Worker#0" expanded="false" />
-                <element signature="method#Worker#0;class#Worker#0" expanded="false" />
-                <element signature="docComment;method#Worker#1;class#Worker#0" expanded="false" />
-                <element signature="method#Worker#1;class#Worker#0" expanded="false" />
-                <element signature="docComment;method#compare#0;class#Worker#0" expanded="false" />
-                <element signature="method#compare#0;class#Worker#0" expanded="false" />
-                <element signature="docComment;method#setDependencies#0;class#Worker#0" expanded="false" />
-                <element signature="method#setDependencies#0;class#Worker#0" expanded="false" />
-                <element signature="docComment;method#getState#0;class#Worker#0" expanded="false" />
-                <element signature="method#getState#0;class#Worker#0" expanded="false" />
-                <element signature="docComment;method#stateChangeRequest#0;class#Worker#0" expanded="false" />
-                <element signature="docComment;method#updateState#0;class#Worker#0" expanded="false" />
-                <element signature="docComment;method#updateStateInDatabase#0;class#Worker#0" expanded="false" />
-                <element signature="method#updateStateInDatabase#0;class#Worker#0" expanded="false" />
-                <element signature="docComment;method#getBannerId#0;class#Worker#0" expanded="false" />
-                <element signature="docComment;method#getPassword#0;class#Worker#0" expanded="false" />
-                <element signature="docComment;method#getFirstName#0;class#Worker#0" expanded="false" />
-                <element signature="docComment;method#getLastName#0;class#Worker#0" expanded="false" />
-                <element signature="docComment;method#getContactPhone#0;class#Worker#0" expanded="false" />
-                <element signature="docComment;method#getEmail#0;class#Worker#0" expanded="false" />
-                <element signature="docComment;method#getCredentials#0;class#Worker#0" expanded="false" />
-                <element signature="docComment;method#getDateOfLatestCredentialsStatus#0;class#Worker#0" expanded="false" />
-                <element signature="method#getDateOfLatestCredentialsStatus#0;class#Worker#0" expanded="false" />
-                <element signature="docComment;method#getDateOfHire#0;class#Worker#0" expanded="false" />
-                <element signature="docComment;method#getStatus#0;class#Worker#0" expanded="false" />
-                <element signature="docComment;method#update#0;class#Worker#0" expanded="false" />
-                <element signature="docComment;method#toString#0;class#Worker#0" expanded="false" />
-                <element signature="method#toString#0;class#Worker#0" expanded="false" />
-                <element signature="docComment;method#initializeSchema#0;class#Worker#0" expanded="false" />
-                <element signature="method#initializeSchema#0;class#Worker#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="255">
+              <caret line="15" column="160" lean-forward="false" selection-start-line="15" selection-start-column="160" selection-end-line="15" selection-end-column="160" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WorkerTransactionsController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="WorkerTransactionsController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/java/userinterface/WorkerTransactionsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-              <folding>
-                <element signature="docComment;method#itemsSearchChoiceArray#0;class#WorkerTransactionsController#0" expanded="false" />
-                <element signature="docComment;method#setTableView#0;class#WorkerTransactionsController#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="1904">
+              <caret line="146" column="65" lean-forward="false" selection-start-line="146" selection-start-column="65" selection-end-line="146" selection-end-column="65" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WorkerCollection.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/models/WorkerCollection.java">
+      <file leaf-file-name="WorkerDataFieldViewController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/userinterface/WorkerDataFieldViewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1224">
-              <caret line="73" column="36" lean-forward="false" selection-start-line="73" selection-start-column="36" selection-end-line="73" selection-end-column="36" />
+            <state relative-caret-position="765">
+              <caret line="61" column="35" lean-forward="false" selection-start-line="61" selection-start-column="35" selection-end-line="61" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="booktransactionsview.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/resources/booktransactionsview.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="97">
+              <caret line="17" column="74" lean-forward="false" selection-start-line="17" selection-start-column="74" selection-end-line="17" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -137,7 +126,6 @@
         <option value="$PROJECT_DIR$/src/resources/checkoutbookview.fxml" />
         <option value="$PROJECT_DIR$/src/resources/checkinbookview.fxml" />
         <option value="$PROJECT_DIR$/src/resources/listcheckedbooksview.fxml" />
-        <option value="$PROJECT_DIR$/src/resources/mainview.fxml" />
         <option value="$PROJECT_DIR$/src/java/database/JDBCBroker.java" />
         <option value="$PROJECT_DIR$/src/java/common/PropertyFile.java" />
         <option value="$PROJECT_DIR$/src/java/event/EventLog.java" />
@@ -148,21 +136,23 @@
         <option value="$PROJECT_DIR$/src/java/models/EntityBase.java" />
         <option value="$PROJECT_DIR$/src/java/models/Patron.java" />
         <option value="$PROJECT_DIR$/src/java/models/PatronCollection.java" />
-        <option value="$PROJECT_DIR$/src/java/userinterface/BookTransactionsController.java" />
-        <option value="$PROJECT_DIR$/src/java/userinterface/StudentBorrowerTransactionsController.java" />
         <option value="$PROJECT_DIR$/src/java/database/Persistable.java" />
         <option value="$PROJECT_DIR$/src/java/models/StudentBorrower.java" />
         <option value="$PROJECT_DIR$/src/java/Test.java" />
         <option value="$PROJECT_DIR$/src/java/Main.java" />
         <option value="$PROJECT_DIR$/src/resources/signinview.fxml" />
         <option value="$PROJECT_DIR$/dbConfig.ini" />
-        <option value="$PROJECT_DIR$/src/java/userinterface/SignInController.java" />
-        <option value="$PROJECT_DIR$/src/java/models/Worker.java" />
         <option value="$PROJECT_DIR$/src/java/models/WorkerCollection.java" />
-        <option value="$PROJECT_DIR$/src/resources/booktransactionsview.fxml" />
-        <option value="$PROJECT_DIR$/src/resources/studentborrowertransactionsview.fxml" />
+        <option value="$PROJECT_DIR$/src/java/userinterface/BookTransactionsController.java" />
+        <option value="$PROJECT_DIR$/src/java/models/Worker.java" />
+        <option value="$PROJECT_DIR$/src/java/userinterface/SignInController.java" />
         <option value="$PROJECT_DIR$/src/java/userinterface/WorkerTransactionsController.java" />
+        <option value="$PROJECT_DIR$/src/resources/workerdatafieldview.fxml" />
+        <option value="$PROJECT_DIR$/src/resources/studentborrowertransactionsview.fxml" />
+        <option value="$PROJECT_DIR$/src/java/userinterface/StudentBorrowerTransactionsController.java" />
         <option value="$PROJECT_DIR$/src/resources/workertransactionsview.fxml" />
+        <option value="$PROJECT_DIR$/src/resources/booktransactionsview.fxml" />
+        <option value="$PROJECT_DIR$/src/resources/mainview.fxml" />
       </list>
     </option>
   </component>
@@ -175,8 +165,27 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-9" />
     <option name="y" value="-9" />
-    <option name="width" value="1924" />
+    <option name="width" value="1938" />
     <option name="height" value="1048" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>General</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Duplicates</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -295,6 +304,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="429-Squad-2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="429-Squad-2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="impresario" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
@@ -312,7 +343,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.XML" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
     <property name="settings.editor.splitter.proportion" value="0.28383234" />
   </component>
   <component name="RecentsManager">
@@ -656,6 +687,13 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
     <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
       <config-file value="" />
       <node-interpreter value="project" />
@@ -787,15 +825,16 @@
       <workItem from="1490147352006" duration="14598000" />
       <workItem from="1490213819916" duration="192000" />
       <workItem from="1490217327164" duration="74000" />
-      <workItem from="1490217436319" duration="208000" />
+      <workItem from="1490217436319" duration="5051000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79863000" />
+    <option name="totallyTimeSpent" value="84706000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1924" height="1048" extended-state="0" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -812,7 +851,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19642857" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19495167" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -878,17 +917,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/resources/bookviewstransactions.fxml" />
-    <entry file="file://$PROJECT_DIR$/src/resources/checkoutbookview.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="173" lean-forward="false" selection-start-line="13" selection-start-column="173" selection-end-line="13" selection-end-column="173" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/checkinbookview.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
@@ -896,16 +924,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="172" lean-forward="false" selection-start-line="13" selection-start-column="172" selection-end-line="13" selection-end-column="172" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/mainview.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="73" lean-forward="false" selection-start-line="15" selection-start-column="73" selection-end-line="15" selection-end-column="73" />
         </state>
       </provider>
     </entry>
@@ -1047,13 +1065,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/userinterface/StudentBorrowerTransactionsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="44" column="74" lean-forward="false" selection-start-line="44" selection-start-column="74" selection-end-line="44" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/models/BookBarcodePrefix.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1107,6 +1118,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="2" column="31" lean-forward="false" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1114,6 +1126,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1785">
           <caret line="109" column="15" lean-forward="true" selection-start-line="109" selection-start-column="15" selection-end-line="109" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#4202#4203#0" expanded="false" />
+            <element signature="e#4241#4242#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1128,13 +1145,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/userinterface/BookTransactionsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="42" column="68" lean-forward="false" selection-start-line="42" selection-start-column="68" selection-end-line="42" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1173,63 +1186,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/models/WorkerCollection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
+        <state relative-caret-position="404">
           <caret line="73" column="36" lean-forward="false" selection-start-line="73" selection-start-column="36" selection-end-line="73" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/userinterface/SignInController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
-          <caret line="62" column="59" lean-forward="true" selection-start-line="62" selection-start-column="59" selection-end-line="62" selection-end-column="133" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/userinterface/MainViewController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="36" column="38" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="36" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/booktransactionsview.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="1003">
-          <caret line="59" column="19" lean-forward="false" selection-start-line="59" selection-start-column="19" selection-end-line="59" selection-end-column="19" />
+        <state relative-caret-position="240">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/studentborrowertransactionsview.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="61" column="91" lean-forward="false" selection-start-line="61" selection-start-column="91" selection-end-line="61" selection-end-column="91" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/userinterface/WorkerTransactionsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;method#itemsSearchChoiceArray#0;class#WorkerTransactionsController#0" expanded="false" />
-            <element signature="docComment;method#setTableView#0;class#WorkerTransactionsController#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/models/Worker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="142" column="52" lean-forward="false" selection-start-line="142" selection-start-column="52" selection-end-line="142" selection-end-column="52" />
+        <state relative-caret-position="1207">
+          <caret line="227" column="53" lean-forward="false" selection-start-line="227" selection-start-column="53" selection-end-line="227" selection-end-column="53" />
           <folding>
             <element signature="docComment;method#Worker#0;class#Worker#0" expanded="false" />
             <element signature="method#Worker#0;class#Worker#0" expanded="false" />
@@ -1265,13 +1239,102 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/userinterface/BookTransactionsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="94" column="27" lean-forward="false" selection-start-line="94" selection-start-column="27" selection-end-line="94" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/userinterface/SignInController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="63" column="20" lean-forward="false" selection-start-line="62" selection-start-column="33" selection-end-line="63" selection-end-column="20" />
+          <folding>
+            <element signature="method#SignInController#0;class#SignInController#0" expanded="false" />
+            <element signature="method#initialize#0;class#SignInController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/workerdatafieldview.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="42" column="89" lean-forward="false" selection-start-line="42" selection-start-column="89" selection-end-line="42" selection-end-column="89" />
+          <folding>
+            <marker date="1490219878427" expanded="true" signature="1047:2081" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/userinterface/StudentBorrowerTransactionsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1070">
+          <caret line="86" column="26" lean-forward="false" selection-start-line="86" selection-start-column="26" selection-end-line="86" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/studentborrowertransactionsview.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="61" column="91" lean-forward="false" selection-start-line="61" selection-start-column="91" selection-end-line="61" selection-end-column="91" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/workertransactionsview.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="42" column="84" lean-forward="false" selection-start-line="42" selection-start-column="84" selection-end-line="42" selection-end-column="84" />
+        <state relative-caret-position="302">
+          <caret line="57" column="101" lean-forward="false" selection-start-line="57" selection-start-column="101" selection-end-line="57" selection-end-column="101" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/booktransactionsview.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="17" column="74" lean-forward="false" selection-start-line="17" selection-start-column="74" selection-end-line="17" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/mainview.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="160" lean-forward="false" selection-start-line="15" selection-start-column="160" selection-end-line="15" selection-end-column="160" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/userinterface/WorkerDataFieldViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="61" column="35" lean-forward="false" selection-start-line="61" selection-start-column="35" selection-end-line="61" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/userinterface/WorkerTransactionsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1904">
+          <caret line="146" column="65" lean-forward="false" selection-start-line="146" selection-start-column="65" selection-end-line="146" selection-end-column="65" />
           <folding />
         </state>
       </provider>

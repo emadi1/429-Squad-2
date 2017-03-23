@@ -13,7 +13,7 @@
                     <Button id="workerTransactions" fx:id="addWorker" layoutY="250" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="125" prefWidth="225.0" style="-fx-background-color: blue" textFill="beige" text="Worker Transaction" />
                     <Button id="checkOutBook" fx:id="checkOutBook" layoutY="375.0" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="125" prefWidth="225.0" style="-fx-background-color: #8a8a87" textFill="beige" text="Check Out Book" />
                     <Button id="checkInBook" fx:id="checkInBook" layoutY="500" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="125" prefWidth="225.0" style="-fx-background-color: #393735" textFill="beige" text="Check In Book" />
-                    <Button id="listCheckedBooks" fx:id="listCheckedBooks" layoutY="625.0" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="125" prefWidth="225.0" style="-fx-background-color: #010101" textFill="beige" text="List All Checked Out Books" />
+                    <Button id="listCheckedBooks" fx:id="listCheckedBooks" layoutY="625.0" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="130" prefWidth="225.0" style="-fx-background-color: #010101" textFill="beige" text="List All Checked Out Books" />
                 </children>
         </AnchorPane>
         <Pane fx:id="root" layoutX="225.0" prefHeight="750.0" prefWidth="926.0">

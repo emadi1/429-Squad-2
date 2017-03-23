@@ -25,9 +25,9 @@ public class StudentBorrowerTransactionsController extends SearchController {
     public ObservableList<String> itemsSearchChoiceArray() {
         return FXCollections.observableArrayList(
                 "BannerID",
-                "First Name",
-                "Last Name",
-                "Phone Number",
+                "FirstName",
+                "LastName",
+                "ContactPhone",
                 "Email",
                 "Borrower Status",
                 "Notes",
@@ -69,22 +69,22 @@ public class StudentBorrowerTransactionsController extends SearchController {
 
         switch (searchChoice.getSelectionModel().getSelectedItem()) {
 
-            case "BannerID":
+            case "BannerId":
                 break;
 
-            case "First Name":
+            case "FirstName":
                 break;
 
-            case "Last Name":
+            case "LastName":
                 break;
 
-            case "Phone Number":
+            case "ContactPhone":
                 break;
 
             case "Email":
                 break;
 
-            case "Borrower Status":
+            case "BorrowerStatus":
                 break;
 
             case "Notes":

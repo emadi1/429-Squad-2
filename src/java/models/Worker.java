@@ -1,20 +1,19 @@
 package models;
+
 import exception.InvalidPrimaryKeyException;
+
 import java.sql.SQLException;
 import java.util.Enumeration;
 import java.util.Properties;
 import java.util.Vector;
 
-/**
- * Created by kevph on 3/20/2017.
- */
+
 public class Worker extends EntityBase {
     private static final String myTableName = "Worker";
     private String updateStatusMessage = "";
     protected Properties dependencies;
 
     /**
-     *
      * @param bannerId
      * @throws InvalidPrimaryKeyException
      */
@@ -34,7 +33,7 @@ public class Worker extends EntityBase {
                 persistentState = new Properties();
                 Enumeration allKeys = retrievedWorkerData.propertyNames();
                 while (allKeys.hasMoreElements() == true) {
-                    String nextKey = (String)allKeys.nextElement();
+                    String nextKey = (String) allKeys.nextElement();
                     String nextValue = retrievedWorkerData.getProperty(nextKey);
                     if (nextValue != null) {
                         persistentState.setProperty(nextKey, nextValue);
@@ -47,7 +46,6 @@ public class Worker extends EntityBase {
     }
 
     /**
-     *
      * @param props
      */
     public Worker(Properties props) {
@@ -65,7 +63,6 @@ public class Worker extends EntityBase {
     }
 
     /**
-     *
      * @param first
      * @param second
      * @return
@@ -85,7 +82,6 @@ public class Worker extends EntityBase {
     }
 
     /**
-     *
      * @param key
      * @return
      */
@@ -96,7 +92,6 @@ public class Worker extends EntityBase {
     }
 
     /**
-     *
      * @param key
      * @param value
      */
@@ -105,7 +100,6 @@ public class Worker extends EntityBase {
     }
 
     /**
-     *
      * @param key
      * @param value
      */
@@ -125,9 +119,9 @@ public class Worker extends EntityBase {
                 updateStatusMessage = "Worker data for worker number: " + persistentState.getProperty("bannerId")
                         + " installed successfully in database!";
             } else {
-                Integer bannerId = insertPersistentState(mySchema, persistentState);
-                persistentState.setProperty("bannerId", "" + bannerId.intValue());
-                updateStatusMessage = "Worker data for new worker: " + persistentState.getProperty("bannerId")
+                Integer BannerId = insertPersistentState(mySchema, persistentState);
+                persistentState.setProperty("BannerId", "" + BannerId.intValue());
+                updateStatusMessage = "Worker data for new worker: " + persistentState.getProperty("BannerId")
                         + " installed successfully in database!";
             }
         } catch (SQLException e) {
@@ -136,7 +130,6 @@ public class Worker extends EntityBase {
     }
 
     /**
-     *
      * @return
      */
     public String getBannerId() {
@@ -144,7 +137,6 @@ public class Worker extends EntityBase {
     }
 
     /**
-     *
      * @return
      */
     public String getPassword() {
@@ -152,7 +144,6 @@ public class Worker extends EntityBase {
     }
 
     /**
-     *
      * @return
      */
     public String getFirstName() {
@@ -160,7 +151,6 @@ public class Worker extends EntityBase {
     }
 
     /**
-     *
      * @return
      */
     public String getLastName() {
@@ -168,7 +158,6 @@ public class Worker extends EntityBase {
     }
 
     /**
-     *
      * @return
      */
     public String getContactPhone() {
@@ -176,7 +165,6 @@ public class Worker extends EntityBase {
     }
 
     /**
-     *
      * @return
      */
     public String getEmail() {
@@ -184,7 +172,6 @@ public class Worker extends EntityBase {
     }
 
     /**
-     *
      * @return
      */
     public String getCredentials() {
@@ -192,7 +179,6 @@ public class Worker extends EntityBase {
     }
 
     /**
-     *
      * @return
      */
     public String getDateOfLatestCredentialsStatus() {
@@ -200,7 +186,6 @@ public class Worker extends EntityBase {
     }
 
     /**
-     *
      * @return
      */
     public String getDateOfHire() {
@@ -208,7 +193,6 @@ public class Worker extends EntityBase {
     }
 
     /**
-     *
      * @return
      */
     public String getStatus() {
@@ -223,11 +207,10 @@ public class Worker extends EntityBase {
     }
 
     /**
-     *
      * @return
      */
     public String toString() {
-        return  persistentState.getProperty("BannerId") + "; " +
+        return persistentState.getProperty("BannerId") + "; " +
                 persistentState.getProperty("Password") + "; " +
                 persistentState.getProperty("FirstName") + "; " +
                 persistentState.getProperty("LastName") + "; " +
@@ -240,13 +223,10 @@ public class Worker extends EntityBase {
     }
 
     /**
-     *
      * @param tableName
      */
-    protected void initializeSchema(String tableName)
-    {
-        if(mySchema == null)
-        {
+    protected void initializeSchema(String tableName) {
+        if (mySchema == null) {
             mySchema = getSchemaInfo(tableName);
         }
     }

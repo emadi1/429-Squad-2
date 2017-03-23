@@ -57,6 +57,17 @@ public class WorkerTransactionsController extends SearchController {
         }
     }
 
+    public void changeScene(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("workerdatafieldview.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
+        stage.setScene(scene);
+        stage.setTitle("Add Worker");
+        stage.setResizable(false);
+        stage.show();
+    }
+
     protected ObservableList querySelector() {
 
         switch (searchChoice.getSelectionModel().getSelectedItem()) {
@@ -133,7 +144,7 @@ public class WorkerTransactionsController extends SearchController {
             case "Credentials":
                 String credentials = searchField.getText();
                 if (credentials == null || credentials.equals("") ||
-                        (!credentials.equals("Administrator") || !credentials.equals("Ordinary"))) {
+                        !(credentials.equals("Administrator") || credentials.equals("Ordinary"))) {
                     alertMessage.setText("Please enter either: 'Administrator'/'Ordinary' in the search field");
                     searchField.clear();
                 } else {
