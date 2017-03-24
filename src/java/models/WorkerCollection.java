@@ -10,7 +10,7 @@ public class WorkerCollection extends EntityBase {
 
     public WorkerCollection() {
         super(myTableName);
-        workers = new Vector<>();
+        Vector<Worker> workerCollection = new Vector<>();
     }
 
     public Vector runQuery(String query) {

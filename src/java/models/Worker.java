@@ -124,8 +124,8 @@ public class Worker extends EntityBase {
                 updateStatusMessage = "Worker data for new worker: " + persistentState.getProperty("BannerId")
                         + " installed successfully in database!";
             }
-        } catch (SQLException e) {
-            updateStatusMessage = "Error in installing Worker data in database!";
+        } catch (Exception e) {
+            System.out.println("Error installing data");
         }
     }
 
