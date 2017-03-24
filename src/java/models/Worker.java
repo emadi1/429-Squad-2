@@ -112,18 +112,10 @@ public class Worker extends EntityBase {
      */
     public void updateStateInDatabase() {
         try {
-            if (persistentState.getProperty("BannerId") != null) {
-                Properties whereClause = new Properties();
-                whereClause.setProperty("BannerId", persistentState.getProperty("BannerId"));
-                updatePersistentState(mySchema, persistentState, whereClause);
-                updateStatusMessage = "Worker data for worker number: " + persistentState.getProperty("BannerId")
-                        + " installed successfully in database!";
-            } else {
-                Integer BannerId = insertPersistentState(mySchema, persistentState);
-                persistentState.setProperty("BannerId", "" + BannerId.intValue());
-                updateStatusMessage = "Worker data for new worker: " + persistentState.getProperty("BannerId")
-                        + " installed successfully in database!";
-            }
+            Integer BannerId = insertPersistentState(mySchema, persistentState);
+            persistentState.setProperty("BannerId", "" + BannerId.intValue());
+            updateStatusMessage = "Worker data for new worker: " + persistentState.getProperty("BannerId")
+                    + " installed successfully in database!";
         } catch (SQLException e) {
             updateStatusMessage = "Error in installing Worker data in database!";
         }
@@ -210,7 +202,7 @@ public class Worker extends EntityBase {
      * @return
      */
     public String toString() {
-        return persistentState.getProperty("BannerId") + "; " +
+        return  persistentState.getProperty("BannerId") + "; " +
                 persistentState.getProperty("Password") + "; " +
                 persistentState.getProperty("FirstName") + "; " +
                 persistentState.getProperty("LastName") + "; " +
