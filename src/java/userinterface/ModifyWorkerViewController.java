@@ -88,9 +88,3 @@ public class ModifyWorkerViewController implements Initializable{
         for (TextField t : textFieldList) { t.clear(); }
     }
 }
-
-
-
-
-
-

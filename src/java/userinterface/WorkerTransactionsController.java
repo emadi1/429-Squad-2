@@ -56,7 +56,7 @@ public class WorkerTransactionsController extends SearchController {
         actionCol.setSortable(false);
         tableView.getColumns().add(actionCol);
 
-        // define a simple boolean cell value for the action column so that the column will only be shown for non-empty rows.
+        // Define a simple boolean cell value for the action column so that the column will only be shown for non-empty rows.
         actionCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Worker, Boolean>, ObservableValue<Boolean>>() {
             @Override
             public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Worker, Boolean> features) {
@@ -64,7 +64,7 @@ public class WorkerTransactionsController extends SearchController {
             }
         });
 
-        // create a cell value factory with an add button for each row in the table.
+        // Create a cell value factory with an add button for each row in the table.
         actionCol.setCellFactory(new Callback<TableColumn<Worker, Boolean>, TableCell<Worker, Boolean>>() {
             @Override
             public TableCell<Worker, Boolean> call(TableColumn<Worker, Boolean> workerBooleanTableColumn) {
@@ -78,7 +78,7 @@ public class WorkerTransactionsController extends SearchController {
 
         try {
 
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("workerdatafieldview.fxml"));
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("addworkerview.fxml"));
             Stage primaryStage = new Stage();
             Scene scene = new Scene(root);
             primaryStage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
@@ -202,11 +202,34 @@ public class WorkerTransactionsController extends SearchController {
                 }
                 break;
         }
-        searchField.clear();
 
-//        Worker w = (Worker) tableView.getSelectionModel().getSelectedItems();
-//        alertMessage.setText(w.getBannerId());
+        searchField.clear();
 
         return null;
     }
+
+
+    private void showModifyPersonDialog() {
+
+        try {
+
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifyworkerview.fxml"));
+            Stage primaryStage = new Stage();
+            Scene scene = new Scene(root);
+            primaryStage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Brockport Library System");
+            primaryStage.setResizable(false);
+            primaryStage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+
+
 }

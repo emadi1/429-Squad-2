@@ -1,7 +1,6 @@
 package userinterface;
 
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -13,10 +12,10 @@ import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import models.Worker;
+import userinterface.SingletonTesting;
 
 import java.io.IOException;
 
@@ -27,6 +26,7 @@ class AddWorkerCell extends TableCell<Worker, Boolean> {
 
     final Button addButton = new Button("Modify");
     final StackPane paddedButton = new StackPane();
+    SingletonTesting sing;
 
     /**
      * AddPersonCell constructor
@@ -43,6 +43,15 @@ class AddWorkerCell extends TableCell<Worker, Boolean> {
             public void handle(ActionEvent actionEvent) {
                 showModifyPersonDialog();
                 table.getSelectionModel().select(getTableRow().getIndex());
+                ObservableList obl = table.getSelectionModel().getSelectedItems();
+                //String s = table.getSelectionModel().getSelectedItems().toArray()[0].toString();
+                SingletonTesting.setModWorkerBanner((Worker) table.getSelectionModel().getSelectedItems().get(1));
+                //sing.setModWorkerBanner(s);
+                //sing.setModWorkerBanner("df");
+                //System.out.println(sing.getModWorkerBanner());
+               // System.out.println(s);
+                System.out.println( SingletonTesting.getModWorkerBanner().getBannerId());
+
             }
         });
     }
@@ -65,7 +74,7 @@ class AddWorkerCell extends TableCell<Worker, Boolean> {
 
         try {
 
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("workerdatafieldview.fxml"));
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifyworkerview.fxml"));
             Stage primaryStage = new Stage();
             Scene scene = new Scene(root);
             primaryStage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
