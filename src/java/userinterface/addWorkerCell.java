@@ -15,7 +15,6 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import models.Worker;
-import userinterface.SingletonTesting;
 
 import java.io.IOException;
 
@@ -26,7 +25,7 @@ class AddWorkerCell extends TableCell<Worker, Boolean> {
 
     final Button addButton = new Button("Modify");
     final StackPane paddedButton = new StackPane();
-    SingletonTesting sing;
+
 
     /**
      * AddPersonCell constructor
@@ -45,13 +44,6 @@ class AddWorkerCell extends TableCell<Worker, Boolean> {
                 table.getSelectionModel().select(getTableRow().getIndex());
                 ObservableList obl = table.getSelectionModel().getSelectedItems();
                 //String s = table.getSelectionModel().getSelectedItems().toArray()[0].toString();
-                SingletonTesting.setModWorkerBanner((Worker) table.getSelectionModel().getSelectedItems().get(1));
-                //sing.setModWorkerBanner(s);
-                //sing.setModWorkerBanner("df");
-                //System.out.println(sing.getModWorkerBanner());
-               // System.out.println(s);
-                System.out.println( SingletonTesting.getModWorkerBanner().getBannerId());
-
             }
         });
     }

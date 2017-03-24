@@ -2,3 +2,10 @@
 [3/21/17 11:45 PM]|WorkerCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') ORDER BY lastName ASC' at line 1>
 [3/22/17 3:52 PM]|Worker|insertPersistentState|Error|NOTAG|null<SQL Exception: 1062: Duplicate entry '800123456' for key 'PRIMARY'>
 [3/24/17 12:51 AM]|Worker|insertPersistentState|Error|NOTAG|null<SQL Exception: 1062: Duplicate entry '800222333' for key 'PRIMARY'>
+[3/24/17 2:38 AM]|WorkerCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[ row: 0, column: javafx.scene.control.TableColumn@12c19e9f, tableView: TableVie' at line 1>
+[3/24/17 2:41 AM]|WorkerCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[ row: 0, column: javafx.scene.control.TableColumn@344f7465, tableView: TableVie' at line 1>
+[3/24/17 2:53 AM]|Worker|insertPersistentState|Error|NOTAG|null<SQL Exception: 1062: Duplicate entry '800655907' for key 'PRIMARY'>
+[3/24/17 3:33 AM]|Worker|insertPersistentState|Error|NOTAG|null<SQL Exception: 1062: Duplicate entry '800655907' for key 'PRIMARY'>
+[3/24/17 3:33 AM]|Worker|insertPersistentState|Error|NOTAG|null<SQL Exception: 1062: Duplicate entry '800655907' for key 'PRIMARY'>
+[3/24/17 3:48 AM]|Worker|insertPersistentState|Error|NOTAG|null<SQL Exception: 1062: Duplicate entry '800655907' for key 'PRIMARY'>
+[3/24/17 3:50 AM]|Worker|insertPersistentState|Error|NOTAG|null<SQL Exception: 1062: Duplicate entry '800655907' for key 'PRIMARY'>

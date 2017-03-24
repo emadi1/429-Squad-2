@@ -112,10 +112,18 @@ public class Worker extends EntityBase {
      */
     public void updateStateInDatabase() {
         try {
-            Integer BannerId = insertPersistentState(mySchema, persistentState);
-            persistentState.setProperty("BannerId", "" + BannerId.intValue());
-            updateStatusMessage = "Worker data for new worker: " + persistentState.getProperty("BannerId")
-                    + " installed successfully in database!";
+            if (persistentState.getProperty("BannerId") != null) {
+                Properties whereClause = new Properties();
+                whereClause.setProperty("BannerId", persistentState.getProperty("BannerId"));
+                updatePersistentState(mySchema, persistentState, whereClause);
+                updateStatusMessage = "Worker data for worker ID: " + persistentState.getProperty("BannerId")
+                        + " installed successfully in database!";
+            } else {
+                Integer BannerId = insertPersistentState(mySchema, persistentState);
+                persistentState.setProperty("BannerId", "" + BannerId.intValue());
+                updateStatusMessage = "Worker data for new worker: " + persistentState.getProperty("BannerId")
+                        + " installed successfully in database!";
+            }
         } catch (SQLException e) {
             updateStatusMessage = "Error in installing Worker data in database!";
         }
@@ -196,6 +204,42 @@ public class Worker extends EntityBase {
      */
     public void update() {
         updateStateInDatabase();
+    }
+
+    public void setPassword(String password) {
+        persistentState.setProperty("Password", password);
+    }
+
+    public void setFirstName(String firstName) {
+        persistentState.setProperty("FirstName", firstName);
+    }
+
+    public void setLastName(String lastName) {
+        persistentState.setProperty("LastName", lastName);
+    }
+
+    public void setContactPhone(String contactPhone) {
+        persistentState.setProperty("ContactPhone", contactPhone);
+    }
+
+    public void setEmail(String email) {
+        persistentState.setProperty("Email", email);
+    }
+
+    public void setCredentials(String credentials) {
+        persistentState.setProperty("Credentials", credentials);
+    }
+
+    public void setDateOfLatestCredentialsStatus(String dateOfLatestCredentialsStatus) {
+        persistentState.setProperty("DateOfLatestCredentialsStatus", dateOfLatestCredentialsStatus);
+    }
+
+    public void setDateOfHire(String dateOfHire) {
+        persistentState.setProperty("DateOfHire", dateOfHire);
+    }
+
+    public void setStatus(String status) {
+        persistentState.setProperty("Status", status);
     }
 
     /**

@@ -2,13 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5374f5b7-d27f-4133-bc52-c6540ab79edd" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/java/userinterface/SingletonTesting.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/429-Squad-2/Main.class" afterPath="$PROJECT_DIR$/out/production/429-Squad-2/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ErrorLog.txt" afterPath="$PROJECT_DIR$/ErrorLog.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/Main.java" afterPath="$PROJECT_DIR$/src/java/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/models/Book.java" afterPath="$PROJECT_DIR$/src/java/models/Book.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/models/BookBarcodePrefix.java" afterPath="$PROJECT_DIR$/src/java/models/BookBarcodePrefix.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/models/BookBarcodePrefixCollection.java" afterPath="$PROJECT_DIR$/src/java/models/BookBarcodePrefixCollection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/models/BookCollection.java" afterPath="$PROJECT_DIR$/src/java/models/BookCollection.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/models/Worker.java" afterPath="$PROJECT_DIR$/src/java/models/Worker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/userinterface/AddWorkerViewController.java" afterPath="$PROJECT_DIR$/src/java/userinterface/AddWorkerViewController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/models/WorkerCollection.java" afterPath="$PROJECT_DIR$/src/java/models/WorkerCollection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/userinterface/ModifyWorkerViewController.java" afterPath="$PROJECT_DIR$/src/java/userinterface/ModifyWorkerViewController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/userinterface/SearchController.java" afterPath="$PROJECT_DIR$/src/java/userinterface/SearchController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/userinterface/SignInController.java" afterPath="$PROJECT_DIR$/src/java/userinterface/SignInController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/userinterface/WorkerTransactionsController.java" afterPath="$PROJECT_DIR$/src/java/userinterface/WorkerTransactionsController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/userinterface/addWorkerCell.java" afterPath="$PROJECT_DIR$/src/java/userinterface/addWorkerCell.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/resources/addworkerview.fxml" afterPath="$PROJECT_DIR$/src/resources/addworkerview.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/resources/modifyworkerview.fxml" afterPath="$PROJECT_DIR$/src/resources/modifyworkerview.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/resources/workertransactionsview.fxml" afterPath="$PROJECT_DIR$/src/resources/workertransactionsview.fxml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,44 +40,59 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-          <file leaf-file-name="Book.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/java/models/Book.java">
+          <file leaf-file-name="BookBarcodePrefixCollection.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/java/models/BookBarcodePrefixCollection.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="221">
-                  <caret line="67" column="36" lean-forward="true" selection-start-line="67" selection-start-column="36" selection-end-line="67" selection-end-column="36" />
+                <state relative-caret-position="833">
+                  <caret line="49" column="31" lean-forward="false" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#2788#2789#0" expanded="true" />
-                    <element signature="e#2843#2844#0" expanded="true" />
-                    <element signature="e#2900#2901#0" expanded="true" />
-                    <element signature="e#2946#2947#0" expanded="true" />
-                    <element signature="e#3483#3484#0" expanded="true" />
-                    <element signature="e#3522#3523#0" expanded="true" />
+                    <element signature="e#2056#2057#0" expanded="true" />
+                    <element signature="e#2111#2112#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="BookCollection.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="BookCollection.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/java/models/BookCollection.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="102">
-                  <caret line="6" column="1" lean-forward="false" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+                <state relative-caret-position="520">
+                  <caret line="74" column="31" lean-forward="false" selection-start-line="74" selection-start-column="31" selection-end-line="74" selection-end-column="31" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#2734#2735#0" expanded="true" />
+                    <element signature="e#2765#2766#0" expanded="true" />
+                    <element signature="e#2829#2830#0" expanded="true" />
+                    <element signature="e#2884#2885#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="modifyworkerview.fxml" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/resources/modifyworkerview.fxml">
+              <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+                <state />
+              </provider>
+              <provider editor-type-id="text-editor">
+                <state relative-caret-position="306">
+                  <caret line="59" column="28" lean-forward="false" selection-start-line="59" selection-start-column="28" selection-end-line="59" selection-end-column="28" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="addworkerview.fxml" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/resources/addworkerview.fxml">
-              <provider editor-type-id="text-editor">
-                <state relative-caret-position="595">
-                  <caret line="52" column="92" lean-forward="false" selection-start-line="52" selection-start-column="92" selection-end-line="52" selection-end-column="92" />
-                  <folding />
+          <file leaf-file-name="Core.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/java/utilities/Core.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="510">
+                  <caret line="68" column="5" lean-forward="false" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
+                  <folding>
+                    <element signature="method#Core#0;class#Core#0" expanded="false" />
+                    <element signature="method#getInstance#0;class#Core#0" expanded="false" />
+                  </folding>
                 </state>
-              </provider>
-              <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-                <state />
               </provider>
             </entry>
           </file>
@@ -73,16 +100,28 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="Worker.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Book.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/java/models/Book.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="77">
+                  <caret line="72" column="39" lean-forward="false" selection-start-line="72" selection-start-column="39" selection-end-line="72" selection-end-column="39" />
+                  <folding>
+                    <element signature="method#compare#0;class#Book#0" expanded="false" />
+                    <element signature="method#setDependencies#0;class#Book#0" expanded="false" />
+                    <element signature="method#getState#0;class#Book#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Worker.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/java/models/Worker.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="195">
-                  <caret line="204" column="16" lean-forward="false" selection-start-line="204" selection-start-column="16" selection-end-line="204" selection-end-column="16" />
+                <state relative-caret-position="1309">
+                  <caret line="125" column="13" lean-forward="false" selection-start-line="125" selection-start-column="13" selection-end-line="125" selection-end-column="13" />
                   <folding>
                     <element signature="docComment;method#Worker#0;class#Worker#0" expanded="false" />
-                    <element signature="method#Worker#0;class#Worker#0" expanded="false" />
                     <element signature="docComment;method#Worker#1;class#Worker#0" expanded="false" />
-                    <element signature="method#Worker#1;class#Worker#0" expanded="false" />
                     <element signature="docComment;method#compare#0;class#Worker#0" expanded="false" />
                     <element signature="method#compare#0;class#Worker#0" expanded="false" />
                     <element signature="docComment;method#setDependencies#0;class#Worker#0" expanded="false" />
@@ -92,7 +131,6 @@
                     <element signature="docComment;method#stateChangeRequest#0;class#Worker#0" expanded="false" />
                     <element signature="docComment;method#updateState#0;class#Worker#0" expanded="false" />
                     <element signature="docComment;method#updateStateInDatabase#0;class#Worker#0" expanded="false" />
-                    <element signature="method#updateStateInDatabase#0;class#Worker#0" expanded="false" />
                     <element signature="docComment;method#getBannerId#0;class#Worker#0" expanded="false" />
                     <element signature="docComment;method#getPassword#0;class#Worker#0" expanded="false" />
                     <element signature="docComment;method#getFirstName#0;class#Worker#0" expanded="false" />
@@ -105,10 +143,24 @@
                     <element signature="docComment;method#getDateOfHire#0;class#Worker#0" expanded="false" />
                     <element signature="docComment;method#getStatus#0;class#Worker#0" expanded="false" />
                     <element signature="docComment;method#update#0;class#Worker#0" expanded="false" />
-                    <element signature="e#5246#5247#0" expanded="true" />
-                    <element signature="e#5285#5286#0" expanded="true" />
+                    <element signature="method#setDateOfLatestCredentialsStatus#0;class#Worker#0" expanded="false" />
                     <element signature="docComment;method#toString#0;class#Worker#0" expanded="false" />
                     <element signature="docComment;method#initializeSchema#0;class#Worker#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="WorkerCollection.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/java/models/WorkerCollection.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1165">
+                  <caret line="91" column="5" lean-forward="true" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
+                  <folding>
+                    <element signature="e#2980#2981#0" expanded="true" />
+                    <element signature="e#3015#3016#0" expanded="true" />
+                    <element signature="e#3079#3080#0" expanded="true" />
+                    <element signature="e#3134#3135#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -147,7 +199,6 @@
         <option value="$PROJECT_DIR$/src/java/userinterface/AddStudentController.java" />
         <option value="$PROJECT_DIR$/src/java/userinterface/AddWorkerController.java" />
         <option value="$PROJECT_DIR$/src/resources/addstudentview.fxml" />
-        <option value="$PROJECT_DIR$/src/java/userinterface/SearchController.java" />
         <option value="$PROJECT_DIR$/src/resources/bookviewstransactions.fxml" />
         <option value="$PROJECT_DIR$/src/java/userinterface/MainViewController.java" />
         <option value="$PROJECT_DIR$/src/resources/checkoutbookview.fxml" />
@@ -168,21 +219,29 @@
         <option value="$PROJECT_DIR$/src/java/database/Persistable.java" />
         <option value="$PROJECT_DIR$/src/java/models/StudentBorrower.java" />
         <option value="$PROJECT_DIR$/src/java/Test.java" />
-        <option value="$PROJECT_DIR$/src/java/Main.java" />
         <option value="$PROJECT_DIR$/src/resources/signinview.fxml" />
-        <option value="$PROJECT_DIR$/src/java/userinterface/SignInController.java" />
-        <option value="$PROJECT_DIR$/src/java/models/WorkerCollection.java" />
         <option value="$PROJECT_DIR$/src/resources/booktransactionsview.fxml" />
         <option value="$PROJECT_DIR$/src/resources/studentborrowertransactionsview.fxml" />
         <option value="$PROJECT_DIR$/dbConfig.ini" />
         <option value="$PROJECT_DIR$/src/resources/workerdatafieldview.fxml" />
-        <option value="$PROJECT_DIR$/src/java/userinterface/WorkerTransactionsController.java" />
-        <option value="$PROJECT_DIR$/src/resources/workertransactionsview.fxml" />
-        <option value="$PROJECT_DIR$/src/java/models/BookCollection.java" />
-        <option value="$PROJECT_DIR$/src/resources/addworkerview.fxml" />
         <option value="$PROJECT_DIR$/src/java/userinterface/AddWorkerViewController.java" />
-        <option value="$PROJECT_DIR$/src/java/models/Worker.java" />
+        <option value="$PROJECT_DIR$/src/java/userinterface/SingletonTesting.java" />
+        <option value="$PROJECT_DIR$/src/java/userinterface/addWorkerCell.java" />
+        <option value="$PROJECT_DIR$/src/java/Main.java" />
+        <option value="$PROJECT_DIR$/src/resources/addworkerview.fxml" />
+        <option value="$PROJECT_DIR$/src/java/userinterface/SignInController.java" />
+        <option value="$PROJECT_DIR$/src/java/userinterface/ModifyWorkerViewController.java" />
+        <option value="$PROJECT_DIR$/src/resources/workertransactionsview.fxml" />
+        <option value="$PROJECT_DIR$/src/java/userinterface/WorkerTransactionsController.java" />
+        <option value="$PROJECT_DIR$/src/java/userinterface/SearchController.java" />
         <option value="$PROJECT_DIR$/src/java/models/Book.java" />
+        <option value="$PROJECT_DIR$/src/java/models/Worker.java" />
+        <option value="$PROJECT_DIR$/src/java/models/BookBarcodePrefix.java" />
+        <option value="$PROJECT_DIR$/src/java/models/WorkerCollection.java" />
+        <option value="$PROJECT_DIR$/src/java/models/BookBarcodePrefixCollection.java" />
+        <option value="$PROJECT_DIR$/src/resources/modifyworkerview.fxml" />
+        <option value="$PROJECT_DIR$/src/java/utilities/Core.java" />
+        <option value="$PROJECT_DIR$/src/java/models/BookCollection.java" />
       </list>
     </option>
   </component>
@@ -193,9 +252,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="width" value="1932" />
-    <option name="height" value="1038" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -212,6 +272,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -288,6 +349,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="utilities" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="429-Squad-2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="429-Squad-2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="userinterface" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -317,7 +400,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -816,15 +898,16 @@
       <workItem from="1490217327164" duration="74000" />
       <workItem from="1490217436319" duration="208000" />
       <workItem from="1490301334297" duration="5609000" />
-      <workItem from="1490324758997" duration="4171000" />
+      <workItem from="1490324758997" duration="8012000" />
+      <workItem from="1490337352299" duration="10257000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89643000" />
+    <option name="totallyTimeSpent" value="103741000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1932" height="1038" extended-state="0" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -837,12 +920,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32302406" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3193658" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19881466" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20139635" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -881,11 +964,11 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3238958" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3193658" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299356" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19924812" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20139635" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
@@ -908,155 +991,22 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/java/userinterface/SearchController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/database/JDBCBroker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/common/StringList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="35" column="13" lean-forward="false" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/common/PropertyFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-131">
-          <caret line="39" column="13" lean-forward="false" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/event/Event.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/event/EventLog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/database/SQLInsertStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/database/SQLSelectStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/database/SQLQueryStatementWithExactMatches.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/database/SQLQueryStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/exception/InvalidPrimaryKeyException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="43" column="21" lean-forward="false" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/exception/PasswordMismatchException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/database/SQLDeleteStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/database/SQLStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/impresario/IView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/event/EventLog.java" />
+    <entry file="file://$PROJECT_DIR$/src/java/database/SQLInsertStatement.java" />
+    <entry file="file://$PROJECT_DIR$/src/java/database/SQLSelectStatement.java" />
+    <entry file="file://$PROJECT_DIR$/src/java/database/SQLQueryStatementWithExactMatches.java" />
+    <entry file="file://$PROJECT_DIR$/src/java/database/SQLQueryStatement.java" />
+    <entry file="file://$PROJECT_DIR$/src/java/exception/InvalidPrimaryKeyException.java" />
+    <entry file="file://$PROJECT_DIR$/src/java/exception/PasswordMismatchException.java" />
+    <entry file="file://$PROJECT_DIR$/src/java/database/SQLDeleteStatement.java" />
+    <entry file="file://$PROJECT_DIR$/src/java/database/SQLStatement.java" />
+    <entry file="file://$PROJECT_DIR$/src/java/impresario/IView.java" />
     <entry file="file://$PROJECT_DIR$/src/java/models/Patron.java" />
     <entry file="file://$PROJECT_DIR$/src/java/models/PatronCollection.java" />
-    <entry file="file://$PROJECT_DIR$/src/java/models/StudentBorrowerCollection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="38" lean-forward="false" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/userinterface/StudentBorrowerTransactionsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="44" column="74" lean-forward="false" selection-start-line="44" selection-start-column="74" selection-end-line="44" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/models/BookBarcodePrefix.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="30" lean-forward="false" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/models/BookBarcodePrefixCollection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="40" lean-forward="false" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/models/RentalCollection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="31" lean-forward="true" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/database/SQLUpdateStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="81" column="0" lean-forward="false" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/models/StudentBorrowerCollection.java" />
+    <entry file="file://$PROJECT_DIR$/src/java/userinterface/StudentBorrowerTransactionsController.java" />
+    <entry file="file://$PROJECT_DIR$/src/java/models/RentalCollection.java" />
+    <entry file="file://$PROJECT_DIR$/src/java/database/SQLUpdateStatement.java" />
     <entry file="file://$PROJECT_DIR$/../../OOP-Homework/OOP-Homework/src/java/userinterface/SearchBookController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-561">
@@ -1078,34 +1028,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/database/Persistable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/models/EntityBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/userinterface/BookTransactionsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="42" column="68" lean-forward="false" selection-start-line="42" selection-start-column="68" selection-end-line="42" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="19" column="125" lean-forward="false" selection-start-line="19" selection-start-column="125" selection-end-line="19" selection-end-column="125" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/userinterface/BookTransactionsController.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -1114,52 +1037,18 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/signinview.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="42" column="38" lean-forward="true" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/userinterface/SignInController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
-          <caret line="62" column="59" lean-forward="true" selection-start-line="62" selection-start-column="59" selection-end-line="62" selection-end-column="133" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/userinterface/MainViewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="36" column="38" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="36" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/booktransactionsview.fxml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="1003">
-          <caret line="59" column="19" lean-forward="false" selection-start-line="59" selection-start-column="19" selection-end-line="59" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/studentborrowertransactionsview.fxml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="61" column="91" lean-forward="false" selection-start-line="61" selection-start-column="91" selection-end-line="61" selection-end-column="91" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/booktransactionsview.fxml" />
+    <entry file="file://$PROJECT_DIR$/src/resources/studentborrowertransactionsview.fxml" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1167,35 +1056,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/userinterface/addWorkerCell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="25" column="6" lean-forward="false" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/workerdatafieldview.fxml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/workertransactionsview.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="127" lean-forward="false" selection-start-line="39" selection-start-column="127" selection-end-line="39" selection-end-column="127" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/workerdatafieldview.fxml" />
     <entry file="file://$PROJECT_DIR$/src/java/models/Rental.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1203,88 +1064,134 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/userinterface/WorkerTransactionsController.java">
+    <entry file="file://$PROJECT_DIR$/src/java/userinterface/WorkerDataFieldViewController.java" />
+    <entry file="file://$PROJECT_DIR$/src/java/Test.java" />
+    <entry file="file://$PROJECT_DIR$/src/java/userinterface/AddWorkerViewController.java" />
+    <entry file="file://$PROJECT_DIR$/dbConfig.ini" />
+    <entry file="file://$PROJECT_DIR$/src/java/userinterface/SingletonTesting.java" />
+    <entry file="file://$PROJECT_DIR$/src/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/userinterface/WorkerDataFieldViewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/models/WorkerCollection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+        <state relative-caret-position="255">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding>
-            <element signature="method#runQuery#0;class#WorkerCollection#0" expanded="false" />
-            <element signature="e#3103#3104#0" expanded="true" />
-            <element signature="e#3158#3159#0" expanded="true" />
+            <marker date="1490336157515" expanded="true" signature="600:828" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/addworkerview.fxml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="52" column="92" lean-forward="false" selection-start-line="52" selection-start-column="92" selection-end-line="52" selection-end-column="92" />
+    <entry file="file://$PROJECT_DIR$/src/java/userinterface/MainViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/models/EntityBase.java" />
+    <entry file="file://$PROJECT_DIR$/src/java/database/Persistable.java" />
+    <entry file="file://$PROJECT_DIR$/src/java/userinterface/addWorkerCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Test.java">
+    <entry file="file://$PROJECT_DIR$/src/resources/addworkerview.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1309">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        <state relative-caret-position="588">
+          <caret line="35" column="41" lean-forward="true" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/userinterface/ModifyWorkerViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="41" column="36" lean-forward="false" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/userinterface/AddWorkerViewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="90" column="9" lean-forward="false" selection-start-line="90" selection-start-column="9" selection-end-line="90" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbConfig.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="26" lean-forward="false" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/models/BookCollection.java">
+    <entry file="file://$PROJECT_DIR$/src/java/userinterface/WorkerTransactionsController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="6" column="1" lean-forward="false" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+          <caret line="29" column="36" lean-forward="false" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/userinterface/SignInController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-459">
+          <caret line="35" column="35" lean-forward="false" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/userinterface/SearchController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="38" column="34" lean-forward="false" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
+          <folding>
+            <element signature="method#modify#0;class#SearchController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/models/BookBarcodePrefix.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="117" column="48" lean-forward="false" selection-start-line="117" selection-start-column="48" selection-end-line="117" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2894#2895#0" expanded="true" />
+            <element signature="e#2949#2950#0" expanded="true" />
+            <element signature="e#4039#4040#0" expanded="true" />
+            <element signature="e#4078#4079#0" expanded="true" />
+            <element signature="e#4116#4117#0" expanded="true" />
+            <element signature="e#4181#4182#0" expanded="true" />
+            <element signature="e#4218#4219#0" expanded="true" />
+            <element signature="e#4282#4283#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/workertransactionsview.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="639">
+          <caret line="44" column="45" lean-forward="false" selection-start-line="44" selection-start-column="45" selection-end-line="44" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/models/BookBarcodePrefixCollection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="49" column="31" lean-forward="false" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2056#2057#0" expanded="true" />
+            <element signature="e#2111#2112#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/models/Worker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="204" column="16" lean-forward="false" selection-start-line="204" selection-start-column="16" selection-end-line="204" selection-end-column="16" />
+        <state relative-caret-position="1309">
+          <caret line="125" column="13" lean-forward="false" selection-start-line="125" selection-start-column="13" selection-end-line="125" selection-end-column="13" />
           <folding>
             <element signature="docComment;method#Worker#0;class#Worker#0" expanded="false" />
-            <element signature="method#Worker#0;class#Worker#0" expanded="false" />
             <element signature="docComment;method#Worker#1;class#Worker#0" expanded="false" />
-            <element signature="method#Worker#1;class#Worker#0" expanded="false" />
             <element signature="docComment;method#compare#0;class#Worker#0" expanded="false" />
             <element signature="method#compare#0;class#Worker#0" expanded="false" />
             <element signature="docComment;method#setDependencies#0;class#Worker#0" expanded="false" />
@@ -1294,7 +1201,6 @@
             <element signature="docComment;method#stateChangeRequest#0;class#Worker#0" expanded="false" />
             <element signature="docComment;method#updateState#0;class#Worker#0" expanded="false" />
             <element signature="docComment;method#updateStateInDatabase#0;class#Worker#0" expanded="false" />
-            <element signature="method#updateStateInDatabase#0;class#Worker#0" expanded="false" />
             <element signature="docComment;method#getBannerId#0;class#Worker#0" expanded="false" />
             <element signature="docComment;method#getPassword#0;class#Worker#0" expanded="false" />
             <element signature="docComment;method#getFirstName#0;class#Worker#0" expanded="false" />
@@ -1307,26 +1213,70 @@
             <element signature="docComment;method#getDateOfHire#0;class#Worker#0" expanded="false" />
             <element signature="docComment;method#getStatus#0;class#Worker#0" expanded="false" />
             <element signature="docComment;method#update#0;class#Worker#0" expanded="false" />
-            <element signature="e#5246#5247#0" expanded="true" />
-            <element signature="e#5285#5286#0" expanded="true" />
+            <element signature="method#setDateOfLatestCredentialsStatus#0;class#Worker#0" expanded="false" />
             <element signature="docComment;method#toString#0;class#Worker#0" expanded="false" />
             <element signature="docComment;method#initializeSchema#0;class#Worker#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/modifyworkerview.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="59" column="28" lean-forward="false" selection-start-line="59" selection-start-column="28" selection-end-line="59" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/utilities/Core.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="68" column="5" lean-forward="false" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
+          <folding>
+            <element signature="method#Core#0;class#Core#0" expanded="false" />
+            <element signature="method#getInstance#0;class#Core#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/models/WorkerCollection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1165">
+          <caret line="91" column="5" lean-forward="true" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
+          <folding>
+            <element signature="e#2980#2981#0" expanded="true" />
+            <element signature="e#3015#3016#0" expanded="true" />
+            <element signature="e#3079#3080#0" expanded="true" />
+            <element signature="e#3134#3135#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/models/Book.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="67" column="36" lean-forward="true" selection-start-line="67" selection-start-column="36" selection-end-line="67" selection-end-column="36" />
+        <state relative-caret-position="77">
+          <caret line="72" column="39" lean-forward="false" selection-start-line="72" selection-start-column="39" selection-end-line="72" selection-end-column="39" />
+          <folding>
+            <element signature="method#compare#0;class#Book#0" expanded="false" />
+            <element signature="method#setDependencies#0;class#Book#0" expanded="false" />
+            <element signature="method#getState#0;class#Book#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/models/BookCollection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="74" column="31" lean-forward="false" selection-start-line="74" selection-start-column="31" selection-end-line="74" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2788#2789#0" expanded="true" />
-            <element signature="e#2843#2844#0" expanded="true" />
-            <element signature="e#2900#2901#0" expanded="true" />
-            <element signature="e#2946#2947#0" expanded="true" />
-            <element signature="e#3483#3484#0" expanded="true" />
-            <element signature="e#3522#3523#0" expanded="true" />
+            <element signature="e#2734#2735#0" expanded="true" />
+            <element signature="e#2765#2766#0" expanded="true" />
+            <element signature="e#2829#2830#0" expanded="true" />
+            <element signature="e#2884#2885#0" expanded="true" />
           </folding>
         </state>
       </provider>

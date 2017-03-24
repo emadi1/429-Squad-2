@@ -13,6 +13,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import models.Worker;
 import models.WorkerCollection;
+import utilities.Core;
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,7 +33,7 @@ public class SignInController implements Initializable {
     private Text alertMessage;
     @FXML
     private Button signIn;
-
+    Core core = Core.getInstance();
     public SignInController() {
 
     }
@@ -52,11 +53,13 @@ public class SignInController implements Initializable {
             // Query DB to create worker object.
             WorkerCollection workerCollection = new WorkerCollection();
             Worker worker = (Worker)workerCollection.findWorkersByBannerId(bannerId.getText()).elementAt(0);
+
             String pw = (String)worker.getState("Password");
             if (!pw.equals(password.getText()))
                 alertMessage.setText("Password Invalid");
             if (pw.equals(password.getText())) {
                 try {
+                    core.setUser(worker);
                     Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("mainview.fxml"));
                     Stage primaryStage = new Stage();
                     Scene scene = new Scene(root);

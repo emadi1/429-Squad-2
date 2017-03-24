@@ -16,7 +16,7 @@ import java.util.Vector;
 public class Book extends EntityBase {
     private static final String myTableName = "Book";
     private String updateStatusMessage = "";
-    protected Properties dependencies;
+    private Properties dependencies;
 
     public Book(String barcode) throws InvalidPrimaryKeyException {
         super(myTableName);
@@ -32,7 +32,7 @@ public class Book extends EntityBase {
                 Properties retrievedBookData = allDataRetrieved.elementAt(0);
                 persistentState = new Properties();
                 Enumeration allKeys = retrievedBookData.propertyNames();
-                while (allKeys.hasMoreElements() == true) {
+                while (allKeys.hasMoreElements()) {
                     String nextKey = (String) allKeys.nextElement();
                     String nextValue = retrievedBookData.getProperty(nextKey);
                     if (nextValue != null) {
@@ -41,16 +41,16 @@ public class Book extends EntityBase {
                 }
             }
         } else {
-            throw new InvalidPrimaryKeyException("No book mathcing ID: " + barcode + " found.");
+            throw new InvalidPrimaryKeyException("No book matching ID: " + barcode + " found.");
         }
     }
 
     public Book(Properties props) {
         super(myTableName);
-        //setDependencies();
+        setDependencies();
         persistentState = new Properties();
         Enumeration allKeys = props.propertyNames();
-        while (allKeys.hasMoreElements() == true) {
+        while (allKeys.hasMoreElements()) {
             String nextKey = (String)allKeys.nextElement();
             String nextValue = props.getProperty(nextKey);
             if (nextValue != null) {
@@ -71,7 +71,7 @@ public class Book extends EntityBase {
     }
 
     public Object getState(String key) {
-        if (key.equals("UpdateStatusMessage") == true) {
+        if (key.equals("UpdateStatusMessage")) {
             return updateStatusMessage;
         }
         return persistentState.getProperty(key);
