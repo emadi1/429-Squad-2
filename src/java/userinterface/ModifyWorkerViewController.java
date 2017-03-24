@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Ders on 3/22/2017.
  */
-public class WorkerDataFieldViewController implements Initializable{
+public class ModifyWorkerViewController implements Initializable{
 
     private ObservableList<String> statusList = FXCollections.observableArrayList("Active", "Inactive");
     private ObservableList<String> credentialsList = FXCollections.observableArrayList("Administrator", "Ordinary");
@@ -83,44 +83,10 @@ public class WorkerDataFieldViewController implements Initializable{
         Worker newWorker = new Worker(prop);
         newWorker.update();
 
-        alertMessage.setText("Worker has been submitted");
-
-        for (TextField t : textFieldList) { t.clear(); }
-
-    }
-
-    public void modify(ActionEvent event) {
-
-        Properties prop = new Properties();
-
-        alertMessage.setText("");
-
-        // TODO field checks
-        for (TextField textField : textFieldList) {
-
-            if (textField.getText().equals("")) {
-                alertMessage.setText("Please complete all fields");
-                return;
-            }
-            else {
-                prop.put(textField.getId(), textField.getText());
-            }
-        }
-
-        prop.put(Status.getId(), Status.getSelectionModel().getSelectedItem());
-        prop.put(Credentials.getId(), Credentials.getSelectionModel().getSelectedItem());
-
-        Worker newWorker = new Worker(prop);
-        newWorker.update();
-
         alertMessage.setText("Worker has been modified");
 
         for (TextField t : textFieldList) { t.clear(); }
-
-
-
     }
-
 }
 
 
