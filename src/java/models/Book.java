@@ -2,6 +2,7 @@ package models;
 
 import exception.InvalidPrimaryKeyException;
 
+import java.sql.SQLException;
 import java.util.Enumeration;
 import java.util.Properties;
 import java.util.Vector;
@@ -37,13 +38,13 @@ public class Book extends EntityBase {
                 }
             }
         } else {
-            throw new InvalidPrimaryKeyException("No book mathcing ID: " + barcode + " found.");
+            throw new InvalidPrimaryKeyException("No book matcging ID: " + barcode + " found.");
         }
     }
 
     public Book(Properties props) {
         super(myTableName);
-        //setDependencies();
+        setDependencies();
         persistentState = new Properties();
         Enumeration allKeys = props.propertyNames();
         while (allKeys.hasMoreElements() == true) {
@@ -81,6 +82,101 @@ public class Book extends EntityBase {
         stateChangeRequest(key, value);
     }
 
-    public void updateStateInDatabase()
+    public void updateStateInDatabase() {
+        try {
+            if (persistentState.getProperty("Barcode") != null) {
+                Properties whereClause = new Properties();
+                whereClause.setProperty("Barcode", persistentState.getProperty("Barcode"));
+                updatePersistentState(mySchema, persistentState, whereClause);
+                updateStatusMessage = "Book data for book number: " + persistentState.getProperty("Barcode")
+                        + " installed successfully in database!";
+            } else {
+                Integer barcode = insertPersistentState(mySchema, persistentState);
+                persistentState.setProperty("Barcode", "" + barcode.intValue());
+                updateStatusMessage = "Book data for new book: " + persistentState.getProperty("Barcode")
+                        + " installed successfully in database!";
+            }
+        } catch (SQLException e) {
+            updateStatusMessage = "Error in installing Book data in database!";
+        }
+    }
+
+    public String getBarcode() {
+        return persistentState.getProperty("Barcode");
+    }
+
+    public String getTitle() {
+        return persistentState.getProperty("Title");
+    }
+
+    public String getDiscipline() {
+        return persistentState.getProperty("Discipline");
+    }
+
+    public String getAuthor1() {
+        return persistentState.getProperty("Author1");
+    }
+
+    public String getAuthor2() {
+        return persistentState.getProperty("Author2");
+    }
+
+    public String getAuthor3() {
+        return persistentState.getProperty("Author3");
+    }
+
+    public String getAuthor4() {
+        return persistentState.getProperty("Author4");
+    }
+
+    public String getYearOfPublication() {
+        return persistentState.getProperty("YearOfPublication");
+    }
+
+    public String getISBN() {
+        return persistentState.getProperty("ISBN");
+    }
+
+    public String getCondition() {
+        return persistentState.getProperty("Condition");
+    }
+
+    public String getSuggestedPrice() {
+        return persistentState.getProperty("SuggestedPrice");
+    }
+
+    public String getNotes() {
+        return persistentState.getProperty("Notes");
+    }
+
+    public String getStatus() {
+        return persistentState.getProperty("Status");
+    }
+
+    public void update() {
+        updateStateInDatabase();
+    }
+
+    public String toString() {
+        return  persistentState.getProperty("Barcode") + "; " +
+                persistentState.getProperty("Title") + "; " +
+                persistentState.getProperty("Discipline") + "; " +
+                persistentState.getProperty("Author1") + "; " +
+                persistentState.getProperty("Author2") + "; " +
+                persistentState.getProperty("Author3") + "; " +
+                persistentState.getProperty("Author4") + "; " +
+                persistentState.getProperty("YearOfPublication") + "; " +
+                persistentState.getProperty("ISBN") + "; " +
+                persistentState.getProperty("Condition") + "; " +
+                persistentState.getProperty("SuggestedPrice") + "; " +
+                persistentState.getProperty("Notes") + "; " +
+                persistentState.getProperty("Status");
+    }
+
+    protected void initializeSchema(String tableName) {
+        if (mySchema == null) {
+            mySchema = getSchemaInfo(tableName);
+        }
+    }
 
 }
