@@ -8,7 +8,7 @@ import java.util.Properties;
 import java.util.Vector;
 
 /**
- * Created by kevph on 3/20/2017.
+ * Created by Ders on 3/24/2017
  */
 public class StudentBorrower extends EntityBase {
     private static final String myTableName = "StudentBorrower";

@@ -10,7 +10,7 @@ import javafx.scene.text.Text;
 import models.StudentBorrower;
 
 /**
- * Created by kevph on 3/11/2017.
+ * Created by kevph & Ders on 3/11/2017.
  */
 public class StudentBorrowerTransactionsController extends SearchController {
 

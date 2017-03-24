@@ -50,7 +50,7 @@ class AddWorkerCell extends TableCell<Worker, Boolean> {
                 //sing.setModWorkerBanner("df");
                 //System.out.println(sing.getModWorkerBanner());
                // System.out.println(s);
-                System.out.println( SingletonTesting.getModWorkerBanner().getBannerId());
+                //System.out.println( SingletonTesting.getModWorkerBanner().getBannerId());
 
             }
         });
