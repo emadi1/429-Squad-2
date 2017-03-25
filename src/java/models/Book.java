@@ -3,7 +3,6 @@ package models;
 
 import exception.InvalidPrimaryKeyException;
 
-import java.sql.SQLException;
 import java.util.Enumeration;
 import java.util.Properties;
 import java.util.Vector;
@@ -20,6 +19,7 @@ public class Book extends EntityBase {
 
     public Book(String barcode) throws InvalidPrimaryKeyException {
         super(myTableName);
+        setDependencies();
         String query = "SELECT * FROM " + myTableName + " WHERE (Barcode = " + barcode + ")";
         Vector<Properties> allDataRetrieved = getSelectQueryResult(query);
 
@@ -41,13 +41,13 @@ public class Book extends EntityBase {
                 }
             }
         } else {
-            throw new InvalidPrimaryKeyException("No book mathcing ID: " + barcode + " found.");
+            throw new InvalidPrimaryKeyException("No book matching ID: " + barcode + " found.");
         }
     }
 
     public Book(Properties props) {
         super(myTableName);
-        //setDependencies();
+        setDependencies();
         persistentState = new Properties();
         Enumeration allKeys = props.propertyNames();
         while (allKeys.hasMoreElements() == true) {
@@ -71,9 +71,8 @@ public class Book extends EntityBase {
     }
 
     public Object getState(String key) {
-        if (key.equals("UpdateStatusMessage") == true) {
+        if (key.equals("UpdateStatusMessage"))
             return updateStatusMessage;
-        }
         return persistentState.getProperty(key);
     }
 
@@ -87,17 +86,29 @@ public class Book extends EntityBase {
 
     public void updateStateInDatabase() {
         try {
-            Integer barcode = insertPersistentState(mySchema, persistentState);
-            persistentState.setProperty("Barcode", "" + barcode.intValue());
-            updateStatusMessage = "Book data for new book: " + persistentState.getProperty("Barcode")
-                    + " installed successfully in database!";
-        } catch (SQLException e) {
-            updateStatusMessage = "Error in installing Book data in database!";
+            if (persistentState.getProperty("Barcode") != null) {
+                Properties whereClause = new Properties();
+                whereClause.setProperty("Barcode", persistentState.getProperty("Barcode"));
+                updatePersistentState(mySchema, persistentState, whereClause);
+                updateStatusMessage = "Book data for book ID: " + persistentState.getProperty("Barcode")
+                        + " installed successfully in database!";
+            } else {
+                Integer Barcode = insertPersistentState(mySchema, persistentState);
+                persistentState.setProperty("Barcode", "" + Barcode.intValue());
+                updateStatusMessage = "Book data for new book: " + persistentState.getProperty("Barcode")
+                        + " installed successfully in database!";
+            }
+        } catch (Exception e) {
+            System.out.println("Error installing data: " + e);
         }
     }
 
     public void update() {
         updateStateInDatabase();
+    }
+
+    public String getBarcode() {
+        return persistentState.getProperty("Barcode");
     }
 
     public String toString() {
@@ -109,8 +120,9 @@ public class Book extends EntityBase {
                 persistentState.getProperty("Author3") + "; " +
                 persistentState.getProperty("Author4") + "; " +
                 persistentState.getProperty("Publisher") + "; " +
+                persistentState.getProperty("YearOfPublication") + "; " +
                 persistentState.getProperty("ISBN") + "; " +
-                persistentState.getProperty("Condition") + "; " +
+                persistentState.getProperty("BookCondition") + "; " +
                 persistentState.getProperty("SuggestedPrice") + "; " +
                 persistentState.getProperty("Notes") + "; " +
                 persistentState.getProperty("Status");

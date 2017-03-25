@@ -2,3 +2,14 @@
 [3/21/17 11:45 PM]|WorkerCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') ORDER BY lastName ASC' at line 1>
 [3/22/17 3:52 PM]|Worker|insertPersistentState|Error|NOTAG|null<SQL Exception: 1062: Duplicate entry '800123456' for key 'PRIMARY'>
 [3/24/17 12:51 AM]|Worker|insertPersistentState|Error|NOTAG|null<SQL Exception: 1062: Duplicate entry '800222333' for key 'PRIMARY'>
+[3/25/17 3:04 AM]|BookBarcodePrefixCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1146: Table 'spr17_csc429_khayd2.BarcodePrefixValue' doesn't exist>
+[3/25/17 3:07 AM]|BookBarcodePrefixCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1146: Table 'spr17_csc429_khayd2.BarcodePrefixValue' doesn't exist>
+[3/25/17 3:00 PM]|BookBarcodePrefixCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1146: Table 'spr17_csc429_khayd2.BarcodePrefixValue' doesn't exist>
+[3/25/17 3:04 PM]|BookBarcodePrefixCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1146: Table 'spr17_csc429_khayd2.BarcodePrefixValue' doesn't exist>
+[3/25/17 3:14 PM]|BookBarcodePrefixCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1146: Table 'spr17_csc429_khayd2.BarcodePrefixValue' doesn't exist>
+[3/25/17 3:14 PM]|Book|updatePersistentState|Error|NOTAG|null<SQL Exception: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Condition = 'Good' , Title = 'How to Ace CSC429' , ISBN = '79-551534-9' , Status' at line 1>
+[3/25/17 3:27 PM]|BookBarcodePrefixCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1146: Table 'spr17_csc429_khayd2.BarcodePrefixValue' doesn't exist>
+[3/25/17 3:27 PM]|Book|updatePersistentState|Error|NOTAG|null<SQL Exception: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Condition = 'Good' , Title = 'Please Work' , ISBN = '79-556784-9' , Status = 'St' at line 1>
+[3/25/17 3:40 PM]|BookBarcodePrefixCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1146: Table 'spr17_csc429_khayd2.BarcodePrefixValue' doesn't exist>
+[3/25/17 3:45 PM]|BookBarcodePrefixCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1146: Table 'spr17_csc429_khayd2.BarcodePrefixValue' doesn't exist>
+[3/25/17 4:03 PM]|BookBarcodePrefixCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1146: Table 'spr17_csc429_khayd2.BarcodePrefixValue' doesn't exist>

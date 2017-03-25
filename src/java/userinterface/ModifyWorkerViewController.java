@@ -28,6 +28,16 @@ public class ModifyWorkerViewController implements Initializable{
     private ObservableList<String> credentialsList = FXCollections.observableArrayList("Administrator", "Ordinary");
     private Core core = Core.getInstance();
 
+    @FXML private Text bannerId;
+    @FXML private Text password;
+    @FXML private Text firstName;
+    @FXML private Text lastName;
+    @FXML private Text contactPhone;
+    @FXML private Text email;
+    @FXML private Text credentials;
+    @FXML private Text dateOfLatestCredentialsStatus;
+    @FXML private Text dateOfHire;
+    @FXML private Text status;
     @FXML private TextField ContactPhone;
     @FXML private ComboBox<String> Status;
     @FXML private TextField Email;
@@ -41,10 +51,23 @@ public class ModifyWorkerViewController implements Initializable{
     @FXML private TextField Password;
     @FXML private Text alertMessage;
 
-    ArrayList<TextField> textFieldList;
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        Properties lang = core.getLanguageFile();
+        ObservableList<String> statusList = FXCollections.observableArrayList(lang.getProperty("Active"), lang.getProperty("Inactive"));
+        ObservableList<String> credentialsList = FXCollections.observableArrayList(lang.getProperty("Administrator"), lang.getProperty("Ordinary"));
+        submit.setText(lang.getProperty("Add"));
+        bannerId.setText(lang.getProperty("BannerID"));
+        password.setText(lang.getProperty("Password"));
+        firstName.setText(lang.getProperty("FirstName"));
+        lastName.setText(lang.getProperty("LastName"));
+        contactPhone.setText(lang.getProperty("ContactPhone"));
+        email.setText(lang.getProperty("Email"));
+        credentials.setText(lang.getProperty("Credentials"));
+        dateOfLatestCredentialsStatus.setText(lang.getProperty("DateOfLatestCredentialsStatus"));
+        dateOfHire.setText(lang.getProperty("DateOfHire"));
+        status.setText(lang.getProperty("Status"));
+
         BannerId.setText(core.getModWorker().getBannerId());
         BannerId.setDisable(true);
         Password.setText(core.getModWorker().getPassword());
@@ -65,7 +88,6 @@ public class ModifyWorkerViewController implements Initializable{
 
     public void submit(ActionEvent event) {
         alertMessage.setText("");
-
         Worker worker = core.getModWorker();
         worker.setPassword(Password.getText());
         worker.setFirstName(FirstName.getText());
@@ -79,7 +101,5 @@ public class ModifyWorkerViewController implements Initializable{
         worker.update();
         System.out.println(worker.toString());
         alertMessage.setText("Worker successfully updated");
-
-
     }
 }

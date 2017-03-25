@@ -24,7 +24,7 @@ public class StudentBorrowerTransactionsController extends TransactionController
     @Override
     public ObservableList<String> itemsSearchChoiceArray() {
         return FXCollections.observableArrayList(
-                "BannerID",
+                "BannerId",
                 "FirstName",
                 "LastName",
                 "ContactPhone",

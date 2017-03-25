@@ -20,6 +20,7 @@ import models.WorkerCollection;
 import utilities.Core;
 
 import java.io.IOException;
+import java.util.Properties;
 import java.util.Vector;
 
 /**
@@ -28,19 +29,21 @@ import java.util.Vector;
 public class WorkerTransactionsController extends TransactionController {
 
     @FXML private Text alertMessage;
+    Core core = Core.getInstance();
+    Properties lang = core.getLanguageFile();
 
     @Override
     public ObservableList<String> itemsSearchChoiceArray() {
         return FXCollections.observableArrayList(
-                "BannerId",
-                "FirstName",
-                "LastName",
-                "ContactPhone",
-                "Email",
-                "Credentials",
-                "DateOfLatestCredentialsStatus",
-                "DateOfHire",
-                "Status");
+                lang.getProperty("BannerID"),
+                lang.getProperty("FirstName"),
+                lang.getProperty("LastName"),
+                lang.getProperty("ContactPhone"),
+                lang.getProperty("Email"),
+                lang.getProperty("Credentials"),
+                lang.getProperty("DateOfLatestCredentialsStatus"),
+                lang.getProperty("DateOfHire"),
+                lang.getProperty("Status"));
     }
 
 
@@ -93,13 +96,47 @@ public class WorkerTransactionsController extends TransactionController {
     }
 
     @Override
-    public void modify(ActionEvent actionEvent) throws IOException {}
+    public void modify(ActionEvent actionEvent) throws IOException {
+        try {
+            Worker worker = (Worker)tableView.getSelectionModel().getSelectedItem();
+            System.out.println(worker);
+            Core core = Core.getInstance();
+            core.setModWorker(worker);
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifyworkerview.fxml"));
+            Stage primaryStage = new Stage();
+            Scene scene = new Scene(root);
+            primaryStage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Brockport Library System");
+            primaryStage.setResizable(false);
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     protected ObservableList querySelector() {
 
         switch (searchChoice.getSelectionModel().getSelectedItem()) {
 
-            case "BannerId":
+            case "BannerID":
+                String bannerId = searchField.getText();
+                if (bannerId == null || bannerId.equals("")) {
+                    alertMessage.setText("Please enter a numeric BannerID in the search field");
+                    searchField.clear();
+                    break;
+                } else if (bannerId.length() != 9) {
+                    alertMessage.setText("BannerID must be 9 numbers long");
+                    searchField.clear();
+                    break;
+                } else {
+                    WorkerCollection workerCollection = new WorkerCollection();
+                    Vector workers = workerCollection.findWorkersByBannerId(bannerId);
+                    searchField.clear();
+                    return FXCollections.observableList(workers);
+                }
+
+            case "ID de bannière":
                 String bannerId = searchField.getText();
                 if (bannerId == null || bannerId.equals("")) {
                     alertMessage.setText("Please enter a numeric BannerID in the search field");
@@ -214,7 +251,6 @@ public class WorkerTransactionsController extends TransactionController {
     protected void showModifyDialog() {
 
         try {
-
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifyworkerview.fxml"));
             Stage primaryStage = new Stage();
             Scene scene = new Scene(root);
@@ -223,7 +259,6 @@ public class WorkerTransactionsController extends TransactionController {
             primaryStage.setTitle("Brockport Library System");
             primaryStage.setResizable(false);
             primaryStage.show();
-
         } catch (IOException e) {
             e.printStackTrace();
         }

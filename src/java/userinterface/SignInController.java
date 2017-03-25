@@ -1,5 +1,7 @@
 package userinterface;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.text.Text;
@@ -27,6 +30,8 @@ import java.util.ResourceBundle;
 public class SignInController implements Initializable {
 
     @FXML
+    ComboBox<String> language;
+    @FXML
     TextField bannerId;
     @FXML
     TextField password;
@@ -34,13 +39,15 @@ public class SignInController implements Initializable {
     private Text alertMessage;
     @FXML
     private Button signIn;
+    private ObservableList<String> languages = FXCollections.observableArrayList("en_US", "fr_FR");
     Core core = Core.getInstance();
     public SignInController() {
 
     }
 
     public void initialize(URL location, ResourceBundle resources) {
-
+        language.setItems(languages);
+        language.setValue("en-US");
     }
 
     /**
@@ -61,6 +68,7 @@ public class SignInController implements Initializable {
             if (pw.equals(password.getText())) {
                 try {
                     core.setUser(worker);
+                    core.setLanguage(language.getSelectionModel().getSelectedItem());
                     Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("mainview.fxml"));
                     Stage primaryStage = new Stage();
                     Scene scene = new Scene(root);
@@ -75,7 +83,6 @@ public class SignInController implements Initializable {
             }
         }
     }
-
 
     public void skipAsAdmin(ActionEvent actionEvent) throws IOException {
 
@@ -96,7 +103,6 @@ public class SignInController implements Initializable {
             System.out.println("Can't open new window.");
         }
     }
-
 
     public void skipAsOrdinary(ActionEvent actionEvent) {
 
