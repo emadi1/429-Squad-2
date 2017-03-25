@@ -91,15 +91,15 @@ public class AddWorkerViewController implements Initializable {
         }
         prop.put(Status.getId(), Status.getSelectionModel().getSelectedItem());
         prop.put(Credentials.getId(), Credentials.getSelectionModel().getSelectedItem());
-        WorkerCollection workerCollection = new WorkerCollection();
-        Worker worker = (Worker) workerCollection.findWorkersByBannerId(textFieldList.get(0).getText()).elementAt(0);
-        if (!worker.getBannerId().equals(prop.getProperty("BannerId"))) {
+        //WorkerCollection workerCollection = new WorkerCollection();
+        //Worker worker = (Worker) workerCollection.findWorkersByBannerId(textFieldList.get(0).getText()).elementAt(0);
+        //if (!worker.getBannerId().equals(prop.getProperty("BannerId"))) {
             Worker newWorker = new Worker(prop);
             newWorker.update();
             alertMessage.setText("Worker has been submitted");
-        } else {
-            alertMessage.setText("BannerID already exists in database.");
-        }
+        //} else {
+           // alertMessage.setText("BannerID already exists in database.");
+        //}
         for (TextField t : textFieldList) { t.clear(); }
     }
 }
