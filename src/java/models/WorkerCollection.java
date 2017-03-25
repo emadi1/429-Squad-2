@@ -3,6 +3,9 @@ package models;
 import java.util.Properties;
 import java.util.Vector;
 
+/**
+ * Created by Kevin and maybe Ders on 3/21/2017
+ */
 public class WorkerCollection extends EntityBase {
     private static final String myTableName = "Worker";
     private Vector<Worker> workers;
@@ -10,6 +13,7 @@ public class WorkerCollection extends EntityBase {
 
     public WorkerCollection() {
         super(myTableName);
+        //workers = new Vector<>();
         Vector<Worker> workerCollection = new Vector<>();
     }
 

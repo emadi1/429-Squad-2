@@ -4,7 +4,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import userinterface.SingletonTesting;
 
 import java.io.IOException;
 
@@ -16,8 +15,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-
-        SingletonTesting sing = SingletonTesting.getInstance();
 
         primaryStage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
         Parent root = FXMLLoader.load(getClass().getResource("signinview.fxml"));
