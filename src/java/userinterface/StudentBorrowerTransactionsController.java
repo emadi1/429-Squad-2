@@ -12,7 +12,7 @@ import models.StudentBorrower;
 /**
  * Created by kevph & Ders on 3/11/2017.
  */
-public class StudentBorrowerTransactionsController extends SearchController {
+public class StudentBorrowerTransactionsController extends TransactionController {
 
     @FXML
     private Text alertMessage;
@@ -95,6 +95,16 @@ public class StudentBorrowerTransactionsController extends SearchController {
         }
         searchField.clear();
         return null;
+    }
+
+    @Override
+    protected void showModifyDialog() {
+
+    }
+
+    @Override
+    protected int getType() {
+        return 0;
     }
 
 }

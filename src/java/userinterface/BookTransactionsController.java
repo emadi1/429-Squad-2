@@ -13,7 +13,7 @@ import java.awt.print.Book;
 /**
  * Created by kevph on 3/11/2017.
  */
-public class BookTransactionsController extends SearchController {
+public class BookTransactionsController extends TransactionController {
 
     @FXML
     private Text alertMessage;
@@ -100,5 +100,15 @@ public class BookTransactionsController extends SearchController {
         }
         searchField.clear();
         return null;
+    }
+
+    @Override
+    protected void showModifyDialog() {
+
+    }
+
+    @Override
+    protected int getType() {
+        return 0;
     }
 }

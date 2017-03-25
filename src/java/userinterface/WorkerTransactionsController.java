@@ -5,16 +5,13 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
-import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -28,7 +25,7 @@ import java.util.Vector;
 /**
  * Created by kevph feat. Ders on 3/11/2017.
  */
-public class WorkerTransactionsController extends SearchController {
+public class WorkerTransactionsController extends TransactionController {
 
     @FXML private Text alertMessage;
 
@@ -68,11 +65,12 @@ public class WorkerTransactionsController extends SearchController {
             }
         });
 
+
         // Create a cell value factory with an add button for each row in the table.
         actionCol.setCellFactory(new Callback<TableColumn<Worker, Boolean>, TableCell<Worker, Boolean>>() {
             @Override
             public TableCell<Worker, Boolean> call(TableColumn<Worker, Boolean> workerBooleanTableColumn) {
-                return new AddWorkerCell((Stage) tableView.getScene().getWindow(), tableView);
+                return new AddModCell((Stage) tableView.getScene().getWindow(), tableView);
             }
         });
 
@@ -95,37 +93,7 @@ public class WorkerTransactionsController extends SearchController {
     }
 
     @Override
-    public void modify(ActionEvent actionEvent) throws IOException {
-        try {
-            Core core = Core.getInstance();
-            Worker worker = (Worker)tableView.getItems().get(tableView.getFocusModel().getFocusedIndex());
-            System.out.println(worker.toString());
-            String bannerId = worker.getBannerId();
-            core.setModWorker(worker);
-            if (bannerId != null) {
-                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifyworkerview.fxml"));
-                Stage primaryStage = new Stage();
-                Scene scene = new Scene(root);
-                primaryStage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
-                primaryStage.setScene(scene);
-                primaryStage.setTitle("Brockport Library System");
-                primaryStage.setResizable(false);
-                primaryStage.show();
-            } else {
-                alertMessage.setText("Please select worker to modify.");
-            }
-        } catch (IOException e) {
-            System.out.println("Error");
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifyworkerview.fxml"));
-            Stage primaryStage = new Stage();
-            Scene scene = new Scene(root);
-            primaryStage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
-            primaryStage.setScene(scene);
-            primaryStage.setTitle("Brockport Library System");
-            primaryStage.setResizable(false);
-            primaryStage.show();
-        }
-    }
+    public void modify(ActionEvent actionEvent) throws IOException {}
 
     protected ObservableList querySelector() {
 
@@ -242,67 +210,27 @@ public class WorkerTransactionsController extends SearchController {
         return null;
     }
 
-    private class AddWorkerCell extends TableCell<Worker, Boolean> {
 
-        final Button addButton = new Button("Modify");
-        final StackPane paddedButton = new StackPane();
+    protected void showModifyDialog() {
 
+        try {
 
-        /**
-         * AddPersonCell constructor
-         *
-         * @param stage the stage in which the table is placed.
-         * @param table the table to which a new worker can be added.
-         */
-        AddWorkerCell(final Stage stage, final TableView table) {
-            paddedButton.setPadding(new Insets(3));
-            paddedButton.getChildren().add(addButton);
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifyworkerview.fxml"));
+            Stage primaryStage = new Stage();
+            Scene scene = new Scene(root);
+            primaryStage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Brockport Library System");
+            primaryStage.setResizable(false);
+            primaryStage.show();
 
-            addButton.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent actionEvent) {
-
-                    table.getSelectionModel().select(getTableRow().getIndex());
-
-                    Core core = Core.getInstance();
-                    Worker w = (Worker) table.getSelectionModel().getSelectedItems().get(0);
-                    core.setModWorker(w);
-
-                    showModifyPersonDialog();
-                }
-            });
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+    }
 
-        /**
-         * places an add button in the row only if the row is not empty.
-         */
-        @Override
-        protected void updateItem(Boolean item, boolean empty) {
-            super.updateItem(item, empty);
-            if (!empty) {
-                setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
-                setGraphic(paddedButton);
-            } else {
-                setGraphic(null);
-            }
-        }
 
-        private void showModifyPersonDialog() {
-
-            try {
-
-                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifyworkerview.fxml"));
-                Stage primaryStage = new Stage();
-                Scene scene = new Scene(root);
-                primaryStage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
-                primaryStage.setScene(scene);
-                primaryStage.setTitle("Brockport Library System");
-                primaryStage.setResizable(false);
-                primaryStage.show();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+    protected int getType() {
+        return 0;
     }
 }

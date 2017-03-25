@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 import models.Worker;
+import utilities.Core;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class ModifyWorkerViewController implements Initializable{
 
     private ObservableList<String> statusList = FXCollections.observableArrayList("Active", "Inactive");
     private ObservableList<String> credentialsList = FXCollections.observableArrayList("Administrator", "Ordinary");
+    private Core core = Core.getInstance();
 
     @FXML private TextField ContactPhone;
     @FXML private ComboBox<String> Status;
@@ -43,48 +45,41 @@ public class ModifyWorkerViewController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        textFieldList = new ArrayList<>();
-        textFieldList.add(BannerId);
-        textFieldList.add(Password);
-        textFieldList.add(FirstName);
-        textFieldList.add(LastName);
-        textFieldList.add(ContactPhone);
-        textFieldList.add(Email);
-        Credentials.setValue("Ordinary");
+        BannerId.setText(core.getModWorker().getBannerId());
+        BannerId.setDisable(true);
+        Password.setText(core.getModWorker().getPassword());
+        FirstName.setText(core.getModWorker().getFirstName());
+        LastName.setText(core.getModWorker().getLastName());
+        ContactPhone.setText(core.getModWorker().getContactPhone());
+        Email.setText(core.getModWorker().getEmail());
+        if (core.getUser().getCredentials().equals("Ordinary")) {
+            Credentials.setDisable(true);
+        }
+        Credentials.setValue(core.getModWorker().getCredentials());
+        DateOfLatestCredentialsStatus.setText(core.getModWorker().getDateOfLatestCredentialsStatus());
+        DateOfHire.setText(core.getModWorker().getDateOfHire());
+        Status.setValue(core.getModWorker().getStatus());
         Credentials.setItems(credentialsList);
-        textFieldList.add(DateOfLatestCredentialsStatus);
-        textFieldList.add(DateOfHire);
-        Status.setValue("Active");
         Status.setItems(statusList);
     }
 
-
     public void submit(ActionEvent event) {
-
-        Properties prop = new Properties();
-
         alertMessage.setText("");
 
-        // TODO field checks
-        for (TextField textField : textFieldList) {
+        Worker worker = core.getModWorker();
+        worker.setPassword(Password.getText());
+        worker.setFirstName(FirstName.getText());
+        worker.setLastName(LastName.getText());
+        worker.setContactPhone(ContactPhone.getText());
+        worker.setEmail(Email.getText());
+        worker.setCredentials(Credentials.getValue());
+        worker.setDateOfLatestCredentialsStatus(DateOfLatestCredentialsStatus.getText());
+        worker.setDateOfHire(DateOfHire.getText());
+        worker.setStatus(Status.getValue());
+        worker.update();
+        System.out.println(worker.toString());
+        alertMessage.setText("Worker successfully updated");
 
-            if (textField.getText().equals("")) {
-                alertMessage.setText("Please complete all fields");
-                return;
-            }
-            else {
-                prop.put(textField.getId(), textField.getText());
-            }
-        }
 
-        prop.put(Status.getId(), Status.getSelectionModel().getSelectedItem());
-        prop.put(Credentials.getId(), Credentials.getSelectionModel().getSelectedItem());
-
-        Worker newWorker = new Worker(prop);
-        newWorker.update();
-
-        alertMessage.setText("Worker has been modified");
-
-        for (TextField t : textFieldList) { t.clear(); }
     }
 }
