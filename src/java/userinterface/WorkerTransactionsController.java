@@ -5,28 +5,32 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import models.Worker;
 import models.WorkerCollection;
+import utilities.Core;
 
 import java.io.IOException;
 import java.util.Vector;
 
+/**
+ * Created by kevph feat. Ders on 3/11/2017.
+ */
 public class WorkerTransactionsController extends SearchController {
 
-    @FXML
-    private Text alertMessage;
-
+    @FXML private Text alertMessage;
 
     @Override
     public ObservableList<String> itemsSearchChoiceArray() {
@@ -74,10 +78,8 @@ public class WorkerTransactionsController extends SearchController {
 
     }
 
-    public void addWorker(ActionEvent actionEvent) {
-
+    public void add(ActionEvent actionEvent) {
         try {
-
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("addworkerview.fxml"));
             Stage primaryStage = new Stage();
             Scene scene = new Scene(root);
@@ -92,6 +94,38 @@ public class WorkerTransactionsController extends SearchController {
         }
     }
 
+    @Override
+    public void modify(ActionEvent actionEvent) throws IOException {
+        try {
+            Core core = Core.getInstance();
+            Worker worker = (Worker)tableView.getItems().get(tableView.getFocusModel().getFocusedIndex());
+            System.out.println(worker.toString());
+            String bannerId = worker.getBannerId();
+            core.setModWorker(worker);
+            if (bannerId != null) {
+                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifyworkerview.fxml"));
+                Stage primaryStage = new Stage();
+                Scene scene = new Scene(root);
+                primaryStage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
+                primaryStage.setScene(scene);
+                primaryStage.setTitle("Brockport Library System");
+                primaryStage.setResizable(false);
+                primaryStage.show();
+            } else {
+                alertMessage.setText("Please select worker to modify.");
+            }
+        } catch (IOException e) {
+            System.out.println("Error");
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifyworkerview.fxml"));
+            Stage primaryStage = new Stage();
+            Scene scene = new Scene(root);
+            primaryStage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Brockport Library System");
+            primaryStage.setResizable(false);
+            primaryStage.show();
+        }
+    }
 
     protected ObservableList querySelector() {
 
@@ -169,7 +203,7 @@ public class WorkerTransactionsController extends SearchController {
             case "Credentials":
                 String credentials = searchField.getText();
                 if (credentials == null || credentials.equals("") ||
-                        (!credentials.equals("Administrator") || !credentials.equals("Ordinary"))) {
+                        !(credentials.equals("Administrator") || credentials.equals("Ordinary"))) {
                     alertMessage.setText("Please enter either: 'Administrator'/'Ordinary' in the search field");
                     searchField.clear();
                 } else {
@@ -191,7 +225,7 @@ public class WorkerTransactionsController extends SearchController {
             case "Status":
                 String status = searchField.getText();
                 if (status == null || status.equals("") ||
-                        (!status.equals("Active") || !status.equals("Inactive"))) {
+                        !(status.equals("Active") || status.equals("Inactive"))) {
                     alertMessage.setText("Please enter either: 'Active'/'Inactive' in the search field");
                     searchField.clear();
                 } else {
@@ -208,28 +242,67 @@ public class WorkerTransactionsController extends SearchController {
         return null;
     }
 
+    private class AddWorkerCell extends TableCell<Worker, Boolean> {
 
-    private void showModifyPersonDialog() {
+        final Button addButton = new Button("Modify");
+        final StackPane paddedButton = new StackPane();
 
-        try {
 
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifyworkerview.fxml"));
-            Stage primaryStage = new Stage();
-            Scene scene = new Scene(root);
-            primaryStage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
-            primaryStage.setScene(scene);
-            primaryStage.setTitle("Brockport Library System");
-            primaryStage.setResizable(false);
-            primaryStage.show();
+        /**
+         * AddPersonCell constructor
+         *
+         * @param stage the stage in which the table is placed.
+         * @param table the table to which a new worker can be added.
+         */
+        AddWorkerCell(final Stage stage, final TableView table) {
+            paddedButton.setPadding(new Insets(3));
+            paddedButton.getChildren().add(addButton);
 
-        } catch (IOException e) {
-            e.printStackTrace();
+            addButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+
+                    table.getSelectionModel().select(getTableRow().getIndex());
+
+                    Core core = Core.getInstance();
+                    Worker w = (Worker) table.getSelectionModel().getSelectedItems().get(0);
+                    core.setModWorker(w);
+
+                    showModifyPersonDialog();
+                }
+            });
+        }
+
+        /**
+         * places an add button in the row only if the row is not empty.
+         */
+        @Override
+        protected void updateItem(Boolean item, boolean empty) {
+            super.updateItem(item, empty);
+            if (!empty) {
+                setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                setGraphic(paddedButton);
+            } else {
+                setGraphic(null);
+            }
+        }
+
+        private void showModifyPersonDialog() {
+
+            try {
+
+                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifyworkerview.fxml"));
+                Stage primaryStage = new Stage();
+                Scene scene = new Scene(root);
+                primaryStage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
+                primaryStage.setScene(scene);
+                primaryStage.setTitle("Brockport Library System");
+                primaryStage.setResizable(false);
+                primaryStage.show();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
-
-
-
-
-
-
 }
