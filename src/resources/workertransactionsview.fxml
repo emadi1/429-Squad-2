@@ -37,10 +37,11 @@
                 <ChoiceBox fx:id="searchChoice" prefHeight="31.0" prefWidth="266.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                 <TextField fx:id="searchField" prefHeight="31.0" prefWidth="375.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                 <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#search" prefHeight="31.0" prefWidth="98.0" text="Search" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                <Button fx:id="addWorker" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addWorker" prefHeight="31.0" prefWidth="100" text="Add" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                <Button fx:id="addWorker" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#add" prefHeight="31.0" prefWidth="100" text="Add" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
             </children>
         </GridPane>
-        <TableView fx:id="tableView" layoutX="10.0" layoutY="225.0" prefHeight="490.0" prefWidth="926" />
+        <TableView fx:id="tableView" layoutX="10.0" layoutY="225.0" prefHeight="471.0" prefWidth="926" />
         <Text fx:id="alertMessage" layoutX="229.0" layoutY="741.0" wrappingWidth="488.0" />
+        <Button layoutX="846.0" fx:id="modify" layoutY="709.0" onAction="#modify" mnemonicParsing="false" text="Modify" />
     </children>
 </AnchorPane>
