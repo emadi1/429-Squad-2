@@ -6,7 +6,7 @@ import java.util.Vector;
 /**
  * Created by Ders on 3/24/2017
  */
-public class StudentBorrowerCollection extends EntityBase{
+public class StudentBorrowerCollection extends EntityBase {
 
     private static final String myTableName = "Student";
     private Vector<StudentBorrower> students;

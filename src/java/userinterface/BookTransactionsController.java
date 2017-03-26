@@ -106,9 +106,4 @@ public class BookTransactionsController extends TransactionController {
     protected void showModifyDialog() {
 
     }
-
-    @Override
-    protected int getType() {
-        return 0;
-    }
 }

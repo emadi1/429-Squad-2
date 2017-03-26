@@ -1,5 +1,6 @@
 package userinterface;
 
+import database.Persistable;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,6 +10,8 @@ import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import models.EntityBase;
+import models.StudentBorrower;
 import models.Worker;
 import utilities.Core;
 
@@ -76,56 +79,4 @@ public abstract class TransactionController implements Initializable {
     // Displays the modify view
     protected abstract void showModifyDialog();
 
-    // Used to ensure correct Object is created from table data
-    protected abstract int getType();
-
-
-    protected class AddModCell extends TableCell<Worker, Boolean> {
-
-        final Button addButton = new Button("Modify");
-        final StackPane paddedButton = new StackPane();
-
-
-        /**
-         * AddModCell constructor
-         *
-         * @param stage the stage in which the table is placed.
-         * @param table the table to which a new worker can be added.
-         */
-        AddModCell(final Stage stage, final TableView table) {
-            paddedButton.setPadding(new Insets(3));
-            paddedButton.getChildren().add(addButton);
-
-            addButton.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent actionEvent) {
-
-                    table.getSelectionModel().select(getTableRow().getIndex());
-                    Core core = Core.getInstance();
-
-                    if (getType() == 0) {
-                        Worker w = (Worker) table.getSelectionModel().getSelectedItems().get(0);
-                        core.setModWorker(w);
-                    }
-
-                    showModifyDialog();
-
-                }
-            });
-        }
-
-        /**
-         * places an add button in the row only if the row is not empty.
-         */
-        @Override
-        protected void updateItem(Boolean item, boolean empty) {
-            super.updateItem(item, empty);
-            if (!empty) {
-                setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
-                setGraphic(paddedButton);
-            } else {
-                setGraphic(null);
-            }
-        }
-    }
 }

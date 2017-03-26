@@ -5,16 +5,20 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import models.StudentBorrower;
 import models.Worker;
 import models.WorkerCollection;
 import utilities.Core;
@@ -230,7 +234,47 @@ public class WorkerTransactionsController extends TransactionController {
     }
 
 
-    protected int getType() {
-        return 0;
-    }
-}
+    protected class AddModCell extends TableCell<Worker, Boolean> {
+
+        final Button addButton = new Button("Modify");
+        final StackPane paddedButton = new StackPane();
+
+
+        /**
+         * AddModCell constructor
+         *
+         * @param stage the stage in which the table is placed.
+         * @param table the table to which a new worker can be added.
+         */
+        AddModCell(final Stage stage, final TableView table) {
+            paddedButton.setPadding(new Insets(3));
+            paddedButton.getChildren().add(addButton);
+
+            addButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+
+                    table.getSelectionModel().select(getTableRow().getIndex());
+                    Core core = Core.getInstance();
+                    Worker w = (Worker) table.getSelectionModel().getSelectedItems().get(0);
+                    core.setModWorker(w);
+                    showModifyDialog();
+
+                }
+            });
+        }
+
+        /**
+         * places an add button in the row only if the row is not empty.
+         */
+        @Override
+        protected void updateItem(Boolean item, boolean empty) {
+            super.updateItem(item, empty);
+            if (!empty) {
+                setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                setGraphic(paddedButton);
+            } else {
+                setGraphic(null);
+            }
+        }
+    }}

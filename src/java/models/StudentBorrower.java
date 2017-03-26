@@ -120,4 +120,52 @@ public class StudentBorrower extends EntityBase {
             mySchema = getSchemaInfo(tableName);
         }
     }
+
+
+    public String getBannerId() {return persistentState.getProperty("BannerId");}
+    public String getFirstName() {return persistentState.getProperty("FirstName");}
+    public String getLastName() {return persistentState.getProperty("LastName");}
+    public String getContactPhone() {return persistentState.getProperty("ContactPhone");}
+    public String getBorrowerStatus() {return persistentState.getProperty("BorrowerStatus");}
+    public String getDateOfLatestBorrowerStatus() {return persistentState.getProperty("DateOfLatestBorrowerStatus");}
+    public String getDateOfRegistration() {return persistentState.getProperty("DateOfRegistration");}
+    public String getNotes() {return persistentState.getProperty("Notes");}
+    public String getStatus() {return persistentState.getProperty("Status");}
+
+    public void setPassword(String password) {persistentState.setProperty("Password", password);}
+    public void setFirstName(String FirstName) {persistentState.setProperty("FirstName", FirstName);}
+    public void setLastName(String LastName) {persistentState.setProperty("LastName", LastName);}
+    public void setContactPhone(String ContactPhone) {persistentState.setProperty("ContactPhone", ContactPhone);}
+    public void setBorrowerStatus(String BorrowerStatus) {persistentState.setProperty("BorrowerStatus", BorrowerStatus);}
+    public void setDateOfLatestBorrowerStatus(String DateOfLatestBorrowerStatus) {persistentState.setProperty("DateOfLatestBorrowerStatus", DateOfLatestBorrowerStatus);}
+    public void setDateOfRegistration(String DateOfRegistration) {persistentState.setProperty("DateOfRegistration", DateOfRegistration);}
+    public void setNotes(String Notes) {persistentState.setProperty("Notes", Notes);}
+    public void setStatus(String Status) {persistentState.setProperty("Status", Status);}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
