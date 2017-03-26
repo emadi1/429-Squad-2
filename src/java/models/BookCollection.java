@@ -55,6 +55,12 @@ public class BookCollection extends EntityBase {
         return runQuery(query);
     }
 
+    public Vector findBooksByAuthor(String author) {
+        String query = "SELECT * FROM " + myTableName + " WHERE Author1 LIKE '%" + author + "%' OR Author2 LIKE '%"
+                + author + "%' OR Author3 LIKE '%" + author + "%' OR Author4 LIKE '%" + author + "%' ORDER BY Title ASC";
+        return runQuery(query);
+    }
+
     public Vector findBooksByAuthor1(String author1) {
         String query = "SELECT * FROM " + myTableName + " WHERE Author1 LIKE '%" + author1 + "%' ORDER BY Title ASC";
         return runQuery(query);

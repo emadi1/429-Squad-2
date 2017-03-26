@@ -14,6 +14,7 @@ import models.Book;
 import models.BookBarcodePrefix;
 import models.BookBarcodePrefixCollection;
 import models.BookCollection;
+import utilities.Core;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -29,7 +30,25 @@ public class AddBookViewController implements Initializable {
 
     private ObservableList<String> conditionList = FXCollections.observableArrayList("Good", "Damaged");
     private ObservableList<String> statusList = FXCollections.observableArrayList("Active", "Inactive");
+    Core core = Core.getInstance();
+    Properties lang = core.getLang();
+    Properties props = new Properties();
+    BookCollection bookCollection = new BookCollection();
+    BookBarcodePrefixCollection bookBarcodePrefixCollection = new BookBarcodePrefixCollection();
 
+    @FXML private Text barcode;
+    @FXML private Text title;
+    @FXML private Text author1;
+    @FXML private Text author2;
+    @FXML private Text author3;
+    @FXML private Text author4;
+    @FXML private Text publisher;
+    @FXML private Text yearOfPublication;
+    @FXML private Text isbn;
+    @FXML private Text bookCondition;
+    @FXML private Text suggestedPrice;
+    @FXML private Text notes;
+    @FXML private Text status;
     @FXML private Text alertMessage;
     @FXML private TextField Barcode;
     @FXML private TextField Title;
@@ -51,6 +70,20 @@ public class AddBookViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         textFieldList = new ArrayList<>();
+        barcode.setText(lang.getProperty("barcode"));
+        title.setText(lang.getProperty("title"));
+        author1.setText(lang.getProperty("author1"));
+        author2.setText(lang.getProperty("author2"));
+        author3.setText(lang.getProperty("author3"));
+        author4.setText(lang.getProperty("author4"));
+        publisher.setText(lang.getProperty("publisher"));
+        yearOfPublication.setText(lang.getProperty("yearOfPublication"));
+        isbn.setText(lang.getProperty("isbn"));
+        bookCondition.setText(lang.getProperty("bookCondition"));
+        suggestedPrice.setText(lang.getProperty("suggestedPrice"));
+        notes.setText(lang.getProperty("notes"));
+        status.setText(lang.getProperty("status"));
+
         textFieldList.add(Barcode);
         textFieldList.add(Title);
         textFieldList.add(Author1);
@@ -69,39 +102,35 @@ public class AddBookViewController implements Initializable {
     }
 
     public void submit(ActionEvent actionEvent) {
-        Properties props = new Properties();
-        BookCollection bookCollection = new BookCollection();
-        alertMessage.setText("");
-        for (TextField textField : textFieldList) {
-            if (textField.getText().equals("") ) {
-                alertMessage.setText("Please complete all fields");
-                return;
-            } else {
-                props.put(textField.getId(), textField.getText());
-            }
+
+        if (Barcode.getText().length() != 5) {
+            alertMessage.setText("Invalid Barcode Length");
+            return;
         }
+
+        props.put(BookCondition.getId(), BookCondition.getSelectionModel().getSelectedItem());
+        props.put(Status.getId(), Status.getSelectionModel().getSelectedItem());
+
+        if (Barcode.getText().equals("") || Title.getText().equals("")
+                || Author1.getText().equals("") || Publisher.getText().equals("")
+                || YearOfPublication.getText().equals("") || ISBN.getText().equals("")
+                || SuggestedPrice.getText().equals("")) {
+            alertMessage.setText("Please fill out all necessary fields");
+            return;
+        }
+
         try {
-            String prefix = props.getProperty("Barcode").substring(0, 2);
-            BookBarcodePrefixCollection bookBarcodePrefixCollection = new BookBarcodePrefixCollection();
-            BookBarcodePrefix bookBarcodePrefix = (BookBarcodePrefix) bookBarcodePrefixCollection.findBarcodePrefixValueByPrefix(prefix).get(0);
-            String discipline = bookBarcodePrefix.getDiscipline();
-            props.put("Discipline", discipline);
+            props.put("Discipline", bookBarcodePrefixCollection.generateDiscipline(Barcode.getText()));
         } catch (Exception e) {
             alertMessage.setText("");
             props.put("Discipline", "None");
         }
-        props.put(BookCondition.getId(), BookCondition.getSelectionModel().getSelectedItem());
-        props.put(Status.getId(), Status.getSelectionModel().getSelectedItem());
-        System.out.println(props);
+
         int count = bookCollection.findBooksByBarcode(props.getProperty("Barcode")).size();
         if (count == 0) {
-            Properties tableName = new Properties();
-            tableName.setProperty("TableName", "Book");
-            SQLInsertStatement insertStatement = new SQLInsertStatement(tableName, props);
-
             Book newBook = new Book(props);
             System.out.println(newBook.toString());
-            newBook.update();
+            newBook.insert();
             alertMessage.setText("Book has been submitted");
         } else {
             alertMessage.setText("Book with barcode: " + props.getProperty("Barcode") + " already exists");

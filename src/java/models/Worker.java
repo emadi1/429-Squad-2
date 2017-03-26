@@ -2,6 +2,7 @@ package models;
 
 import exception.InvalidPrimaryKeyException;
 
+import java.sql.SQLException;
 import java.util.Enumeration;
 import java.util.Properties;
 import java.util.Vector;
@@ -106,27 +107,37 @@ public class Worker extends EntityBase {
         stateChangeRequest(key, value);
     }
 
-    /**
-     *
-     */
-    public void updateStateInDatabase() {
+    private void insertStateInDatabase() {
         try {
-            if (persistentState.getProperty("BannerId") != null) {
-                Properties whereClause = new Properties();
-                whereClause.setProperty("BannerId", persistentState.getProperty("BannerId"));
-                updatePersistentState(mySchema, persistentState, whereClause);
-                updateStatusMessage = "Worker data for worker ID: " + persistentState.getProperty("BannerId")
-                        + " installed successfully in database!";
-            } else {
-                Integer BannerId = insertPersistentState(mySchema, persistentState);
-                persistentState.setProperty("BannerId", "" + BannerId.intValue());
-                updateStatusMessage = "Worker data for new worker: " + persistentState.getProperty("BannerId")
-                        + " installed successfully in database!";
-            }
-        } catch (Exception e) {
+            Integer BannerId = insertPersistentState(mySchema, persistentState);
+            persistentState.setProperty("BannerId", "" + BannerId.intValue());
+            updateStatusMessage = "Worker data for worker ID: " + persistentState.getProperty("BannerId")
+                    + " installed successfully in database!";
+        } catch (SQLException e) {
             System.out.println("Error installing data: " + e);
         }
     }
+
+    private void updateStateInDatabase() {
+        try {
+            Properties whereClause = new Properties();
+            whereClause.setProperty("BannerId", persistentState.getProperty("BannerId"));
+            updatePersistentState(mySchema, persistentState, whereClause);
+            updateStatusMessage = "Worker data for worker ID: " + persistentState.getProperty("BannerId")
+                    + " installed successfully in database!";
+        } catch (SQLException e) {
+            System.out.println("Error installing data: " + e);
+        }
+    }
+
+    public void insert() {
+        insertStateInDatabase();
+    }
+
+    public void update() {
+        updateStateInDatabase();
+    }
+
 
     /**
      * @return
@@ -196,13 +207,6 @@ public class Worker extends EntityBase {
      */
     public String getStatus() {
         return persistentState.getProperty("Status");
-    }
-
-    /**
-     *
-     */
-    public void update() {
-        updateStateInDatabase();
     }
 
     public void setPassword(String password) {

@@ -51,20 +51,20 @@ public class AddWorkerViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Properties lang = core.getLanguageFile();
+        Properties lang = core.getLang();
         ObservableList<String> statusList = FXCollections.observableArrayList(lang.getProperty("Active"), lang.getProperty("Inactive"));
         ObservableList<String> credentialsList = FXCollections.observableArrayList(lang.getProperty("Administrator"), lang.getProperty("Ordinary"));
         submit.setText(lang.getProperty("Add"));
-        bannerId.setText(lang.getProperty("BannerID"));
-        password.setText(lang.getProperty("Password"));
-        firstName.setText(lang.getProperty("FirstName"));
-        lastName.setText(lang.getProperty("LastName"));
-        contactPhone.setText(lang.getProperty("ContactPhone"));
-        email.setText(lang.getProperty("Email"));
-        credentials.setText(lang.getProperty("Credentials"));
-        dateOfLatestCredentialsStatus.setText(lang.getProperty("DateOfLatestCredentialsStatus"));
-        dateOfHire.setText(lang.getProperty("DateOfHire"));
-        status.setText(lang.getProperty("Status"));
+        bannerId.setText(lang.getProperty("bannerId"));
+        password.setText(lang.getProperty("password"));
+        firstName.setText(lang.getProperty("firstName"));
+        lastName.setText(lang.getProperty("lastName"));
+        contactPhone.setText(lang.getProperty("contactPhone"));
+        email.setText(lang.getProperty("email"));
+        credentials.setText(lang.getProperty("credentials"));
+        dateOfLatestCredentialsStatus.setText(lang.getProperty("dateOfLatestCredentialsStatus"));
+        dateOfHire.setText(lang.getProperty("dateOfHire"));
+        status.setText(lang.getProperty("status"));
         textFieldList = new ArrayList<>();
         textFieldList.add(BannerId);
         textFieldList.add(Password);
@@ -85,6 +85,10 @@ public class AddWorkerViewController implements Initializable {
 
         Properties prop = new Properties();
         alertMessage.setText("");
+        if (BannerId.getText().length() != 9) {
+            alertMessage.setText("Invalid BannerID Length");
+            return;
+        }
         for (TextField textField : textFieldList) {
 
             if (textField.getText().equals("")) {
@@ -100,7 +104,7 @@ public class AddWorkerViewController implements Initializable {
         int count = workerCollection.findWorkersByBannerId(prop.getProperty("BannerId")).size();
         if (count == 0) {
             Worker newWorker = new Worker(prop);
-            newWorker.update();
+            newWorker.insert();
             alertMessage.setText("Worker has been submitted");
         } else {
             alertMessage.setText("Worker with BannerID: " + prop.getProperty("BannerID") + " already exists");

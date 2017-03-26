@@ -16,6 +16,9 @@ import models.Book;
 import models.BookCollection;
 import utilities.Core;
 import java.io.IOException;
+import java.net.URL;
+import java.util.Properties;
+import java.util.ResourceBundle;
 import java.util.Vector;
 
 /**
@@ -23,28 +26,63 @@ import java.util.Vector;
  */
 public class BookTransactionsController extends TransactionController {
 
-    @FXML
-    private Text alertMessage;
+    private Core core = Core.getInstance();
+    private Properties language = core.getLang();
+    @FXML private Text alertMessage;
+    private String Barcode = language.getProperty("Barcode");
+    private String Title = language.getProperty("Title");
+    private String Discipline = language.getProperty("Discipline");
+    private String Author1 = language.getProperty("Author1");
+    private String Author2 = language.getProperty("Author2");
+    private String Author3 = language.getProperty("Author3");
+    private String Author4 = language.getProperty("Author4");
+    private String Publisher = language.getProperty("Publisher");
+    private String YearOfPublication = language.getProperty("YearOfPublication");
+    private String ISBN = language.getProperty("ISBN");
+    private String BookCondition = language.getProperty("BookCondition");
+    private String SuggestedPrice = language.getProperty("SuggestedPrice");
+    private String Notes = language.getProperty("Notes");
+    private String Status = language.getProperty("Status");
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        properties = itemsSearchChoiceArray();
+        searchChoice.setItems(properties);
+        searchChoice.getSelectionModel().selectFirst();
+        bookHeader.setText(language.getProperty("WorkerTransactions"));
+        modify.setText(language.getProperty("Modify"));
+        add.setText(language.getProperty("Add"));
+        search.setText(language.getProperty("Search"));
+        if (core.getUser().getCredentials().equals("Ordinary")) {
+            modify.setDisable(true);
+        }
+        setTableView();
+    }
 
     @Override
     public ObservableList<String> itemsSearchChoiceArray() {
         return FXCollections.observableArrayList(
-                "Barcode",
-                "Title",
-                "Discipline",
-                "Author",
-                "Publisher",
-                "PublicationYear",
-                "ISBN",
-                "SuggestedPrice",
-                "Status");
+                Barcode,
+                Title,
+                Discipline,
+                Author1,
+                Author2,
+                Author3,
+                Author4,
+                Publisher,
+                YearOfPublication,
+                ISBN,
+                BookCondition,
+                SuggestedPrice,
+                Notes,
+                Status);
     }
 
     protected void setTableView(){
         TableColumn column;
         for (String property : properties) {
             column = new TableColumn(property);
-            column.setMinWidth(100);
+            column.setMinWidth(60);
             column.setCellValueFactory(new PropertyValueFactory<Book, String>(property));
             tableView.getColumns().add(column);
         }
@@ -133,19 +171,50 @@ public class BookTransactionsController extends TransactionController {
                 }
                 break;
 
-            case "Author":
+            case "Author1":
                 if (input == null || input.equals("")) {
                     alertMessage.setText("Please enter an author in the search field");
                     searchField.clear();
                 } else {
                     BookCollection bookCollection = new BookCollection();
-                    Vector books = bookCollection.findBooksByAuthor1(input);
-                    if (books.get(0) == null || books.get(0).equals(""))
-                        books = bookCollection.findBooksByAuthor2(input);
-                    if (books.get(0) == null || books.get(0).equals(""))
-                        books = bookCollection.findBooksByAuthor3(input);
-                    if (books.get(0) == null || books.get(0).equals(""))
-                        books = bookCollection.findBooksByAuthor4(input);
+                    Vector books = bookCollection.findBooksByAuthor(input);
+                    searchField.clear();
+                    return FXCollections.observableList(books);
+                }
+                break;
+
+            case "Author2":
+                if (input == null || input.equals("")) {
+                    alertMessage.setText("Please enter an author in the search field");
+                    searchField.clear();
+                } else {
+                    BookCollection bookCollection = new BookCollection();
+                    Vector books = bookCollection.findBooksByAuthor(input);
+                    searchField.clear();
+                    return FXCollections.observableList(books);
+                }
+                break;
+
+            case "Author3":
+                if (input == null || input.equals("")) {
+                    alertMessage.setText("Please enter an author in the search field");
+                    searchField.clear();
+                } else {
+                    BookCollection bookCollection = new BookCollection();
+                    Vector books = bookCollection.findBooksByAuthor(input);
+                    searchField.clear();
+                    return FXCollections.observableList(books);
+                }
+                break;
+
+            case "Author4":
+                if (input == null || input.equals("")) {
+                    alertMessage.setText("Please enter an author in the search field");
+                    searchField.clear();
+                } else {
+                    BookCollection bookCollection = new BookCollection();
+                    Vector books = bookCollection.findBooksByAuthor(input);
+                    searchField.clear();
                     return FXCollections.observableList(books);
                 }
                 break;

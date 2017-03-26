@@ -17,7 +17,7 @@
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="green" height="12.0" layoutX="0.0" layoutY="350.0" width="620" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="green" height="370" layoutX="0.0" layoutY="0.0" width="12" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="green" height="370" layoutX="600" layoutY="0.0" width="15" />
-        <Text fill="white" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign In Below" textAlignment="CENTER" wrappingWidth="600">
+        <Text fx:id="signInHeader" fill="white" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="600">
             <font>
                 <Font size="40" />
             </font>
@@ -36,8 +36,8 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Text text="BannerID: " textAlignment="LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <Text text="Password: " textAlignment="LEFT" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Text fx:id="banner" textAlignment="LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Text fx:id="pw" textAlignment="LEFT" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <Text fx:id="alertMessage" text="" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                 <TextField id="bannerId" fx:id="bannerId" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                 <TextField id="password" fx:id="password" GridPane.columnIndex="2" GridPane.rowIndex="2" />

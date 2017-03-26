@@ -34,19 +34,19 @@
         <RowConstraints maxHeight="20.0" minHeight="1.0" prefHeight="1.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Barcode:" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Title:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Author 1:" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Author 2:" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Author 3:" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Author 4:" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Publisher" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Year of Publication:" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ISBN:" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Condition:" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Suggested Price:" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Notes:" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Status:" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" fx:id="barcode" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" fx:id="title" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" fx:id="author1" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" fx:id="author2" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" fx:id="author3" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" fx:id="author4" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" fx:id="publisher" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" fx:id="yearOfPublication" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" fx:id="isbn" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" fx:id="bookCondition" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" fx:id="suggestedPrice" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" fx:id="notes" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" fx:id="status" GridPane.columnIndex="1" GridPane.rowIndex="13" />
         <Text fx:id="alertMessage" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="14" />
 
         <TextField fx:id="Barcode" GridPane.columnIndex="2" GridPane.rowIndex="1" />

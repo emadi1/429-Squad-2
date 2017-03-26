@@ -7,20 +7,26 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
+import utilities.Core;
+
 import java.io.IOException;
 import java.net.URL;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 /**
  * Created by kevph on 3/5/2017.
  */
-public class MainViewController implements Initializable{
-    @FXML
-    private Pane root;
+public class MainViewController implements Initializable {
+    Core core = Core.getInstance();
+    Properties lang = core.getLang();
+    @FXML private Pane root;
+    @FXML private Text welcome;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        welcome.setText(lang.getProperty("welcome"));
     }
 
     public void menuClickListener(ActionEvent event) throws IOException {

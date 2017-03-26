@@ -75,125 +75,94 @@ public class Core {
         language = lang;
     }
 
-    // Language File
-    public Properties getLanguageFile() {
-        Properties languageProperties = new Properties();
-        if (language.equals("fr_FR")) {
-            // Main View
-            languageProperties.setProperty("WorkerTransactions", "");
-            languageProperties.setProperty("BookTransactions", "");
-            languageProperties.setProperty("StudentTransactions", "");
-            languageProperties.setProperty("CheckOutBook", "");
-            languageProperties.setProperty("CheckInBook", "");
-            languageProperties.setProperty("ListAllBooks", "");
-            languageProperties.setProperty("Title", "");
-            languageProperties.setProperty("Welcome", "");
-
-            // Worker Views
-
-            languageProperties.setProperty("Password", "Mot de passe");
-            languageProperties.setProperty("Email", "Email");
-            languageProperties.setProperty("Credentials", "Accréditation");
-            languageProperties.setProperty("DateOfLatestCredentialsStatus", "Date du dernier statut d'accréditation");
-            languageProperties.setProperty("DateOfHire", "Date d'embauche");
-
-            // Student Borrower View
-            languageProperties.setProperty("BorrowerStatus", "");
-            languageProperties.setProperty("DateOfLatestBorrowerStatus", "");
-            languageProperties.setProperty("DateOfRegistration", "");
-
-            // Book View
-            languageProperties.setProperty("Barcode", "");
-            languageProperties.setProperty("Title", "");
-            languageProperties.setProperty("Discipline", "");
-            languageProperties.setProperty("Author1", "");
-            languageProperties.setProperty("Author2", "");
-            languageProperties.setProperty("Author3", "");
-            languageProperties.setProperty("Author4", "");
-            languageProperties.setProperty("Publisher", "");
-            languageProperties.setProperty("YearOfPublication", "");
-            languageProperties.setProperty("ISBN", "");
-            languageProperties.setProperty("BookCondition", "");
-            languageProperties.setProperty("SuggestedPrice", "");
-
-            // Common
-            languageProperties.setProperty("Notes", "");
-            languageProperties.setProperty("Status", "Statut");
-            languageProperties.setProperty("FirstName", "Prénom");
-            languageProperties.setProperty("LastName", "Nom de famille");
-            languageProperties.setProperty("ContactPhone", "Numéro de téléphone");
-            languageProperties.setProperty("BannerID", "ID de bannière");
-
-            // Buttons/ComboBox
-            languageProperties.setProperty("Search", "");
-            languageProperties.setProperty("Add", "");
-            languageProperties.setProperty("Delete", "");
-            languageProperties.setProperty("Modify", "");
-            languageProperties.setProperty("Good", "");
-            languageProperties.setProperty("Damaged", "");
-            languageProperties.setProperty("Administrator", "Administrateur");
-            languageProperties.setProperty("Ordinary", "Ordinaire");
-            languageProperties.setProperty("Active", "Actif");
-            languageProperties.setProperty("Inactive", "Inactif");
-        }
+    public Properties getLang() {
+        Properties library = new Properties();
         if (language.equals("en_US")) {
-            // Main View
-            languageProperties.setProperty("WorkerTransactions", "Worker Transactions");
-            languageProperties.setProperty("BookTransactions", "Book Transactions");
-            languageProperties.setProperty("StudentTransactions", "Student Transactions");
-            languageProperties.setProperty("CheckOutBook", "Check Out Book");
-            languageProperties.setProperty("CheckInBook", "Check In Book");
-            languageProperties.setProperty("ListAllBooks", "List All Books");
-            languageProperties.setProperty("Title", "Brockport Library System!");
-            languageProperties.setProperty("Welcome", "Brockport Library System!");
+            library.setProperty("welcome", "EOP Library System");
+            library.setProperty("signIn", "Sign In Below");
+            library.setProperty("WorkerTransactions", "Worker Transactions");
+            library.setProperty("BookTransactions", "Book Transactions");
+            library.setProperty("StudentTransactions", "Student Transactions");
+            library.setProperty("addWorker", "Add Worker");
+            library.setProperty("addStudent", "Add Student Borrower");
+            library.setProperty("addBookTitle", "Add Book");
+            library.setProperty("barcode", "Barcode:");
+            library.setProperty("Barcode", "Barcode");
+            library.setProperty("title", "Title:");
+            library.setProperty("Title", "Title");
+            library.setProperty("discipline", "Discipline:");
+            library.setProperty("Discipline", "Discipline");
+            library.setProperty("Author", "Author");
+            library.setProperty("author1", "Author 1:");
+            library.setProperty("Author1", "Author1");
+            library.setProperty("author2", "Author 2:");
+            library.setProperty("Author2", "Author2");
+            library.setProperty("author3", "Author 3:");
+            library.setProperty("Author3", "Author3");
+            library.setProperty("author4", "Author 4:");
+            library.setProperty("Author4", "Author4");
+            library.setProperty("publisher", "Publisher:");
+            library.setProperty("Publisher", "Publisher");
+            library.setProperty("yearOfPublication", "Year of Publication:");
+            library.setProperty("YearOfPublication", "YearOfPublication");
+            library.setProperty("isbn", "ISBN:");
+            library.setProperty("ISBN", "ISBN");
+            library.setProperty("bookCondition", "Book Condition:");
+            library.setProperty("BookCondition", "BookCondition");
+            library.setProperty("suggestedPrice", "Suggested Price:");
+            library.setProperty("SuggestedPrice", "SuggestedPrice");
+            library.setProperty("notes", "Notes:");
+            library.setProperty("Notes", "Notes");
+            library.setProperty("status", "Status:");
+            library.setProperty("Status", "Status");
+            library.setProperty("modifySuccess", "Worker updated successfully");
+            library.setProperty("modifyFail", "Failed to update worker");
+            library.setProperty("addWorkerSuccess", "Worker added successfully");
+            library.setProperty("addWorkerFail", "Failed to add worker.");
+            library.setProperty("completeFields", "Please fill out all necessary fields");
+            library.setProperty("Modify", "Modify");
+            library.setProperty("Add", "Add");
+            library.setProperty("Delete", "Delete");
+            library.setProperty("Good", "Good");
+            library.setProperty("Damaged", "Damaged");
+            library.setProperty("Active", "Active");
+            library.setProperty("Inactive", "Inactive");
+            library.setProperty("bannerId", "Banner ID:");
+            library.setProperty("BannerId", "BannerId");
+            library.setProperty("password", "Password:");
+            library.setProperty("Password", "Password");
+            library.setProperty("firstName", "First Name:");
+            library.setProperty("FirstName", "FirstName");
+            library.setProperty("lastName", "Last Name:");
+            library.setProperty("LastName", "LastName");
+            library.setProperty("contactPhone", "Contact Phone:");
+            library.setProperty("ContactPhone", "ContactPhone");
+            library.setProperty("email", "Email:");
+            library.setProperty("Email", "Email");
+            library.setProperty("credentials", "Credentials:");
+            library.setProperty("Credentials", "Credentials");
+            library.setProperty("dateOfLatestCredentialsStatus", "Date of Latest Credentials Status:");
+            library.setProperty("DateOfLatestCredentialsStatus", "DateOfLatestCredentialsStatus");
+            library.setProperty("dateOfHire", "Date of Hire:");
+            library.setProperty("DateOfHire", "DateOfHire");
+            library.setProperty("status", "Status:");
+            library.setProperty("Status", "Status");
+            library.setProperty("modifySuccess", "Worker updated successfully");
+            library.setProperty("modifyFail", "Failed to update worker");
+            library.setProperty("addWorkerSuccess", "Worker added successfully");
+            library.setProperty("addWorkerFail", "Failed to add worker.");
+            library.setProperty("completeFields", "Please fill out all necessary fields");
+            library.setProperty("Search", "Search");
+            library.setProperty("Modify", "Modify");
+            library.setProperty("Add", "Add");
+            library.setProperty("Delete", "Delete");
+            library.setProperty("Administrator", "Administrator");
+            library.setProperty("Ordinary", "Ordinary");
+            library.setProperty("Active", "Active");
+            library.setProperty("Inactive", "Inactive");
+        } else if (language.equals("fr_FR")) {
 
-
-            // Worker Views
-            languageProperties.setProperty("Password", "Password:");
-            languageProperties.setProperty("ContactPhone", "Contact Phone:");
-            languageProperties.setProperty("Email", "Email:");
-            languageProperties.setProperty("Credentials", "Credentials:");
-            languageProperties.setProperty("DateOfLatestCredentialsStatus", "Date of Latest Credentials Status:");
-            languageProperties.setProperty("DateOfHire", "Date of Hire:");
-
-            // Student Borrower View
-            languageProperties.setProperty("BorrowerStatus", "Borrower Status:");
-            languageProperties.setProperty("DateOfLatestBorrowerStatus", "Date of Latest Borrower Status:");
-            languageProperties.setProperty("DateOfRegistration", "Date of Registration:");
-
-            // Book View
-            languageProperties.setProperty("Barcode", "Barcode:");
-            languageProperties.setProperty("Title", "Title:");
-            languageProperties.setProperty("Discipline", "Discipline:");
-            languageProperties.setProperty("Author1", "Author 1:");
-            languageProperties.setProperty("Author2", "Author 2:");
-            languageProperties.setProperty("Author3", "Author 3:");
-            languageProperties.setProperty("Author4", "Author 4:");
-            languageProperties.setProperty("Publisher", "Publisher:");
-            languageProperties.setProperty("YearOfPublication", "Year of Publication:");
-            languageProperties.setProperty("ISBN", "ISBN:");
-            languageProperties.setProperty("BookCondition", "Book Condition:");
-            languageProperties.setProperty("SuggestedPrice", "Suggested Price:");
-
-            // Common
-            languageProperties.setProperty("Notes", "Notes:");
-            languageProperties.setProperty("Status", "Status:");
-            languageProperties.setProperty("BannerID", "BannerID:");
-            languageProperties.setProperty("FirstName", "First Name:");
-            languageProperties.setProperty("LastName", "Last Name:");
-
-            // Buttons/ComboBox
-            languageProperties.setProperty("Search", "Search");
-            languageProperties.setProperty("Modify", "Modify");
-            languageProperties.setProperty("Delete", "Delete");
-            languageProperties.setProperty("Add", "Add");
-            languageProperties.setProperty("Active", "Active");
-            languageProperties.setProperty("Inactive", "Inactive");
-            languageProperties.setProperty("Administrator", "Administrator");
-            languageProperties.setProperty("Ordinary", "Ordinary");
-            languageProperties.setProperty("Good", "Good");
-            languageProperties.setProperty("Damaged", "Damaged");
         }
-        return languageProperties;
+        return library;
     }
 }

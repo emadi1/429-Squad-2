@@ -29,25 +29,27 @@ import java.util.ResourceBundle;
  */
 public class SignInController implements Initializable {
 
-    @FXML
-    ComboBox<String> language;
-    @FXML
-    TextField bannerId;
-    @FXML
-    TextField password;
-    @FXML
-    private Text alertMessage;
-    @FXML
-    private Button signIn;
+    @FXML ComboBox<String> language;
+    @FXML TextField bannerId;
+    @FXML TextField password;
+    @FXML private Text alertMessage;
+    @FXML private Text signInHeader;
+    @FXML private Text banner;
+    @FXML private Text pw;
+    @FXML private Button signIn;
     private ObservableList<String> languages = FXCollections.observableArrayList("en_US", "fr_FR");
     Core core = Core.getInstance();
+    Properties lang = core.getLang();
     public SignInController() {
 
     }
 
     public void initialize(URL location, ResourceBundle resources) {
         language.setItems(languages);
-        language.setValue("en-US");
+        language.setValue("en_US");
+        signInHeader.setText(lang.getProperty("signIn"));
+        banner.setText(lang.getProperty("bannerId"));
+        pw.setText(lang.getProperty("password"));
     }
 
     /**

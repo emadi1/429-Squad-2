@@ -50,6 +50,13 @@ public class BookBarcodePrefixCollection extends EntityBase {
         return runQuery(query);
     }
 
+    public String generateDiscipline(String barcode) {
+        String prefix = barcode.substring(0, 2);
+        Vector coll = findBarcodePrefixValueByPrefix(prefix);
+        BookBarcodePrefix bookBarcodePrefix = (BookBarcodePrefix) coll.get(0);
+        return bookBarcodePrefix.getDiscipline();
+    }
+
     public void addBarcodePrefixValue(BookBarcodePrefix bookBarcodePrefix) {
         bookBarcodePrefixes.add(bookBarcodePrefix);
     }

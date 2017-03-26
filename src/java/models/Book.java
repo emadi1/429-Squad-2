@@ -3,6 +3,8 @@ package models;
 
 import exception.InvalidPrimaryKeyException;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Enumeration;
 import java.util.Properties;
 import java.util.Vector;
@@ -84,21 +86,37 @@ public class Book extends EntityBase {
         stateChangeRequest(key, value);
     }
 
-    public void updateStateInDatabase() {
+    public void insertStateInDatabase() {
         try {
-            if (persistentState.getProperty("Barcode") != null) {
-                Properties whereClause = new Properties();
-                whereClause.setProperty("Barcode", persistentState.getProperty("Barcode"));
-                updatePersistentState(mySchema, persistentState, whereClause);
-                updateStatusMessage = "Book data for book ID: " + persistentState.getProperty("Barcode")
-                        + " installed successfully in database!";
-            } else {
-                Integer Barcode = insertPersistentState(mySchema, persistentState);
-                persistentState.setProperty("Barcode", "" + Barcode.intValue());
-                updateStatusMessage = "Book data for new book: " + persistentState.getProperty("Barcode")
-                        + " installed successfully in database!";
-            }
+            Integer Barcode = insertPersistentState(mySchema, persistentState);
+            persistentState.setProperty("Barcode", "" + Barcode.intValue());
+            updateStatusMessage = "Book data for book ID: " + persistentState.getProperty("Barcode")
+                    + " installed successfully in database!";
+        } catch (SQLException e) {
+            System.out.println("Error installing data: " + e);
+        }
+    }
+
+    public String generateDiscipline(String barcode) {
+        String discipline = "None";
+        try {
+            BookBarcodePrefixCollection bookBarcodePrefixCollection = new BookBarcodePrefixCollection();
+            BookBarcodePrefix bookBarcodePrefix = (BookBarcodePrefix) bookBarcodePrefixCollection.findBarcodePrefixValueByPrefix(barcode).get(0);
+            discipline = bookBarcodePrefix.getDiscipline();
         } catch (Exception e) {
+            System.out.println("Discipline not found in database");
+        }
+        return discipline;
+    }
+
+    private void updateStateInDatabase() {
+        try {
+            Properties whereClause = new Properties();
+            whereClause.setProperty("Barcode", persistentState.getProperty("Barcode"));
+            updatePersistentState(mySchema, persistentState, whereClause);
+            updateStatusMessage = "Book data for book ID: " + persistentState.getProperty("Barcode")
+                    + " installed successfully in database!";
+        } catch (SQLException e) {
             System.out.println("Error installing data: " + e);
         }
     }
@@ -106,6 +124,11 @@ public class Book extends EntityBase {
     public void update() {
         updateStateInDatabase();
     }
+
+    public void insert() {
+        insertStateInDatabase();
+    }
+
 
     public String getBarcode() {
         return persistentState.getProperty("Barcode");

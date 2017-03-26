@@ -8,14 +8,20 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import models.StudentBorrower;
+import utilities.Core;
+
+import java.net.URL;
+import java.util.Properties;
+import java.util.ResourceBundle;
 
 /**
  * Created by kevph & Ders on 3/11/2017.
  */
 public class StudentBorrowerTransactionsController extends TransactionController {
 
-    @FXML
-    private Text alertMessage;
+    @FXML private Text alertMessage;
+    Core core = Core.getInstance();
+    Properties language = core.getLang();
 
     /**
      *
@@ -32,6 +38,20 @@ public class StudentBorrowerTransactionsController extends TransactionController
                 "Borrower Status",
                 "Notes",
                 "Status");
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        properties = itemsSearchChoiceArray();
+        searchChoice.setItems(properties);
+        searchChoice.getSelectionModel().selectFirst();
+        studentHeader.setText(language.getProperty("StudentTransactions"));
+        modify.setText(language.getProperty("Modify"));
+        add.setText(language.getProperty("Add"));
+        search.setText(language.getProperty("Search"));
+        if (core.getUser().getCredentials().equals("Ordinary"))
+            modify.setDisable(true);
+        setTableView();
     }
 
     /**

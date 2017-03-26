@@ -27,6 +27,7 @@ public class ModifyWorkerViewController implements Initializable{
     private ObservableList<String> statusList = FXCollections.observableArrayList("Active", "Inactive");
     private ObservableList<String> credentialsList = FXCollections.observableArrayList("Administrator", "Ordinary");
     private Core core = Core.getInstance();
+    Properties lang = core.getLang();
 
     @FXML private Text bannerId;
     @FXML private Text password;
@@ -53,20 +54,19 @@ public class ModifyWorkerViewController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Properties lang = core.getLanguageFile();
         ObservableList<String> statusList = FXCollections.observableArrayList(lang.getProperty("Active"), lang.getProperty("Inactive"));
         ObservableList<String> credentialsList = FXCollections.observableArrayList(lang.getProperty("Administrator"), lang.getProperty("Ordinary"));
-        submit.setText(lang.getProperty("Add"));
-        bannerId.setText(lang.getProperty("BannerID"));
-        password.setText(lang.getProperty("Password"));
-        firstName.setText(lang.getProperty("FirstName"));
-        lastName.setText(lang.getProperty("LastName"));
-        contactPhone.setText(lang.getProperty("ContactPhone"));
-        email.setText(lang.getProperty("Email"));
-        credentials.setText(lang.getProperty("Credentials"));
-        dateOfLatestCredentialsStatus.setText(lang.getProperty("DateOfLatestCredentialsStatus"));
-        dateOfHire.setText(lang.getProperty("DateOfHire"));
-        status.setText(lang.getProperty("Status"));
+        submit.setText(lang.getProperty("Modify"));
+        bannerId.setText(lang.getProperty("bannerId"));
+        password.setText(lang.getProperty("password"));
+        firstName.setText(lang.getProperty("firstName"));
+        lastName.setText(lang.getProperty("lastName"));
+        contactPhone.setText(lang.getProperty("contactPhone"));
+        email.setText(lang.getProperty("email"));
+        credentials.setText(lang.getProperty("credentials"));
+        dateOfLatestCredentialsStatus.setText(lang.getProperty("dateOfLatestCredentialsStatus"));
+        dateOfHire.setText(lang.getProperty("dateOfHire"));
+        status.setText(lang.getProperty("status"));
 
         BannerId.setText(core.getModWorker().getBannerId());
         BannerId.setDisable(true);
@@ -75,9 +75,8 @@ public class ModifyWorkerViewController implements Initializable{
         LastName.setText(core.getModWorker().getLastName());
         ContactPhone.setText(core.getModWorker().getContactPhone());
         Email.setText(core.getModWorker().getEmail());
-        if (core.getUser().getCredentials().equals("Ordinary")) {
+        if (core.getUser().getCredentials().equals("Ordinary"))
             Credentials.setDisable(true);
-        }
         Credentials.setValue(core.getModWorker().getCredentials());
         DateOfLatestCredentialsStatus.setText(core.getModWorker().getDateOfLatestCredentialsStatus());
         DateOfHire.setText(core.getModWorker().getDateOfHire());
@@ -87,6 +86,7 @@ public class ModifyWorkerViewController implements Initializable{
     }
 
     public void submit(ActionEvent event) {
+
         alertMessage.setText("");
         Worker worker = core.getModWorker();
         worker.setPassword(Password.getText());
@@ -100,6 +100,6 @@ public class ModifyWorkerViewController implements Initializable{
         worker.setStatus(Status.getValue());
         worker.update();
         System.out.println(worker.toString());
-        alertMessage.setText("Worker successfully updated");
+        alertMessage.setText(lang.getProperty("addWorkerSuccess"));
     }
 }
