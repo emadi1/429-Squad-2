@@ -10,12 +10,12 @@
     <children>
         <AnchorPane prefHeight="750.0" prefWidth="225.0">
                 <children>
-                    <Button id="bookTransactions" fx:id="addBook" layoutY="0" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="125" prefWidth="225.0" style="-fx-background-color: green" text="Book Transactions" textFill="beige" />
-                    <Button id="studentBorrowerTransactions" fx:id="addStudent" layoutY="125.0" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="125" prefWidth="225.0" style="-fx-background-color: red" text="Student Transactions" textFill="beige" />
-                    <Button id="workerTransactions" fx:id="addWorker" layoutY="250" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="125" prefWidth="225.0" style="-fx-background-color: blue" text="Worker Transaction" textFill="beige" />
-                    <Button id="checkOutBook" fx:id="checkOutBook" layoutY="375.0" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="125" prefWidth="225.0" style="-fx-background-color: #8a8a87" text="Check Out Book" textFill="beige" />
-                    <Button id="checkInBook" fx:id="checkInBook" layoutY="500" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="125" prefWidth="225.0" style="-fx-background-color: #393735" text="Check In Book" textFill="beige" />
-                    <Button id="listCheckedBooks" fx:id="listCheckedBooks" layoutY="625.0" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="130" prefWidth="225.0" style="-fx-background-color: #010101" text="List All Checked Out Books" textFill="beige" />
+                    <Button id="bookTransactions" fx:id="bookTransactions" layoutY="0" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="125" prefWidth="225.0" style="-fx-background-color: green" textFill="beige" />
+                    <Button id="studentBorrowerTransactions" fx:id="studentTransactions" layoutY="125.0" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="125" prefWidth="225.0" style="-fx-background-color: red" textFill="beige" />
+                    <Button id="workerTransactions" fx:id="workerTransactions" layoutY="250" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="125" prefWidth="225.0" style="-fx-background-color: blue" textFill="beige" />
+                    <Button id="checkOutBook" fx:id="checkOutBook" layoutY="375.0" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="125" prefWidth="225.0" style="-fx-background-color: #8a8a87" textFill="beige" />
+                    <Button id="checkInBook" fx:id="checkInBook" layoutY="500" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="125" prefWidth="225.0" style="-fx-background-color: #393735" textFill="beige" />
+                    <Button id="listCheckedBooks" fx:id="listCheckedBooks" layoutY="625.0" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="130" prefWidth="225.0" style="-fx-background-color: #010101" textFill="beige" />
                 </children>
         </AnchorPane>
         <Pane fx:id="root" layoutX="225.0" prefHeight="750.0" prefWidth="1076.0">

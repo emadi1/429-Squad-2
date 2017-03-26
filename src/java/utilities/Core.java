@@ -83,6 +83,9 @@ public class Core {
             library.setProperty("WorkerTransactions", "Worker Transactions");
             library.setProperty("BookTransactions", "Book Transactions");
             library.setProperty("StudentTransactions", "Student Transactions");
+            library.setProperty("CheckOutBook", "Check Out Books");
+            library.setProperty("CheckInBook", "Check In Books");
+            library.setProperty("ListCheckedBooks", "List Checked Books");
             library.setProperty("addWorker", "Add Worker");
             library.setProperty("addStudent", "Add Student Borrower");
             library.setProperty("addBookTitle", "Add Book");
@@ -115,9 +118,12 @@ public class Core {
             library.setProperty("Notes", "Notes");
             library.setProperty("status", "Status:");
             library.setProperty("Status", "Status");
-            library.setProperty("modifySuccess", "Worker updated successfully");
-            library.setProperty("modifyFail", "Failed to update worker");
-            library.setProperty("addWorkerSuccess", "Worker added successfully");
+            library.setProperty("addBookSuccess", "Book successfully added!");
+            library.setProperty("addBookFail", "Failed to add book");
+            library.setProperty("modifyBookSuccess", "Book updated successfully!");
+            library.setProperty("modifyWorkerSuccess", "Worker updated successfully!");
+            library.setProperty("modifyWorkerFail", "Failed to update worker");
+            library.setProperty("addWorkerSuccess", "Worker added successfully!");
             library.setProperty("addWorkerFail", "Failed to add worker.");
             library.setProperty("completeFields", "Please fill out all necessary fields");
             library.setProperty("Modify", "Modify");
@@ -158,10 +164,8 @@ public class Core {
             library.setProperty("Delete", "Delete");
             library.setProperty("Administrator", "Administrator");
             library.setProperty("Ordinary", "Ordinary");
-            library.setProperty("Active", "Active");
-            library.setProperty("Inactive", "Inactive");
         } else if (language.equals("fr_FR")) {
-
+            // COMPLETE FRENCH TRANSLATIONS
         }
         return library;
     }

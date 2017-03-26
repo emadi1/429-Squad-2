@@ -482,3 +482,14 @@ Caused by: java.net.SocketException: Software caused connection abort: socket wr
 ** END NESTED EXCEPTION **
 
 >
+[3/26/17 3:27 AM]|BookBarcodePrefixCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1146: Table 'spr17_csc429_khayd2.BarcodePrefixValue' doesn't exist>
+[3/26/17 3:27 AM]|Book|insertPersistentState|Error|NOTAG|null<SQL Exception: 1364: Field 'Barcode' doesn't have a default value>
+[3/26/17 3:29 AM]|BookBarcodePrefixCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1146: Table 'spr17_csc429_khayd2.BarcodePrefixValue' doesn't exist>
+[3/26/17 3:29 AM]|Book|insertPersistentState|Error|NOTAG|null<SQL Exception: 1364: Field 'Barcode' doesn't have a default value>
+[3/26/17 3:38 AM]|BookBarcodePrefixCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1146: Table 'spr17_csc429_khayd2.BarcodePrefixValue' doesn't exist>
+[3/26/17 3:38 AM]|Book|insertPersistentState|Error|NOTAG|null<SQL Exception: 1364: Field 'YearOfPublication' doesn't have a default value>
+[3/26/17 3:44 AM]|BookBarcodePrefixCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1146: Table 'spr17_csc429_khayd2.BarcodePrefixValue' doesn't exist>
+[3/26/17 3:46 AM]|BookBarcodePrefixCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1146: Table 'spr17_csc429_khayd2.BarcodePrefixValue' doesn't exist>
+[3/26/17 3:46 AM]|BookBarcodePrefixCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1146: Table 'spr17_csc429_khayd2.BarcodePrefixValue' doesn't exist>
+[3/26/17 3:51 AM]|BookBarcodePrefixCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1146: Table 'spr17_csc429_khayd2.BarcodePrefixValue' doesn't exist>
+[3/26/17 3:54 AM]|BookBarcodePrefixCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1146: Table 'spr17_csc429_khayd2.BarcodePrefixValue' doesn't exist>

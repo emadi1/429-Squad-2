@@ -19,14 +19,26 @@ import java.util.ResourceBundle;
  * Created by kevph on 3/5/2017.
  */
 public class MainViewController implements Initializable {
-    Core core = Core.getInstance();
-    Properties lang = core.getLang();
+    private Core core = Core.getInstance();
+    private Properties language = core.getLang();
     @FXML private Pane root;
     @FXML private Text welcome;
+    @FXML private Button bookTransactions;
+    @FXML private Button workerTransactions;
+    @FXML private Button studentTransactions;
+    @FXML private Button checkOutBook;
+    @FXML private Button checkInBook;
+    @FXML private Button listCheckedBooks;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        welcome.setText(lang.getProperty("welcome"));
+        bookTransactions.setText(language.getProperty("BookTransactions"));
+        workerTransactions.setText(language.getProperty("WorkerTransactions"));
+        studentTransactions.setText(language.getProperty("StudentTransactions"));
+        checkOutBook.setText(language.getProperty("CheckOutBook"));
+        checkInBook.setText(language.getProperty("CheckInBook"));
+        listCheckedBooks.setText(language.getProperty("ListCheckedBooks"));
+        welcome.setText(language.getProperty("welcome"));
     }
 
     public void menuClickListener(ActionEvent event) throws IOException {

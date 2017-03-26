@@ -64,20 +64,7 @@ public class StudentBorrowerTransactionsController extends TransactionController
             column.setMinWidth(100);
             column.setCellValueFactory(new PropertyValueFactory<StudentBorrower, String>(property));
             tableView.getColumns().add(column);
-
         }
-    }
-
-    /**
-     *
-     * @param actionEvent
-     */
-    public static void changeScene(ActionEvent actionEvent) {
-
-    }
-
-    public static boolean deleteStudentBorrower(ActionEvent actionEvent) {
-        return false;
     }
 
     /**

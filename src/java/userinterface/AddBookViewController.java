@@ -28,13 +28,13 @@ import java.util.Vector;
  */
 public class AddBookViewController implements Initializable {
 
-    private ObservableList<String> conditionList = FXCollections.observableArrayList("Good", "Damaged");
-    private ObservableList<String> statusList = FXCollections.observableArrayList("Active", "Inactive");
     Core core = Core.getInstance();
     Properties lang = core.getLang();
     Properties props = new Properties();
     BookCollection bookCollection = new BookCollection();
     BookBarcodePrefixCollection bookBarcodePrefixCollection = new BookBarcodePrefixCollection();
+    private ObservableList<String> conditionList = FXCollections.observableArrayList(lang.getProperty("Good"), lang.getProperty("Damaged"));
+    private ObservableList<String> statusList = FXCollections.observableArrayList(lang.getProperty("Active"), lang.getProperty("Inactive"));
 
     @FXML private Text barcode;
     @FXML private Text title;
@@ -94,11 +94,11 @@ public class AddBookViewController implements Initializable {
         textFieldList.add(YearOfPublication);
         textFieldList.add(ISBN);
         BookCondition.setItems(conditionList);
-        BookCondition.setValue("Good");
+        BookCondition.setValue(lang.getProperty("Good"));
         textFieldList.add(SuggestedPrice);
         textFieldList.add(Notes);
         Status.setItems(statusList);
-        Status.setValue("Status");
+        Status.setValue(lang.getProperty("Active"));
     }
 
     public void submit(ActionEvent actionEvent) {
@@ -107,25 +107,30 @@ public class AddBookViewController implements Initializable {
             alertMessage.setText("Invalid Barcode Length");
             return;
         }
-
-        props.put(BookCondition.getId(), BookCondition.getSelectionModel().getSelectedItem());
-        props.put(Status.getId(), Status.getSelectionModel().getSelectedItem());
-
-        if (Barcode.getText().equals("") || Title.getText().equals("")
-                || Author1.getText().equals("") || Publisher.getText().equals("")
-                || YearOfPublication.getText().equals("") || ISBN.getText().equals("")
-                || SuggestedPrice.getText().equals("")) {
+        if (Title.getText().equals("") || Author1.getText().equals("")
+                || Publisher.getText().equals("") || YearOfPublication.getText().equals("")
+                || ISBN.getText().equals("") || SuggestedPrice.getText().equals("")) {
             alertMessage.setText("Please fill out all necessary fields");
             return;
         }
-
+        props.setProperty("Barcode", Barcode.getText());
+        props.setProperty("Title", Title.getText());
         try {
             props.put("Discipline", bookBarcodePrefixCollection.generateDiscipline(Barcode.getText()));
         } catch (Exception e) {
             alertMessage.setText("");
             props.put("Discipline", "None");
         }
-
+        props.setProperty("Author1", Author1.getText());
+        props.setProperty("Author2", Author2.getText());
+        props.setProperty("Author3", Author3.getText());
+        props.setProperty("Author4", Author4.getText());
+        props.setProperty("Publisher", Publisher.getText());
+        props.setProperty("ISBN", Publisher.getText());
+        props.put(BookCondition.getId(), BookCondition.getSelectionModel().getSelectedItem());
+        props.setProperty("SuggestedPrice", SuggestedPrice.getText());
+        props.setProperty("Notes", Notes.getText());
+        props.put(Status.getId(), Status.getSelectionModel().getSelectedItem());
         int count = bookCollection.findBooksByBarcode(props.getProperty("Barcode")).size();
         if (count == 0) {
             Book newBook = new Book(props);

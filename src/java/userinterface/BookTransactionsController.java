@@ -49,7 +49,7 @@ public class BookTransactionsController extends TransactionController {
         properties = itemsSearchChoiceArray();
         searchChoice.setItems(properties);
         searchChoice.getSelectionModel().selectFirst();
-        bookHeader.setText(language.getProperty("WorkerTransactions"));
+        bookHeader.setText(language.getProperty("BookTransactions"));
         modify.setText(language.getProperty("Modify"));
         add.setText(language.getProperty("Add"));
         search.setText(language.getProperty("Search"));
@@ -257,7 +257,7 @@ public class BookTransactionsController extends TransactionController {
 
             case "Status":
                 if (input == null || input.equals("") ||
-                        !(input.equals("Status") || input.equals("Inactive"))) {
+                        !(input.equals("Active") || input.equals("Inactive"))) {
                     alertMessage.setText("Please enter either: 'Active'/'Inactive' in the search field");
                     searchField.clear();
                 } else {

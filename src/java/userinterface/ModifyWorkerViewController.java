@@ -24,10 +24,10 @@ import java.util.ResourceBundle;
  */
 public class ModifyWorkerViewController implements Initializable{
 
-    private ObservableList<String> statusList = FXCollections.observableArrayList("Active", "Inactive");
-    private ObservableList<String> credentialsList = FXCollections.observableArrayList("Administrator", "Ordinary");
     private Core core = Core.getInstance();
     Properties lang = core.getLang();
+    ObservableList<String> statusList = FXCollections.observableArrayList(lang.getProperty("Active"), lang.getProperty("Inactive"));
+    ObservableList<String> credentialsList = FXCollections.observableArrayList(lang.getProperty("Administrator"), lang.getProperty("Ordinary"));
 
     @FXML private Text bannerId;
     @FXML private Text password;
@@ -54,8 +54,6 @@ public class ModifyWorkerViewController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ObservableList<String> statusList = FXCollections.observableArrayList(lang.getProperty("Active"), lang.getProperty("Inactive"));
-        ObservableList<String> credentialsList = FXCollections.observableArrayList(lang.getProperty("Administrator"), lang.getProperty("Ordinary"));
         submit.setText(lang.getProperty("Modify"));
         bannerId.setText(lang.getProperty("bannerId"));
         password.setText(lang.getProperty("password"));
@@ -99,7 +97,6 @@ public class ModifyWorkerViewController implements Initializable{
         worker.setDateOfHire(DateOfHire.getText());
         worker.setStatus(Status.getValue());
         worker.update();
-        System.out.println(worker.toString());
         alertMessage.setText(lang.getProperty("addWorkerSuccess"));
     }
 }
