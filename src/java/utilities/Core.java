@@ -78,6 +78,8 @@ public class Core {
     public Properties getLang() {
         Properties library = new Properties();
         if (language.equals("en_US")) {
+
+            // Main View Buttons/ Text
             library.setProperty("welcome", "EOP Library System");
             library.setProperty("signIn", "Sign In Below");
             library.setProperty("WorkerTransactions", "Worker Transactions");
@@ -89,6 +91,8 @@ public class Core {
             library.setProperty("addWorker", "Add Worker");
             library.setProperty("addStudent", "Add Student Borrower");
             library.setProperty("addBookTitle", "Add Book");
+
+            // Book Data Model/ Text
             library.setProperty("barcode", "Barcode:");
             library.setProperty("Barcode", "Barcode");
             library.setProperty("title", "Title:");
@@ -118,21 +122,8 @@ public class Core {
             library.setProperty("Notes", "Notes");
             library.setProperty("status", "Status:");
             library.setProperty("Status", "Status");
-            library.setProperty("addBookSuccess", "Book successfully added!");
-            library.setProperty("addBookFail", "Failed to add book");
-            library.setProperty("modifyBookSuccess", "Book updated successfully!");
-            library.setProperty("modifyWorkerSuccess", "Worker updated successfully!");
-            library.setProperty("modifyWorkerFail", "Failed to update worker");
-            library.setProperty("addWorkerSuccess", "Worker added successfully!");
-            library.setProperty("addWorkerFail", "Failed to add worker.");
-            library.setProperty("completeFields", "Please fill out all necessary fields");
-            library.setProperty("Modify", "Modify");
-            library.setProperty("Add", "Add");
-            library.setProperty("Delete", "Delete");
-            library.setProperty("Good", "Good");
-            library.setProperty("Damaged", "Damaged");
-            library.setProperty("Active", "Active");
-            library.setProperty("Inactive", "Inactive");
+
+            // Worker Data Models/Text
             library.setProperty("bannerId", "Banner ID:");
             library.setProperty("BannerId", "BannerId");
             library.setProperty("password", "Password:");
@@ -153,17 +144,37 @@ public class Core {
             library.setProperty("DateOfHire", "DateOfHire");
             library.setProperty("status", "Status:");
             library.setProperty("Status", "Status");
-            library.setProperty("modifySuccess", "Worker updated successfully");
-            library.setProperty("modifyFail", "Failed to update worker");
-            library.setProperty("addWorkerSuccess", "Worker added successfully");
-            library.setProperty("addWorkerFail", "Failed to add worker.");
             library.setProperty("completeFields", "Please fill out all necessary fields");
-            library.setProperty("Search", "Search");
+
+
+            // Book Alerts
+            library.setProperty("invalidBarcodeLength", "Invalid Barcode length");
+            library.setProperty("existingBarcode", "Barcode already exists: ");
+            library.setProperty("yearFormat", "Publication year must be in format: yyyy");
+            library.setProperty("addBookSuccess", "Book successfully added!");
+            library.setProperty("addBookFail", "Failed to add book.");
+            library.setProperty("modifyBookSuccess", "Book updated successfully!");
+
+            // Worker Alerts
+            library.setProperty("invalidBannerIdLength", "Invalid BannerID length.");
+            library.setProperty("modifyWorkerSuccess", "Worker updated successfully!");
+            library.setProperty("modifyWorkerFail", "Failed to update worker.");
+            library.setProperty("addWorkerSuccess", "Worker added successfully!");
+            library.setProperty("addWorkerFail", "Failed to add worker.");
+            library.setProperty("completeFields", "Please fill out all necessary fields.");
+
+            // Buttons
             library.setProperty("Modify", "Modify");
             library.setProperty("Add", "Add");
             library.setProperty("Delete", "Delete");
+            library.setProperty("Good", "Good");
+            library.setProperty("Damaged", "Damaged");
+            library.setProperty("Active", "Active");
+            library.setProperty("Inactive", "Inactive");
+            library.setProperty("Search", "Search");
             library.setProperty("Administrator", "Administrator");
             library.setProperty("Ordinary", "Ordinary");
+
         } else if (language.equals("fr_FR")) {
             // COMPLETE FRENCH TRANSLATIONS
         }

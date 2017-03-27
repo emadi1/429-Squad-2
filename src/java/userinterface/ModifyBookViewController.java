@@ -77,7 +77,7 @@ public class ModifyBookViewController implements Initializable {
         Book book = core.getModBook();
         book.setTitle(Title.getText());
         try {
-            book.setDiscipline();
+            book.setDiscipline(Book.generateDiscipline(book.getBarcode().substring(0, 2)));
         } catch (Exception e) {
             System.out.println("Exception: " + e);
         }

@@ -97,6 +97,6 @@ public class ModifyWorkerViewController implements Initializable{
         worker.setDateOfHire(DateOfHire.getText());
         worker.setStatus(Status.getValue());
         worker.update();
-        alertMessage.setText(lang.getProperty("addWorkerSuccess"));
+        alertMessage.setText(lang.getProperty("modifyWorkerSuccess"));
     }
 }

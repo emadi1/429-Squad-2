@@ -84,7 +84,7 @@ public class SQLInsertStatement extends SQLStatement
 
 			//System.out.println("Checking insertType");
 			String insertType = schema.getProperty(theColumnName);
-			//		System.out.println("InsertType = " + insertType);
+					System.out.println("InsertType = " + insertType);
 			//System.out.println("Schema is : " + schema);
 
 			if (insertType.equals("numeric") == true)

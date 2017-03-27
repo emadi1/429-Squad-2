@@ -1,6 +1,4 @@
-
 package models;
-
 import exception.InvalidPrimaryKeyException;
 
 import java.io.IOException;
@@ -9,7 +7,6 @@ import java.util.Enumeration;
 import java.util.Properties;
 import java.util.Vector;
 
-
 /**
  * Created by kevph on 3/20/2017.
  */
@@ -17,7 +14,8 @@ import java.util.Vector;
 public class Book extends EntityBase {
     private static final String myTableName = "Book";
     private String updateStatusMessage = "";
-    protected Properties dependencies;
+    private Properties dependencies;
+
     public Book(String barcode) throws InvalidPrimaryKeyException {
         super(myTableName);
         setDependencies();
@@ -33,7 +31,7 @@ public class Book extends EntityBase {
                 Properties retrievedBookData = allDataRetrieved.elementAt(0);
                 persistentState = new Properties();
                 Enumeration allKeys = retrievedBookData.propertyNames();
-                while (allKeys.hasMoreElements() == true) {
+                while (allKeys.hasMoreElements()) {
                     String nextKey = (String) allKeys.nextElement();
                     String nextValue = retrievedBookData.getProperty(nextKey);
                     if (nextValue != null) {
@@ -45,6 +43,7 @@ public class Book extends EntityBase {
             throw new InvalidPrimaryKeyException("No book matching ID: " + barcode + " found.");
         }
     }
+
     public Book(Properties props) {
         super(myTableName);
         setDependencies();
@@ -58,27 +57,33 @@ public class Book extends EntityBase {
             }
         }
     }
+
     public static int compare(Book first, Book second) {
         String firstBook = (String) first.getState("Barcode");
         String secondBook = (String) second.getState("Barcode");
         return firstBook.compareTo(secondBook);
     }
+
     private void setDependencies() {
         dependencies = new Properties();
         myRegistry.setDependencies(dependencies);
     }
+
     public Object getState(String key) {
         if (key.equals("UpdateStatusMessage"))
             return updateStatusMessage;
         return persistentState.getProperty(key);
     }
+
     public void stateChangeRequest(String key, Object value) {
         myRegistry.updateSubscribers(key, this);
     }
+
     public void updateState(String key, Object value) {
         stateChangeRequest(key, value);
     }
-    public void insertStateInDatabase() {
+
+    private void insertStateInDatabase() {
         try {
             Integer Barcode = insertPersistentState(mySchema, persistentState);
             persistentState.setProperty("Barcode", "" + Barcode.intValue());
@@ -88,6 +93,7 @@ public class Book extends EntityBase {
             System.out.println("Error installing data: " + e);
         }
     }
+
     private void updateStateInDatabase() {
         try {
             Properties whereClause = new Properties();
@@ -99,94 +105,130 @@ public class Book extends EntityBase {
             System.out.println("Error installing data: " + e);
         }
     }
+
     public void update() {
         updateStateInDatabase();
     }
+
     public void insert() {
         insertStateInDatabase();
     }
+
     public String getBarcode() {
         return persistentState.getProperty("Barcode");
     }
+
     public String getTitle() {
         return persistentState.getProperty("Title");
     }
+
     public String getDiscipline() {
         return persistentState.getProperty("Discipline");
     }
+
     public String getAuthor1() {
         return persistentState.getProperty("Author1");
     }
+
     public String getAuthor2() {
         return persistentState.getProperty("Author2");
     }
+
     public String getAuthor3() {
         return persistentState.getProperty("Author3");
     }
+
     public String getAuthor4() {
         return persistentState.getProperty("Author4");
     }
+
     public String getPublisher() {
         return persistentState.getProperty("Publisher");
     }
+
     public String getYearOfPublication() {
         return persistentState.getProperty("YearOfPublication");
     }
+
     public String getISBN() {
         return persistentState.getProperty("ISBN");
     }
+
     public String getBookCondition() {
         return persistentState.getProperty("BookCondition");
     }
+
     public String getSuggestedPrice() {
         return persistentState.getProperty("SuggestedPrice");
     }
+
     public String getNotes() {
         return persistentState.getProperty("Notes");
     }
+
     public String getStatus() {
         return persistentState.getProperty("Status");
     }
+
     public void setTitle(String title) {
         persistentState.setProperty("Title", title);
     }
-    public void setDiscipline() {
+
+    public static String generateDiscipline(String prefix) {
         BookBarcodePrefixCollection bookBarcodePrefixCollection = new BookBarcodePrefixCollection();
-        persistentState.setProperty("Discipline", bookBarcodePrefixCollection.generateDiscipline(persistentState.getProperty("Barcode")));
+        BookBarcodePrefix bookBarcodePrefix = (BookBarcodePrefix)bookBarcodePrefixCollection.findBarcodePrefixValueByPrefix(prefix).get(0);
+        System.out.println(bookBarcodePrefix.getDiscipline());
+        return bookBarcodePrefix.getDiscipline();
     }
+
+    public void setDiscipline(String discipline) {
+        persistentState.setProperty("Discipline", discipline);
+    }
+
     public void setAuthor1(String author1) {
         persistentState.setProperty("Author1", author1);
     }
+
     public void setAuthor2(String author2) {
         persistentState.setProperty("Author2", author2);
     }
+
     public void setAuthor3(String author3) {
         persistentState.setProperty("Author3", author3);
     }
+
     public void setAuthor4(String author4) {
         persistentState.setProperty("Author4", author4);
     }
+
     public void setPublisher(String publisher) {
         persistentState.setProperty("Publisher", publisher);
     }
+
     public void setYearOfPublication(String yearOfPublication) {
         persistentState.setProperty("YearOfPublication", yearOfPublication);
     }
+
     public void setISBN(String isbn) {
         persistentState.setProperty("ISBN", isbn);
     }
+
     public void setBookCondition(String bookCondition) {
         persistentState.setProperty("BookCondition", bookCondition);
     }
+
     public void setSuggestedPrice(String suggestedPrice) {
         persistentState.setProperty("SuggestedPrice", suggestedPrice);
     }
+
     public void setNotes(String notes) {
         persistentState.setProperty("Notes", notes);
     }
+
     public void setStatus(String status) {
         persistentState.setProperty("Status", status);
     }
+
     public String toString() {
         return  persistentState.getProperty("Barcode") + "; " +
                 persistentState.getProperty("Title") + "; " +
@@ -203,6 +245,7 @@ public class Book extends EntityBase {
                 persistentState.getProperty("Notes") + "; " +
                 persistentState.getProperty("Status");
     }
+
     protected void initializeSchema(String tableName) {
         if (mySchema == null) {
             mySchema = getSchemaInfo(tableName);

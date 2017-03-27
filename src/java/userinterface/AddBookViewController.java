@@ -1,6 +1,4 @@
 package userinterface;
-
-import database.SQLInsertStatement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,16 +9,14 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import models.Book;
-import models.BookBarcodePrefix;
 import models.BookBarcodePrefixCollection;
 import models.BookCollection;
 import utilities.Core;
-
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Properties;
 import java.util.ResourceBundle;
-import java.util.Vector;
+import static models.Book.generateDiscipline;
 
 
 /**
@@ -36,33 +32,11 @@ public class AddBookViewController implements Initializable {
     private ObservableList<String> conditionList = FXCollections.observableArrayList(lang.getProperty("Good"), lang.getProperty("Damaged"));
     private ObservableList<String> statusList = FXCollections.observableArrayList(lang.getProperty("Active"), lang.getProperty("Inactive"));
 
-    @FXML private Text barcode;
-    @FXML private Text title;
-    @FXML private Text author1;
-    @FXML private Text author2;
-    @FXML private Text author3;
-    @FXML private Text author4;
-    @FXML private Text publisher;
-    @FXML private Text yearOfPublication;
-    @FXML private Text isbn;
-    @FXML private Text bookCondition;
-    @FXML private Text suggestedPrice;
-    @FXML private Text notes;
-    @FXML private Text status;
-    @FXML private Text alertMessage;
-    @FXML private TextField Barcode;
-    @FXML private TextField Title;
-    @FXML private TextField Author1;
-    @FXML private TextField Author2;
-    @FXML private TextField Author3;
-    @FXML private TextField Author4;
-    @FXML private TextField Publisher;
-    @FXML private TextField YearOfPublication;
-    @FXML private TextField ISBN;
-    @FXML private ComboBox<String> BookCondition;
-    @FXML private TextField SuggestedPrice;
-    @FXML private TextField Notes;
-    @FXML private ComboBox<String> Status;
+    @FXML private Text barcode, title, author1, author2, author3, author4, publisher, yearOfPublication;
+    @FXML private Text isbn, bookCondition, suggestedPrice, notes, status, alertMessage;
+    @FXML private TextField Barcode, Title, Author1, Author2, Author3, Author4, Publisher;
+    @FXML private TextField YearOfPublication, ISBN, SuggestedPrice, Notes;
+    @FXML private ComboBox<String> BookCondition, Status;
     @FXML private Button submit;
 
     ArrayList<TextField> textFieldList;
@@ -103,67 +77,40 @@ public class AddBookViewController implements Initializable {
 
     public void submit(ActionEvent actionEvent) {
 
+        BookCollection bookCollection = new BookCollection();
+        Properties properties = new Properties();
+        alertMessage.setText("");
         if (Barcode.getText().length() != 5) {
-            alertMessage.setText("Invalid Barcode Length");
+            alertMessage.setText(lang.getProperty("invalidBarcodeLength"));
             return;
         }
-        if (Title.getText().equals("") || Author1.getText().equals("")
-                || Publisher.getText().equals("") || YearOfPublication.getText().equals("")
-                || ISBN.getText().equals("") || SuggestedPrice.getText().equals("")) {
-            alertMessage.setText("Please fill out all necessary fields");
+        if (Title.getText().equals("") || Author1.getText().equals("") || Publisher.getText().equals("")
+                || YearOfPublication.getText().length() != 4 || ISBN.getText().equals("")
+                || SuggestedPrice.getText().equals("")) {
+            alertMessage.setText(lang.getProperty("completeFields"));
             return;
         }
-        props.setProperty("Barcode", Barcode.getText());
-        props.setProperty("Title", Title.getText());
-        try {
-            props.put("Discipline", bookBarcodePrefixCollection.generateDiscipline(Barcode.getText()));
-        } catch (Exception e) {
-            alertMessage.setText("");
-            props.put("Discipline", "None");
-        }
-        props.setProperty("Author1", Author1.getText());
-        props.setProperty("Author2", Author2.getText());
-        props.setProperty("Author3", Author3.getText());
-        props.setProperty("Author4", Author4.getText());
-        props.setProperty("Publisher", Publisher.getText());
-        props.setProperty("ISBN", Publisher.getText());
-        props.put(BookCondition.getId(), BookCondition.getSelectionModel().getSelectedItem());
-        props.setProperty("SuggestedPrice", SuggestedPrice.getText());
-        props.setProperty("Notes", Notes.getText());
-        props.put(Status.getId(), Status.getSelectionModel().getSelectedItem());
-        int count = bookCollection.findBooksByBarcode(props.getProperty("Barcode")).size();
-        if (count == 0) {
-            Book newBook = new Book(props);
-            System.out.println(newBook.toString());
-            newBook.insert();
-            alertMessage.setText("Book has been submitted");
+        if (YearOfPublication.getText().length() != 4) {
+            alertMessage.setText(lang.getProperty("yearFormat"));
+            return;
         } else {
-            alertMessage.setText("Book with barcode: " + props.getProperty("Barcode") + " already exists");
+            properties.put(BookCondition.getId(), BookCondition.getSelectionModel().getSelectedItem());
+            properties.put(Status.getId(), Status.getSelectionModel().getSelectedItem());
+            for (TextField textField : textFieldList) {
+                properties.put(textField.getId(), textField.getText());
+            }
         }
-        for (TextField textField : textFieldList) {
-            textField.clear();
+        int count = bookCollection.findBooksByBarcode(properties.getProperty("Barcode")).size();
+        if (count == 0) {
+            properties.put("Discipline", generateDiscipline(Barcode.getText().substring(0, 2)));
+            Book newBook = new Book(properties);
+            newBook.insert();
+            alertMessage.setText(lang.getProperty("addBookSuccess"));
+        } else {
+            alertMessage.setText(lang.getProperty("existingBarcode") + properties.getProperty("Barcode"));
         }
+        for (TextField t : textFieldList) { t.clear(); }
+        BookCondition.setValue(lang.getProperty("Good"));
+        Status.setValue(lang.getProperty("Active"));
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

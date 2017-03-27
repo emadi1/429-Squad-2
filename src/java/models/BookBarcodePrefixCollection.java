@@ -7,7 +7,7 @@ import java.util.Vector;
  * Created by kevph on 3/20/2017.
  */
 public class BookBarcodePrefixCollection extends EntityBase {
-    private static final String myTableName = "BarcodePrefixValue";
+    private static final String myTableName = "BookBarcodePrefix";
     private Vector<BookBarcodePrefix> bookBarcodePrefixes;
     private String updateStatusMessage = "";
 

@@ -47,11 +47,11 @@ public class AddWorkerViewController implements Initializable {
     @FXML private Button submit;
     @FXML private Text alertMessage;
     Core core = Core.getInstance();
+    Properties lang = core.getLang();
     ArrayList<TextField> textFieldList;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Properties lang = core.getLang();
         ObservableList<String> statusList = FXCollections.observableArrayList(lang.getProperty("Active"), lang.getProperty("Inactive"));
         ObservableList<String> credentialsList = FXCollections.observableArrayList(lang.getProperty("Administrator"), lang.getProperty("Ordinary"));
         submit.setText(lang.getProperty("Add"));
@@ -90,7 +90,6 @@ public class AddWorkerViewController implements Initializable {
             return;
         }
         for (TextField textField : textFieldList) {
-
             if (textField.getText().equals("")) {
                 alertMessage.setText("Please complete all fields");
                 return;
@@ -110,5 +109,7 @@ public class AddWorkerViewController implements Initializable {
             alertMessage.setText("Worker with BannerID: " + prop.getProperty("BannerID") + " already exists");
         }
         for (TextField t : textFieldList) { t.clear(); }
+        Credentials.setValue(lang.getProperty("Ordinary"));
+        Status.setValue(lang.getProperty("Active"));
     }
 }
