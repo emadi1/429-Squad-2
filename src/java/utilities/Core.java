@@ -78,6 +78,14 @@ public class Core {
             library.setProperty("addStudent", "Add Student Borrower");
             library.setProperty("addBookTitle", "Add Book");
 
+            // Student Borrower Data Model/ Text
+            library.setProperty("borrowerStatus", "Borrower Status:");
+            library.setProperty("BorrowerStatus", "BorrowerStatus");
+            library.setProperty("dateOfLatestBorrowerStatus", "Date of Latest Borrower Status:");
+            library.setProperty("DateOfLatestBorrowerStatus", "DateOfLatestBorrowerStatus");
+            library.setProperty("dateOfRegistration", "Date of Registration:");
+            library.setProperty("DateOfRegistration", "DateOfRegistration");
+
             // Book Data Model/ Text
             library.setProperty("barcode", "Barcode:");
             library.setProperty("Barcode", "Barcode");
@@ -131,6 +139,14 @@ public class Core {
             library.setProperty("status", "Status:");
             library.setProperty("Status", "Status");
 
+            // Student Alerts
+            library.setProperty("addStudentSuccess", "Student Borrower successfully added!");
+            library.setProperty("addStudentFail", "Failed to add student borrower.");
+            library.setProperty("modifyStudentSuccess", "Student Borrower updated successfully!");
+            library.setProperty("modifyStudentFail", "Failed to modify student borrower.");
+            library.setProperty("deleteStudentSuccess", "Student Borrower deleted.");
+            library.setProperty("deleteStudentFail", "Failed to delete student borrower.");
+
             // Book Alerts
             library.setProperty("invalidBarcodeLength", "Invalid Barcode length");
             library.setProperty("existingBarcode", "Barcode already exists: ");
@@ -138,6 +154,7 @@ public class Core {
             library.setProperty("addBookSuccess", "Book successfully added!");
             library.setProperty("addBookFail", "Failed to add book.");
             library.setProperty("modifyBookSuccess", "Book updated successfully!");
+            library.setProperty("modifyBookFail", "Failed to update book.");
 
             // Worker Alerts
             library.setProperty("invalidBannerIdLength", "Invalid BannerID length.");
