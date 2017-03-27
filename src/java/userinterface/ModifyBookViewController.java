@@ -1,5 +1,4 @@
 package userinterface;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,19 +19,19 @@ import java.util.ResourceBundle;
  */
 public class ModifyBookViewController implements Initializable {
 
-    Core core = Core.getInstance();
-    Properties language = core.getLang();
-    private ObservableList<String> statusList = FXCollections.observableArrayList(language.getProperty("Active", language.getProperty("Inactive")));
-    private ObservableList<String> bookConditionList = FXCollections.observableArrayList(language.getProperty("Good"), language.getProperty("Damagaed"));
+    private Core core = Core.getInstance();
+    private Properties language = core.getLang();
+    private ObservableList<String> statusList =
+            FXCollections.observableArrayList(language.getProperty("Active", language.getProperty("Inactive")));
+    private ObservableList<String> bookConditionList =
+            FXCollections.observableArrayList(language.getProperty("Good"), language.getProperty("Damaged"));
 
-    @FXML private Button submit;
-    @FXML private Text barcode, title, discipline, author1;
-    @FXML private Text author2, author3, author4, publisher;
-    @FXML private Text yearOfPublication, isbn, bookCondition;
-    @FXML private Text suggestedPrice, notes, status, alertMessage;
+    @FXML private Text barcode, title, discipline, author1, author2, author3, author4, publisher;
+    @FXML private Text yearOfPublication, isbn, bookCondition, suggestedPrice, notes, status, alertMessage;
     @FXML private TextField Barcode, Title, Discipline, Author1, Author2, Author3, Author4;
     @FXML private TextField Publisher, YearOfPublication, ISBN, SuggestedPrice, Notes;
     @FXML private ComboBox<String> BookCondition, Status;
+    @FXML private Button submit;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -73,26 +72,30 @@ public class ModifyBookViewController implements Initializable {
     }
 
     public void submit(ActionEvent actionEvent) {
-        alertMessage.setText("");
-        Book book = core.getModBook();
-        book.setTitle(Title.getText());
         try {
-            book.setDiscipline(Book.generateDiscipline(book.getBarcode().substring(0, 2)));
+            alertMessage.setText("");
+            Book book = core.getModBook();
+            book.setTitle(Title.getText());
+            try {
+                book.setDiscipline(Book.generateDiscipline(book.getBarcode().substring(0, 2)));
+            } catch (Exception e) {
+                System.out.println("Exception: " + e);
+            }
+            book.setAuthor1(Author1.getText());
+            book.setAuthor2(Author2.getText());
+            book.setAuthor3(Author3.getText());
+            book.setAuthor4(Author4.getText());
+            book.setPublisher(Publisher.getText());
+            book.setYearOfPublication(YearOfPublication.getText());
+            book.setISBN(ISBN.getText());
+            book.setBookCondition(BookCondition.getValue());
+            book.setSuggestedPrice(SuggestedPrice.getText());
+            book.setNotes(Notes.getText());
+            book.setStatus(Status.getValue());
+            book.update();
+            alertMessage.setText(language.getProperty("modifyBookSuccess"));
         } catch (Exception e) {
-            System.out.println("Exception: " + e);
+            alertMessage.setText(language.getProperty("modifyBookFail"));
         }
-        book.setAuthor1(Author1.getText());
-        book.setAuthor2(Author2.getText());
-        book.setAuthor3(Author3.getText());
-        book.setAuthor4(Author4.getText());
-        book.setPublisher(Publisher.getText());
-        book.setYearOfPublication(YearOfPublication.getText());
-        book.setISBN(ISBN.getText());
-        book.setBookCondition(BookCondition.getValue());
-        book.setSuggestedPrice(SuggestedPrice.getText());
-        book.setNotes(Notes.getText());
-        book.setStatus(Status.getValue());
-        book.update();
-        alertMessage.setText(language.getProperty("modifyBookSuccess"));
     }
 }

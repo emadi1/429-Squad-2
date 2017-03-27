@@ -36,12 +36,12 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Text fx:id="banner" textAlignment="LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <Text fx:id="pw" textAlignment="LEFT" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <Text fx:id="alertMessage" text="" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                <Text fx:id="banner" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Text fx:id="pw" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Text fx:id="alertMessage" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                 <TextField id="bannerId" fx:id="bannerId" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                 <TextField id="password" fx:id="password" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                <Button fx:id="signIn" mnemonicParsing="false" onAction="#signIn" text="Sign In" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                <Button fx:id="signIn" mnemonicParsing="false" onAction="#signIn" GridPane.columnIndex="3" GridPane.rowIndex="3" />
             <Button fx:id="skip" mnemonicParsing="false" onAction="#skipAsAdmin" text="Skip as Admin" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font size="12.0" />

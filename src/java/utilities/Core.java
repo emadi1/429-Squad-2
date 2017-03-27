@@ -14,9 +14,9 @@ public class Core {
 
     // Attributes
     private static Core core = null;
-    private static Worker modWorker, addWorker, user;
-    private static Book modBook, addBook;
-    private static StudentBorrower modStudentBorrower, addStudentBorrower;
+    private static Worker modWorker, user;
+    private static Book modBook;
+    private static StudentBorrower modStudentBorrower;
     private static String language = "";
 
     //Private constructor
@@ -31,30 +31,21 @@ public class Core {
     public Book getModBook() {
         return modBook;
     }
-    public Book getAddBook() {
-        return addBook;
-    }
     public Worker getUser() {
         return user;
     }
     public Worker getModWorker() {
         return modWorker;
     }
-    public Worker getAddWorker() {
-        return addWorker;
-    }
     public StudentBorrower getModStudentBorrower() {
         return modStudentBorrower;
     }
-    public StudentBorrower getAddStudentBorrower() {
-        return addStudentBorrower;
+    public String getLanguage() {
+        return language;
     }
     // Setters
     public void setModBook(Book book) {
         modBook = book;
-    }
-    public void setAddBook(Book book) {
-        addBook = book;
     }
     public void setUser(Worker worker) {
         user = worker;
@@ -62,14 +53,8 @@ public class Core {
     public void setModWorker(Worker worker) {
         modWorker = worker;
     }
-    public void setAddWorker(Worker worker) {
-        addWorker = worker;
-    }
     public void setModStudentBorrower(StudentBorrower studentBorrower) {
         modStudentBorrower = studentBorrower;
-    }
-    public void setAddStudentBorrower(StudentBorrower studentBorrower) {
-        addStudentBorrower = studentBorrower;
     }
     public void setLanguage(String lang) {
         language = lang;
@@ -82,6 +67,7 @@ public class Core {
             // Main View Buttons/ Text
             library.setProperty("welcome", "EOP Library System");
             library.setProperty("signIn", "Sign In Below");
+            library.setProperty("SignIn", "Sign In");
             library.setProperty("WorkerTransactions", "Worker Transactions");
             library.setProperty("BookTransactions", "Book Transactions");
             library.setProperty("StudentTransactions", "Student Transactions");
@@ -144,8 +130,6 @@ public class Core {
             library.setProperty("DateOfHire", "DateOfHire");
             library.setProperty("status", "Status:");
             library.setProperty("Status", "Status");
-            library.setProperty("completeFields", "Please fill out all necessary fields");
-
 
             // Book Alerts
             library.setProperty("invalidBarcodeLength", "Invalid Barcode length");
@@ -157,8 +141,10 @@ public class Core {
 
             // Worker Alerts
             library.setProperty("invalidBannerIdLength", "Invalid BannerID length.");
+            library.setProperty("invalidDateFormat", "Date must be in format: mm-dd-yyyy");
             library.setProperty("modifyWorkerSuccess", "Worker updated successfully!");
             library.setProperty("modifyWorkerFail", "Failed to update worker.");
+            library.setProperty("existingBannerId", "BannerID already exists in system.");
             library.setProperty("addWorkerSuccess", "Worker added successfully!");
             library.setProperty("addWorkerFail", "Failed to add worker.");
             library.setProperty("completeFields", "Please fill out all necessary fields.");

@@ -26,7 +26,6 @@ public class AddBookViewController implements Initializable {
 
     Core core = Core.getInstance();
     Properties lang = core.getLang();
-    Properties props = new Properties();
     BookCollection bookCollection = new BookCollection();
     BookBarcodePrefixCollection bookBarcodePrefixCollection = new BookBarcodePrefixCollection();
     private ObservableList<String> conditionList = FXCollections.observableArrayList(lang.getProperty("Good"), lang.getProperty("Damaged"));
@@ -77,38 +76,41 @@ public class AddBookViewController implements Initializable {
 
     public void submit(ActionEvent actionEvent) {
 
-        BookCollection bookCollection = new BookCollection();
         Properties properties = new Properties();
-        alertMessage.setText("");
+        BookCollection bookCollection = new BookCollection();
+        int count = bookCollection.findBooksByBarcode(properties.getProperty("Barcode")).size();
+
         if (Barcode.getText().length() != 5) {
             alertMessage.setText(lang.getProperty("invalidBarcodeLength"));
             return;
         }
-        if (Title.getText().equals("") || Author1.getText().equals("") || Publisher.getText().equals("")
-                || YearOfPublication.getText().length() != 4 || ISBN.getText().equals("")
-                || SuggestedPrice.getText().equals("")) {
-            alertMessage.setText(lang.getProperty("completeFields"));
-            return;
-        }
+
         if (YearOfPublication.getText().length() != 4) {
             alertMessage.setText(lang.getProperty("yearFormat"));
+            return;
+        }
+
+        if (Title.getText().equals("") || Author1.getText().equals("") || Publisher.getText().equals("")
+                || YearOfPublication.getText().equals("") || ISBN.getText().equals("")
+                || SuggestedPrice.getText().equals("")) {
+            alertMessage.setText(lang.getProperty("completeFields"));
             return;
         } else {
             properties.put(BookCondition.getId(), BookCondition.getSelectionModel().getSelectedItem());
             properties.put(Status.getId(), Status.getSelectionModel().getSelectedItem());
-            for (TextField textField : textFieldList) {
-                properties.put(textField.getId(), textField.getText());
-            }
-        }
-        int count = bookCollection.findBooksByBarcode(properties.getProperty("Barcode")).size();
-        if (count == 0) {
             properties.put("Discipline", generateDiscipline(Barcode.getText().substring(0, 2)));
+            for (TextField textField : textFieldList)
+                properties.put(textField.getId(), textField.getText());
+        }
+
+        if (count == 0) {
             Book newBook = new Book(properties);
             newBook.insert();
             alertMessage.setText(lang.getProperty("addBookSuccess"));
         } else {
             alertMessage.setText(lang.getProperty("existingBarcode") + properties.getProperty("Barcode"));
         }
+
         for (TextField t : textFieldList) { t.clear(); }
         BookCondition.setValue(lang.getProperty("Good"));
         Status.setValue(lang.getProperty("Active"));

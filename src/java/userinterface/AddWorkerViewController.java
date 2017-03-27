@@ -84,30 +84,48 @@ public class AddWorkerViewController implements Initializable {
     public void submit(ActionEvent event) {
 
         Properties prop = new Properties();
-        alertMessage.setText("");
-        if (BannerId.getText().length() != 9) {
-            alertMessage.setText("Invalid BannerID Length");
-            return;
-        }
-        for (TextField textField : textFieldList) {
-            if (textField.getText().equals("")) {
-                alertMessage.setText("Please complete all fields");
-                return;
-            } else {
-                prop.put(textField.getId(), textField.getText());
-            }
-        }
-        prop.put(Status.getId(), Status.getSelectionModel().getSelectedItem());
-        prop.put(Credentials.getId(), Credentials.getSelectionModel().getSelectedItem());
         WorkerCollection workerCollection = new WorkerCollection();
         int count = workerCollection.findWorkersByBannerId(prop.getProperty("BannerId")).size();
+
+        if (BannerId.getText().length() != 9) {
+            alertMessage.setText(lang.getProperty("invalidBannerIdLength"));
+            return;
+        }
+
+        if (DateOfHire.getText().length() != 10 || DateOfLatestCredentialsStatus.getText().length() != 10
+                || DateOfHire.getText().charAt(5) != '-' || DateOfHire.getText().charAt(7) != '-'
+                || DateOfLatestCredentialsStatus.getText().charAt(4) != '-'
+                || DateOfLatestCredentialsStatus.getText().charAt(7) != '-') {
+            alertMessage.setText(lang.getProperty("invalidDateFormat"));
+            return;
+        }
+
+        for (TextField textField : textFieldList) {
+            if (textField.getText().equals("")) {
+                alertMessage.setText(lang.getProperty("completeFields"));
+                return;
+            } else prop.put(textField.getId(), textField.getText());
+        }
+
+        if (core.getLanguage().equals("fr_FR")) {
+            String hireDay = DateOfHire.getText().substring(3, 5);
+            String hireMonth = DateOfHire.getText().substring(0, 2);
+            String hireYear = DateOfHire.getText().substring(6);
+            String credDay = DateOfLatestCredentialsStatus.getText().substring(3, 5);
+            String credMonth = DateOfLatestCredentialsStatus.getText().substring(0, 2);
+            String credYear = DateOfLatestCredentialsStatus.getText().substring(6);
+            prop.setProperty("DateOfHire", hireDay + "-" + hireMonth + "-" + hireYear);
+            prop.setProperty("DateOfLatestCredentialsStatus", credDay + "-" + credMonth + "-" + credYear);
+        }
+
         if (count == 0) {
+            prop.put(Status.getId(), Status.getSelectionModel().getSelectedItem());
+            prop.put(Credentials.getId(), Credentials.getSelectionModel().getSelectedItem());
             Worker newWorker = new Worker(prop);
             newWorker.insert();
-            alertMessage.setText("Worker has been submitted");
-        } else {
-            alertMessage.setText("Worker with BannerID: " + prop.getProperty("BannerID") + " already exists");
-        }
+            alertMessage.setText(lang.getProperty("addWorkerSuccess"));
+        } else alertMessage.setText(lang.getProperty("existingBannerId") + prop.getProperty("BannerID"));
+
         for (TextField t : textFieldList) { t.clear(); }
         Credentials.setValue(lang.getProperty("Ordinary"));
         Status.setValue(lang.getProperty("Active"));

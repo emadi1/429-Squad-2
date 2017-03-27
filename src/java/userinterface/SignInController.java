@@ -50,20 +50,19 @@ public class SignInController implements Initializable {
         signInHeader.setText(lang.getProperty("signIn"));
         banner.setText(lang.getProperty("bannerId"));
         pw.setText(lang.getProperty("password"));
+        signIn.setText(lang.getProperty("SignIn"));
     }
 
     /**
      * @param actionEvent
      */
     public void signIn(ActionEvent actionEvent) throws IOException {
-        signIn = (Button)actionEvent.getSource();
         if (bannerId.getText().equals("") || password.getText().equals(""))
             alertMessage.setText("Please enter BannerID/Password");
         else {
             // Query DB to create worker object.
             WorkerCollection workerCollection = new WorkerCollection();
             Worker worker = (Worker)workerCollection.findWorkersByBannerId(bannerId.getText()).elementAt(0);
-
             String pw = (String)worker.getState("Password");
             if (!pw.equals(password.getText()))
                 alertMessage.setText("Password Invalid");
@@ -87,11 +86,9 @@ public class SignInController implements Initializable {
     }
 
     public void skipAsAdmin(ActionEvent actionEvent) throws IOException {
-
         dummyWorker(1);
-
+        core.setLanguage(language.getSelectionModel().getSelectedItem());
         try {
-
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("mainview.fxml"));
             Stage primaryStage = new Stage();
             Scene scene = new Scene(root);
@@ -100,18 +97,15 @@ public class SignInController implements Initializable {
             primaryStage.setTitle("Brockport Library System!");
             primaryStage.setResizable(false);
             primaryStage.show();
-
         } catch (Exception e) {
             System.out.println("Can't open new window.");
         }
     }
 
     public void skipAsOrdinary(ActionEvent actionEvent) {
-
         dummyWorker(2);
-
+        core.setLanguage(language.getSelectionModel().getSelectedItem());
         try {
-
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("mainview.fxml"));
             Stage primaryStage = new Stage();
             Scene scene = new Scene(root);
@@ -120,7 +114,6 @@ public class SignInController implements Initializable {
             primaryStage.setTitle("Brockport Library System!");
             primaryStage.setResizable(false);
             primaryStage.show();
-
         } catch (Exception e) {
             System.out.println("Can't open new window.");
         }
@@ -128,38 +121,27 @@ public class SignInController implements Initializable {
 
 
     private void dummyWorker(int type) {
-
         String[] workerArray = {"BannerId", "Password", "FirstName", "LastName", "ContactPhone",
                 "Email", "Credentials", "DateOfLatestCredentialsStatus", "DateOfHire", "Status"};
-
         String[] workerData;
-
         if (type == 1) {
-
             workerData = new String[]{"800123456", "123456", "John", "Doe", "555-666-1234", "DaMan@gmail.com",
                     "Administrator", "3-21-2017", "4-17-2007", "Active"};
-
             Properties props = new Properties();
             for (int i = 0; i < workerArray.length; i++) {
                 props.put(workerArray[i], workerData[i]);
             }
-
             Worker worker = new Worker(props);
             core.setUser(worker);
-
         } else if (type == 2) {
-
             workerData = new String[]{"800123456", "123456", "John", "Doe", "555-666-1234", "DaMan@gmail.com",
                     "Ordinary", "3-21-2017", "4-17-2007", "Active"};
-
             Properties props = new Properties();
             for (int i = 0; i < workerArray.length; i++) {
                 props.put(workerArray[i], workerData[i]);
             }
-
             Worker worker = new Worker(props);
             core.setUser(worker);
-
         }
     }
 }
