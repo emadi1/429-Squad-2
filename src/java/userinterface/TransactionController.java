@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Created by kevph on 3/11/2017.
+ * Created by kevph, I did some stuff too I swear, on 3/11/2017.
  */
 public abstract class TransactionController implements Initializable {
 

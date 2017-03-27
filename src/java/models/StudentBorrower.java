@@ -56,8 +56,8 @@ public class StudentBorrower extends EntityBase {
     }
 
     public static int compare(StudentBorrower first, StudentBorrower second) {
-        String firstStudentBorrower = (String)first.getState("bannerId");
-        String secondStudentBorrower = (String)second.getState("bannerId");
+        String firstStudentBorrower = (String)first.getState("BannerId");
+        String secondStudentBorrower = (String)second.getState("BannerId");
         return firstStudentBorrower.compareTo(secondStudentBorrower);
     }
 
@@ -82,16 +82,16 @@ public class StudentBorrower extends EntityBase {
 
     public void updateStateInDatabase() {
         try {
-            if (persistentState.getProperty("bannerId") != null) {
+            if (persistentState.getProperty("BannerId") != null) {
                 Properties whereClause = new Properties();
-                whereClause.setProperty("bannerId", persistentState.getProperty("bannerId"));
+                whereClause.setProperty("BannerId", persistentState.getProperty("BannerId"));
                 updatePersistentState(mySchema, persistentState, whereClause);
                 updateStatusMessage = "Student Borrower data for Student Borrower: " +
-                        persistentState.getProperty("bannerId") + " installed successfully in database!";
+                        persistentState.getProperty("BannerId") + " installed successfully in database!";
             } else {
-                Integer bannerId = insertAutoIncrementalPersistentState(mySchema, persistentState);
-                persistentState.setProperty("bannerId", "" + bannerId.intValue());
-                updateStatusMessage = "Student Borrower data for new student: " + persistentState.getProperty("bannerId")
+                Integer BannerId = insertPersistentState(mySchema, persistentState);
+                persistentState.setProperty("BannerId", "" + BannerId.intValue());
+                updateStatusMessage = "Student Borrower data for new student: " + persistentState.getProperty("BannerId")
                         + " installed successfully in database!";
             }
         } catch (SQLException e) {
@@ -104,10 +104,11 @@ public class StudentBorrower extends EntityBase {
     }
 
     public String toString() {
-        return  persistentState.getProperty("BannerId") + "; " +
+        return persistentState.getProperty("BannerId") + "; " +
                 persistentState.getProperty("FirstName") + "; " +
                 persistentState.getProperty("LastName") + "; " +
                 persistentState.getProperty("ContactPhone") + "; " +
+                persistentState.getProperty("email") + "; " +
                 persistentState.getProperty("BorrowerStatus") + "; " +
                 persistentState.getProperty("DateOfLatestBorrowerStatus") + "; " +
                 persistentState.getProperty("DateOfRegistration") + "; " +
@@ -128,16 +129,18 @@ public class StudentBorrower extends EntityBase {
     public String getContactPhone() {return persistentState.getProperty("ContactPhone");}
     public String getBorrowerStatus() {return persistentState.getProperty("BorrowerStatus");}
     public String getDateOfLatestBorrowerStatus() {return persistentState.getProperty("DateOfLatestBorrowerStatus");}
+    public String getEmail() {return persistentState.getProperty("Email");}
     public String getDateOfRegistration() {return persistentState.getProperty("DateOfRegistration");}
     public String getNotes() {return persistentState.getProperty("Notes");}
     public String getStatus() {return persistentState.getProperty("Status");}
 
-    public void setPassword(String password) {persistentState.setProperty("Password", password);}
+    public void setBannerId(String bannerId) {persistentState.setProperty("BannerId", bannerId);}
     public void setFirstName(String FirstName) {persistentState.setProperty("FirstName", FirstName);}
     public void setLastName(String LastName) {persistentState.setProperty("LastName", LastName);}
     public void setContactPhone(String ContactPhone) {persistentState.setProperty("ContactPhone", ContactPhone);}
     public void setBorrowerStatus(String BorrowerStatus) {persistentState.setProperty("BorrowerStatus", BorrowerStatus);}
     public void setDateOfLatestBorrowerStatus(String DateOfLatestBorrowerStatus) {persistentState.setProperty("DateOfLatestBorrowerStatus", DateOfLatestBorrowerStatus);}
+    public void setEmail(String email) {persistentState.setProperty("Email", email);}
     public void setDateOfRegistration(String DateOfRegistration) {persistentState.setProperty("DateOfRegistration", DateOfRegistration);}
     public void setNotes(String Notes) {persistentState.setProperty("Notes", Notes);}
     public void setStatus(String Status) {persistentState.setProperty("Status", Status);}

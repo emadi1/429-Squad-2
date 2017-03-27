@@ -8,7 +8,7 @@ import java.util.Vector;
  */
 public class StudentBorrowerCollection extends EntityBase {
 
-    private static final String myTableName = "Student";
+    private static final String myTableName = "StudentBorrower";
     private Vector<StudentBorrower> students;
     private String updateStatusMessage = "";
 
@@ -67,7 +67,7 @@ public class StudentBorrowerCollection extends EntityBase {
     }
 
     public Vector findStudentBorrowersByCredentials(String credentials) {
-        String query = "SELECT * FROM " + myTableName + " WHERE credentials LIKE '%" + credentials + "%' ORDER BY lastName ASC";
+        String query = "SELECT * FROM " + myTableName + " WHERE borrowerstatus LIKE '%" + credentials + "%' ORDER BY lastName ASC";
         return runQuery(query);
     }
 
