@@ -40,64 +40,49 @@ public class BookCollection extends EntityBase {
         return books;
     }
 
-    public Vector findAllBooks() {
-        String query = "SELECT * FROM " + myTableName + " ORDER BY Title";
-        return runQuery(query);
-    }
-
     public Vector findBooksByBarcode(String barcode) {
-        String query = "SELECT * FROM " + myTableName + " WHERE (Barcode = " + barcode + ") ORDER BY Title ASC";
+        String query = "SELECT * FROM " + myTableName + " WHERE (" + DBKey.BARCODE +
+                " = " + barcode + ") ORDER BY " + DBKey.TITLE + " ASC";
         return runQuery(query);
     }
 
     public Vector findBooksByTitle(String title) {
-        String query = "SELECT * FROM " + myTableName + " WHERE Title LIKE '%" + title + "%' ORDER BY Title ASC";
+        String query = "SELECT * FROM " + myTableName + " WHERE " + DBKey.TITLE +
+                " LIKE '%" + title + "%' ORDER BY " + DBKey.TITLE + " ASC";
         return runQuery(query);
     }
 
     public Vector findBooksByDiscipline(String discipline) {
-        String query = "SELECT * FROM " + myTableName + " WHERE Discipline LIKE '%" + discipline + "%' ORDER BY Title ASC";
+        String query = "SELECT * FROM " + myTableName + " WHERE " + DBKey.DISCIPLINE +
+                " LIKE '%" + discipline + "%' ORDER BY " + DBKey.TITLE + " ASC";
         return runQuery(query);
     }
 
     public Vector findBooksByAuthor(String author) {
-        String query = "SELECT * FROM " + myTableName + " WHERE Author1 LIKE '%" + author + "%' OR Author2 LIKE '%"
-                + author + "%' OR Author3 LIKE '%" + author + "%' OR Author4 LIKE '%" + author + "%' ORDER BY Title ASC";
-        return runQuery(query);
-    }
-
-    public Vector findBooksByAuthor1(String author1) {
-        String query = "SELECT * FROM " + myTableName + " WHERE Author1 LIKE '%" + author1 + "%' ORDER BY Title ASC";
-        return runQuery(query);
-    }
-
-    public Vector findBooksByAuthor2(String author2) {
-        String query = "SELECT * FROM " + myTableName + " WHERE Author2 LIKE '%" + author2 + "%' ORDER BY Title ASC";
-        return runQuery(query);
-    }
-
-    public Vector findBooksByAuthor3(String author3) {
-        String query = "SELECT * FROM " + myTableName + " WHERE Author3 LIKE '%" + author3 + "%' ORDER BY Title ASC";
-        return runQuery(query);
-    }
-
-    public Vector findBooksByAuthor4(String author4) {
-        String query = "SELECT * FROM " + myTableName + " WHERE Author4 LIKE '%" + author4 + "%' ORDER BY Title ASC";
+        String query = "SELECT * FROM " + myTableName + " WHERE " +
+                DBKey.AUTHOR_1 + " LIKE '%" + author + "%' OR " +
+                DBKey.AUTHOR_2 + " LIKE '%" + author + "%' OR " +
+                DBKey.AUTHOR_3 + " LIKE '%" + author + "%' OR " +
+                DBKey.AUTHOR_4 + " LIKE '%" + author + "%' ORDER BY " +
+                DBKey.TITLE + " ASC";
         return runQuery(query);
     }
 
     public Vector findBooksByPublisher(String publisher) {
-        String query = "SELECT * FROM " + myTableName + " WHERE Publisher LIKE '%" + publisher + "%' ORDER BY Title ASC";
+        String query = "SELECT * FROM " + myTableName + " WHERE " + DBKey.PUBLISHER +
+                " LIKE '%" + publisher + "%' ORDER BY " + DBKey.TITLE + " ASC";
         return runQuery(query);
     }
 
     public Vector findBooksByPublicationYear(String year) {
-        String query = "SELECT * FROM " + myTableName + " WHERE (PublicationYear = " + year + ") ORDER BY Title ASC";
+        String query = "SELECT * FROM " + myTableName + " WHERE (" + DBKey.YEAR_OF_PUBLICATION +
+                " = " + year + ") ORDER BY " + DBKey.TITLE + " ASC";
         return runQuery(query);
     }
 
     public Vector findBooksByISBN(String isbn) {
-        String query = "SELECT * FROM " + myTableName + " WHERE ISBN LIKE '%" + isbn + "%' ORDER BY Title ASC";
+        String query = "SELECT * FROM " + myTableName + " WHERE " + DBKey.ISBN +
+                " LIKE '%" + isbn + "%' ORDER BY " + DBKey.TITLE + " ASC";
         return runQuery(query);
     }
 

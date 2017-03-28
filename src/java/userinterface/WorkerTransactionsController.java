@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.LoadException;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -114,7 +115,8 @@ public class WorkerTransactionsController extends TransactionController {
 
     }
 
-    public void add(ActionEvent actionEvent) throws IOException {
+    @Override
+    public void add(ActionEvent actionEvent) throws NullPointerException, IOException {
         try {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("addworkerview.fxml"));
             Stage primaryStage = new Stage();
@@ -125,13 +127,13 @@ public class WorkerTransactionsController extends TransactionController {
             primaryStage.setResizable(false);
             primaryStage.show();
 
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException|NullPointerException exception) {
+            exception.printStackTrace();
         }
     }
 
     @Override
-    public void modify(ActionEvent actionEvent) throws IOException {
+    public void modify(ActionEvent actionEvent) throws NullPointerException, LoadException, IOException {
         try {
             Worker worker = (Worker) tableView.getSelectionModel().getSelectedItem();
             core.setModWorker(worker);
@@ -143,51 +145,46 @@ public class WorkerTransactionsController extends TransactionController {
             stage.setTitle(language.getProperty("modifyWorkerTitle"));
             stage.setResizable(false);
             stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException|NullPointerException exception) {
+            exception.printStackTrace();
         }
     }
 
     protected ObservableList querySelector() {
 
+        WorkerCollection workerCollection = new WorkerCollection();
         String input = searchField.getText();
         String search = searchChoice.getSelectionModel().getSelectedItem();
+
         if (input != null || !input.equals("")) {
 
             if (search.equals(language.getProperty("BannerId"))) {
-                if (input.length() != 9 || !isNumeric(input))
-                    alertMessage.setText(language.getProperty("invalidBannerIdFormat"));
-                else {
-                    WorkerCollection workerCollection = new WorkerCollection();
+                if (input.length() == 9 || isNumeric(input)) {
                     Vector workers = workerCollection.findWorkersByBannerId(input);
                     searchField.clear();
                     return FXCollections.observableList(workers);
-                }
+                } else alertMessage.setText(language.getProperty("invalidBannerIdFormat"));
             }
 
             if (search.equals(language.getProperty("FirstName"))) {
-                WorkerCollection workerCollection = new WorkerCollection();
                 Vector workers = workerCollection.findWorkersByFirstName(input);
                 searchField.clear();
                 return FXCollections.observableList(workers);
             }
 
             if (search.equals(language.getProperty("LastName"))) {
-                WorkerCollection workerCollection = new WorkerCollection();
                 Vector workers = workerCollection.findWorkersByLastName(input);
                 searchField.clear();
                 return FXCollections.observableList(workers);
             }
 
             if (search.equals(language.getProperty("ContactPhone"))) {
-                WorkerCollection workerCollection = new WorkerCollection();
                 Vector workers = workerCollection.findWorkersByContactPhone(input);
                 searchField.clear();
                 return FXCollections.observableList(workers);
             }
 
             if (search.equals(language.getProperty("Email"))) {
-                WorkerCollection workerCollection = new WorkerCollection();
                 Vector workers = workerCollection.findWorkersByEmail(input);
                 searchField.clear();
                 return FXCollections.observableList(workers);
@@ -195,37 +192,37 @@ public class WorkerTransactionsController extends TransactionController {
 
             if (search.equals(language.getProperty("Credentials"))) {
                 if (input.equals(language.getProperty("Administrator")) || input.equals(language.getProperty("Ordinary"))) {
-                    WorkerCollection workerCollection = new WorkerCollection();
                     Vector workers = workerCollection.findWorkersByCredentials(input);
                     searchField.clear();
                     return FXCollections.observableList(workers);
                 } else alertMessage.setText("invalidCredentials");
             }
 
-            if (search.equals(language.getProperty("DateOfLatestCredentialsStatus")) && search.length() == 10) {
-                WorkerCollection workerCollection = new WorkerCollection();
-                Vector workers = workerCollection.findWorkersByLatestCredentialsStatus(input);
-                searchField.clear();
-                return FXCollections.observableList(workers);
-            } else alertMessage.setText("invalidDateFormat");
+            if (search.equals(language.getProperty("DateOfLatestCredentialsStatus"))) {
+                if (input.length() == 10 && input.charAt(2) == '-' && input.charAt(5) == '-') {
+                    Vector workers = workerCollection.findWorkersByLatestCredentialsStatus(input);
+                    searchField.clear();
+                    return FXCollections.observableList(workers);
+                } else alertMessage.setText("invalidDateFormat");
+            }
 
-            if (search.equals(language.getProperty("DateOfHire")) && search.length() == 10) {
-                WorkerCollection workerCollection = new WorkerCollection();
-                Vector workers = workerCollection.findWorkersByDateOfHire(input);
-                searchField.clear();
-                return FXCollections.observableList(workers);
-            } else alertMessage.setText("invalidDateFormat");
+            if (search.equals(language.getProperty("DateOfHire"))) {
+                if (input.length() == 10 && input.charAt(2) == '-' && input.charAt(5) == '-') {
+                    Vector workers = workerCollection.findWorkersByDateOfHire(input);
+                    searchField.clear();
+                    return FXCollections.observableList(workers);
+                } else alertMessage.setText("invalidDateFormat");
+            }
 
             if (search.equals(language.getProperty("Status"))) {
                 if (input.equals(language.getProperty("Active")) || input.equals(language.getProperty("Inactive"))) {
-                    WorkerCollection workerCollection = new WorkerCollection();
                     Vector workers = workerCollection.findWorkerByStatus(input);
                     searchField.clear();
                     return FXCollections.observableList(workers);
-                }
+                } else alertMessage.setText(language.getProperty("invalidStatus"));
             }
         }
-        if (input == null || input.equals("")) {
+        if (input.equals("")) {
             alertMessage.setText("emptyField");
             return null;
         }

@@ -11,9 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import models.StudentBorrower;
 import utilities.Core;
-
-import java.net.URL;
-import java.util.ArrayList;
+import java.net.URL;;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 /**
@@ -24,6 +23,7 @@ public class ModifyStudentViewController implements Initializable {
     private ObservableList<String> statusList = FXCollections.observableArrayList("Active", "Inactive");
     private ObservableList<String> borrowerStatusList = FXCollections.observableArrayList("Good", "Delinquent");
     private Core core = Core.getInstance();
+    Properties language = core.getLang();
 
     @FXML
     private TextField ContactPhone;
@@ -39,8 +39,6 @@ public class ModifyStudentViewController implements Initializable {
     @FXML private TextField Notes;
     @FXML private Text alertMessage;
 
-    ArrayList<TextField> textFieldList;
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         BannerId.setText(core.getModStudentBorrower().getBannerId());
@@ -50,20 +48,17 @@ public class ModifyStudentViewController implements Initializable {
         LastName.setText(core.getModStudentBorrower().getLastName());
         ContactPhone.setText(core.getModStudentBorrower().getContactPhone());
         Email.setText(core.getModStudentBorrower().getEmail());
-//        if (core.getUser().getCredentials().equals("Ordinary")) {
-//            Credentials.setDisable(true);
-//        }
         BorrowerStatus.setValue(core.getModStudentBorrower().getBorrowerStatus());
         DateOfLatestBorrowerStatus.setText(core.getModStudentBorrower().getDateOfLatestBorrowerStatus());
         DateOfRegistration.setText(core.getModStudentBorrower().getDateOfRegistration());
         Status.setValue(core.getModStudentBorrower().getStatus());
         BorrowerStatus.setItems(borrowerStatusList);
         Status.setItems(statusList);
+        submit.setText(language.getProperty("Search"));
     }
 
-    public void submit(ActionEvent event) {
+    public void submit(ActionEvent actionEvent) {
         alertMessage.setText("");
-
         StudentBorrower studentBorrower = core.getModStudentBorrower();
         studentBorrower.setNotes(Notes.getText());
         studentBorrower.setFirstName(FirstName.getText());
@@ -77,7 +72,5 @@ public class ModifyStudentViewController implements Initializable {
         studentBorrower.update();
         System.out.println(studentBorrower.toString());
         alertMessage.setText("Student Borrower successfully updated");
-
-
     }
 }

@@ -17,7 +17,7 @@ public class WorkerCollection extends EntityBase {
 
     public WorkerCollection() {
         super(myTableName);
-        //workers = new Vector<>();
+        workers = new Vector<>();
         Vector<Worker> workerCollection = new Vector<>();
         language = Core.getInstance().getLang();
     }

@@ -13,35 +13,24 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
-import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import javafx.stage.Stage;
 import models.StudentBorrower;
 import models.StudentBorrowerCollection;
 import utilities.Core;
-
 import java.io.IOException;
 import java.util.Vector;
-import models.StudentBorrowerCollection;
-import utilities.Core;
-
-import java.io.IOException;
 import java.net.URL;
 import java.util.Properties;
 import java.util.ResourceBundle;
-import java.util.Vector;
 
 /**
- * Created by kevph & Ders but mostly Ders on 3/11/2017.
+ * Created by kevph & Ders but mostly Ders but not really on 3/11/2017.
  */
 public class StudentBorrowerTransactionsController extends TransactionController {
 
@@ -122,37 +111,42 @@ public class StudentBorrowerTransactionsController extends TransactionController
         });
     }
 
-
-    public static void changeScene(ActionEvent actionEvent) {
-    public void add(ActionEvent actionEvent) throws IOException {
+    @Override
+    public void add(ActionEvent actionEvent) throws NullPointerException, IOException {
         try {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("addstudentborrowerview.fxml"));
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("addstudentview.fxml"));
             Stage stage = new Stage();
             Scene scene = new Scene(root);
             stage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
             stage.setScene(scene);
-            stage.setTitle(language.getProperty("addStudentBorrowerTitle"));
-
-        } catch (IOException e) {
-            e.printStackTrace();
+            stage.setTitle(language.getProperty("addStudentTitle"));
+            stage.setResizable(false);
+            stage.show();
+        } catch (NullPointerException|IOException exception) {
+            exception.printStackTrace();
         }
     }
 
     @Override
-    public void modify(ActionEvent actionEvent) throws IOException {
+    public void modify(ActionEvent actionEvent) throws NullPointerException, IOException {
         try {
             StudentBorrower studentBorrower = (StudentBorrower) tableView.getSelectionModel().getSelectedItem();
+            String bannerId = studentBorrower.getBannerId();
             core.setModStudentBorrower(studentBorrower);
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifystudentborrowerview.fxml"));
-            Stage stage = new Stage();
-            Scene scene = new Scene(root);
-            stage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
-            stage.setScene(scene);
-            stage.setTitle(language.getProperty("modifyStudentBorrowerTitle"));
-            stage.setResizable(false);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+            if (bannerId != null) {
+                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifystudentview.fxml"));
+                Stage stage = new Stage();
+                Scene scene = new Scene(root);
+                stage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
+                stage.setScene(scene);
+                stage.setTitle(language.getProperty("modifyStudentTitle"));
+                stage.setResizable(false);
+                stage.show();
+            } else {
+                alertMessage.setText(language.getProperty("emptyField"));
+            }
+        } catch (NullPointerException|IOException exception) {
+            exception.printStackTrace();
         }
     }
 
@@ -161,16 +155,15 @@ public class StudentBorrowerTransactionsController extends TransactionController
         StudentBorrowerCollection studentBorrowerCollection = new StudentBorrowerCollection();
         String input = searchField.getText();
         String search = searchChoice.getSelectionModel().getSelectedItem();
-        if (input != null || input.equals("")) {
+
+        if (input != null || !input.equals("")) {
 
             if (search.equals(language.getProperty("BannerId"))) {
-                if (input.length() != 9 || !isNumeric(input))
-                    alertMessage.setText(language.getProperty("invalidBannerIdFormat"));
-                else {
+                if (input.length() == 9 && isNumeric(input)) {
                     Vector students = studentBorrowerCollection.findStudentsByBannerId(input);
                     searchField.clear();
                     return FXCollections.observableList(students);
-                }
+                } else alertMessage.setText(language.getProperty("invalidBannerIdFormat"));
             }
 
             if (search.equals(language.getProperty("FirstName"))) {
@@ -198,28 +191,47 @@ public class StudentBorrowerTransactionsController extends TransactionController
             }
 
             if (search.equals(language.getProperty("BorrowerStatus"))) {
-                Vector students = studentBorrowerCollection.findStudentsByBorrowererStatus(input);
-                searchField.clear();
-                return FXCollections.observableList(students);
+                if (input.equals(language.getProperty("Delinquent")) || input.equals(language.getProperty("GoodStanding"))) {
+                    Vector students = studentBorrowerCollection.findStudentsByBorrowererStatus(input);
+                    searchField.clear();
+                    return FXCollections.observableList(students);
+                } else alertMessage.setText("invalidBorrowerStatus");
             }
 
-            if (search.equals(language.getProperty("DateOfLatestBorrowerStatus")) && search.length() == 10) {
-                Vector students = studentBorrowerCollection.findStudentsByDateOfLatestBorrowerStatus(input);
-                searchField.clear();
-                return FXCollections.observableList(students);
-            } else alertMessage.setText("invalidDateFormat");
+            if (search.equals(language.getProperty("DateOfLatestBorrowerStatus"))) {
+                if (input.length() == 10 && input.charAt(2) == '-' && input.charAt(5) == '-') {
+                    Vector students = studentBorrowerCollection.findStudentsByDateOfLatestBorrowerStatus(input);
+                    searchField.clear();
+                    return FXCollections.observableList(students);
+                } else alertMessage.setText("invalidDateFormat");
+            }
 
+            if (search.equals(language.getProperty("DateOfRegistration"))) {
+                if (input.length() == 10 && input.charAt(2) == '-' && input.charAt(5) == '-') {
+                    Vector students = studentBorrowerCollection.findStudentsByDateOfRegistration(input);
+                    searchField.clear();
+                    return FXCollections.observableList(students);
+                } else alertMessage.setText("invalidDateFormat");
+            }
 
+            if (search.equals(language.getProperty("Status"))) {
+                if (input.equals(language.getProperty("Active")) || input.equals(language.getProperty("Inactive"))) {
+                    Vector students = studentBorrowerCollection.findStudentsByStatus(input);
+                    searchField.clear();
+                    return FXCollections.observableList(students);
+                }
+            }
+        } else if (input.equals("")) {
+            alertMessage.setText("emptyFields");
+            return null;
         }
         return null;
     }
-
 
     @Override
     protected void showModifyDialog() {
 
         try {
-
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifystudentview.fxml"));
             Stage primaryStage = new Stage();
             Scene scene = new Scene(root);
@@ -234,7 +246,6 @@ public class StudentBorrowerTransactionsController extends TransactionController
         }
 
     }
-
 
     protected class AddModCell extends TableCell<StudentBorrower, Boolean> {
 
@@ -280,5 +291,4 @@ public class StudentBorrowerTransactionsController extends TransactionController
             }
         }
     }
-
 }

@@ -25,6 +25,10 @@ import java.util.ResourceBundle;
  */
 public class AddWorkerViewController implements Initializable {
 
+    private Core core = Core.getInstance();
+    private Properties lang = core.getLang();
+    private ArrayList<TextField> textFieldList;
+
     @FXML private Text bannerId;
     @FXML private Text password;
     @FXML private Text firstName;
@@ -47,14 +51,13 @@ public class AddWorkerViewController implements Initializable {
     @FXML private ComboBox<String> Status;
     @FXML private Button submit;
     @FXML private Text alertMessage;
-    Core core = Core.getInstance();
-    Properties lang = core.getLang();
-    ArrayList<TextField> textFieldList;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ObservableList<String> statusList = FXCollections.observableArrayList(lang.getProperty("Active"), lang.getProperty("Inactive"));
-        ObservableList<String> credentialsList = FXCollections.observableArrayList(lang.getProperty("Administrator"), lang.getProperty("Ordinary"));
+        ObservableList<String> statusList =
+                FXCollections.observableArrayList(lang.getProperty("Active"), lang.getProperty("Inactive"));
+        ObservableList<String> credentialsList =
+                FXCollections.observableArrayList(lang.getProperty("Administrator"), lang.getProperty("Ordinary"));
         submit.setText(lang.getProperty("Add"));
         bannerId.setText(lang.getProperty("PromptBannerId"));
         password.setText(lang.getProperty("PromptPassword"));
@@ -81,12 +84,10 @@ public class AddWorkerViewController implements Initializable {
         Status.setItems(statusList);
     }
 
-
     public void submit(ActionEvent event) {
 
         Properties prop = new Properties();
         WorkerCollection workerCollection = new WorkerCollection();
-        int count = workerCollection.findWorkersByBannerId(prop.getProperty(DBKey.BANNER_ID)).size();
 
         if (BannerId.getText().length() != 9) {
             alertMessage.setText(lang.getProperty("invalidBannerIdLength"));
@@ -119,6 +120,7 @@ public class AddWorkerViewController implements Initializable {
             prop.setProperty("DateOfLatestCredentialsStatus", credDay + "-" + credMonth + "-" + credYear);
         }
 
+        int count = workerCollection.findWorkersByBannerId(prop.getProperty(DBKey.BANNER_ID)).size();
         if (count == 0) {
             prop.put(Status.getId(), Status.getSelectionModel().getSelectedItem());
             prop.put(Credentials.getId(), Credentials.getSelectionModel().getSelectedItem());

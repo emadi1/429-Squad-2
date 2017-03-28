@@ -24,10 +24,8 @@ import static models.Book.generateDiscipline;
  */
 public class AddBookViewController implements Initializable {
 
-    Core core = Core.getInstance();
-    Properties lang = core.getLang();
-    BookCollection bookCollection = new BookCollection();
-    BookBarcodePrefixCollection bookBarcodePrefixCollection = new BookBarcodePrefixCollection();
+    private Properties lang = Core.getInstance().getLang();
+    private BookCollection bookCollection = new BookCollection();
     private ObservableList<String> conditionList = FXCollections.observableArrayList(lang.getProperty("Good"), lang.getProperty("Damaged"));
     private ObservableList<String> statusList = FXCollections.observableArrayList(lang.getProperty("Active"), lang.getProperty("Inactive"));
 
@@ -56,6 +54,7 @@ public class AddBookViewController implements Initializable {
         suggestedPrice.setText(lang.getProperty("suggestedPrice"));
         notes.setText(lang.getProperty("notes"));
         status.setText(lang.getProperty("status"));
+        submit.setText(lang.getProperty("Add"));
 
         textFieldList.add(Barcode);
         textFieldList.add(Title);
@@ -77,7 +76,6 @@ public class AddBookViewController implements Initializable {
     public void submit(ActionEvent actionEvent) {
 
         Properties properties = new Properties();
-        BookCollection bookCollection = new BookCollection();
         int count = bookCollection.findBooksByBarcode(properties.getProperty("Barcode")).size();
 
         if (Barcode.getText().length() != 5) {

@@ -62,7 +62,7 @@
         <TextField fx:id="SuggestedPrice" GridPane.columnIndex="2" GridPane.rowIndex="11" />
         <TextField fx:id="Notes" GridPane.columnIndex="2" GridPane.rowIndex="12" />
         <ComboBox fx:id="Status" prefHeight="31.0" prefWidth="336.0" GridPane.columnIndex="2" GridPane.rowIndex="13" />
-        <Button id="add" fx:id="submit" mnemonicParsing="false" onAction="#submit" text="Add" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="14" />
+        <Button fx:id="submit" mnemonicParsing="false" onAction="#submit" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="14" />
 
     </children>
 </GridPane>

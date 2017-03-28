@@ -35,7 +35,7 @@ public class DBKey {
     public static final String PUBLISHER = "Publisher";
     public static final String YEAR_OF_PUBLICATION = "YearOfPublication";
     public static final String ISBN = "ISBN";
-    public static final String CONDITION = "Condition";
+    public static final String CONDITION = "BookCondition";
     public static final String SUGGESTED_PRICE = "SuggestedPrice";
 
     // BookBarcodePrefix

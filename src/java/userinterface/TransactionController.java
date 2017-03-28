@@ -62,8 +62,9 @@ public abstract class TransactionController implements Initializable {
         return true;
     }
 
-    protected void modify(ActionEvent actionEvent) throws IOException {
-    }
+    protected abstract void add(ActionEvent actionEvent) throws NullPointerException, IOException;
+
+    protected abstract void modify(ActionEvent actionEvent) throws NullPointerException, IOException;
 
     protected abstract ObservableList<String> dedicatedColumnHeaders();
 

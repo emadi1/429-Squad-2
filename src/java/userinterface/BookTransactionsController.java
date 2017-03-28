@@ -33,10 +33,7 @@ public class BookTransactionsController extends TransactionController {
     private String Barcode = language.getProperty("Barcode");
     private String Title = language.getProperty("Title");
     private String Discipline = language.getProperty("Discipline");
-    private String Author1 = language.getProperty("Author1");
-    private String Author2 = language.getProperty("Author2");
-    private String Author3 = language.getProperty("Author3");
-    private String Author4 = language.getProperty("Author4");
+    private String Author = language.getProperty("Author");
     private String Publisher = language.getProperty("Publisher");
     private String YearOfPublication = language.getProperty("YearOfPublication");
     private String ISBN = language.getProperty("ISBN");
@@ -84,16 +81,11 @@ public class BookTransactionsController extends TransactionController {
                 Barcode,
                 Title,
                 Discipline,
-                Author1,
-                Author2,
-                Author3,
-                Author4,
+                Author,
                 Publisher,
                 YearOfPublication,
                 ISBN,
                 BookCondition,
-                SuggestedPrice,
-                Notes,
                 Status);
     }
 
@@ -107,26 +99,24 @@ public class BookTransactionsController extends TransactionController {
         }
     }
 
-    public void add(ActionEvent actionEvent) throws IOException {
+    public void add(ActionEvent actionEvent) throws NullPointerException, IOException {
         try {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("addbookview.fxml"));
-            Stage primaryStage = new Stage();
+            Stage stage = new Stage();
             Scene scene = new Scene(root);
-            primaryStage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
-            primaryStage.setScene(scene);
-            primaryStage.setTitle("Add Book");
-            primaryStage.setResizable(false);
-            primaryStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+            stage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
+            stage.setScene(scene);
+            stage.setTitle(language.getProperty("addBookTitle"));
+            stage.setResizable(false);
+            stage.show();
+        } catch (NullPointerException|IOException exception) {
+            exception.printStackTrace();
         }
     }
 
-    public void modify(ActionEvent actionEvent) throws IOException {
+    public void modify(ActionEvent actionEvent) throws NullPointerException, IOException {
         try {
-            Core core = Core.getInstance();
             Book book = (Book) tableView.getItems().get(tableView.getFocusModel().getFocusedIndex());
-            System.out.println(book.toString());
             String barcode = book.getBarcode();
             core.setModBook(book);
             if (barcode != null) {
@@ -141,154 +131,83 @@ public class BookTransactionsController extends TransactionController {
             } else {
                 alertMessage.setText("Please select a book to modify");
             }
-        } catch (IOException e) {
-            System.out.println("Error: " + e);
+        } catch (NullPointerException|IOException exception) {
+            exception.printStackTrace();
         }
     }
 
     @Override
     protected ObservableList querySelector(){
+        BookCollection bookCollection = new BookCollection();
         String input = searchField.getText();
-        switch (searchChoice.getSelectionModel().getSelectedItem()) {
+        String search = searchChoice.getSelectionModel().getSelectedItem();
 
-            case "Barcode":
-                if (input == null || input.equals("") || !isNumeric(input)) {
-                    alertMessage.setText("Please enter a numeric barcode");
-                    searchField.clear();
-                } else if (input.length() <= 3) {
-                    alertMessage.setText("Barcode must be at least 3 digits long");
-                    searchField.clear();
-                } else {
-                    BookCollection bookCollection = new BookCollection();
+        if (input != null || !input.equals("")) {
+
+            if (search.equals(language.getProperty("Barcode"))) {
+                if (input.length() == 5 && isNumeric(input)) {
                     Vector books = bookCollection.findBooksByBarcode(input);
                     searchField.clear();
-                    return FXCollections.observableArrayList(books);
-                }
-                break;
-
-            case "Title":
-                if (input == null || input.equals("")) {
-                    alertMessage.setText("Please enter a title in the search field");
-                    searchField.clear();
-                } else {
-                    BookCollection bookCollection = new BookCollection();
-                    Vector books = bookCollection.findBooksByTitle(input);
-                    searchField.clear();
+                    alertMessage.setText("");
                     return FXCollections.observableList(books);
-                }
-                break;
+                } else alertMessage.setText(language.getProperty("invalidBarcodeLength"));
+            }
 
-            case "Discipline":
-                if (input == null || input.equals("")) {
-                    alertMessage.setText("Please enter a discipline in the search field");
-                    searchField.clear();
-                } else {
-                    BookCollection bookCollection = new BookCollection();
-                    Vector books = bookCollection.findBooksByDiscipline(input);
-                    searchField.clear();
-                    return FXCollections.observableList(books);
-                }
-                break;
+            if (search.equals(language.getProperty("Title"))) {
+                Vector books = bookCollection.findBooksByTitle(input);
+                searchField.clear();
+                alertMessage.setText("");
+                return FXCollections.observableList(books);
+            }
 
-            case "Author1":
-                if (input == null || input.equals("")) {
-                    alertMessage.setText("Please enter an author in the search field");
-                    searchField.clear();
-                } else {
-                    BookCollection bookCollection = new BookCollection();
-                    Vector books = bookCollection.findBooksByAuthor(input);
-                    searchField.clear();
-                    return FXCollections.observableList(books);
-                }
-                break;
+            if (search.equals(language.getProperty("Discipline"))) {
+                Vector books = bookCollection.findBooksByDiscipline(input);
+                searchField.clear();
+                alertMessage.setText("");
+                return FXCollections.observableList(books);
+            }
 
-            case "Author2":
-                if (input == null || input.equals("")) {
-                    alertMessage.setText("Please enter an author in the search field");
-                    searchField.clear();
-                } else {
-                    BookCollection bookCollection = new BookCollection();
-                    Vector books = bookCollection.findBooksByAuthor(input);
-                    searchField.clear();
-                    return FXCollections.observableList(books);
-                }
-                break;
+            if (search.equals(language.getProperty("Author"))) {
+                Vector books = bookCollection.findBooksByAuthor(input);
+                searchField.clear();
+                alertMessage.setText("");
+                return FXCollections.observableList(books);
+            }
 
-            case "Author3":
-                if (input == null || input.equals("")) {
-                    alertMessage.setText("Please enter an author in the search field");
-                    searchField.clear();
-                } else {
-                    BookCollection bookCollection = new BookCollection();
-                    Vector books = bookCollection.findBooksByAuthor(input);
-                    searchField.clear();
-                    return FXCollections.observableList(books);
-                }
-                break;
-
-            case "Author4":
-                if (input == null || input.equals("")) {
-                    alertMessage.setText("Please enter an author in the search field");
-                    searchField.clear();
-                } else {
-                    BookCollection bookCollection = new BookCollection();
-                    Vector books = bookCollection.findBooksByAuthor(input);
-                    searchField.clear();
-                    return FXCollections.observableList(books);
-                }
-                break;
-
-            case "Publisher":
-                if (input == null || input.equals("")) {
-                    alertMessage.setText("Please enter a publisher in the search field");
-                    searchField.clear();
-                } else {
-                    BookCollection bookCollection = new BookCollection();
-                    Vector books = bookCollection.findBooksByPublisher(input);
-                    searchField.clear();
-                    return FXCollections.observableList(books);
-                }
-                break;
-
-            case "PublicationYear":
-                if (input == null || input.equals("") || !isNumeric(input)) {
-                    alertMessage.setText("Please enter a date in the search field");
-                    searchField.clear();
-                } else {
-                    BookCollection bookCollection = new BookCollection();
+            if (search.equals(language.getProperty("YearOfPublication"))) {
+                if (input.length() <= 4 && isNumeric(input)) {
                     Vector books = bookCollection.findBooksByPublicationYear(input);
                     searchField.clear();
+                    alertMessage.setText("");
                     return FXCollections.observableList(books);
-                }
-                break;
+                } else alertMessage.setText(language.getProperty("yearFormat"));
+            }
 
-            case "ISBN":
-                if (input == null || input.equals("") || !isNumeric(input)) {
-                    alertMessage.setText("Please enter a ISBN number in search field");
+            if (search.equals(language.getProperty("ISBN"))) {
+                Vector books = bookCollection.findBooksByISBN(input);
+                searchField.clear();
+                alertMessage.setText("");
+                return FXCollections.observableList(books);
+            }
+
+            if (search.equals(language.getProperty("BookCondition"))) {
+                if (input.equals(language.getProperty("Good")) || input.equals(language.getProperty("Damaged"))) {
+                    Vector books = bookCollection.findBooksByBookCondition(input);
                     searchField.clear();
-                } else {
-                    BookCollection bookCollection = new BookCollection();
-                    Vector books = bookCollection.findBooksByISBN(input);
-                    searchField.clear();
+                    alertMessage.setText("");
                     return FXCollections.observableList(books);
-                }
-                break;
+                } else alertMessage.setText(language.getProperty("invalidCondition"));
+            }
 
-            case "Status":
-                if (input == null || input.equals("") ||
-                        !(input.equals("Active") || input.equals("Inactive"))) {
-                    alertMessage.setText("Please enter either: 'Active'/'Inactive' in the search field");
-                    searchField.clear();
-                } else {
-                    BookCollection bookCollection = new BookCollection();
+            if (search.equals(language.getProperty("Status"))) {
+                if (input.equals(language.getProperty("Active")) || input.equals(language.getProperty("Inactive"))) {
                     Vector books = bookCollection.findBooksByStatus(input);
                     searchField.clear();
+                    alertMessage.setText("");
                     return FXCollections.observableList(books);
-                }
-                break;
-        }
-        searchField.clear();
-        return null;
+                } else alertMessage.setText(language.getProperty("invalidStatus"));
+            }
+        } return null;
     }
 
     public int getType() {

@@ -1,7 +1,6 @@
 package models;
-
+import database.DBKey;
 import exception.InvalidPrimaryKeyException;
-
 import java.sql.SQLException;
 import java.util.Enumeration;
 import java.util.Properties;
