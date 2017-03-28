@@ -8,7 +8,7 @@ import java.util.Properties;
 import java.util.Vector;
 
 /**
- * Created by Ders on 3/24/2017
+ * Created by Ders & a little kevph on 3/24/2017
  */
 public class StudentBorrower extends EntityBase {
     private static final String myTableName = "StudentBorrower";
@@ -80,22 +80,26 @@ public class StudentBorrower extends EntityBase {
         stateChangeRequest(key, value);
     }
 
-    public void updateStateInDatabase() {
+    private void updateStateInDatabase() {
         try {
-            if (persistentState.getProperty("BannerId") != null) {
-                Properties whereClause = new Properties();
-                whereClause.setProperty("BannerId", persistentState.getProperty("BannerId"));
-                updatePersistentState(mySchema, persistentState, whereClause);
-                updateStatusMessage = "Student Borrower data for Student Borrower: " +
-                        persistentState.getProperty("BannerId") + " installed successfully in database!";
-            } else {
-                Integer BannerId = insertPersistentState(mySchema, persistentState);
-                persistentState.setProperty("BannerId", "" + BannerId.intValue());
-                updateStatusMessage = "Student Borrower data for new student: " + persistentState.getProperty("BannerId")
-                        + " installed successfully in database!";
-            }
+            Properties whereClause = new Properties();
+            whereClause.setProperty("bannerId", persistentState.getProperty("bannerId"));
+            updatePersistentState(mySchema, persistentState, whereClause);
+            updateStatusMessage = "Student Borrower data for Student Borrower: " +
+                    persistentState.getProperty("bannerId") + " installed successfully in database!";
         } catch (SQLException e) {
-            updateStatusMessage = "Error in installing Student Borrower data in database!";
+            updateStatusMessage = "Error updating Student Borrower data in database!";
+        }
+    }
+
+    private void insertStateInDatabase() {
+        try {
+            Integer BannerId = insertPersistentState(mySchema, persistentState);
+            persistentState.setProperty("BannerId", "" + BannerId.intValue());
+            updateStatusMessage = "Student data for Student ID: " + persistentState.getProperty("BannerId")
+                    + " installed successfully in database!";
+        } catch (SQLException e) {
+            System.out.println("Error installing data: " + e);
         }
     }
 
@@ -103,17 +107,8 @@ public class StudentBorrower extends EntityBase {
         updateStateInDatabase();
     }
 
-    public String toString() {
-        return persistentState.getProperty("BannerId") + "; " +
-                persistentState.getProperty("FirstName") + "; " +
-                persistentState.getProperty("LastName") + "; " +
-                persistentState.getProperty("ContactPhone") + "; " +
-                persistentState.getProperty("email") + "; " +
-                persistentState.getProperty("BorrowerStatus") + "; " +
-                persistentState.getProperty("DateOfLatestBorrowerStatus") + "; " +
-                persistentState.getProperty("DateOfRegistration") + "; " +
-                persistentState.getProperty("Notes") + "; " +
-                persistentState.getProperty("Status");
+    public void insert() {
+        insertStateInDatabase();
     }
 
     protected void initializeSchema(String tableName) {
@@ -122,53 +117,76 @@ public class StudentBorrower extends EntityBase {
         }
     }
 
+    public String toString() {
+        return  persistentState.getProperty("BannerId") + "; " +
+                persistentState.getProperty("FirstName") + "; " +
+                persistentState.getProperty("LastName") + "; " +
+                persistentState.getProperty("ContactPhone") + "; " +
+                persistentState.getProperty("BorrowerStatus") + "; " +
+                persistentState.getProperty("DateOfLatestBorrowerStatus") + "; " +
+                persistentState.getProperty("DateOfRegistration") + "; " +
+                persistentState.getProperty("Notes") + "; " +
+                persistentState.getProperty("Status");
+    }
 
-    public String getBannerId() {return persistentState.getProperty("BannerId");}
-    public String getFirstName() {return persistentState.getProperty("FirstName");}
-    public String getLastName() {return persistentState.getProperty("LastName");}
-    public String getContactPhone() {return persistentState.getProperty("ContactPhone");}
-    public String getBorrowerStatus() {return persistentState.getProperty("BorrowerStatus");}
-    public String getDateOfLatestBorrowerStatus() {return persistentState.getProperty("DateOfLatestBorrowerStatus");}
-    public String getEmail() {return persistentState.getProperty("Email");}
-    public String getDateOfRegistration() {return persistentState.getProperty("DateOfRegistration");}
-    public String getNotes() {return persistentState.getProperty("Notes");}
-    public String getStatus() {return persistentState.getProperty("Status");}
+    // Getters
+    public String getBannerId() {
+        return persistentState.getProperty(DBKey.BANNER_ID);
+    }
+    public String getFirstName() {
+        return persistentState.getProperty(DBKey.FIRST_NAME);
+    }
+    public String getLastName() {
+        return persistentState.getProperty(DBKey.LAST_NAME);
+    }
+    public String getContactPhone() {
+        return persistentState.getProperty(DBKey.CONTACT_PHONE);
+    }
+    public String getEmail() {
+        return persistentState.getProperty(DBKey.EMAIL);
+    }
+    public String getBorrowerStatus() {
+        return persistentState.getProperty(DBKey.BORROWER_STATUS);
+    }
+    public String getDateOfLatestBorrowerStatus() {
+        return persistentState.getProperty(DBKey.DATE_OF_LATEST_BORROWER_STATUS);
+    }
+    public String getDateOfRegistration() {
+        return persistentState.getProperty(DBKey.DATE_OF_REGISTRATION);
+    }
+    public String getNotes() {
+        return persistentState.getProperty(DBKey.NOTES);
+    }
+    public String getStatus() {
+        return persistentState.getProperty(DBKey.STATUS);
+    }
 
-    public void setBannerId(String bannerId) {persistentState.setProperty("BannerId", bannerId);}
-    public void setFirstName(String FirstName) {persistentState.setProperty("FirstName", FirstName);}
-    public void setLastName(String LastName) {persistentState.setProperty("LastName", LastName);}
-    public void setContactPhone(String ContactPhone) {persistentState.setProperty("ContactPhone", ContactPhone);}
-    public void setBorrowerStatus(String BorrowerStatus) {persistentState.setProperty("BorrowerStatus", BorrowerStatus);}
-    public void setDateOfLatestBorrowerStatus(String DateOfLatestBorrowerStatus) {persistentState.setProperty("DateOfLatestBorrowerStatus", DateOfLatestBorrowerStatus);}
-    public void setEmail(String email) {persistentState.setProperty("Email", email);}
-    public void setDateOfRegistration(String DateOfRegistration) {persistentState.setProperty("DateOfRegistration", DateOfRegistration);}
-    public void setNotes(String Notes) {persistentState.setProperty("Notes", Notes);}
-    public void setStatus(String Status) {persistentState.setProperty("Status", Status);}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // Setters
+    public void setFirstName(String name) {
+        persistentState.setProperty(DBKey.FIRST_NAME, name);
+    }
+    public void setLastName(String name) {
+        persistentState.setProperty(DBKey.LAST_NAME, name);
+    }
+    public void setContactPhone(String contactPhone) {
+        persistentState.setProperty(DBKey.CONTACT_PHONE, contactPhone);
+    }
+    public void setEmail(String email) {
+        persistentState.setProperty(DBKey.EMAIL, email);
+    }
+    public void setBorrowerStatus(String borrowerStatus) {
+        persistentState.setProperty(DBKey.BORROWER_STATUS, borrowerStatus);
+    }
+    public void setDateOfLatestBorrowerStatus(String dateOfLatestBorrowerStatus) {
+        persistentState.setProperty(DBKey.DATE_OF_LATEST_BORROWER_STATUS, dateOfLatestBorrowerStatus);
+    }
+    public void setDateOfRegistration(String dateOfRegistration) {
+        persistentState.setProperty(DBKey.DATE_OF_REGISTRATION, dateOfRegistration);
+    }
+    public void setNotes(String notes) {
+        persistentState.setProperty(DBKey.NOTES, notes);
+    }
+    public void setStatus(String status) {
+        persistentState.setProperty(DBKey.STATUS, status);
+    }
 }

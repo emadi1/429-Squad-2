@@ -2,6 +2,7 @@ package userinterface;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
+import database.DBKey;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,17 +13,31 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
+import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import javafx.stage.Stage;
 import models.StudentBorrower;
 import models.StudentBorrowerCollection;
 import utilities.Core;
 
 import java.io.IOException;
+import java.util.Vector;
+import models.StudentBorrowerCollection;
+import utilities.Core;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.Properties;
+import java.util.ResourceBundle;
 import java.util.Vector;
 
 /**
@@ -31,23 +46,50 @@ import java.util.Vector;
 public class StudentBorrowerTransactionsController extends TransactionController {
 
     @FXML private Text alertMessage;
+    Core core = Core.getInstance();
+    private Properties language = Core.getInstance().getLang();
 
-
-    @Override
     public ObservableList<String> itemsSearchChoiceArray() {
         return FXCollections.observableArrayList(
-                "BannerId",
-                "FirstName",
-                "LastName",
-                "ContactPhone",
-                "Email",
-                "BorrowerStatus",
-                "DateOfLatestBorrowerStatus",
-                "DateOfRegistration",
-                "Notes",
-                "Status");
+                language.getProperty("BannerId"),
+                language.getProperty("FirstName"),
+                language.getProperty("LastName"),
+                language.getProperty("ContactPhone"),
+                language.getProperty("Email"),
+                language.getProperty("BorrowerStatus"),
+                language.getProperty("DateOfLatestBorrowerStatus"),
+                language.getProperty("DateOfRegistration"),
+                language.getProperty("Status")
+        );
+    }
+    @Override
+    public ObservableList<String> dedicatedColumnHeaders() {
+        return FXCollections.observableArrayList(
+                DBKey.BANNER_ID,
+                DBKey.FIRST_NAME,
+                DBKey.LAST_NAME,
+                DBKey.CONTACT_PHONE,
+                DBKey.EMAIL,
+                DBKey.BORROWER_STATUS,
+                DBKey.DATE_OF_LATEST_BORROWER_STATUS,
+                DBKey.DATE_OF_REGISTRATION,
+                DBKey.NOTES,
+                DBKey.STATUS
+        );
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        properties = itemsSearchChoiceArray();
+        searchChoice.setItems(properties);
+        searchChoice.getSelectionModel().selectFirst();
+        studentHeader.setText(language.getProperty("StudentTransactions"));
+        modify.setText(language.getProperty("Modify"));
+        add.setText(language.getProperty("Add"));
+        search.setText(language.getProperty("Search"));
+        if (core.getUser().getCredentials().equals("Ordinary")) modify.setDisable(true);
+        setTableView();
+    }
 
     protected void setTableView() {
         TableColumn column;
@@ -56,7 +98,6 @@ public class StudentBorrowerTransactionsController extends TransactionController
             column.setMinWidth(86);
             column.setCellValueFactory(new PropertyValueFactory<StudentBorrower, String>(property));
             tableView.getColumns().add(column);
-
         }
 
         TableColumn<StudentBorrower, Boolean> actionCol = new TableColumn<>("Action");
@@ -83,146 +124,93 @@ public class StudentBorrowerTransactionsController extends TransactionController
 
 
     public static void changeScene(ActionEvent actionEvent) {
-
-    }
-
-    public static boolean deleteStudentBorrower(ActionEvent actionEvent) {
-        return false;
-    }
-
-
-    public void add(ActionEvent actionEvent) {
+    public void add(ActionEvent actionEvent) throws IOException {
         try {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("addstudentview.fxml"));
-            Stage primaryStage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("addstudentborrowerview.fxml"));
+            Stage stage = new Stage();
             Scene scene = new Scene(root);
-            primaryStage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
-            primaryStage.setScene(scene);
-            primaryStage.setTitle("Brockport Library System");
-            primaryStage.setResizable(false);
-            primaryStage.show();
+            stage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
+            stage.setScene(scene);
+            stage.setTitle(language.getProperty("addStudentBorrowerTitle"));
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-
     @Override
+    public void modify(ActionEvent actionEvent) throws IOException {
+        try {
+            StudentBorrower studentBorrower = (StudentBorrower) tableView.getSelectionModel().getSelectedItem();
+            core.setModStudentBorrower(studentBorrower);
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifystudentborrowerview.fxml"));
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
+            stage.setScene(scene);
+            stage.setTitle(language.getProperty("modifyStudentBorrowerTitle"));
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     protected ObservableList querySelector(){
 
-        switch (searchChoice.getSelectionModel().getSelectedItem()) {
+        StudentBorrowerCollection studentBorrowerCollection = new StudentBorrowerCollection();
+        String input = searchField.getText();
+        String search = searchChoice.getSelectionModel().getSelectedItem();
+        if (input != null || input.equals("")) {
 
-            case "BannerId":
-                String bannerId = searchField.getText();
-                if (bannerId == null || bannerId.equals("")) {
-                    alertMessage.setText("Please enter a numeric BannerID in the search field");
-                    searchField.clear();
-                    break;
-                } else if (bannerId.length() != 9) {
-                    alertMessage.setText("BannerID must be 9 numbers long");
-                    searchField.clear();
-                    break;
-                } else {
-                    StudentBorrowerCollection studentCollection = new StudentBorrowerCollection();
-                    Vector students = studentCollection.findStudentBorrowersByBannerId(bannerId);
+            if (search.equals(language.getProperty("BannerId"))) {
+                if (input.length() != 9 || !isNumeric(input))
+                    alertMessage.setText(language.getProperty("invalidBannerIdFormat"));
+                else {
+                    Vector students = studentBorrowerCollection.findStudentsByBannerId(input);
                     searchField.clear();
                     return FXCollections.observableList(students);
                 }
+            }
 
-            case "FirstName":
-                String firstName = searchField.getText();
-                if (firstName == null || firstName.equals("")) {
-                    alertMessage.setText("Please enter a name in the search field");
-                    searchField.clear();
-                } else {
-                    StudentBorrowerCollection studentCollection = new StudentBorrowerCollection();
-                    Vector students = studentCollection.findStudentBorrowersByFirstName(firstName);
-                    searchField.clear();
-                    return FXCollections.observableList(students);
-                }
-                break;
-            case "LastName":
-                String lastName = searchField.getText();
-                if (lastName == null || lastName.equals("")) {
-                    alertMessage.setText("Please enter a name in the search field");
-                    searchField.clear();
-                } else {
-                    StudentBorrowerCollection studentBorrowerCollection = new StudentBorrowerCollection();
-                    Vector students = studentBorrowerCollection.findStudentBorrowersByLastName(lastName);
-                    searchField.clear();
-                    return FXCollections.observableList(students);
-                }
-                break;
+            if (search.equals(language.getProperty("FirstName"))) {
+                Vector students = studentBorrowerCollection.findStudentsByFirstName(input);
+                searchField.clear();
+                return FXCollections.observableList(students);
+            }
 
-            case "ContactPhone":
-                String contactPhone = searchField.getText();
-                if (contactPhone == null || contactPhone.equals("")) {
-                    alertMessage.setText("Please enter a phone number in the search field");
-                    searchField.clear();
-                } else {
-                    StudentBorrowerCollection studentBorrowerCollection = new StudentBorrowerCollection();
-                    Vector students = studentBorrowerCollection.findStudentBorrowersByContactPhone(contactPhone);
-                    searchField.clear();
-                    return FXCollections.observableList(students);
-                }
-                break;
+            if (search.equals(language.getProperty("LastName"))) {
+                Vector students = studentBorrowerCollection.findStudentsbyLastName(input);
+                searchField.clear();
+                return FXCollections.observableList(students);
+            }
 
-            case "Email":
-                String email = searchField.getText();
-                if (email == null || email.equals("")) {
-                    alertMessage.setText("Please enter an email address in the search field");
-                    searchField.clear();
-                } else {
-                    StudentBorrowerCollection studentBorrowerCollection = new StudentBorrowerCollection();
-                    Vector students = studentBorrowerCollection.findStudentBorrowersByEmail(email);
-                    searchField.clear();
-                    return FXCollections.observableList(students);
-                }
-                break;
+            if (search.equals(language.getProperty("ContactPhone"))) {
+                Vector students = studentBorrowerCollection.findStudentsByContactPhone(input);
+                searchField.clear();
+                return FXCollections.observableList(students);
+            }
 
-            case "BorrowerStatus":
-                String borrowerStatus = searchField.getText();
-                if (borrowerStatus == null || borrowerStatus.equals("") ||
-                        !(borrowerStatus.equals("Good") || borrowerStatus.equals("Delinquent"))) {
-                    alertMessage.setText("Please enter either: 'Good'/'Delinquent' in the search field");
-                    searchField.clear();
-                } else {
-                    StudentBorrowerCollection studentCollection = new StudentBorrowerCollection();
-                    Vector students = studentCollection.findStudentBorrowersByCredentials(borrowerStatus);
-                    searchField.clear();
-                    return FXCollections.observableList(students);
-                }
-                break;
+            if (search.equals(language.getProperty("Email"))) {
+                Vector students = studentBorrowerCollection.findStudentsByEmail(input);
+                searchField.clear();
+                return FXCollections.observableList(students);
+            }
 
-            case "Notes":
-                String notes = searchField.getText();
-//                if (notes == null || notes.equals("")) {
-//                    alertMessage.setText("Please desired notes in the search field");
-//                    searchField.clear();
-//                } else {
-//                    StudentBorrowerCollection studentBorrowerCollection = new StudentBorrowerCollection();
-//                    Vector students = studentBorrowerCollection.findStudentBorrowersByNotes(notes);
-//                    searchField.clear();
-//                    return FXCollections.observableList(students);
-//                }
-                break;
+            if (search.equals(language.getProperty("BorrowerStatus"))) {
+                Vector students = studentBorrowerCollection.findStudentsByBorrowererStatus(input);
+                searchField.clear();
+                return FXCollections.observableList(students);
+            }
 
-            case "Status":
-                String status = searchField.getText();
-                if (status == null || status.equals("") ||
-                        !(status.equals("Active") || status.equals("Inactive"))) {
-                    alertMessage.setText("Please enter either: 'Active'/'Inactive' in the search field");
-                    searchField.clear();
-                } else {
-                    StudentBorrowerCollection studentBorrowerCollection = new StudentBorrowerCollection();
-                    Vector students = studentBorrowerCollection.findStudentBorrowersByStatus(status);
-                    searchField.clear();
-                    return FXCollections.observableList(students);
-                }
-                break;
+            if (search.equals(language.getProperty("DateOfLatestBorrowerStatus")) && search.length() == 10) {
+                Vector students = studentBorrowerCollection.findStudentsByDateOfLatestBorrowerStatus(input);
+                searchField.clear();
+                return FXCollections.observableList(students);
+            } else alertMessage.setText("invalidDateFormat");
+
+
         }
-        searchField.clear();
         return null;
     }
 

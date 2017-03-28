@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import models.EntityBase;
 import models.StudentBorrower;
@@ -17,6 +18,7 @@ import utilities.Core;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 /**
@@ -24,30 +26,24 @@ import java.util.ResourceBundle;
  */
 public abstract class TransactionController implements Initializable {
 
-    @FXML
-    protected TableView tableView;
-    @FXML
-    protected ChoiceBox<String> searchChoice;
-    @FXML
-    protected TextField searchField;
-    @FXML
-    protected Button modify;
     private Core core = Core.getInstance();
+    private Properties language = core.getLang();
     ObservableList<String> properties;
-
+    @FXML protected Text workerHeader;
+    @FXML protected Text bookHeader;
+    @FXML protected Text studentHeader;
+    @FXML protected TableView tableView;
+    @FXML protected ChoiceBox<String> searchChoice;
+    @FXML protected TextField searchField;
+    @FXML protected Button modify;
+    @FXML protected Button search;
+    @FXML protected Button add;
 
     public TransactionController() {
 
     }
 
     public void initialize(URL location, ResourceBundle resources) {
-        properties = itemsSearchChoiceArray();
-        searchChoice.setItems(properties);
-        searchChoice.getSelectionModel().selectFirst();
-        if (core.getUser().getCredentials().equals("Ordinary")) {
-            modify.setDisable(true);
-        }
-        setTableView();
     }
 
     public void search(ActionEvent actionEvent) {
@@ -67,8 +63,9 @@ public abstract class TransactionController implements Initializable {
     }
 
     protected void modify(ActionEvent actionEvent) throws IOException {
-
     }
+
+    protected abstract ObservableList<String> dedicatedColumnHeaders();
 
     protected abstract ObservableList<String> itemsSearchChoiceArray();
 

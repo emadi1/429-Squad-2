@@ -7,7 +7,7 @@ import java.util.Vector;
  * Created by kevph on 3/20/2017.
  */
 public class BookBarcodePrefixCollection extends EntityBase {
-    private static final String myTableName = "BarcodePrefixValue";
+    private static final String myTableName = "BookBarcodePrefix";
     private Vector<BookBarcodePrefix> bookBarcodePrefixes;
     private String updateStatusMessage = "";
 
@@ -48,6 +48,13 @@ public class BookBarcodePrefixCollection extends EntityBase {
     public Vector findBarcodePrefixValueByDiscipline(String discipline) {
         String query = "SELECT * FROM " + myTableName + " WHERE (Discipline = " + discipline + ")";
         return runQuery(query);
+    }
+
+    public String generateDiscipline(String barcode) {
+        String prefix = barcode.substring(0, 2);
+        Vector coll = findBarcodePrefixValueByPrefix(prefix);
+        BookBarcodePrefix bookBarcodePrefix = (BookBarcodePrefix) coll.get(0);
+        return bookBarcodePrefix.getDiscipline();
     }
 
     public void addBarcodePrefixValue(BookBarcodePrefix bookBarcodePrefix) {

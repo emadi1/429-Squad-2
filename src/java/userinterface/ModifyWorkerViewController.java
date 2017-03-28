@@ -1,11 +1,9 @@
 package userinterface;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
@@ -15,36 +13,42 @@ import models.Worker;
 import utilities.Core;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
 /**
- * Created by Ders on 3/22/2017.
+ * Created by kevph and Ders on 3/22/2017.
  */
 public class ModifyWorkerViewController implements Initializable{
 
-    private ObservableList<String> statusList = FXCollections.observableArrayList("Active", "Inactive");
-    private ObservableList<String> credentialsList = FXCollections.observableArrayList("Administrator", "Ordinary");
     private Core core = Core.getInstance();
+    private Properties language = core.getLang();
+    private ObservableList<String> statusList =
+            FXCollections.observableArrayList(language.getProperty("Active"), language.getProperty("Inactive"));
+    private ObservableList<String> credentialsList =
+            FXCollections.observableArrayList(language.getProperty("Administrator"), language.getProperty("Ordinary"));
 
-    @FXML private TextField ContactPhone;
-    @FXML private ComboBox<String> Status;
-    @FXML private TextField Email;
+    @FXML private Text bannerId, password, firstName, lastName, contactPhone, email, alertMessage;
+    @FXML private Text credentials, dateOfLatestCredentialsStatus, dateOfHire, status;
+    @FXML private TextField BannerId, Password, FirstName, LastName, ContactPhone;
+    @FXML private TextField Email, DateOfLatestCredentialsStatus, DateOfHire;
+    @FXML private ComboBox<String> Status, Credentials;
     @FXML private Button submit;
-    @FXML private TextField DateOfHire;
-    @FXML private TextField FirstName;
-    @FXML private TextField BannerId;
-    @FXML private TextField LastName;
-    @FXML private TextField DateOfLatestCredentialsStatus;
-    @FXML private ComboBox<String> Credentials;
-    @FXML private TextField Password;
-    @FXML private Text alertMessage;
-
-    ArrayList<TextField> textFieldList;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        submit.setText(language.getProperty("Modify"));
+        bannerId.setText(language.getProperty("PromptBannerId"));
+        password.setText(language.getProperty("PromptPassword"));
+        firstName.setText(language.getProperty("PromptFirstName"));
+        lastName.setText(language.getProperty("PromptLastName"));
+        contactPhone.setText(language.getProperty("PromptContactPhone"));
+        email.setText(language.getProperty("PromptEmail"));
+        credentials.setText(language.getProperty("PromptCredentials"));
+        dateOfLatestCredentialsStatus.setText(language.getProperty("PromptDateOfLatestCredentialsStatus"));
+        dateOfHire.setText(language.getProperty("PromptDateOfHire"));
+        status.setText(language.getProperty("PromptStatus"));
+
         BannerId.setText(core.getModWorker().getBannerId());
         BannerId.setDisable(true);
         Password.setText(core.getModWorker().getPassword());
@@ -52,9 +56,8 @@ public class ModifyWorkerViewController implements Initializable{
         LastName.setText(core.getModWorker().getLastName());
         ContactPhone.setText(core.getModWorker().getContactPhone());
         Email.setText(core.getModWorker().getEmail());
-        if (core.getUser().getCredentials().equals("Ordinary")) {
+        if (core.getUser().getCredentials().equals("Ordinary"))
             Credentials.setDisable(true);
-        }
         Credentials.setValue(core.getModWorker().getCredentials());
         DateOfLatestCredentialsStatus.setText(core.getModWorker().getDateOfLatestCredentialsStatus());
         DateOfHire.setText(core.getModWorker().getDateOfHire());
@@ -64,22 +67,22 @@ public class ModifyWorkerViewController implements Initializable{
     }
 
     public void submit(ActionEvent event) {
-        alertMessage.setText("");
-
-        Worker worker = core.getModWorker();
-        worker.setPassword(Password.getText());
-        worker.setFirstName(FirstName.getText());
-        worker.setLastName(LastName.getText());
-        worker.setContactPhone(ContactPhone.getText());
-        worker.setEmail(Email.getText());
-        worker.setCredentials(Credentials.getValue());
-        worker.setDateOfLatestCredentialsStatus(DateOfLatestCredentialsStatus.getText());
-        worker.setDateOfHire(DateOfHire.getText());
-        worker.setStatus(Status.getValue());
-        worker.update();
-        System.out.println(worker.toString());
-        alertMessage.setText("Worker successfully updated");
-
-
+        try {
+            alertMessage.setText("");
+            Worker worker = core.getModWorker();
+            worker.setPassword(Password.getText());
+            worker.setFirstName(FirstName.getText());
+            worker.setLastName(LastName.getText());
+            worker.setContactPhone(ContactPhone.getText());
+            worker.setEmail(Email.getText());
+            worker.setCredentials(Credentials.getValue());
+            worker.setDateOfLatestCredentialsStatus(DateOfLatestCredentialsStatus.getText());
+            worker.setDateOfHire(DateOfHire.getText());
+            worker.setStatus(Status.getValue());
+            worker.update();
+            alertMessage.setText(language.getProperty("modifyWorkerSuccess"));
+        } catch (Exception e) {
+            alertMessage.setText(language.getProperty("modifyWorkerFail"));
+        }
     }
 }

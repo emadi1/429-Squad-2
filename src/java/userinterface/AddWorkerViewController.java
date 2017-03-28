@@ -1,12 +1,11 @@
 package userinterface;
 
-import exception.InvalidPrimaryKeyException;
+import database.DBKey;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
@@ -14,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 import models.Worker;
 import models.WorkerCollection;
+import utilities.Core;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -25,38 +25,47 @@ import java.util.ResourceBundle;
  */
 public class AddWorkerViewController implements Initializable {
 
-    private ObservableList<String> statusList = FXCollections.observableArrayList("Active", "Inactive");
-    private ObservableList<String> credentialsList = FXCollections.observableArrayList("Administrator", "Ordinary");
-
-    @FXML
-    private TextField ContactPhone;
-    @FXML
-    private ComboBox<String> Status;
-    @FXML
-    private TextField Email;
-    @FXML
-    private Button submit;
-    @FXML
-    private TextField DateOfHire;
-    @FXML
-    private TextField FirstName;
-    @FXML
-    private TextField BannerId;
-    @FXML
-    private TextField LastName;
-    @FXML
-    private TextField DateOfLatestCredentialsStatus;
-    @FXML
-    private ComboBox<String> Credentials;
-    @FXML
-    private TextField Password;
-    @FXML
-    private Text alertMessage;
-
+    @FXML private Text bannerId;
+    @FXML private Text password;
+    @FXML private Text firstName;
+    @FXML private Text lastName;
+    @FXML private Text contactPhone;
+    @FXML private Text email;
+    @FXML private Text credentials;
+    @FXML private Text dateOfLatestCredentialsStatus;
+    @FXML private Text dateOfHire;
+    @FXML private Text status;
+    @FXML private TextField BannerId;
+    @FXML private TextField Password;
+    @FXML private TextField FirstName;
+    @FXML private TextField LastName;
+    @FXML private TextField ContactPhone;
+    @FXML private TextField Email;
+    @FXML private ComboBox<String> Credentials;
+    @FXML private TextField DateOfLatestCredentialsStatus;
+    @FXML private TextField DateOfHire;
+    @FXML private ComboBox<String> Status;
+    @FXML private Button submit;
+    @FXML private Text alertMessage;
+    Core core = Core.getInstance();
+    Properties lang = core.getLang();
     ArrayList<TextField> textFieldList;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        ObservableList<String> statusList = FXCollections.observableArrayList(lang.getProperty("Active"), lang.getProperty("Inactive"));
+        ObservableList<String> credentialsList = FXCollections.observableArrayList(lang.getProperty("Administrator"), lang.getProperty("Ordinary"));
+        submit.setText(lang.getProperty("Add"));
+        bannerId.setText(lang.getProperty("PromptBannerId"));
+        password.setText(lang.getProperty("PromptPassword"));
+        firstName.setText(lang.getProperty("PromptFirstName"));
+        lastName.setText(lang.getProperty("PromptLastName"));
+        contactPhone.setText(lang.getProperty("PromptContactPhone"));
+        email.setText(lang.getProperty("PromptEmail"));
+        credentials.setText(lang.getProperty("PromptCredentials"));
+        dateOfLatestCredentialsStatus.setText(lang.getProperty("PromptDateOfLatestCredentialsStatus"));
+        dateOfHire.setText(lang.getProperty("PromptDateOfHire"));
+        status.setText(lang.getProperty("PromptStatus"));
         textFieldList = new ArrayList<>();
         textFieldList.add(BannerId);
         textFieldList.add(Password);
@@ -64,11 +73,11 @@ public class AddWorkerViewController implements Initializable {
         textFieldList.add(LastName);
         textFieldList.add(ContactPhone);
         textFieldList.add(Email);
-        Credentials.setValue("Ordinary");
+        Credentials.setValue(lang.getProperty("Ordinary"));
         Credentials.setItems(credentialsList);
         textFieldList.add(DateOfLatestCredentialsStatus);
         textFieldList.add(DateOfHire);
-        Status.setValue("Active");
+        Status.setValue(lang.getProperty("Active"));
         Status.setItems(statusList);
     }
 
@@ -76,30 +85,50 @@ public class AddWorkerViewController implements Initializable {
     public void submit(ActionEvent event) {
 
         Properties prop = new Properties();
+        WorkerCollection workerCollection = new WorkerCollection();
+        int count = workerCollection.findWorkersByBannerId(prop.getProperty(DBKey.BANNER_ID)).size();
 
-        alertMessage.setText("");
-
-        // TODO field checks
-        for (TextField textField : textFieldList) {
-
-            if (textField.getText().equals("")) {
-                alertMessage.setText("Please complete all fields");
-                return;
-            } else {
-                prop.put(textField.getId(), textField.getText());
-            }
+        if (BannerId.getText().length() != 9) {
+            alertMessage.setText(lang.getProperty("invalidBannerIdLength"));
+            return;
         }
-        prop.put(Status.getId(), Status.getSelectionModel().getSelectedItem());
-        prop.put(Credentials.getId(), Credentials.getSelectionModel().getSelectedItem());
-        //WorkerCollection workerCollection = new WorkerCollection();
-        //Worker worker = (Worker) workerCollection.findWorkersByBannerId(textFieldList.get(0).getText()).elementAt(0);
-        //if (!worker.getBannerId().equals(prop.getProperty("BannerId"))) {
+
+        if (DateOfHire.getText().length() != 10 || DateOfLatestCredentialsStatus.getText().length() != 10
+                || DateOfHire.getText().charAt(2) != '-' || DateOfHire.getText().charAt(5) != '-'
+                || DateOfLatestCredentialsStatus.getText().charAt(2) != '-'
+                || DateOfLatestCredentialsStatus.getText().charAt(5) != '-') {
+            alertMessage.setText(lang.getProperty("invalidDateFormat"));
+            return;
+        }
+
+        for (TextField textField : textFieldList) {
+            if (textField.getText().equals("")) {
+                alertMessage.setText(lang.getProperty("completeFields"));
+                return;
+            } else prop.put(textField.getId(), textField.getText());
+        }
+
+        if (core.getLanguage().equals("fr_FR")) {
+            String hireDay = DateOfHire.getText().substring(3, 5);
+            String hireMonth = DateOfHire.getText().substring(0, 2);
+            String hireYear = DateOfHire.getText().substring(6);
+            String credDay = DateOfLatestCredentialsStatus.getText().substring(3, 5);
+            String credMonth = DateOfLatestCredentialsStatus.getText().substring(0, 2);
+            String credYear = DateOfLatestCredentialsStatus.getText().substring(6);
+            prop.setProperty("DateOfHire", hireDay + "-" + hireMonth + "-" + hireYear);
+            prop.setProperty("DateOfLatestCredentialsStatus", credDay + "-" + credMonth + "-" + credYear);
+        }
+
+        if (count == 0) {
+            prop.put(Status.getId(), Status.getSelectionModel().getSelectedItem());
+            prop.put(Credentials.getId(), Credentials.getSelectionModel().getSelectedItem());
             Worker newWorker = new Worker(prop);
-            newWorker.update();
-            alertMessage.setText("Worker has been submitted");
-        //} else {
-           // alertMessage.setText("BannerID already exists in database.");
-        //}
+            newWorker.insert();
+            alertMessage.setText(lang.getProperty("addWorkerSuccess"));
+        } else alertMessage.setText(lang.getProperty("existingBannerId") + prop.getProperty(DBKey.BANNER_ID));
+
         for (TextField t : textFieldList) { t.clear(); }
+        Credentials.setValue(lang.getProperty("Ordinary"));
+        Status.setValue(lang.getProperty("Active"));
     }
 }

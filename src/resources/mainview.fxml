@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Text?>
 <?import javafx.scene.text.Font?>
-<Pane prefHeight="740.0" prefWidth="1300.0" fx:controller="userinterface.MainViewController" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.text.Text?>
+
+<Pane prefHeight="740.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userinterface.MainViewController">
     <children>
         <AnchorPane prefHeight="750.0" prefWidth="225.0">
                 <children>
-                    <Button id="bookTransactions" fx:id="addBook" layoutY="0" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="125" prefWidth="225.0" style="-fx-background-color: green" textFill="beige" text="Book Transactions" />
-                    <Button id="studentBorrowerTransactions" fx:id="addStudent" layoutY="125.0" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="125" prefWidth="225.0" style="-fx-background-color: red" textFill="beige" text="Student Transactions" />
-                    <Button id="workerTransactions" fx:id="addWorker" layoutY="250" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="125" prefWidth="225.0" style="-fx-background-color: blue" textFill="beige" text="Worker Transaction" />
-                    <Button id="checkOutBook" fx:id="checkOutBook" layoutY="375.0" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="125" prefWidth="225.0" style="-fx-background-color: #8a8a87" textFill="beige" text="Check Out Book" />
-                    <Button id="checkInBook" fx:id="checkInBook" layoutY="500" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="125" prefWidth="225.0" style="-fx-background-color: #393735" textFill="beige" text="Check In Book" />
-                    <Button id="listCheckedBooks" fx:id="listCheckedBooks" layoutY="625.0" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="130" prefWidth="225.0" style="-fx-background-color: #010101" textFill="beige" text="List All Checked Out Books" />
+                    <Button id="bookTransactions" fx:id="bookTransactions" layoutY="0" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="125" prefWidth="225.0" style="-fx-background-color: green" textFill="beige" />
+                    <Button id="studentBorrowerTransactions" fx:id="studentTransactions" layoutY="125.0" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="125" prefWidth="225.0" style="-fx-background-color: red" textFill="beige" />
+                    <Button id="workerTransactions" fx:id="workerTransactions" layoutY="250" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="125" prefWidth="225.0" style="-fx-background-color: blue" textFill="beige" />
+                    <Button id="checkOutBook" fx:id="checkOutBook" layoutY="375.0" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="125" prefWidth="225.0" style="-fx-background-color: #8a8a87" textFill="beige" />
+                    <Button id="checkInBook" fx:id="checkInBook" layoutY="500" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="125" prefWidth="225.0" style="-fx-background-color: #393735" textFill="beige" />
+                    <Button id="listCheckedBooks" fx:id="listCheckedBooks" layoutY="625.0" mnemonicParsing="false" onAction="#menuClickListener" prefHeight="130" prefWidth="225.0" style="-fx-background-color: #010101" textFill="beige" />
                 </children>
         </AnchorPane>
-        <Pane fx:id="root" layoutX="225.0" prefHeight="750.0" prefWidth="926.0">
+        <Pane fx:id="root" layoutX="225.0" prefHeight="750.0" prefWidth="1076.0">
             <children>
-                <Text layoutX="284.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brockport Library System" textAlignment="CENTER" wrappingWidth="406.0">
+                <Text layoutX="375.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" fx:id="welcome" textAlignment="CENTER" wrappingWidth="406.0">
                     <font>
                         <Font size="42.0" />
                     </font>
                 </Text>
-                <Text layoutX="661.0" layoutY="731.0" strokeType="OUTSIDE" strokeWidth="0.0" text="by Squad Two" textAlignment="RIGHT" wrappingWidth="250.5"/>
+                <Text layoutX="948.0" layoutY="720.0" strokeType="OUTSIDE" strokeWidth="0.0" text="by Squad Two" textAlignment="RIGHT" wrappingWidth="102.5" />
             </children>
         </Pane>
-        
     </children>
 </Pane>
