@@ -7,20 +7,38 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
+import utilities.Core;
+
 import java.io.IOException;
 import java.net.URL;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 /**
  * Created by kevph on 3/5/2017.
  */
-public class MainViewController implements Initializable{
-    @FXML
-    private Pane root;
+public class MainViewController implements Initializable {
+    private Core core = Core.getInstance();
+    private Properties language = core.getLang();
+    @FXML private Pane root;
+    @FXML private Text welcome;
+    @FXML private Button bookTransactions;
+    @FXML private Button workerTransactions;
+    @FXML private Button studentTransactions;
+    @FXML private Button checkOutBook;
+    @FXML private Button checkInBook;
+    @FXML private Button listCheckedBooks;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        bookTransactions.setText(language.getProperty("BookTransactions"));
+        workerTransactions.setText(language.getProperty("WorkerTransactions"));
+        studentTransactions.setText(language.getProperty("StudentTransactions"));
+        checkOutBook.setText(language.getProperty("CheckOutBook"));
+        checkInBook.setText(language.getProperty("CheckInBook"));
+        listCheckedBooks.setText(language.getProperty("ListCheckedBooks"));
+        welcome.setText(language.getProperty("welcome"));
     }
 
     public void menuClickListener(ActionEvent event) throws IOException {
@@ -30,40 +48,16 @@ public class MainViewController implements Initializable{
             Parent pane = null;
 
             switch (button.getId()) {
-                case "addBook":
-                    pane = FXMLLoader.load(getClass().getClassLoader().getResource("addbookview.fxml"));
+                case "bookTransactions":
+                    pane = FXMLLoader.load(getClass().getClassLoader().getResource("booktransactionsview.fxml"));
                     break;
 
-                case "modifyBook":
-                    pane = FXMLLoader.load(getClass().getClassLoader().getResource("modifybookview.fxml"));
+                case "studentBorrowerTransactions":
+                    pane = FXMLLoader.load(getClass().getClassLoader().getResource("studentborrowertransactionsview.fxml"));
                     break;
 
-                case "deleteBook":
-                    pane = FXMLLoader.load(getClass().getClassLoader().getResource("deletebookview.fxml"));
-                    break;
-
-                case "addStudent":
-                    pane = FXMLLoader.load(getClass().getClassLoader().getResource("addstudentview.fxml"));
-                    break;
-
-                case "modifyStudent":
-                    pane = FXMLLoader.load(getClass().getClassLoader().getResource("modifystudentview.fxml"));
-                    break;
-
-                case "deleteStudent":
-                    pane = FXMLLoader.load(getClass().getClassLoader().getResource("deletestudentview.fxml"));
-                    break;
-
-                case "addWorker":
-                    pane = FXMLLoader.load(getClass().getClassLoader().getResource("addworkerview.fxml"));
-                    break;
-
-                case "modifyWorker":
-                    pane = FXMLLoader.load(getClass().getClassLoader().getResource("modifyworkerview.fxml"));
-                    break;
-
-                case "deleteWorker":
-                    pane = FXMLLoader.load(getClass().getClassLoader().getResource("deleteworkerview.fxml"));
+                case "workerTransactions":
+                    pane = FXMLLoader.load(getClass().getClassLoader().getResource("workertransactionsview.fxml"));
                     break;
 
                 case "checkOutBook":
