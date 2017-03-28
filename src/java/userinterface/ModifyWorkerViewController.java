@@ -38,16 +38,16 @@ public class ModifyWorkerViewController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         submit.setText(language.getProperty("Modify"));
-        bannerId.setText(language.getProperty("bannerId"));
-        password.setText(language.getProperty("password"));
-        firstName.setText(language.getProperty("firstName"));
-        lastName.setText(language.getProperty("lastName"));
-        contactPhone.setText(language.getProperty("contactPhone"));
-        email.setText(language.getProperty("email"));
-        credentials.setText(language.getProperty("credentials"));
-        dateOfLatestCredentialsStatus.setText(language.getProperty("dateOfLatestCredentialsStatus"));
-        dateOfHire.setText(language.getProperty("dateOfHire"));
-        status.setText(language.getProperty("status"));
+        bannerId.setText(language.getProperty("PromptBannerId"));
+        password.setText(language.getProperty("PromptPassword"));
+        firstName.setText(language.getProperty("PromptFirstName"));
+        lastName.setText(language.getProperty("PromptLastName"));
+        contactPhone.setText(language.getProperty("PromptContactPhone"));
+        email.setText(language.getProperty("PromptEmail"));
+        credentials.setText(language.getProperty("PromptCredentials"));
+        dateOfLatestCredentialsStatus.setText(language.getProperty("PromptDateOfLatestCredentialsStatus"));
+        dateOfHire.setText(language.getProperty("PromptDateOfHire"));
+        status.setText(language.getProperty("PromptStatus"));
 
         BannerId.setText(core.getModWorker().getBannerId());
         BannerId.setDisable(true);

@@ -1,5 +1,6 @@
 package userinterface;
 
+import database.DBKey;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -30,51 +31,56 @@ import java.util.Vector;
  */
 public class WorkerTransactionsController extends TransactionController {
 
+    @FXML private Text alertMessage;
     private Core core = Core.getInstance();
     private Properties language = core.getLang();
-    @FXML private Text alertMessage;
-    private String BannerId = language.getProperty("BannerId");
-    private String FirstName = language.getProperty("FirstName");
-    private String LastName = language.getProperty("LastName");
-    private String ContactPhone = language.getProperty("ContactPhone");
-    private String Email = language.getProperty("Email");
-    private String Credentials = language.getProperty("Credentials");
-    private String DateOfLatestCredentialsStatus = language.getProperty("DateOfLatestCredentialsStatus");
-    private String DateOfHire = language.getProperty("DateOfHire");
-    private String Status = language.getProperty("Status");
 
     @Override
     public ObservableList<String> itemsSearchChoiceArray() {
         return FXCollections.observableArrayList(
-                BannerId,
-                FirstName,
-                LastName,
-                ContactPhone,
-                Email,
-                Credentials,
-                DateOfLatestCredentialsStatus,
-                DateOfHire,
-                Status);
+                language.getProperty("BannerId"),
+                language.getProperty("FirstName"),
+                language.getProperty("LastName"),
+                language.getProperty("ContactPhone"),
+                language.getProperty("Email"),
+                language.getProperty("Credentials"),
+                language.getProperty("DateOfLatestCredentialsStatus"),
+                language.getProperty("DateOfHire"),
+                language.getProperty("Status")
+        );
+    }
+
+    @Override
+    protected ObservableList<String> dedicatedColumnHeaders() {
+        return FXCollections.observableArrayList(
+                DBKey.BANNER_ID,
+                DBKey.FIRST_NAME,
+                DBKey.LAST_NAME,
+                DBKey.CONTACT_PHONE,
+                DBKey.EMAIL,
+                DBKey.CREDENTIALS,
+                DBKey.DATE_OF_LATEST_CREDENTIALS_STATUS,
+                DBKey.DATE_OF_HIRE,
+                DBKey.STATUS
+        );
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        properties = itemsSearchChoiceArray();
-        searchChoice.setItems(properties);
+
+        searchChoice.setItems(itemsSearchChoiceArray());
         searchChoice.getSelectionModel().selectFirst();
         workerHeader.setText(language.getProperty("WorkerTransactions"));
         modify.setText(language.getProperty("Modify"));
         add.setText(language.getProperty("Add"));
         search.setText(language.getProperty("Search"));
-        if (core.getUser().getCredentials().equals("Ordinary")) {
-            modify.setDisable(true);
-        }
+        if (core.getUser().getCredentials().equals("Ordinary")) modify.setDisable(true);
         setTableView();
     }
 
     protected void setTableView() {
         TableColumn column;
-        for (String property : properties) {
+        for (String property : dedicatedColumnHeaders()) {
             column = new TableColumn(property);
             column.setMinWidth(92);
             column.setCellValueFactory(new PropertyValueFactory<Worker, String>(property));
@@ -104,7 +110,7 @@ public class WorkerTransactionsController extends TransactionController {
 
     }
 
-    public void add(ActionEvent actionEvent) {
+    public void add(ActionEvent actionEvent) throws IOException {
         try {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("addworkerview.fxml"));
             Stage primaryStage = new Stage();
@@ -123,147 +129,104 @@ public class WorkerTransactionsController extends TransactionController {
     @Override
     public void modify(ActionEvent actionEvent) throws IOException {
         try {
-            Worker worker = (Worker)tableView.getSelectionModel().getSelectedItem();
-            System.out.println(worker);
-            Core core = Core.getInstance();
+            Worker worker = (Worker) tableView.getSelectionModel().getSelectedItem();
             core.setModWorker(worker);
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifyworkerview.fxml"));
-            Stage primaryStage = new Stage();
+            Stage stage = new Stage();
             Scene scene = new Scene(root);
-            primaryStage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
-            primaryStage.setScene(scene);
-            primaryStage.setTitle("Brockport Library System");
-            primaryStage.setResizable(false);
-            primaryStage.show();
+            stage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
+            stage.setScene(scene);
+            stage.setTitle(language.getProperty("modifyWorkerTitle"));
+            stage.setResizable(false);
+            stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     protected ObservableList querySelector() {
+
         String input = searchField.getText();
-        switch (searchChoice.getSelectionModel().getSelectedItem()) {
+        String search = searchChoice.getSelectionModel().getSelectedItem();
+        if (input != null || !input.equals("")) {
 
-            case "BannerId":
-                if (input == null || input.equals("")) {
-                    alertMessage.setText(language.getProperty("InvalidEntry"));
-                    searchField.clear();
-                    break;
-                } else if (input.length() != 9) {
-                    alertMessage.setText(language.getProperty("InvalidEntry"));
-                    searchField.clear();
-                    break;
-                } else {
+            if (search.equals(language.getProperty("BannerId"))) {
+                if (input.length() != 9 || !isNumeric(input))
+                    alertMessage.setText(language.getProperty("invalidBannerIdFormat"));
+                else {
                     WorkerCollection workerCollection = new WorkerCollection();
                     Vector workers = workerCollection.findWorkersByBannerId(input);
                     searchField.clear();
                     return FXCollections.observableList(workers);
                 }
+            }
 
-            case "ID de bannière":
-                if (input == null || input.equals("")) {
-                    alertMessage.setText(language.getProperty("InvalidEntry"));
-                    searchField.clear();
-                    break;
-                } else if (input.length() != 9) {
-                    alertMessage.setText(language.getProperty("InvalidEntry"));
-                    searchField.clear();
-                    break;
-                } else {
-                    WorkerCollection workerCollection = new WorkerCollection();
-                    Vector workers = workerCollection.findWorkersByBannerId(input);
-                    searchField.clear();
-                    return FXCollections.observableList(workers);
-                }
+            if (search.equals(language.getProperty("FirstName"))) {
+                WorkerCollection workerCollection = new WorkerCollection();
+                Vector workers = workerCollection.findWorkersByFirstName(input);
+                searchField.clear();
+                return FXCollections.observableList(workers);
+            }
 
-            case "FirstName":
-                if (input == null || input.equals("")) {
-                    alertMessage.setText("Please enter a name in the search field");
-                    searchField.clear();
-                } else {
-                    WorkerCollection workerCollection = new WorkerCollection();
-                    Vector workers = workerCollection.findWorkersByFirstName(input);
-                    searchField.clear();
-                    return FXCollections.observableList(workers);
-                }
-                break;
+            if (search.equals(language.getProperty("LastName"))) {
+                WorkerCollection workerCollection = new WorkerCollection();
+                Vector workers = workerCollection.findWorkersByLastName(input);
+                searchField.clear();
+                return FXCollections.observableList(workers);
+            }
 
-            case "LastName":
-                if (input == null || input.equals("")) {
-                    alertMessage.setText("Please enter a name in the search field");
-                    searchField.clear();
-                } else {
-                    WorkerCollection workerCollection = new WorkerCollection();
-                    Vector workers = workerCollection.findWorkersByLastName(input);
-                    searchField.clear();
-                    return FXCollections.observableList(workers);
-                }
-                break;
+            if (search.equals(language.getProperty("ContactPhone"))) {
+                WorkerCollection workerCollection = new WorkerCollection();
+                Vector workers = workerCollection.findWorkersByContactPhone(input);
+                searchField.clear();
+                return FXCollections.observableList(workers);
+            }
 
-            case "ContactPhone":
-                if (input == null || input.equals("")) {
-                    alertMessage.setText("Please enter a phone number in the search field");
-                    searchField.clear();
-                } else {
-                    WorkerCollection workerCollection = new WorkerCollection();
-                    Vector workers = workerCollection.findWorkersByContactPhone(input);
-                    searchField.clear();
-                    return FXCollections.observableList(workers);
-                }
-                break;
+            if (search.equals(language.getProperty("Email"))) {
+                WorkerCollection workerCollection = new WorkerCollection();
+                Vector workers = workerCollection.findWorkersByEmail(input);
+                searchField.clear();
+                return FXCollections.observableList(workers);
+            }
 
-            case "Email":
-                if (input == null || input.equals("")) {
-                    alertMessage.setText("Please enter an email address in the search field");
-                    searchField.clear();
-                } else {
-                    WorkerCollection workerCollection = new WorkerCollection();
-                    Vector workers = workerCollection.findWorkersByEmail(input);
-                    searchField.clear();
-                    return FXCollections.observableList(workers);
-                }
-                break;
-
-            case "Credentials":
-                if (input == null || input.equals("") ||
-                        !(input.equals("Administrator") || input.equals("Ordinary"))) {
-                    alertMessage.setText("Please enter either: 'Administrator'/'Ordinary' in the search field");
-                    searchField.clear();
-                } else {
+            if (search.equals(language.getProperty("Credentials"))) {
+                if (input.equals(language.getProperty("Administrator")) || input.equals(language.getProperty("Ordinary"))) {
                     WorkerCollection workerCollection = new WorkerCollection();
                     Vector workers = workerCollection.findWorkersByCredentials(input);
                     searchField.clear();
                     return FXCollections.observableList(workers);
-                }
-                break;
+                } else alertMessage.setText("invalidCredentials");
+            }
 
-            case "DateOfLatestCredentialsStatus":
-                String dateOfLatestCredStatus = searchField.getText();
-                break;
+            if (search.equals(language.getProperty("DateOfLatestCredentialsStatus")) && search.length() == 10) {
+                WorkerCollection workerCollection = new WorkerCollection();
+                Vector workers = workerCollection.findWorkersByLatestCredentialsStatus(input);
+                searchField.clear();
+                return FXCollections.observableList(workers);
+            } else alertMessage.setText("invalidDateFormat");
 
-            case "Date of Hire":
-                String dateOfHire = searchField.getText();
-                break;
+            if (search.equals(language.getProperty("DateOfHire")) && search.length() == 10) {
+                WorkerCollection workerCollection = new WorkerCollection();
+                Vector workers = workerCollection.findWorkersByDateOfHire(input);
+                searchField.clear();
+                return FXCollections.observableList(workers);
+            } else alertMessage.setText("invalidDateFormat");
 
-            case "Status":
-                if (input == null || input.equals("") ||
-                        !(input.equals("Active") || input.equals("Inactive"))) {
-                    alertMessage.setText("Please enter either: 'Active'/'Inactive' in the search field");
-                    searchField.clear();
-                } else {
+            if (search.equals(language.getProperty("Status"))) {
+                if (input.equals(language.getProperty("Active")) || input.equals(language.getProperty("Inactive"))) {
                     WorkerCollection workerCollection = new WorkerCollection();
                     Vector workers = workerCollection.findWorkerByStatus(input);
                     searchField.clear();
                     return FXCollections.observableList(workers);
                 }
-                break;
+            }
         }
-
-        searchField.clear();
-
+        if (input == null || input.equals("")) {
+            alertMessage.setText("emptyField");
+            return null;
+        }
         return null;
     }
-
 
     protected void showModifyDialog() {
 

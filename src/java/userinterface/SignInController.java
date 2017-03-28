@@ -40,6 +40,7 @@ public class SignInController implements Initializable {
     private ObservableList<String> languages = FXCollections.observableArrayList("en_US", "fr_FR");
     Core core = Core.getInstance();
     Properties lang = core.getLang();
+
     public SignInController() {
 
     }
@@ -48,21 +49,18 @@ public class SignInController implements Initializable {
         language.setItems(languages);
         language.setValue("en_US");
         signInHeader.setText(lang.getProperty("signIn"));
-        banner.setText(lang.getProperty("bannerId"));
-        pw.setText(lang.getProperty("password"));
+        banner.setText(lang.getProperty("PromptBannerId"));
+        pw.setText(lang.getProperty("PromptPassword"));
         signIn.setText(lang.getProperty("SignIn"));
     }
 
-    /**
-     * @param actionEvent
-     */
     public void signIn(ActionEvent actionEvent) throws IOException {
         if (bannerId.getText().equals("") || password.getText().equals(""))
             alertMessage.setText("Please enter BannerID/Password");
         else {
             // Query DB to create worker object.
             WorkerCollection workerCollection = new WorkerCollection();
-            Worker worker = (Worker)workerCollection.findWorkersByBannerId(bannerId.getText()).elementAt(0);
+            Worker worker = (Worker)workerCollection.signInWorker(bannerId.getText()).elementAt(0);
             String pw = (String)worker.getState("Password");
             if (!pw.equals(password.getText()))
                 alertMessage.setText("Password Invalid");

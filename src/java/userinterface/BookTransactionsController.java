@@ -1,5 +1,6 @@
 package userinterface;
 
+import database.DBKey;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,9 +27,9 @@ import java.util.Vector;
  */
 public class BookTransactionsController extends TransactionController {
 
+    @FXML private Text alertMessage;
     private Core core = Core.getInstance();
     private Properties language = core.getLang();
-    @FXML private Text alertMessage;
     private String Barcode = language.getProperty("Barcode");
     private String Title = language.getProperty("Title");
     private String Discipline = language.getProperty("Discipline");
@@ -46,17 +47,35 @@ public class BookTransactionsController extends TransactionController {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        properties = itemsSearchChoiceArray();
-        searchChoice.setItems(properties);
+
+        searchChoice.setItems(itemsSearchChoiceArray());
         searchChoice.getSelectionModel().selectFirst();
         bookHeader.setText(language.getProperty("BookTransactions"));
         modify.setText(language.getProperty("Modify"));
         add.setText(language.getProperty("Add"));
         search.setText(language.getProperty("Search"));
-        if (core.getUser().getCredentials().equals("Ordinary")) {
-            modify.setDisable(true);
-        }
+        if (core.getUser().getCredentials().equals("Ordinary")) modify.setDisable(true);
         setTableView();
+    }
+
+    @Override
+    protected ObservableList<String> dedicatedColumnHeaders() {
+        return FXCollections.observableArrayList(
+                DBKey.BARCODE,
+                DBKey.TITLE,
+                DBKey.DISCIPLINE,
+                DBKey.AUTHOR_1,
+                DBKey.AUTHOR_2,
+                DBKey.AUTHOR_3,
+                DBKey.AUTHOR_4,
+                DBKey.PUBLISHER,
+                DBKey.YEAR_OF_PUBLICATION,
+                DBKey.ISBN,
+                DBKey.CONDITION,
+                DBKey.SUGGESTED_PRICE,
+                DBKey.NOTES,
+                DBKey.STATUS
+        );
     }
 
     @Override
@@ -80,7 +99,7 @@ public class BookTransactionsController extends TransactionController {
 
     protected void setTableView(){
         TableColumn column;
-        for (String property : properties) {
+        for (String property : dedicatedColumnHeaders()) {
             column = new TableColumn(property);
             column.setMinWidth(60);
             column.setCellValueFactory(new PropertyValueFactory<Book, String>(property));

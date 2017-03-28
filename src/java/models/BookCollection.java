@@ -1,5 +1,8 @@
 package models;
 
+import database.DBKey;
+import utilities.Core;
+
 import java.util.Properties;
 import java.util.Vector;
 
@@ -10,10 +13,12 @@ public class BookCollection extends EntityBase {
     private static final String myTableName = "Book";
     private Vector<Book> books;
     private String updateStatusMessage = "";
+    private Properties language;
 
     public BookCollection() {
         super(myTableName);
         Vector<Book> bookCollection = new Vector<>();
+        language = Core.getInstance().getLang();
     }
 
     public Vector runQuery(String query) {
@@ -104,6 +109,23 @@ public class BookCollection extends EntityBase {
     public Vector findBooksByStatus(String status) {
         String query = "SELECT * FROM " + myTableName + " WHERE Status LIKE '%" + status + "%' ORDER BY Status ASC";
         return runQuery(query);
+    }
+
+    private String getColumnsName() {
+        return    DBKey.BARCODE + " AS " + language.getProperty(DBKey.BANNER_ID) + " "
+                + DBKey.TITLE + " AS " + language.getProperty(DBKey.TITLE) + " "
+                + DBKey.DISCIPLINE + " AS " + language.getProperty(DBKey.DISCIPLINE) + " "
+                + DBKey.AUTHOR_1 + " AS " + language.getProperty(DBKey.AUTHOR_1) + " "
+                + DBKey.AUTHOR_2 + " AS " + language.getProperty(DBKey.AUTHOR_2) + " "
+                + DBKey.AUTHOR_3 + " AS " + language.getProperty(DBKey.AUTHOR_3) + " "
+                + DBKey.AUTHOR_4 + " AS " + language.getProperty(DBKey.AUTHOR_4) + " "
+                + DBKey.PUBLISHER + " AS " + language.getProperty(DBKey.PUBLISHER) + " "
+                + DBKey.YEAR_OF_PUBLICATION + " AS " + language.getProperty(DBKey.YEAR_OF_PUBLICATION) + " "
+                + DBKey.ISBN + " AS " + language.getProperty(DBKey.ISBN) + " "
+                + DBKey.CONDITION + " AS " + language.getProperty(DBKey.CONDITION) + " "
+                + DBKey.SUGGESTED_PRICE + " AS " + language.getProperty(DBKey.SUGGESTED_PRICE) + " "
+                + DBKey.NOTES + " AS " + language.getProperty(DBKey.NOTES) + " "
+                + DBKey.STATUS + " AS " + language.getProperty(DBKey.STATUS);
     }
 
     public void addBook(Book book) {

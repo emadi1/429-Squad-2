@@ -60,8 +60,9 @@ public abstract class TransactionController implements Initializable {
     }
 
     protected void modify(ActionEvent actionEvent) throws IOException {
-
     }
+
+    protected abstract ObservableList<String> dedicatedColumnHeaders();
 
     protected abstract ObservableList<String> itemsSearchChoiceArray();
 

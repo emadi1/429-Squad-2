@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5374f5b7-d27f-4133-bc52-c6540ab79edd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/java/userinterface/ModifyStudentBorrowerController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/resources/addstudentborrowerview.fxml.kt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/resources/modifystudentborrowerview.fxml" />
+    <list default="true" id="5374f5b7-d27f-4133-bc52-c6540ab79edd" name="Default" comment="&quot;Language Core Work3/ Book transactions&quot;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/java/database/DBKey.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ErrorLog.txt" afterPath="$PROJECT_DIR$/ErrorLog.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/models/BookCollection.java" afterPath="$PROJECT_DIR$/src/java/models/BookCollection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/models/StudentBorrower.java" afterPath="$PROJECT_DIR$/src/java/models/StudentBorrower.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/models/StudentBorrowerCollection.java" afterPath="$PROJECT_DIR$/src/java/models/StudentBorrowerCollection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/models/Worker.java" afterPath="$PROJECT_DIR$/src/java/models/Worker.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/models/WorkerCollection.java" afterPath="$PROJECT_DIR$/src/java/models/WorkerCollection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/userinterface/AddWorkerViewController.java" afterPath="$PROJECT_DIR$/src/java/userinterface/AddWorkerViewController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/userinterface/BookTransactionsController.java" afterPath="$PROJECT_DIR$/src/java/userinterface/BookTransactionsController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/userinterface/ModifyWorkerViewController.java" afterPath="$PROJECT_DIR$/src/java/userinterface/ModifyWorkerViewController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/userinterface/SignInController.java" afterPath="$PROJECT_DIR$/src/java/userinterface/SignInController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/userinterface/StudentBorrowerTransactionsController.java" afterPath="$PROJECT_DIR$/src/java/userinterface/StudentBorrowerTransactionsController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/userinterface/TransactionController.java" afterPath="$PROJECT_DIR$/src/java/userinterface/TransactionController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/userinterface/WorkerTransactionsController.java" afterPath="$PROJECT_DIR$/src/java/userinterface/WorkerTransactionsController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/utilities/Core.java" afterPath="$PROJECT_DIR$/src/java/utilities/Core.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/resources/workertransactionsview.fxml" afterPath="$PROJECT_DIR$/src/resources/workertransactionsview.fxml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,38 +35,166 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Core.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/java/utilities/Core.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="156" column="76" lean-forward="false" selection-start-line="156" selection-start-column="76" selection-end-line="156" selection-end-column="76" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#Core#0;class#Core#0" expanded="false" />
-                <element signature="method#getInstance#0;class#Core#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ModifyBookViewController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/userinterface/ModifyBookViewController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.50322235">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="StudentBorrowerCollection.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/java/models/StudentBorrowerCollection.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="493">
+                  <caret line="59" column="21" lean-forward="false" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="21" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="method#StudentBorrowerCollection#0;class#StudentBorrowerCollection#0" expanded="false" />
+                    <element signature="method#runQuery#0;class#StudentBorrowerCollection#0" expanded="false" />
+                    <element signature="method#getState#0;class#StudentBorrowerCollection#0" expanded="false" />
+                    <element signature="method#findAllStudents#0;class#StudentBorrowerCollection#0" expanded="false" />
+                    <element signature="method#findStudentsByBannerId#0;class#StudentBorrowerCollection#0" expanded="false" />
+                    <element signature="method#findStudentsByFirstName#0;class#StudentBorrowerCollection#0" expanded="false" />
+                    <element signature="method#findStudentsbyLastName#0;class#StudentBorrowerCollection#0" expanded="false" />
+                    <element signature="method#findStudentsByContactPhone#0;class#StudentBorrowerCollection#0" expanded="false" />
+                    <element signature="method#findStudentsByEmail#0;class#StudentBorrowerCollection#0" expanded="false" />
+                    <element signature="method#findStudentsByBorrowererStatus#0;class#StudentBorrowerCollection#0" expanded="false" />
+                    <element signature="method#findStudentsByDateOfLatestBorrowerStatus#0;class#StudentBorrowerCollection#0" expanded="false" />
+                    <element signature="method#findStudentsByDateOfRegistration#0;class#StudentBorrowerCollection#0" expanded="false" />
+                    <element signature="method#findStudentsByStatus#0;class#StudentBorrowerCollection#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="StudentBorrowerTransactionsController.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/java/userinterface/StudentBorrowerTransactionsController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="519">
+                  <caret line="173" column="20" lean-forward="false" selection-start-line="173" selection-start-column="20" selection-end-line="173" selection-end-column="20" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="StudentBorrower.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/java/models/StudentBorrower.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="425">
+                  <caret line="82" column="9" lean-forward="true" selection-start-line="82" selection-start-column="9" selection-end-line="82" selection-end-column="9" />
+                  <folding>
+                    <element signature="method#StudentBorrower#0;class#StudentBorrower#0" expanded="false" />
+                    <element signature="method#StudentBorrower#1;class#StudentBorrower#0" expanded="false" />
+                    <element signature="method#compare#0;class#StudentBorrower#0" expanded="false" />
+                    <element signature="method#setDependencies#0;class#StudentBorrower#0" expanded="false" />
+                    <element signature="method#getState#0;class#StudentBorrower#0" expanded="false" />
+                    <element signature="method#updateStateInDatabase#0;class#StudentBorrower#0" expanded="false" />
+                    <element signature="method#insertStateInDatabase#0;class#StudentBorrower#0" expanded="false" />
+                    <element signature="method#initializeSchema#0;class#StudentBorrower#0" expanded="false" />
+                    <element signature="method#toString#0;class#StudentBorrower#0" expanded="false" />
+                    <element signature="method#getDateOfLatestBorrowerStatus#0;class#StudentBorrower#0" expanded="false" />
+                    <element signature="method#setBorrowerStatus#0;class#StudentBorrower#0" expanded="false" />
+                    <element signature="method#setDateOfLatestBorrowerStatus#0;class#StudentBorrower#0" expanded="false" />
+                    <element signature="method#setDateOfRegistration#0;class#StudentBorrower#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="Worker.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/java/models/Worker.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-187">
+                  <caret line="10" column="40" lean-forward="false" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+                  <folding>
+                    <element signature="method#Worker#0;class#Worker#0" expanded="false" />
+                    <element signature="method#Worker#1;class#Worker#0" expanded="false" />
+                    <element signature="method#compare#0;class#Worker#0" expanded="false" />
+                    <element signature="method#setDependencies#0;class#Worker#0" expanded="false" />
+                    <element signature="method#getState#0;class#Worker#0" expanded="false" />
+                    <element signature="method#insertStateInDatabase#0;class#Worker#0" expanded="false" />
+                    <element signature="method#updateStateInDatabase#0;class#Worker#0" expanded="false" />
+                    <element signature="method#initializeSchema#0;class#Worker#0" expanded="false" />
+                    <element signature="method#toString#0;class#Worker#0" expanded="false" />
+                    <element signature="method#getDateOfLatestCredentialsStatus#0;class#Worker#0" expanded="false" />
+                    <element signature="method#setDateOfLatestCredentialsStatus#0;class#Worker#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="WorkerTransactionsController.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/java/userinterface/WorkerTransactionsController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-1054">
+                  <caret line="112" column="63" lean-forward="false" selection-start-line="112" selection-start-column="63" selection-end-line="112" selection-end-column="63" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="DBKey.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/java/database/DBKey.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="554">
+                  <caret line="38" column="66" lean-forward="false" selection-start-line="38" selection-start-column="66" selection-end-line="38" selection-end-column="66" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Core.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/java/utilities/Core.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="413">
+                  <caret line="204" column="54" lean-forward="false" selection-start-line="204" selection-start-column="54" selection-end-line="204" selection-end-column="54" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="method#Core#0;class#Core#0" expanded="false" />
+                    <element signature="method#getInstance#0;class#Core#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="WorkerCollection.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/java/models/WorkerCollection.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="374">
+                  <caret line="60" column="19" lean-forward="false" selection-start-line="60" selection-start-column="19" selection-end-line="60" selection-end-column="19" />
+                  <folding>
+                    <element signature="method#WorkerCollection#0;class#WorkerCollection#0" expanded="false" />
+                    <element signature="method#runQuery#0;class#WorkerCollection#0" expanded="false" />
+                    <element signature="method#initializeSchema#0;class#WorkerCollection#0" expanded="false" />
+                    <element signature="method#getState#0;class#WorkerCollection#0" expanded="false" />
+                    <element signature="method#getColumnsName#0;class#WorkerCollection#0" expanded="false" />
+                    <element signature="method#findAllWorkers#0;class#WorkerCollection#0" expanded="false" />
+                    <element signature="method#signInWorker#0;class#WorkerCollection#0" expanded="false" />
+                    <element signature="method#findWorkersByBannerId#0;class#WorkerCollection#0" expanded="false" />
+                    <element signature="method#findWorkersByFirstName#0;class#WorkerCollection#0" expanded="false" />
+                    <element signature="method#findWorkersByLastName#0;class#WorkerCollection#0" expanded="false" />
+                    <element signature="method#findWorkersByContactPhone#0;class#WorkerCollection#0" expanded="false" />
+                    <element signature="method#findWorkersByEmail#0;class#WorkerCollection#0" expanded="false" />
+                    <element signature="method#findWorkersByCredentials#0;class#WorkerCollection#0" expanded="false" />
+                    <element signature="method#findWorkersByLatestCredentialsStatus#0;class#WorkerCollection#0" expanded="false" />
+                    <element signature="method#findWorkersByDateOfHire#0;class#WorkerCollection#0" expanded="false" />
+                    <element signature="method#findWorkerByStatus#0;class#WorkerCollection#0" expanded="false" />
+                    <element signature="method#deleteWorker#0;class#WorkerCollection#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Kotlin File" />
+        <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -80,9 +220,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/java/userinterface/AddStudentController.java" />
-        <option value="$PROJECT_DIR$/src/java/userinterface/AddWorkerController.java" />
         <option value="$PROJECT_DIR$/src/resources/addstudentview.fxml" />
         <option value="$PROJECT_DIR$/src/java/userinterface/SearchController.java" />
         <option value="$PROJECT_DIR$/src/resources/bookviewstransactions.fxml" />
@@ -99,38 +236,41 @@
         <option value="$PROJECT_DIR$/src/java/models/Patron.java" />
         <option value="$PROJECT_DIR$/src/java/models/PatronCollection.java" />
         <option value="$PROJECT_DIR$/src/java/database/Persistable.java" />
-        <option value="$PROJECT_DIR$/src/java/models/StudentBorrower.java" />
         <option value="$PROJECT_DIR$/src/java/Test.java" />
-        <option value="$PROJECT_DIR$/src/java/models/WorkerCollection.java" />
         <option value="$PROJECT_DIR$/dbConfig.ini" />
         <option value="$PROJECT_DIR$/src/resources/workerdatafieldview.fxml" />
         <option value="$PROJECT_DIR$/src/resources/addworkerview.fxml" />
         <option value="$PROJECT_DIR$/src/resources/modifyworkerview.fxml" />
         <option value="$PROJECT_DIR$/src/java/models/BookBarcodePrefix.java" />
-        <option value="$PROJECT_DIR$/src/java/models/BookCollection.java" />
         <option value="$PROJECT_DIR$/src/resources/addbookview.fxml" />
         <option value="$PROJECT_DIR$/src/java/Main.java" />
         <option value="$PROJECT_DIR$/src/resources/booktransactionsview.fxml" />
         <option value="$PROJECT_DIR$/src/resources/studentborrowertransactionsview.fxml" />
-        <option value="$PROJECT_DIR$/src/java/userinterface/WorkerTransactionsController.java" />
-        <option value="$PROJECT_DIR$/src/resources/workertransactionsview.fxml" />
-        <option value="$PROJECT_DIR$/src/java/userinterface/TransactionController.java" />
         <option value="$PROJECT_DIR$/src/resources/mainview.fxml" />
         <option value="$PROJECT_DIR$/src/java/userinterface/MainViewController.java" />
-        <option value="$PROJECT_DIR$/src/java/userinterface/StudentBorrowerTransactionsController.java" />
         <option value="$PROJECT_DIR$/src/resources/modifybookview.fxml" />
-        <option value="$PROJECT_DIR$/src/java/userinterface/BookTransactionsController.java" />
-        <option value="$PROJECT_DIR$/src/java/models/Worker.java" />
         <option value="$PROJECT_DIR$/src/java/models/BookBarcodePrefixCollection.java" />
         <option value="$PROJECT_DIR$/src/java/models/Book.java" />
         <option value="$PROJECT_DIR$/src/resources/signinview.fxml" />
-        <option value="$PROJECT_DIR$/src/java/userinterface/SignInController.java" />
         <option value="$PROJECT_DIR$/src/java/userinterface/AddBookViewController.java" />
-        <option value="$PROJECT_DIR$/src/java/userinterface/AddWorkerViewController.java" />
         <option value="$PROJECT_DIR$/src/java/userinterface/ModifyBookViewController.java" />
-        <option value="$PROJECT_DIR$/src/java/userinterface/ModifyWorkerViewController.java" />
         <option value="$PROJECT_DIR$/src/java/database/SQLInsertStatement.java" />
+        <option value="$PROJECT_DIR$/src/resources/addstudentborrowerview.fxml" />
+        <option value="$PROJECT_DIR$/src/java/database/DBKey.java" />
+        <option value="$PROJECT_DIR$/src/java/models/BookCollection.java" />
+        <option value="$PROJECT_DIR$/src/resources/workertransactionsview.fxml" />
+        <option value="$PROJECT_DIR$/src/java/userinterface/AddWorkerViewController.java" />
+        <option value="$PROJECT_DIR$/src/java/userinterface/ModifyWorkerViewController.java" />
+        <option value="$PROJECT_DIR$/src/java/userinterface/SignInController.java" />
+        <option value="$PROJECT_DIR$/src/java/userinterface/TransactionController.java" />
+        <option value="$PROJECT_DIR$/src/java/userinterface/BookTransactionsController.java" />
+        <option value="$PROJECT_DIR$/src/java/models/StudentBorrower.java" />
+        <option value="$PROJECT_DIR$/src/java/models/Worker.java" />
+        <option value="$PROJECT_DIR$/src/java/models/StudentBorrowerCollection.java" />
+        <option value="$PROJECT_DIR$/src/java/models/WorkerCollection.java" />
         <option value="$PROJECT_DIR$/src/java/utilities/Core.java" />
+        <option value="$PROJECT_DIR$/src/java/userinterface/WorkerTransactionsController.java" />
+        <option value="$PROJECT_DIR$/src/java/userinterface/StudentBorrowerTransactionsController.java" />
       </list>
     </option>
   </component>
@@ -140,10 +280,14 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="MavenProjectNavigator">
+    <treeState />
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="width" value="976" />
-    <option name="height" value="1038" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -215,6 +359,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="429-Squad-2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="429-Squad-2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utilities" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -904,14 +1070,21 @@
       <option name="project" value="LOCAL" />
       <updated>1490592028288</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="&quot;Language Core Work3/ Book transactions&quot;">
+      <created>1490593304429</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1490593304429</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="157065000" />
+    <option name="totallyTimeSpent" value="188506000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="976" height="1038" extended-state="0" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -922,8 +1095,8 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3238958" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32616082" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1024,27 +1197,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/java/models/EntityBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="3206" column="0" lean-forward="false" selection-start-line="3206" selection-start-column="0" selection-end-line="3206" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/userinterface/addWorkerCell.java" />
     <entry file="file://$PROJECT_DIR$/src/resources/workerdatafieldview.fxml" />
     <entry file="file://$PROJECT_DIR$/src/java/models/Rental.java">
@@ -1103,37 +1255,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/models/StudentBorrowerCollection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="38" lean-forward="false" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/addworkerview.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="52" column="85" lean-forward="false" selection-start-line="52" selection-start-column="85" selection-end-line="52" selection-end-column="85" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/common/PropertyFile.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1772">
           <caret line="39" column="13" lean-forward="false" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/models/WorkerCollection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1146,25 +1271,6 @@
             <element signature="imports" expanded="false" />
           </folding>
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/models/BookCollection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="60" column="31" lean-forward="false" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/addbookview.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="64" column="38" lean-forward="false" selection-start-line="64" selection-start-column="38" selection-end-line="64" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/Main.java">
@@ -1197,14 +1303,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/userinterface/MainViewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="29" column="37" lean-forward="false" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/modifyworkerview.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="472">
@@ -1216,29 +1314,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/userinterface/WorkerTransactionsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-119">
-          <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/modifybookview.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="61" column="86" lean-forward="true" selection-start-line="61" selection-start-column="86" selection-end-line="61" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/workertransactionsview.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="18" column="46" lean-forward="false" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
           <folding />
         </state>
       </provider>
@@ -1257,14 +1336,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/userinterface/TransactionController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="42" column="68" lean-forward="false" selection-start-line="42" selection-start-column="68" selection-end-line="42" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/database/Persistable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1273,51 +1344,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/models/Worker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1277">
-          <caret line="199" column="0" lean-forward="false" selection-start-line="199" selection-start-column="0" selection-end-line="199" selection-end-column="0" />
-          <folding>
-            <element signature="method#Worker#0;class#Worker#0" expanded="false" />
-            <element signature="method#Worker#1;class#Worker#0" expanded="false" />
-            <element signature="method#compare#0;class#Worker#0" expanded="false" />
-            <element signature="method#setDependencies#0;class#Worker#0" expanded="false" />
-            <element signature="method#getState#0;class#Worker#0" expanded="false" />
-            <element signature="method#updateStateInDatabase#0;class#Worker#0" expanded="false" />
-            <element signature="method#getDateOfLatestCredentialsStatus#0;class#Worker#0" expanded="false" />
-            <element signature="method#setDateOfLatestCredentialsStatus#0;class#Worker#0" expanded="false" />
-            <element signature="method#toString#0;class#Worker#0" expanded="false" />
-            <element signature="method#initializeSchema#0;class#Worker#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/models/BookBarcodePrefixCollection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-701">
           <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/models/Book.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="179" column="60" lean-forward="false" selection-start-line="179" selection-start-column="60" selection-end-line="179" selection-end-column="60" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Book#0;class#Book#0" expanded="false" />
-            <element signature="method#Book#1;class#Book#0" expanded="false" />
-            <element signature="method#compare#0;class#Book#0" expanded="false" />
-            <element signature="method#setDependencies#0;class#Book#0" expanded="false" />
-            <element signature="method#getState#0;class#Book#0" expanded="false" />
-            <element signature="method#insertStateInDatabase#0;class#Book#0" expanded="false" />
-            <element signature="method#updateStateInDatabase#0;class#Book#0" expanded="false" />
-            <element signature="method#setYearOfPublication#0;class#Book#0" expanded="false" />
-            <element signature="method#setSuggestedPrice#0;class#Book#0" expanded="false" />
-            <element signature="method#toString#0;class#Book#0" expanded="false" />
-            <element signature="method#initializeSchema#0;class#Book#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1332,39 +1363,13 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/userinterface/SignInController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="143" column="33" lean-forward="false" selection-start-line="143" selection-start-column="33" selection-end-line="143" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/userinterface/AddBookViewController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
           <caret line="105" column="25" lean-forward="false" selection-start-line="105" selection-start-column="25" selection-end-line="105" selection-end-column="25" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/userinterface/AddWorkerViewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="118" column="9" lean-forward="true" selection-start-line="118" selection-start-column="9" selection-end-line="118" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/userinterface/ModifyWorkerViewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="22" lean-forward="false" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1373,33 +1378,6 @@
         <state relative-caret-position="282">
           <caret line="86" column="14" lean-forward="false" selection-start-line="86" selection-start-column="14" selection-end-line="86" selection-end-column="14" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/models/StudentBorrower.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="105" column="29" lean-forward="false" selection-start-line="105" selection-start-column="29" selection-end-line="105" selection-end-column="29" />
-          <folding>
-            <element signature="method#StudentBorrower#0;class#StudentBorrower#0" expanded="false" />
-            <element signature="method#StudentBorrower#1;class#StudentBorrower#0" expanded="false" />
-            <element signature="method#compare#0;class#StudentBorrower#0" expanded="false" />
-            <element signature="method#setDependencies#0;class#StudentBorrower#0" expanded="false" />
-            <element signature="method#getState#0;class#StudentBorrower#0" expanded="false" />
-            <element signature="method#updateStateInDatabase#0;class#StudentBorrower#0" expanded="false" />
-            <element signature="method#toString#0;class#StudentBorrower#0" expanded="false" />
-            <element signature="method#initializeSchema#0;class#StudentBorrower#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/userinterface/BookTransactionsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="49" column="42" lean-forward="true" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1460,31 +1438,268 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/userinterface/AddStudentBorrowerViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="45" lean-forward="false" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/addstudentborrowerview.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="74" lean-forward="false" selection-start-line="10" selection-start-column="74" selection-end-line="10" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/userinterface/ModifyBookViewController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        <state relative-caret-position="-442">
+          <caret line="46" column="77" lean-forward="false" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/addworkerview.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="614">
+          <caret line="52" column="85" lean-forward="false" selection-start-line="52" selection-start-column="85" selection-end-line="52" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/addbookview.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="733">
+          <caret line="64" column="38" lean-forward="false" selection-start-line="64" selection-start-column="38" selection-end-line="64" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/models/BookCollection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="120" column="74" lean-forward="false" selection-start-line="120" selection-start-column="74" selection-end-line="120" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/models/Book.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1587">
+          <caret line="179" column="60" lean-forward="false" selection-start-line="179" selection-start-column="60" selection-end-line="179" selection-end-column="60" />
+          <folding>
+            <element signature="method#compare#0;class#Book#0" expanded="false" />
+            <element signature="method#setDependencies#0;class#Book#0" expanded="false" />
+            <element signature="method#getState#0;class#Book#0" expanded="false" />
+            <element signature="method#insertStateInDatabase#0;class#Book#0" expanded="false" />
+            <element signature="method#updateStateInDatabase#0;class#Book#0" expanded="false" />
+            <element signature="method#setYearOfPublication#0;class#Book#0" expanded="false" />
+            <element signature="method#setSuggestedPrice#0;class#Book#0" expanded="false" />
+            <element signature="method#toString#0;class#Book#0" expanded="false" />
+            <element signature="method#initializeSchema#0;class#Book#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/userinterface/AddWorkerViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="127" column="107" lean-forward="false" selection-start-line="127" selection-start-column="107" selection-end-line="127" selection-end-column="107" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/userinterface/ModifyWorkerViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="77" column="58" lean-forward="true" selection-start-line="77" selection-start-column="58" selection-end-line="77" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/userinterface/MainViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="50" column="40" lean-forward="true" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/workertransactionsview.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="45" column="44" lean-forward="false" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/userinterface/SignInController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="41" column="22" lean-forward="true" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/userinterface/BookTransactionsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="61" column="13" lean-forward="false" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/userinterface/TransactionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="64" column="71" lean-forward="false" selection-start-line="64" selection-start-column="71" selection-end-line="64" selection-end-column="71" />
+          <folding>
+            <element signature="method#modify#0;class#TransactionController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/models/StudentBorrower.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="82" column="9" lean-forward="true" selection-start-line="82" selection-start-column="9" selection-end-line="82" selection-end-column="9" />
+          <folding>
+            <element signature="method#StudentBorrower#0;class#StudentBorrower#0" expanded="false" />
+            <element signature="method#StudentBorrower#1;class#StudentBorrower#0" expanded="false" />
+            <element signature="method#compare#0;class#StudentBorrower#0" expanded="false" />
+            <element signature="method#setDependencies#0;class#StudentBorrower#0" expanded="false" />
+            <element signature="method#getState#0;class#StudentBorrower#0" expanded="false" />
+            <element signature="method#updateStateInDatabase#0;class#StudentBorrower#0" expanded="false" />
+            <element signature="method#insertStateInDatabase#0;class#StudentBorrower#0" expanded="false" />
+            <element signature="method#initializeSchema#0;class#StudentBorrower#0" expanded="false" />
+            <element signature="method#toString#0;class#StudentBorrower#0" expanded="false" />
+            <element signature="method#getDateOfLatestBorrowerStatus#0;class#StudentBorrower#0" expanded="false" />
+            <element signature="method#setBorrowerStatus#0;class#StudentBorrower#0" expanded="false" />
+            <element signature="method#setDateOfLatestBorrowerStatus#0;class#StudentBorrower#0" expanded="false" />
+            <element signature="method#setDateOfRegistration#0;class#StudentBorrower#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/models/Worker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-187">
+          <caret line="10" column="40" lean-forward="false" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+          <folding>
+            <element signature="method#Worker#0;class#Worker#0" expanded="false" />
+            <element signature="method#Worker#1;class#Worker#0" expanded="false" />
+            <element signature="method#compare#0;class#Worker#0" expanded="false" />
+            <element signature="method#setDependencies#0;class#Worker#0" expanded="false" />
+            <element signature="method#getState#0;class#Worker#0" expanded="false" />
+            <element signature="method#insertStateInDatabase#0;class#Worker#0" expanded="false" />
+            <element signature="method#updateStateInDatabase#0;class#Worker#0" expanded="false" />
+            <element signature="method#initializeSchema#0;class#Worker#0" expanded="false" />
+            <element signature="method#toString#0;class#Worker#0" expanded="false" />
+            <element signature="method#getDateOfLatestCredentialsStatus#0;class#Worker#0" expanded="false" />
+            <element signature="method#setDateOfLatestCredentialsStatus#0;class#Worker#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/models/StudentBorrowerCollection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="59" column="21" lean-forward="false" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#StudentBorrowerCollection#0;class#StudentBorrowerCollection#0" expanded="false" />
+            <element signature="method#runQuery#0;class#StudentBorrowerCollection#0" expanded="false" />
+            <element signature="method#getState#0;class#StudentBorrowerCollection#0" expanded="false" />
+            <element signature="method#findAllStudents#0;class#StudentBorrowerCollection#0" expanded="false" />
+            <element signature="method#findStudentsByBannerId#0;class#StudentBorrowerCollection#0" expanded="false" />
+            <element signature="method#findStudentsByFirstName#0;class#StudentBorrowerCollection#0" expanded="false" />
+            <element signature="method#findStudentsbyLastName#0;class#StudentBorrowerCollection#0" expanded="false" />
+            <element signature="method#findStudentsByContactPhone#0;class#StudentBorrowerCollection#0" expanded="false" />
+            <element signature="method#findStudentsByEmail#0;class#StudentBorrowerCollection#0" expanded="false" />
+            <element signature="method#findStudentsByBorrowererStatus#0;class#StudentBorrowerCollection#0" expanded="false" />
+            <element signature="method#findStudentsByDateOfLatestBorrowerStatus#0;class#StudentBorrowerCollection#0" expanded="false" />
+            <element signature="method#findStudentsByDateOfRegistration#0;class#StudentBorrowerCollection#0" expanded="false" />
+            <element signature="method#findStudentsByStatus#0;class#StudentBorrowerCollection#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/models/WorkerCollection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="60" column="19" lean-forward="false" selection-start-line="60" selection-start-column="19" selection-end-line="60" selection-end-column="19" />
+          <folding>
+            <element signature="method#WorkerCollection#0;class#WorkerCollection#0" expanded="false" />
+            <element signature="method#runQuery#0;class#WorkerCollection#0" expanded="false" />
+            <element signature="method#initializeSchema#0;class#WorkerCollection#0" expanded="false" />
+            <element signature="method#getState#0;class#WorkerCollection#0" expanded="false" />
+            <element signature="method#getColumnsName#0;class#WorkerCollection#0" expanded="false" />
+            <element signature="method#findAllWorkers#0;class#WorkerCollection#0" expanded="false" />
+            <element signature="method#signInWorker#0;class#WorkerCollection#0" expanded="false" />
+            <element signature="method#findWorkersByBannerId#0;class#WorkerCollection#0" expanded="false" />
+            <element signature="method#findWorkersByFirstName#0;class#WorkerCollection#0" expanded="false" />
+            <element signature="method#findWorkersByLastName#0;class#WorkerCollection#0" expanded="false" />
+            <element signature="method#findWorkersByContactPhone#0;class#WorkerCollection#0" expanded="false" />
+            <element signature="method#findWorkersByEmail#0;class#WorkerCollection#0" expanded="false" />
+            <element signature="method#findWorkersByCredentials#0;class#WorkerCollection#0" expanded="false" />
+            <element signature="method#findWorkersByLatestCredentialsStatus#0;class#WorkerCollection#0" expanded="false" />
+            <element signature="method#findWorkersByDateOfHire#0;class#WorkerCollection#0" expanded="false" />
+            <element signature="method#findWorkerByStatus#0;class#WorkerCollection#0" expanded="false" />
+            <element signature="method#deleteWorker#0;class#WorkerCollection#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/utilities/Core.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="204" column="54" lean-forward="false" selection-start-line="204" selection-start-column="54" selection-end-line="204" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#Core#0;class#Core#0" expanded="false" />
+            <element signature="method#getInstance#0;class#Core#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/database/DBKey.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="554">
+          <caret line="38" column="66" lean-forward="false" selection-start-line="38" selection-start-column="66" selection-end-line="38" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/userinterface/WorkerTransactionsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1054">
+          <caret line="112" column="63" lean-forward="false" selection-start-line="112" selection-start-column="63" selection-end-line="112" selection-end-column="63" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/userinterface/StudentBorrowerTransactionsController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+        <state relative-caret-position="519">
+          <caret line="173" column="20" lean-forward="false" selection-start-line="173" selection-start-column="20" selection-end-line="173" selection-end-column="20" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/utilities/Core.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="156" column="76" lean-forward="false" selection-start-line="156" selection-start-column="76" selection-end-line="156" selection-end-column="76" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Core#0;class#Core#0" expanded="false" />
-            <element signature="method#getInstance#0;class#Core#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>

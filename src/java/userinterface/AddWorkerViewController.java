@@ -1,5 +1,6 @@
 package userinterface;
 
+import database.DBKey;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -55,16 +56,16 @@ public class AddWorkerViewController implements Initializable {
         ObservableList<String> statusList = FXCollections.observableArrayList(lang.getProperty("Active"), lang.getProperty("Inactive"));
         ObservableList<String> credentialsList = FXCollections.observableArrayList(lang.getProperty("Administrator"), lang.getProperty("Ordinary"));
         submit.setText(lang.getProperty("Add"));
-        bannerId.setText(lang.getProperty("bannerId"));
-        password.setText(lang.getProperty("password"));
-        firstName.setText(lang.getProperty("firstName"));
-        lastName.setText(lang.getProperty("lastName"));
-        contactPhone.setText(lang.getProperty("contactPhone"));
-        email.setText(lang.getProperty("email"));
-        credentials.setText(lang.getProperty("credentials"));
-        dateOfLatestCredentialsStatus.setText(lang.getProperty("dateOfLatestCredentialsStatus"));
-        dateOfHire.setText(lang.getProperty("dateOfHire"));
-        status.setText(lang.getProperty("status"));
+        bannerId.setText(lang.getProperty("PromptBannerId"));
+        password.setText(lang.getProperty("PromptPassword"));
+        firstName.setText(lang.getProperty("PromptFirstName"));
+        lastName.setText(lang.getProperty("PromptLastName"));
+        contactPhone.setText(lang.getProperty("PromptContactPhone"));
+        email.setText(lang.getProperty("PromptEmail"));
+        credentials.setText(lang.getProperty("PromptCredentials"));
+        dateOfLatestCredentialsStatus.setText(lang.getProperty("PromptDateOfLatestCredentialsStatus"));
+        dateOfHire.setText(lang.getProperty("PromptDateOfHire"));
+        status.setText(lang.getProperty("PromptStatus"));
         textFieldList = new ArrayList<>();
         textFieldList.add(BannerId);
         textFieldList.add(Password);
@@ -85,7 +86,7 @@ public class AddWorkerViewController implements Initializable {
 
         Properties prop = new Properties();
         WorkerCollection workerCollection = new WorkerCollection();
-        int count = workerCollection.findWorkersByBannerId(prop.getProperty("BannerId")).size();
+        int count = workerCollection.findWorkersByBannerId(prop.getProperty(DBKey.BANNER_ID)).size();
 
         if (BannerId.getText().length() != 9) {
             alertMessage.setText(lang.getProperty("invalidBannerIdLength"));
@@ -93,9 +94,9 @@ public class AddWorkerViewController implements Initializable {
         }
 
         if (DateOfHire.getText().length() != 10 || DateOfLatestCredentialsStatus.getText().length() != 10
-                || DateOfHire.getText().charAt(5) != '-' || DateOfHire.getText().charAt(7) != '-'
-                || DateOfLatestCredentialsStatus.getText().charAt(4) != '-'
-                || DateOfLatestCredentialsStatus.getText().charAt(7) != '-') {
+                || DateOfHire.getText().charAt(2) != '-' || DateOfHire.getText().charAt(5) != '-'
+                || DateOfLatestCredentialsStatus.getText().charAt(2) != '-'
+                || DateOfLatestCredentialsStatus.getText().charAt(5) != '-') {
             alertMessage.setText(lang.getProperty("invalidDateFormat"));
             return;
         }
@@ -124,7 +125,7 @@ public class AddWorkerViewController implements Initializable {
             Worker newWorker = new Worker(prop);
             newWorker.insert();
             alertMessage.setText(lang.getProperty("addWorkerSuccess"));
-        } else alertMessage.setText(lang.getProperty("existingBannerId") + prop.getProperty("BannerID"));
+        } else alertMessage.setText(lang.getProperty("existingBannerId") + prop.getProperty(DBKey.BANNER_ID));
 
         for (TextField t : textFieldList) { t.clear(); }
         Credentials.setValue(lang.getProperty("Ordinary"));

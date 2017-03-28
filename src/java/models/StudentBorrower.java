@@ -1,5 +1,5 @@
 package models;
-
+import database.DBKey;
 import exception.InvalidPrimaryKeyException;
 
 import java.sql.SQLException;
@@ -8,7 +8,7 @@ import java.util.Properties;
 import java.util.Vector;
 
 /**
- * Created by Ders on 3/24/2017
+ * Created by Ders & kevph on 3/24/2017
  */
 public class StudentBorrower extends EntityBase {
     private static final String myTableName = "StudentBorrower";
@@ -80,27 +80,41 @@ public class StudentBorrower extends EntityBase {
         stateChangeRequest(key, value);
     }
 
-    public void updateStateInDatabase() {
+    private void updateStateInDatabase() {
         try {
-            if (persistentState.getProperty("bannerId") != null) {
-                Properties whereClause = new Properties();
-                whereClause.setProperty("bannerId", persistentState.getProperty("bannerId"));
-                updatePersistentState(mySchema, persistentState, whereClause);
-                updateStatusMessage = "Student Borrower data for Student Borrower: " +
-                        persistentState.getProperty("bannerId") + " installed successfully in database!";
-            } else {
-                Integer bannerId = insertAutoIncrementalPersistentState(mySchema, persistentState);
-                persistentState.setProperty("bannerId", "" + bannerId.intValue());
-                updateStatusMessage = "Student Borrower data for new student: " + persistentState.getProperty("bannerId")
-                        + " installed successfully in database!";
-            }
+            Properties whereClause = new Properties();
+            whereClause.setProperty("bannerId", persistentState.getProperty("bannerId"));
+            updatePersistentState(mySchema, persistentState, whereClause);
+            updateStatusMessage = "Student Borrower data for Student Borrower: " +
+                    persistentState.getProperty("bannerId") + " installed successfully in database!";
         } catch (SQLException e) {
-            updateStatusMessage = "Error in installing Student Borrower data in database!";
+            updateStatusMessage = "Error updating Student Borrower data in database!";
+        }
+    }
+
+    private void insertStateInDatabase() {
+        try {
+            Integer BannerId = insertPersistentState(mySchema, persistentState);
+            persistentState.setProperty("BannerId", "" + BannerId.intValue());
+            updateStatusMessage = "Student data for Student ID: " + persistentState.getProperty("BannerId")
+                    + " installed successfully in database!";
+        } catch (SQLException e) {
+            System.out.println("Error installing data: " + e);
         }
     }
 
     public void update() {
         updateStateInDatabase();
+    }
+
+    public void insert() {
+        insertStateInDatabase();
+    }
+
+    protected void initializeSchema(String tableName) {
+        if (mySchema == null) {
+            mySchema = getSchemaInfo(tableName);
+        }
     }
 
     public String toString() {
@@ -115,9 +129,64 @@ public class StudentBorrower extends EntityBase {
                 persistentState.getProperty("Status");
     }
 
-    protected void initializeSchema(String tableName) {
-        if (mySchema == null) {
-            mySchema = getSchemaInfo(tableName);
-        }
+    // Getters
+    public String getBannerId() {
+        return persistentState.getProperty(DBKey.BANNER_ID);
+    }
+    public String getFirstName() {
+        return persistentState.getProperty(DBKey.FIRST_NAME);
+    }
+    public String getLastName() {
+        return persistentState.getProperty(DBKey.LAST_NAME);
+    }
+    public String getContactPhone() {
+        return persistentState.getProperty(DBKey.CONTACT_PHONE);
+    }
+    public String getEmail() {
+        return persistentState.getProperty(DBKey.EMAIL);
+    }
+    public String getBorrowerStatus() {
+        return persistentState.getProperty(DBKey.BORROWER_STATUS);
+    }
+    public String getDateOfLatestBorrowerStatus() {
+        return persistentState.getProperty(DBKey.DATE_OF_LATEST_BORROWER_STATUS);
+    }
+    public String getDateOfRegistration() {
+        return persistentState.getProperty(DBKey.DATE_OF_REGISTRATION);
+    }
+    public String getNotes() {
+        return persistentState.getProperty(DBKey.NOTES);
+    }
+    public String getStatus() {
+        return persistentState.getProperty(DBKey.STATUS);
+    }
+
+    // Setters
+    public void setFirstName(String name) {
+        persistentState.setProperty(DBKey.FIRST_NAME, name);
+    }
+    public void setLastName(String name) {
+        persistentState.setProperty(DBKey.LAST_NAME, name);
+    }
+    public void setContactPhone(String contactPhone) {
+        persistentState.setProperty(DBKey.CONTACT_PHONE, contactPhone);
+    }
+    public void setEmail(String email) {
+        persistentState.setProperty(DBKey.EMAIL, email);
+    }
+    public void setBorrowerStatus(String borrowerStatus) {
+        persistentState.setProperty(DBKey.BORROWER_STATUS, borrowerStatus);
+    }
+    public void setDateOfLatestBorrowerStatus(String dateOfLatestBorrowerStatus) {
+        persistentState.setProperty(DBKey.DATE_OF_LATEST_BORROWER_STATUS, dateOfLatestBorrowerStatus);
+    }
+    public void setDateOfRegistration(String dateOfRegistration) {
+        persistentState.setProperty(DBKey.DATE_OF_REGISTRATION, dateOfRegistration);
+    }
+    public void setNotes(String notes) {
+        persistentState.setProperty(DBKey.NOTES, notes);
+    }
+    public void setStatus(String status) {
+        persistentState.setProperty(DBKey.STATUS, status);
     }
 }
