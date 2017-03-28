@@ -54,7 +54,7 @@ public class ModifyStudentViewController implements Initializable {
         Status.setValue(core.getModStudentBorrower().getStatus());
         BorrowerStatus.setItems(borrowerStatusList);
         Status.setItems(statusList);
-        submit.setText(language.getProperty("Search"));
+        submit.setText(language.getProperty("Modify"));
     }
 
     public void submit(ActionEvent actionEvent) {

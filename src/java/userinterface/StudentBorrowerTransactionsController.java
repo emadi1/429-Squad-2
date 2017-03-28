@@ -69,8 +69,8 @@ public class StudentBorrowerTransactionsController extends TransactionController
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        properties = itemsSearchChoiceArray();
-        searchChoice.setItems(properties);
+        properties = dedicatedColumnHeaders();
+        searchChoice.setItems(itemsSearchChoiceArray());
         searchChoice.getSelectionModel().selectFirst();
         studentHeader.setText(language.getProperty("StudentTransactions"));
         modify.setText(language.getProperty("Modify"));

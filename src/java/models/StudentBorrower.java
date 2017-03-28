@@ -82,7 +82,7 @@ public class StudentBorrower extends EntityBase {
     private void updateStateInDatabase() {
         try {
             Properties whereClause = new Properties();
-            whereClause.setProperty("bannerId", persistentState.getProperty("bannerId"));
+            whereClause.setProperty("BannerId", persistentState.getProperty("BannerId"));
             updatePersistentState(mySchema, persistentState, whereClause);
             updateStatusMessage = "Student Borrower data for Student Borrower: " +
                     persistentState.getProperty("bannerId") + " installed successfully in database!";
