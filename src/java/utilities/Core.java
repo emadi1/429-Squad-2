@@ -115,7 +115,7 @@ public class Core {
             library.setProperty("ISBN", "ISBN");
             library.setProperty("bookCondition", "Book Condition:");
             library.setProperty("BookCondition", "Book Condition");
-            library.setProperty("suggestedPrice", "Suggested Price:");
+            library.setProperty("PromptSuggestedPrice", "Suggested Price:");
             library.setProperty("SuggestedPrice", "Suggested Price");
             library.setProperty("PromptNotes", "Notes:");
             library.setProperty("Notes", "Notes");

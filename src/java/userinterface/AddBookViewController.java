@@ -51,9 +51,9 @@ public class AddBookViewController implements Initializable {
         yearOfPublication.setText(lang.getProperty("yearOfPublication"));
         isbn.setText(lang.getProperty("isbn"));
         bookCondition.setText(lang.getProperty("bookCondition"));
-        suggestedPrice.setText(lang.getProperty("suggestedPrice"));
-        notes.setText(lang.getProperty("notes"));
-        status.setText(lang.getProperty("status"));
+        suggestedPrice.setText(lang.getProperty("PromptSuggestedPrice"));
+        notes.setText(lang.getProperty("PromptNotes"));
+        status.setText(lang.getProperty("PromptStatus"));
         submit.setText(lang.getProperty("Add"));
 
         textFieldList.add(Barcode);
