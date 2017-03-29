@@ -36,7 +36,8 @@ import java.util.Vector;
  */
 public class WorkerTransactionsController extends TransactionController {
 
-    @FXML private Text alertMessage;
+    @FXML
+    private Text alertMessage;
     private Core core = Core.getInstance();
     private Properties language = core.getLang();
 
@@ -87,32 +88,23 @@ public class WorkerTransactionsController extends TransactionController {
         TableColumn column;
         for (String property : dedicatedColumnHeaders()) {
             column = new TableColumn(property);
-            column.setMinWidth(92);
+            column.setMinWidth(100);
             column.setCellValueFactory(new PropertyValueFactory<Worker, String>(property));
             tableView.getColumns().add(column);
         }
 
-        TableColumn<Worker, Boolean> actionCol = new TableColumn<>("Action");
-        actionCol.setSortable(false);
-        tableView.getColumns().add(actionCol);
+        tableView.setRowFactory(tableView ->{
 
-        // Define a simple boolean cell value for the action column so that the column will only be shown for non-empty rows.
-        actionCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Worker, Boolean>, ObservableValue<Boolean>>() {
-            @Override
-            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Worker, Boolean> features) {
-                return new SimpleBooleanProperty(features.getValue() != null);
-            }
+            final TableRow<Worker> row = new TableRow<>();
+
+            row.hoverProperty().addListener((observable) -> {
+                final Worker worker = row.getItem();
+                Tooltip tp = new Tooltip("at row tool");
+                tp.install(row, tp);
+                tp.setText(worker.toolTipToString());
+            });
+                return row;
         });
-
-
-        // Create a cell value factory with an add button for each row in the table.
-        actionCol.setCellFactory(new Callback<TableColumn<Worker, Boolean>, TableCell<Worker, Boolean>>() {
-            @Override
-            public TableCell<Worker, Boolean> call(TableColumn<Worker, Boolean> workerBooleanTableColumn) {
-                return new AddModCell((Stage) tableView.getScene().getWindow(), tableView);
-            }
-        });
-
     }
 
     @Override
@@ -127,10 +119,11 @@ public class WorkerTransactionsController extends TransactionController {
             primaryStage.setResizable(false);
             primaryStage.show();
 
-        } catch (IOException|NullPointerException exception) {
+        } catch (IOException | NullPointerException exception) {
             exception.printStackTrace();
         }
     }
+
 
     @Override
     public void modify(ActionEvent actionEvent) throws NullPointerException, LoadException, IOException {
@@ -145,10 +138,11 @@ public class WorkerTransactionsController extends TransactionController {
             stage.setTitle(language.getProperty("modifyWorkerTitle"));
             stage.setResizable(false);
             stage.show();
-        } catch (IOException|NullPointerException exception) {
+        } catch (IOException | NullPointerException exception) {
             exception.printStackTrace();
         }
     }
+
 
     protected ObservableList querySelector() {
 
@@ -244,49 +238,4 @@ public class WorkerTransactionsController extends TransactionController {
             e.printStackTrace();
         }
     }
-
-
-    protected class AddModCell extends TableCell<Worker, Boolean> {
-
-        final Button addButton = new Button("Modify");
-        final StackPane paddedButton = new StackPane();
-
-
-        /**
-         * AddModCell constructor
-         *
-         * @param stage the stage in which the table is placed.
-         * @param table the table to which a new worker can be added.
-         */
-        AddModCell(final Stage stage, final TableView table) {
-            paddedButton.setPadding(new Insets(3));
-            paddedButton.getChildren().add(addButton);
-
-            addButton.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent actionEvent) {
-
-                    table.getSelectionModel().select(getTableRow().getIndex());
-                    Core core = Core.getInstance();
-                    Worker w = (Worker) table.getSelectionModel().getSelectedItems().get(0);
-                    core.setModWorker(w);
-                    showModifyDialog();
-
-                }
-            });
-        }
-
-        /**
-         * places an add button in the row only if the row is not empty.
-         */
-        @Override
-        protected void updateItem(Boolean item, boolean empty) {
-            super.updateItem(item, empty);
-            if (!empty) {
-                setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
-                setGraphic(paddedButton);
-            } else {
-                setGraphic(null);
-            }
-        }
-    }}
+}

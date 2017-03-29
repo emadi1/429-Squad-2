@@ -190,7 +190,130 @@ public class Core {
             library.setProperty("Delinquent", "Delinquent");
 
         } else if (language.equals("fr_FR")) {
+            // Main View Buttons/ Text
+            library.setProperty("bienvenue", "EOP Bibliotheque Systeme");
+            library.setProperty("signIn", "Connectez-vous cidessous");
+            library.setProperty("SignIn", "Se Connecter");
+            library.setProperty("WorkerTransactions", "Operations des Travaileurs");
+            library.setProperty("BookTransactions", "Transactions de Livres");
+            library.setProperty("StudentTransactions", "Transactions Esudiantes");
+            library.setProperty("CheckOutBook", "Consultez les Livres");
+            library.setProperty("CheckInBook", "Verifier dans les Livres");
+            library.setProperty("ListCheckedBooks", "Liste des Livres Verifies");
 
+            // Window Titles
+            library.setProperty("addWorker", "Ajounter un travailleur");
+            library.setProperty("modifyWorker", "Modifier travailleur");
+            library.setProperty("addStudentTitle", "Ajounter l'etudiant emprunteur");
+            library.setProperty("modifyStudentTitle", "Modifier etudiant emprunteur");
+            library.setProperty("addBookTitle", "Ajouter un livre");
+            library.setProperty("modifyBook", "Modifier le livre");
+
+            // Student Borrower Data Model/ Text
+            library.setProperty("PromptBorrowerStatus", "Statut de l'emprunteur");
+            library.setProperty("BorrowerStatus", "Statut de l'emprunteur");
+            library.setProperty("PromptDateOfLatestBorrowerStatus", "Date du derier statut de l'emprunteur:");
+            library.setProperty("DateOfLatestBorrowerStatus", "Date du derier statut de l'emprunteur");
+            library.setProperty("PromptDateOfRegistration", "Date d'enregistrement:");
+            library.setProperty("DateOfRegistration", "Date d'enregistremen");
+
+            // Book Data Model/ Text
+            library.setProperty("barcode", "Code a barre:");
+            library.setProperty("Barcode", "Code a barre");
+            library.setProperty("title", "Titre:");
+            library.setProperty("Title", "Titre");
+            library.setProperty("discipline", "Discipline:");
+            library.setProperty("Discipline", "Discipline");
+            library.setProperty("Author", "Auteur");
+            library.setProperty("author1", "Auteur 1:");
+            library.setProperty("Author1", "Auteur 1");
+            library.setProperty("author2", "Auteur 2:");
+            library.setProperty("Author2", "Auteur 2");
+            library.setProperty("author3", "Auteur 3:");
+            library.setProperty("Author3", "Auteur 3");
+            library.setProperty("author4", "Auteur 4:");
+            library.setProperty("Author4", "Auteur 4");
+            library.setProperty("publisher", "Editeur:");
+            library.setProperty("Publisher", "Editeur");
+            library.setProperty("yearOfPublication", "Annee de publication:");
+            library.setProperty("YearOfPublication", "Annee de publication");
+            library.setProperty("isbn", "ISBN:");
+            library.setProperty("ISBN", "ISBN");
+            library.setProperty("bookCondition", "Etat du livre:");
+            library.setProperty("BookCondition", "Etat du livre");
+            library.setProperty("suggestedPrice", "Prix Suggere:");
+            library.setProperty("SuggestedPrice", "Prix Suggere");
+            library.setProperty("PromptNotes", "Remarques:");
+            library.setProperty("Notes", "Remarques");
+            library.setProperty("PromptStatus", "Statut:");
+            library.setProperty("Status", "Statut");
+
+            // Worker Data Models/Text
+            library.setProperty("PromptBannerId", "Banner ID:");
+            library.setProperty("BannerId", "Banner ID");
+            library.setProperty("PromptPassword", "Mot de Passe:");
+            library.setProperty("Password", "Mot de Passe");
+            library.setProperty("PromptFirstName", "Prenom:");
+            library.setProperty("FirstName", "Prenom");
+            library.setProperty("PromptFirstName", "Prenom:");
+            library.setProperty("LastName", "Nom de Famille");
+            library.setProperty("PromptLastName", "Nom de Famille:");
+            library.setProperty("PromptContactPhone", "Numero du Contact:");
+            library.setProperty("ContactPhone", "Numero du Contact");
+            library.setProperty("PromptEmail", "Email:");
+            library.setProperty("Email", "Email");
+            library.setProperty("PromptCredentials", "Lettres de Creance:");
+            library.setProperty("Credentials", "Credentials");
+            library.setProperty("PromptDateOfLatestCredentialsStatus", "Date du Dernier Statut d'accreditation:");
+            library.setProperty("DateOfLatestCredentialsStatus", "Date du Dernier Statut d'accreditation");
+            library.setProperty("PromptDateOfHire", "Date d'embuche:");
+            library.setProperty("DateOfHire", "Date d'embuche");
+            library.setProperty("PromptStatus", "Statut:");
+            library.setProperty("Status", "Statut");
+
+            // General Alerts
+            library.setProperty("invalidDateFormat", "La date doit etre en format: mm-dd-yyyy");
+            library.setProperty("completeFields", "Veuillez remplir tous les champs necessaires.");
+            library.setProperty("emptyField", "Veuillez remplir le champ.");
+
+            // Student Alerts
+            library.setProperty("addStudentSuccess", "Etudiant a reussi a ajouter!");
+            library.setProperty("addStudentFail", "N'a pas pu ajouter l'etudiant emprunteur.");
+            library.setProperty("modifyStudentSuccess", "Emprunteur etudiant mis a jour avec succes!");
+            library.setProperty("modifyStudentFail", "N'a pas reussi a modifier l'emprunteur etudiant.");
+            library.setProperty("deleteStudentSuccess", "Etudiant emprunteur supprime.");
+            library.setProperty("deleteStudentFail", "N'a pas reussi a supprimer l'emprunteur etudiant.");
+
+            // Book Alerts
+            library.setProperty("invalidBarcodeLength", "Le code a barres doit complorter 5 chiffres.");
+            library.setProperty("existingBarcode", "Le code a barre existe deja: ");
+            library.setProperty("yearFormat", "L'annee de publication doit etre en format: yyyy");
+            library.setProperty("addBookSuccess", "Livre ajoute avec succes!");
+            library.setProperty("addBookFail", "N'a pas pu ajouter de livre.");
+            library.setProperty("modifyBookSuccess", "Livre mis a jour avec succes!");
+            library.setProperty("modifyBookFail", "A echoue a mettre a jour le livre.");
+
+            // Worker Alerts
+            library.setProperty("invalidBannerIdFormat", "BannerID doit avoir des 9 chiffres seul.");
+            library.setProperty("modifyWorkerSuccess", "Travailleur mis a jour avec succes!");
+            library.setProperty("modifyWorkerFail", "N'a pas reussi a mettre a jour.");
+            library.setProperty("existingBannerId", "BannerID existe deja dans le systeme.");
+            library.setProperty("addWorkerSuccess", "Ouvrier ajoute avec succes!");
+            library.setProperty("addWorkerFail", "N'a pas pu ajouter de travailleur.");
+
+            // Buttons
+            library.setProperty("Modify", "Modifier");
+            library.setProperty("Add", "Ajouter");
+            library.setProperty("Delete", "Effacer");
+            library.setProperty("Good", "Bien");
+            library.setProperty("Damaged", "Endommage");
+            library.setProperty("Active", "Actif");
+            library.setProperty("Inactive", "Inactif");
+            library.setProperty("Search", "Chercher");
+            library.setProperty("Administrator", "Administrateur");
+            library.setProperty("Ordinary", "Ordinaire");
+            library.setProperty("GoodStanding", "Bonne qualite");
+            library.setProperty("Delinquent", "Delinquant");
         }
 
         return library;
