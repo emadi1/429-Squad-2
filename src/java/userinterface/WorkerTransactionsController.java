@@ -81,10 +81,14 @@ public class WorkerTransactionsController extends TransactionController {
         add.setText(language.getProperty("Add"));
         search.setText(language.getProperty("Search"));
         if (core.getUser().getCredentials().equals("Ordinary")) modify.setDisable(true);
-        setTableView();
+        try {
+            setTableView();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    protected void setTableView() {
+    protected void setTableView() throws IOException {
         TableColumn column;
         for (String property : dedicatedColumnHeaders()) {
             column = new TableColumn(property);
@@ -97,6 +101,29 @@ public class WorkerTransactionsController extends TransactionController {
 
             final TableRow<Worker> row = new TableRow<>();
 
+            row.setOnMouseClicked((event) -> {
+
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                    Worker worker = row.getItem();
+                    core.setModWorker(worker);
+
+                    try {
+                        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifyworkerview.fxml"));
+                        Stage stage = new Stage();
+                        Scene scene = new Scene(root);
+                        stage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
+                        stage.setScene(scene);
+                        stage.setTitle(language.getProperty("modifyWorkerTitle"));
+                        stage.setResizable(false);
+                        stage.show();
+                    } catch (IOException | NullPointerException exception) {
+                        exception.printStackTrace();
+                    }
+                }
+
+
+            });
+
             row.hoverProperty().addListener((observable) -> {
                 final Worker worker = row.getItem();
                 if (worker != null) {
@@ -105,7 +132,7 @@ public class WorkerTransactionsController extends TransactionController {
                     tp.setText(worker.toolTipToString());
                 }
             });
-                return row;
+            return row;
         });
     }
 
@@ -128,22 +155,7 @@ public class WorkerTransactionsController extends TransactionController {
 
 
     @Override
-    public void modify(ActionEvent actionEvent) throws NullPointerException, LoadException, IOException {
-        try {
-            Worker worker = (Worker) tableView.getSelectionModel().getSelectedItem();
-            core.setModWorker(worker);
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifyworkerview.fxml"));
-            Stage stage = new Stage();
-            Scene scene = new Scene(root);
-            stage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
-            stage.setScene(scene);
-            stage.setTitle(language.getProperty("modifyWorkerTitle"));
-            stage.setResizable(false);
-            stage.show();
-        } catch (IOException | NullPointerException exception) {
-            exception.printStackTrace();
-        }
-    }
+    public void modify(ActionEvent actionEvent) throws NullPointerException, LoadException, IOException {}
 
 
     protected ObservableList querySelector() {
@@ -223,21 +235,5 @@ public class WorkerTransactionsController extends TransactionController {
             return null;
         }
         return null;
-    }
-
-    protected void showModifyDialog() {
-
-        try {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifyworkerview.fxml"));
-            Stage primaryStage = new Stage();
-            Scene scene = new Scene(root);
-            primaryStage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
-            primaryStage.setScene(scene);
-            primaryStage.setTitle("Brockport Library System");
-            primaryStage.setResizable(false);
-            primaryStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

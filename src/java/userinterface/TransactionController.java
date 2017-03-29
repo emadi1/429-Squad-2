@@ -70,11 +70,8 @@ public abstract class TransactionController implements Initializable {
 
     protected abstract ObservableList<String> itemsSearchChoiceArray();
 
-    protected abstract void setTableView();
+    protected abstract void setTableView() throws IOException;
 
     protected abstract ObservableList querySelector();
-
-    // Displays the modify view
-    protected abstract void showModifyDialog();
 
 }
