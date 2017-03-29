@@ -37,8 +37,6 @@ public class SignInController implements Initializable {
     @FXML TextField passwordPlain;
     @FXML PasswordField password;
     @FXML Circle pwUnhide;
-    @FXML GridPane grid;
-    @FXML Pane mainPane;
     @FXML private Text alertMessage;
     @FXML private Text signInHeader;
     @FXML private Text banner;

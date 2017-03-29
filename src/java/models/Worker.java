@@ -1,6 +1,7 @@
 package models;
 import database.DBKey;
 import exception.InvalidPrimaryKeyException;
+import utilities.Core;
 
 import java.sql.SQLException;
 import java.util.Enumeration;
@@ -14,6 +15,8 @@ public class Worker extends EntityBase {
     private static final String myTableName = "Worker";
     private String updateStatusMessage = "";
     private Properties dependencies;
+    private Core core = Core.getInstance();
+    private Properties language = core.getLang();
 
     public Worker(String bannerId) throws InvalidPrimaryKeyException {
         super(myTableName);
@@ -131,6 +134,38 @@ public class Worker extends EntityBase {
                 persistentState.getProperty("DateOfHire") + "; " +
                 persistentState.getProperty("Status");
     }
+
+
+    public String toolTipToString() {
+
+        String tpString = language.getProperty("BannerId") + ": " + persistentState.getProperty("BannerId") + "\n" +
+                language.getProperty("FirstName") + ": " + persistentState.getProperty("FirstName") + "\n" +
+                language.getProperty("LastName") + ": " + persistentState.getProperty("LastName") + "\n" +
+                language.getProperty("ContactPhone") + ": " + persistentState.getProperty("ContactPhone") + "\n" +
+                language.getProperty("Email") + ": " + persistentState.getProperty("Email") + "\n" +
+                language.getProperty("Credentials") + ": " + persistentState.getProperty("Credentials") + "\n" +
+                language.getProperty("DateOfLatestCredentialsStatus") + ": " + persistentState.getProperty("DateOfLatestCredentialsStatus") + "\n" +
+                language.getProperty("DateOfHire") + ": " + persistentState.getProperty("DateOfHire") + "\n" +
+                language.getProperty("Status") + ": " + persistentState.getProperty("Status") + "\n\n" +
+                "- Double click to modify -";
+
+
+
+
+
+        return tpString;
+    }
+
+
+
+
+
+
+
+
+
+
+
 
     // Getters
     public String getBannerId() {
