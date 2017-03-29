@@ -99,9 +99,11 @@ public class WorkerTransactionsController extends TransactionController {
 
             row.hoverProperty().addListener((observable) -> {
                 final Worker worker = row.getItem();
-                Tooltip tp = new Tooltip("at row tool");
-                tp.install(row, tp);
-                tp.setText(worker.toolTipToString());
+                if (worker != null) {
+                    Tooltip tp = new Tooltip("at row tool");
+                    tp.install(row, tp);
+                    tp.setText(worker.toolTipToString());
+                }
             });
                 return row;
         });
