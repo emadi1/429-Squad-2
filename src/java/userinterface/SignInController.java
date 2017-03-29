@@ -10,8 +10,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import models.Worker;
@@ -20,7 +24,6 @@ import utilities.Core;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
@@ -31,7 +34,11 @@ public class SignInController implements Initializable {
 
     @FXML ComboBox<String> language;
     @FXML TextField bannerId;
-    @FXML TextField password;
+    @FXML TextField passwordPlain;
+    @FXML PasswordField password;
+    @FXML Circle pwUnhide;
+    @FXML GridPane grid;
+    @FXML Pane mainPane;
     @FXML private Text alertMessage;
     @FXML private Text signInHeader;
     @FXML private Text banner;
@@ -46,12 +53,21 @@ public class SignInController implements Initializable {
     }
 
     public void initialize(URL location, ResourceBundle resources) {
+        passwordPlain.setVisible(false);
+        passwordPlain.setManaged(false);
         language.setItems(languages);
         language.setValue("en_US");
         signInHeader.setText(lang.getProperty("signIn"));
         banner.setText(lang.getProperty("PromptBannerId"));
         pw.setText(lang.getProperty("PromptPassword"));
+        password.setPromptText(lang.getProperty("Password"));
+        bannerId.setPromptText(lang.getProperty("BannerId"));
+        System.out.println(password.getStyle());
         signIn.setText(lang.getProperty("SignIn"));
+
+        pwUnhide.hoverProperty().addListener(l->{
+            unhidePassword();
+        });
     }
 
     public void signIn(ActionEvent actionEvent) throws IOException {
@@ -66,6 +82,7 @@ public class SignInController implements Initializable {
                 alertMessage.setText("Password Invalid");
             if (pw.equals(password.getText())) {
                 try {
+                    password.clear();
                     core.setUser(worker);
                     core.setLanguage(language.getSelectionModel().getSelectedItem());
                     Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("mainview.fxml"));
@@ -140,6 +157,29 @@ public class SignInController implements Initializable {
             }
             Worker worker = new Worker(props);
             core.setUser(worker);
+        }
+    }
+
+
+    private void unhidePassword() {
+
+        passwordPlain.setManaged(true);
+        passwordPlain.setVisible(true);
+
+        password.setManaged(false);
+        password.setVisible(false);
+
+        // Bind the textField and passwordField text values bidirectionally.
+        passwordPlain.textProperty().bindBidirectional(password.textProperty());
+
+        if (! pwUnhide.isHover()) {
+            passwordPlain.setManaged(false);
+            passwordPlain.setVisible(false);
+
+            password.setManaged(true);
+            password.setVisible(true);
+
+            passwordPlain.textProperty().bindBidirectional(password.textProperty());
         }
     }
 }
