@@ -1,26 +1,19 @@
 package userinterface;
 
 import database.DBKey;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.LoadException;
-import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
-import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Callback;
-import models.StudentBorrower;
 import models.Worker;
 import models.WorkerCollection;
 import utilities.Core;
@@ -77,7 +70,6 @@ public class WorkerTransactionsController extends TransactionController {
         searchChoice.setItems(itemsSearchChoiceArray());
         searchChoice.getSelectionModel().selectFirst();
         workerHeader.setText(language.getProperty("WorkerTransactions"));
-        modify.setText(language.getProperty("Modify"));
         add.setText(language.getProperty("Add"));
         search.setText(language.getProperty("Search"));
         if (core.getUser().getCredentials().equals("Ordinary")) modify.setDisable(true);
@@ -167,7 +159,7 @@ public class WorkerTransactionsController extends TransactionController {
         if (input != null || !input.equals("")) {
 
             if (search.equals(language.getProperty("BannerId"))) {
-                if (input.length() == 9 || isNumeric(input)) {
+                if (input.length() == 9 && isNumeric(input)) {
                     Vector workers = workerCollection.findWorkersByBannerId(input);
                     searchField.clear();
                     return FXCollections.observableList(workers);
