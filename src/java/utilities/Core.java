@@ -149,6 +149,7 @@ public class Core {
             library.setProperty("invalidDateFormat", "Date must be in format: mm-dd-yyyy");
             library.setProperty("completeFields", "Please fill out all necessary fields.");
             library.setProperty("emptyField", "Please complete field.");
+            library.setProperty("dateFormat", "MM-DD-YYYY");
 
             // Student Alerts
             library.setProperty("addStudentSuccess", "Student Borrower successfully added!");
@@ -191,7 +192,7 @@ public class Core {
 
         } else if (language.equals("fr_FR")) {
             // Main View Buttons/ Text
-            library.setProperty("bienvenue", "EOP Bibliotheque Systeme");
+            library.setProperty("welcome", "EOP Bibliotheque Systeme");
             library.setProperty("signIn", "Connectez-vous ci-dessous");
             library.setProperty("SignIn", "Se Connecter");
             library.setProperty("WorkerTransactions", "Operations des Travaileurs");
@@ -241,7 +242,7 @@ public class Core {
             library.setProperty("ISBN", "ISBN");
             library.setProperty("bookCondition", "Etat du livre:");
             library.setProperty("BookCondition", "Etat du livre");
-            library.setProperty("suggestedPrice", "Prix Suggere:");
+            library.setProperty("PromptSuggestedPrice", "Prix Suggere:");
             library.setProperty("SuggestedPrice", "Prix Suggere");
             library.setProperty("PromptNotes", "Remarques:");
             library.setProperty("Notes", "Remarques");
@@ -272,9 +273,10 @@ public class Core {
             library.setProperty("Status", "Statut");
 
             // General Alerts
-            library.setProperty("invalidDateFormat", "La date doit être en format: mm-dd-yyyy");
+            library.setProperty("invalidDateFormat", "La date doit être en format: DD-MM-YYYY");
             library.setProperty("completeFields", "Veuillez remplir tout les champs nécessaires.");
             library.setProperty("emptyField", "Veuillez remplir le champ.");
+            library.setProperty("dateFormat", "DD-MM-YYYY");
 
             // Student Alerts
             library.setProperty("addStudentSuccess", "Etudiant a été ajouté avec succès!");

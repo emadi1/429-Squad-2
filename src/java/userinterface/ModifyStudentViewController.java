@@ -25,8 +25,17 @@ public class ModifyStudentViewController implements Initializable {
     private Core core = Core.getInstance();
     Properties language = core.getLang();
 
-    @FXML
-    private TextField ContactPhone;
+    @FXML private Text bannerId;
+    @FXML private Text firstName;
+    @FXML private Text lastName;
+    @FXML private Text contactPhone;
+    @FXML private Text email;
+    @FXML private Text dateOfLatestBorrowerStatus;
+    @FXML private Text dateOfRegistration;
+    @FXML private Text notes;
+    @FXML private Text borrowerStatus;
+    @FXML private Text status;
+    @FXML private TextField ContactPhone;
     @FXML private ComboBox<String> Status;
     @FXML private TextField Email;
     @FXML private Button submit;
@@ -55,6 +64,16 @@ public class ModifyStudentViewController implements Initializable {
         BorrowerStatus.setItems(borrowerStatusList);
         Status.setItems(statusList);
         submit.setText(language.getProperty("Modify"));
+        bannerId.setText(language.getProperty("PromptBannerId"));
+        firstName.setText(language.getProperty("PromptFirstName"));
+        lastName.setText(language.getProperty("PromptLastName"));
+        contactPhone.setText(language.getProperty("PromptContactPhone"));
+        email.setText(language.getProperty("PromptEmail"));
+        dateOfLatestBorrowerStatus.setText(language.getProperty("PromptDateOfLatestBorrowerStatus"));
+        dateOfRegistration.setText(language.getProperty("PromptDateOfRegistration"));
+        notes.setText(language.getProperty("PromptNotes"));
+        borrowerStatus.setText(language.getProperty("PromptBorrowerStatus"));
+        status.setText(language.getProperty("PromptStatus"));
     }
 
     public void submit(ActionEvent actionEvent) {

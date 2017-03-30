@@ -82,6 +82,14 @@ public class AddWorkerViewController implements Initializable {
         textFieldList.add(DateOfHire);
         Status.setValue(lang.getProperty("Active"));
         Status.setItems(statusList);
+        BannerId.setPromptText(lang.getProperty("BannerId"));
+        Password.setPromptText(lang.getProperty("Password"));
+        FirstName.setPromptText(lang.getProperty("FirstName"));
+        LastName.setPromptText(lang.getProperty("LastName"));
+        ContactPhone.setPromptText(lang.getProperty("ContactPhone"));
+        Email.setPromptText(lang.getProperty("Email"));
+        DateOfLatestCredentialsStatus.setPromptText(lang.getProperty("dateFormat"));
+        DateOfHire.setPromptText(lang.getProperty("dateFormat"));
     }
 
     public void submit(ActionEvent event) {
