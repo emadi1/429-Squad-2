@@ -130,15 +130,19 @@ public class AddStudentViewController extends StudentBorrowerTransactionsControl
 
         if (!Notes.getText().equals("")) prop.put(Notes.getId(), Notes.getText());
 
-        //if (studentBorrowerCollection.findStudentsByBannerId(prop.getProperty(DBKey.BANNER_ID)).size() == 0) {
+        if (studentBorrowerCollection.findStudentsByBannerId(prop.getProperty(DBKey.BANNER_ID)).size() == 0) {
             prop.put(Status.getId(), Status.getSelectionModel().getSelectedItem());
             prop.put(BorrowerStatus.getId(), BorrowerStatus.getSelectionModel().getSelectedItem());
             StudentBorrower newStudentBorrower = new StudentBorrower(prop);
             newStudentBorrower.insert();
             alertMessage.setText(language.getProperty("addStudentSuccess"));
-        //} else alertMessage.setText(language.getProperty("existingBannerId") + prop.getProperty(DBKey.BANNER_ID));
+        } else alertMessage.setText(language.getProperty("existingBannerId") + prop.getProperty(DBKey.BANNER_ID));
 
         for (TextField t : textFieldList) { t.clear(); }
+        BannerId.clear();
+        DateOfRegistration.clear();
+        DateOfLatestBorrowerStatus.clear();
+        Notes.clear();
         BorrowerStatus.setValue(language.getProperty("GoodStanding"));
         Status.setValue(language.getProperty("Active"));
     }

@@ -13,6 +13,8 @@ public class Main extends Application {
     private Properties lang = Core.getInstance().getLang();
 
     public static void main(String[] args) {
+        Core core = Core.getInstance();
+        core.setLanguage("en_US");
         launch(args);
     }
 
@@ -24,8 +26,10 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("signinview.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
+        System.out.println(lang.getProperty("welcome"));
         primaryStage.setTitle(lang.getProperty("welcome"));
         primaryStage.setResizable(false);
+        core.setStage(primaryStage);
         primaryStage.show();
     }
 }

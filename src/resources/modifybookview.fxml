@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0"
-          prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userinterface.ModifyBookViewController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userinterface.ModifyBookViewController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="6.0" prefWidth="6.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="221.0" />
@@ -39,7 +38,7 @@
     <children>
         <Text fx:id="barcode" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
         <Text fx:id="title" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-        <Text fx:id="discipline" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="3" disable="true" />
+        <Text fx:id="discipline" disable="true" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
         <Text fx:id="author1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
         <Text fx:id="author2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
         <Text fx:id="author3" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
@@ -67,6 +66,6 @@
         <TextField fx:id="Notes" GridPane.columnIndex="2" GridPane.rowIndex="13" />
         <ComboBox fx:id="Status" prefHeight="31.0" prefWidth="349.0" GridPane.columnIndex="2" GridPane.rowIndex="14" />
         <Text fx:id="alertMessage" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="16" />
-        <Button layoutX="300" fx:id="submit" onAction="#submit" prefWidth="75" GridPane.columnIndex="2" GridPane.rowIndex="16" GridPane.halignment="CENTER" />
+        <Button fx:id="submit" layoutX="300" onAction="#submit" prefHeight="31.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="16" />
     </children>
 </GridPane>

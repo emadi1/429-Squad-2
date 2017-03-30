@@ -67,6 +67,8 @@ public class AddBookViewController implements Initializable {
         ISBN.setPromptText(lang.getProperty("ISBN"));
         SuggestedPrice.setPromptText(lang.getProperty("SuggestedPrice"));
         Notes.setPromptText(lang.getProperty("Notes"));
+        Status.setItems(statusList);
+        BookCondition.setItems(conditionList);
 
         // Add TextFields to ArrayList
         textFieldList = new ArrayList<>();

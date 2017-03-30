@@ -31,16 +31,16 @@
         <RowConstraints maxHeight="31.0" minHeight="0.0" prefHeight="4.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Text fx:id="bannerId" strokeType="OUTSIDE" strokeWidth="0.0" text="Banner Id:" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-        <Text fx:id="firstName" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-        <Text fx:id="lastName" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name:" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-        <Text fx:id="contactPhone" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Phone:" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-        <Text fx:id="email" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail:" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-        <Text fx:id="dateOfLatestBorrowerStatus" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Latest Borrower Status:" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-        <Text fx:id="dateOfRegistration" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Registration" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+        <Text fx:id="bannerId" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Text fx:id="firstName" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Text fx:id="lastName" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Text fx:id="contactPhone" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        <Text fx:id="email" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+        <Text fx:id="dateOfLatestBorrowerStatus" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+        <Text fx:id="dateOfRegistration" strokeType="OUTSIDE" strokeWidth="0.0"  GridPane.columnIndex="1" GridPane.rowIndex="7" />
         <Text fx:id="notes" strokeType="OUTSIDE" strokeWidth="0.0" text="Notes:" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-        <Text fx:id="borrowerStatus" strokeType="OUTSIDE" strokeWidth="0.0" text="Standing:" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-        <Text fx:id="status" strokeType="OUTSIDE" strokeWidth="0.0" text="Status:" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+        <Text fx:id="borrowerStatus" strokeType="OUTSIDE" strokeWidth="0.0"  GridPane.columnIndex="1" GridPane.rowIndex="9" />
+        <Text fx:id="status" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
 
         <TextField fx:id="BannerId" GridPane.columnIndex="2" GridPane.rowIndex="1" />
         <TextField fx:id="FirstName" GridPane.columnIndex="2" GridPane.rowIndex="2" />
@@ -53,7 +53,7 @@
 
         <ComboBox fx:id="BorrowerStatus" prefHeight="31.0" prefWidth="349.0" GridPane.columnIndex="2" GridPane.rowIndex="9" />
         <ComboBox fx:id="Status" prefHeight="31.0" prefWidth="349.0" GridPane.columnIndex="2" GridPane.rowIndex="10" />
-        <Button id="submit" fx:id="submit" mnemonicParsing="false" onAction="#submit" text="Add" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="11" />
+        <Button id="submit" fx:id="submit" mnemonicParsing="false" onAction="#submit"  GridPane.columnIndex="2" prefWidth="100" GridPane.halignment="CENTER" GridPane.rowIndex="11" />
         <Text fx:id="alertMessage" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
     </children>
 </GridPane>

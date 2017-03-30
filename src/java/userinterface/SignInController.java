@@ -43,8 +43,8 @@ public class SignInController implements Initializable {
     @FXML private Text pw;
     @FXML private Button signIn;
     private ObservableList<String> languages = FXCollections.observableArrayList("en_US", "fr_FR");
-    Core core = Core.getInstance();
-    Properties lang = core.getLang();
+    private Core core = Core.getInstance();
+    private Properties lang = core.getLang();
 
     public SignInController() {
 
@@ -82,6 +82,7 @@ public class SignInController implements Initializable {
                     password.clear();
                     core.setUser(worker);
                     core.setLanguage(language.getSelectionModel().getSelectedItem());
+                    lang = core.getLang();
                     Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("mainview.fxml"));
                     Stage primaryStage = new Stage();
                     Scene scene = new Scene(root);
@@ -89,6 +90,8 @@ public class SignInController implements Initializable {
                     primaryStage.setScene(scene);
                     primaryStage.setTitle(lang.getProperty("welcome"));
                     primaryStage.setResizable(false);
+                    core.getLastStage().close();
+                    core.setStage(primaryStage);
                     primaryStage.show();
                 } catch (Exception e) {
                     System.out.println("Can't open new window.");

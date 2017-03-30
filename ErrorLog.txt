@@ -14,3 +14,21 @@
 [3/30/17 12:44 PM]|BookCollection|getSchemaInfo|Error|NOTAG|null<SQL Exception: 0: Communications link failure
 
 The last packet successfully received from the server was 1,968,606 milliseconds ago.  The last packet sent successfully to the server was 1,968,613 milliseconds ago.>
+[3/30/17 4:22 PM]|BookCollection|getSchemaInfo|Error|NOTAG|null<SQL Exception: 0: Communications link failure
+
+The last packet successfully received from the server was 1,130,034 milliseconds ago.  The last packet sent successfully to the server was 7 milliseconds ago.>
+[3/30/17 4:22 PM]|BookCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 0: No operations allowed after connection closed.>
+[3/30/17 4:22 PM]|BookCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 0: No operations allowed after connection closed.>
+[3/30/17 4:23 PM]|BookCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 0: No operations allowed after connection closed.>
+[3/30/17 4:24 PM]|BookCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 0: No operations allowed after connection closed.>
+[3/30/17 4:24 PM]|BookBarcodePrefixCollection|getSchemaInfo|Error|NOTAG|null<SQL Exception: 0: No operations allowed after connection closed.>
+[3/30/17 4:24 PM]|BookBarcodePrefixCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 0: No operations allowed after connection closed.>
+[3/30/17 4:24 PM]|Book|getSchemaInfo|Error|NOTAG|null<SQL Exception: 0: No operations allowed after connection closed.>
+[3/30/17 4:24 PM]|BookCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 0: No operations allowed after connection closed.>
+[3/30/17 4:24 PM]|BookBarcodePrefixCollection|getSchemaInfo|Error|NOTAG|null<SQL Exception: 0: No operations allowed after connection closed.>
+[3/30/17 4:24 PM]|BookBarcodePrefixCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 0: No operations allowed after connection closed.>
+[3/30/17 4:24 PM]|Book|getSchemaInfo|Error|NOTAG|null<SQL Exception: 0: No operations allowed after connection closed.>
+[3/30/17 4:25 PM]|BookCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 0: No operations allowed after connection closed.>
+[3/30/17 4:25 PM]|BookBarcodePrefixCollection|getSchemaInfo|Error|NOTAG|null<SQL Exception: 0: No operations allowed after connection closed.>
+[3/30/17 4:25 PM]|BookBarcodePrefixCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 0: No operations allowed after connection closed.>
+[3/30/17 4:25 PM]|Book|getSchemaInfo|Error|NOTAG|null<SQL Exception: 0: No operations allowed after connection closed.>

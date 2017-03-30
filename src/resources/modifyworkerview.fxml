@@ -56,8 +56,8 @@
         <TextField fx:id="DateOfHire" GridPane.columnIndex="2" GridPane.rowIndex="9"/>
         <ComboBox fx:id="Credentials" prefHeight="31.0" prefWidth="349.0" GridPane.columnIndex="2"
                   GridPane.rowIndex="7"/>
-        <Button id="submit" fx:id="submit" mnemonicParsing="false" GridPane.halignment="CENTER" onAction="#submit"
-                text="Modify" GridPane.columnIndex="2" GridPane.rowIndex="11"/>
+        <Button id="submit" fx:id="submit" mnemonicParsing="false" prefWidth="100" GridPane.halignment="CENTER" onAction="#submit"
+                GridPane.columnIndex="2" GridPane.rowIndex="11"/>
         <ComboBox fx:id="Status" prefHeight="31.0" prefWidth="330.0" GridPane.columnIndex="2" GridPane.rowIndex="10"/>
         <Text fx:id="alertMessage" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1"
               GridPane.rowIndex="11"/>
