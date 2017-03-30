@@ -6,7 +6,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.LoadException;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -29,8 +28,7 @@ import java.util.Vector;
  */
 public class WorkerTransactionsController extends TransactionController {
 
-    @FXML
-    private Text alertMessage;
+    @FXML private Text alertMessage;
     private Core core = Core.getInstance();
     private Properties language = core.getLang();
 
@@ -112,8 +110,6 @@ public class WorkerTransactionsController extends TransactionController {
                         exception.printStackTrace();
                     }
                 }
-
-
             });
 
             row.hoverProperty().addListener((observable) -> {
@@ -144,10 +140,6 @@ public class WorkerTransactionsController extends TransactionController {
             exception.printStackTrace();
         }
     }
-
-
-    @Override
-    public void modify(ActionEvent actionEvent) throws NullPointerException, LoadException, IOException {}
 
 
     protected ObservableList querySelector() {

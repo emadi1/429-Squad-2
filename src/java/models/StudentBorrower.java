@@ -1,6 +1,8 @@
 package models;
 import database.DBKey;
 import exception.InvalidPrimaryKeyException;
+import utilities.Core;
+
 import java.sql.SQLException;
 import java.util.Enumeration;
 import java.util.Properties;
@@ -13,6 +15,8 @@ public class StudentBorrower extends EntityBase {
     private static final String myTableName = "StudentBorrower";
     private String updateStatusMessage = "";
     protected Properties dependencies;
+    private Core core = Core.getInstance();
+    private Properties language = core.getLang();
 
     public StudentBorrower(String bannerId) throws InvalidPrimaryKeyException {
         super(myTableName);
@@ -126,6 +130,21 @@ public class StudentBorrower extends EntityBase {
                 persistentState.getProperty("DateOfRegistration") + "; " +
                 persistentState.getProperty("Notes") + "; " +
                 persistentState.getProperty("Status");
+    }
+
+
+    public String toolTipToString() {
+
+        return language.getProperty("BannerId") + ": " + persistentState.getProperty("BannerId") + "\n" +
+                language.getProperty("FirstName") + ": " + persistentState.getProperty("FirstName") + "\n" +
+                language.getProperty("LastName") + ": " + persistentState.getProperty("LastName") + "\n" +
+                language.getProperty("ContactPhone") + ": " + persistentState.getProperty("ContactPhone") + "\n" +
+                language.getProperty("Email") + ": " + persistentState.getProperty("Email") + "\n" +
+                language.getProperty("BorrowerStatus") + ": " + persistentState.getProperty("BorrowerStatus") + "\n" +
+                language.getProperty("DateOfLatestBorrowerStatus") + ": " + persistentState.getProperty("DateOfLatestBorrowerStatus") + "\n" +
+                language.getProperty("DateOfRegistration") + ": " + persistentState.getProperty("DateOfRegistration") + "\n" +
+                language.getProperty("Status") + ": " + persistentState.getProperty("Status") + "\n\n" +
+                "- Double click to modify -";
     }
 
     // Getters
