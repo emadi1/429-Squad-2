@@ -85,7 +85,7 @@ public class WorkerTransactionsController extends TransactionController {
         TableColumn column;
         for (String property : dedicatedColumnHeaders()) {
             column = new TableColumn(property);
-            column.setMinWidth(100);
+            column.setMinWidth(120);
             column.setCellValueFactory(new PropertyValueFactory<Worker, String>(property));
             tableView.getColumns().add(column);
         }
@@ -135,7 +135,7 @@ public class WorkerTransactionsController extends TransactionController {
             Scene scene = new Scene(root);
             primaryStage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
             primaryStage.setScene(scene);
-            primaryStage.setTitle("Brockport Library System");
+            primaryStage.setTitle(language.getProperty("addWorkerTitle"));
             primaryStage.setResizable(false);
             primaryStage.show();
 

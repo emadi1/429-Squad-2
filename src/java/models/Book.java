@@ -176,59 +176,51 @@ public class Book extends EntityBase {
 
     public static String generateDiscipline(String prefix) {
         BookBarcodePrefixCollection bookBarcodePrefixCollection = new BookBarcodePrefixCollection();
-        BookBarcodePrefix bookBarcodePrefix = (BookBarcodePrefix)bookBarcodePrefixCollection.findBarcodePrefixValueByPrefix(prefix).get(0);
-        System.out.println(bookBarcodePrefix.getDiscipline());
-        return bookBarcodePrefix.getDiscipline();
+        BookBarcodePrefix bookBarcodePrefix;
+        try {
+            bookBarcodePrefix = (BookBarcodePrefix) bookBarcodePrefixCollection.findBarcodePrefixValueByPrefix(prefix).get(0);
+            return bookBarcodePrefix.getDiscipline();
+        } catch (Exception e) {
+            return "None";
+        }
     }
 
     public void setDiscipline(String discipline) {
         persistentState.setProperty("Discipline", discipline);
     }
-
     public void setAuthor1(String author1) {
         persistentState.setProperty("Author1", author1);
     }
-
     public void setAuthor2(String author2) {
         persistentState.setProperty("Author2", author2);
     }
-
     public void setAuthor3(String author3) {
         persistentState.setProperty("Author3", author3);
     }
-
     public void setAuthor4(String author4) {
         persistentState.setProperty("Author4", author4);
     }
-
     public void setPublisher(String publisher) {
         persistentState.setProperty("Publisher", publisher);
     }
-
     public void setYearOfPublication(String yearOfPublication) {
         persistentState.setProperty("YearOfPublication", yearOfPublication);
     }
-
     public void setISBN(String isbn) {
         persistentState.setProperty("ISBN", isbn);
     }
-
     public void setBookCondition(String bookCondition) {
         persistentState.setProperty("BookCondition", bookCondition);
     }
-
     public void setSuggestedPrice(String suggestedPrice) {
         persistentState.setProperty("SuggestedPrice", suggestedPrice);
     }
-
     public void setNotes(String notes) {
         persistentState.setProperty("Notes", notes);
     }
-
     public void setStatus(String status) {
         persistentState.setProperty("Status", status);
     }
-
     public String toString() {
         return  persistentState.getProperty("Barcode") + "; " +
                 persistentState.getProperty("Title") + "; " +

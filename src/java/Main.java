@@ -26,6 +26,7 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.setTitle(lang.getProperty("welcome"));
         primaryStage.setResizable(false);
+        core.setLastStage(primaryStage);
         primaryStage.show();
     }
 }

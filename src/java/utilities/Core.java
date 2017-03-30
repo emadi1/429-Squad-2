@@ -1,6 +1,7 @@
 package utilities;
 
 import common.PropertyFile;
+import javafx.stage.Stage;
 import models.Book;
 import models.StudentBorrower;
 import models.Worker;
@@ -18,6 +19,7 @@ public class Core {
     private static Book modBook;
     private static StudentBorrower modStudentBorrower;
     private static String language = "";
+    private static Stage lastStage;
 
     //Private constructor
     private Core() {
@@ -43,6 +45,7 @@ public class Core {
     public String getLanguage() {
         return language;
     }
+    public Stage getLastStage() {return lastStage;}
     // Setters
     public void setModBook(Book book) {
         modBook = book;
@@ -59,6 +62,7 @@ public class Core {
     public void setLanguage(String lang) {
         language = lang;
     }
+    public void setLastStage(Stage stage) {lastStage = stage;}
 
     public Properties getLang() {
         Properties library = new Properties();
@@ -76,12 +80,12 @@ public class Core {
             library.setProperty("ListCheckedBooks", "List Checked Books");
 
             // Window Titles
-            library.setProperty("addWorker", "Add Worker");
-            library.setProperty("modifyWorker", "Modify Worker");
-            library.setProperty("addStudentTitle", "Add Student Borrower");
-            library.setProperty("modifyStudentTitle", "Modify Student Borrower");
-            library.setProperty("addBookTitle", "Add Book");
-            library.setProperty("modifyBook", "Modify Book");
+            library.setProperty("addWorkerTitle", "EOP Library System - Add Worker");
+            library.setProperty("modifyWorkerTitle", "EOP Library System - Modify Worker");
+            library.setProperty("addStudentTitle", "EOP Library System - Add Student Borrower");
+            library.setProperty("modifyStudentTitle", "EOP Library System - Modify Student Borrower");
+            library.setProperty("addBookTitle", "EOP Library System - Add Book");
+            library.setProperty("modifyBookTitle", "EOP Library System - Modify Book");
 
             // Student Borrower Data Model/ Text
             library.setProperty("PromptBorrowerStatus", "Borrower Status:");
@@ -92,28 +96,28 @@ public class Core {
             library.setProperty("DateOfRegistration", "Date of Registration");
 
             // Book Data Model/ Text
-            library.setProperty("barcode", "Barcode:");
+            library.setProperty("PromptBarcode", "Barcode:");
             library.setProperty("Barcode", "Barcode");
-            library.setProperty("title", "Title:");
+            library.setProperty("PromptTitle", "Title:");
             library.setProperty("Title", "Title");
-            library.setProperty("discipline", "Discipline:");
+            library.setProperty("PromptDiscipline", "Discipline:");
             library.setProperty("Discipline", "Discipline");
             library.setProperty("Author", "Author");
-            library.setProperty("author1", "Author 1:");
+            library.setProperty("PromptAuthor1", "Author 1:");
             library.setProperty("Author1", "Author 1");
-            library.setProperty("author2", "Author 2:");
+            library.setProperty("PromptAuthor2", "Author 2:");
             library.setProperty("Author2", "Author 2");
-            library.setProperty("author3", "Author 3:");
+            library.setProperty("PromptAuthor3", "Author 3:");
             library.setProperty("Author3", "Author 3");
-            library.setProperty("author4", "Author 4:");
+            library.setProperty("PromptAuthor4", "Author 4:");
             library.setProperty("Author4", "Author 4");
-            library.setProperty("publisher", "Publisher:");
+            library.setProperty("PromptPublisher", "Publisher:");
             library.setProperty("Publisher", "Publisher");
-            library.setProperty("yearOfPublication", "Year of Publication:");
+            library.setProperty("PromptYearOfPublication", "Year of Publication:");
             library.setProperty("YearOfPublication", "Year of Publication");
-            library.setProperty("isbn", "ISBN:");
+            library.setProperty("PromptISBN", "ISBN:");
             library.setProperty("ISBN", "ISBN");
-            library.setProperty("bookCondition", "Book Condition:");
+            library.setProperty("PromptBookCondition", "Book Condition:");
             library.setProperty("BookCondition", "Book Condition");
             library.setProperty("PromptSuggestedPrice", "Suggested Price:");
             library.setProperty("SuggestedPrice", "Suggested Price");
@@ -175,6 +179,7 @@ public class Core {
             library.setProperty("existingBannerId", "BannerID already exists in system.");
             library.setProperty("addWorkerSuccess", "Worker added successfully!");
             library.setProperty("addWorkerFail", "Failed to add worker.");
+            library.setProperty("invalidPassword", "Invalid Password.");
 
             // Buttons
             library.setProperty("Modify", "Modify");
@@ -203,12 +208,12 @@ public class Core {
             library.setProperty("ListCheckedBooks", "Liste des Livres Verifiés");
 
             // Window Titles
-            library.setProperty("addWorker", "Ajouter un travailleur");
-            library.setProperty("modifyWorker", "Modifier travailleur");
-            library.setProperty("addStudentTitle", "Ajouter l'etudiant emprunteur");
-            library.setProperty("modifyStudentTitle", "Modifier etudiant emprunteur");
-            library.setProperty("addBookTitle", "Ajouter un livre");
-            library.setProperty("modifyBook", "Modifier le livre");
+            library.setProperty("addWorkerTitle", "EOP Bibliotheque Systeme - Ajouter un travailleur");
+            library.setProperty("modifyWorkerTitle", "EOP Bibliotheque Systeme - Modifier travailleur");
+            library.setProperty("addStudentTitle", "EOP Bibliotheque Systeme - Ajouter l'etudiant emprunteur");
+            library.setProperty("modifyStudentTitle", "EOP Bibliotheque Systeme - Modifier etudiant emprunteur");
+            library.setProperty("addBookTitle", "EOP Bibliotheque Systeme - Ajouter un livre");
+            library.setProperty("modifyBookTitle", "EOP Bibliotheque Systeme - Modifier le livre");
 
             // Student Borrower Data Model/ Text
             library.setProperty("PromptBorrowerStatus", "Statut de l'emprunteur");
@@ -219,28 +224,28 @@ public class Core {
             library.setProperty("DateOfRegistration", "Date d'enregistremen");
 
             // Book Data Model/ Text
-            library.setProperty("barcode", "Code barre:");
+            library.setProperty("PromptBarcode", "Code barre:");
             library.setProperty("Barcode", "Code barre");
-            library.setProperty("title", "Titre:");
+            library.setProperty("PromptTitle", "Titre:");
             library.setProperty("Title", "Titre");
-            library.setProperty("discipline", "Discipline:");
+            library.setProperty("PromptDiscipline", "Discipline:");
             library.setProperty("Discipline", "Discipline");
             library.setProperty("Author", "Auteur");
-            library.setProperty("author1", "Auteur 1:");
+            library.setProperty("PromptAuthor1", "Auteur 1:");
             library.setProperty("Author1", "Auteur 1");
-            library.setProperty("author2", "Auteur 2:");
+            library.setProperty("PromptAuthor2", "Auteur 2:");
             library.setProperty("Author2", "Auteur 2");
-            library.setProperty("author3", "Auteur 3:");
+            library.setProperty("PromptAuthor3", "Auteur 3:");
             library.setProperty("Author3", "Auteur 3");
-            library.setProperty("author4", "Auteur 4:");
+            library.setProperty("PromptAuthor4", "Auteur 4:");
             library.setProperty("Author4", "Auteur 4");
-            library.setProperty("publisher", "Editeur:");
+            library.setProperty("PromptPublisher", "Editeur:");
             library.setProperty("Publisher", "Editeur");
-            library.setProperty("yearOfPublication", "Année de publication:");
+            library.setProperty("PromptYearOfPublication", "Année de publication:");
             library.setProperty("YearOfPublication", "Année de publication");
-            library.setProperty("isbn", "ISBN:");
+            library.setProperty("PromptISBN", "ISBN:");
             library.setProperty("ISBN", "ISBN");
-            library.setProperty("bookCondition", "Etat du livre:");
+            library.setProperty("PromptBookCondition", "Etat du livre:");
             library.setProperty("BookCondition", "Etat du livre");
             library.setProperty("PromptSuggestedPrice", "Prix Suggere:");
             library.setProperty("SuggestedPrice", "Prix Suggere");

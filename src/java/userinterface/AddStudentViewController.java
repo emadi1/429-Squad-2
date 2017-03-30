@@ -72,7 +72,7 @@ public class AddStudentViewController extends StudentBorrowerTransactionsControl
         textFieldList.add(Email);
         BorrowerStatus.setValue(language.getProperty("GoodStanding"));
         BorrowerStatus.setItems(standingList);
-        Status.setValue(language.getProperty("Status"));
+        Status.setValue(language.getProperty("Active"));
         Status.setItems(statusList);
     }
 
