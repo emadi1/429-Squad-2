@@ -35,21 +35,6 @@ public class WorkerTransactionsController extends TransactionController {
     private Properties language = core.getLang();
 
     @Override
-    public ObservableList<String> itemsSearchChoiceArray() {
-        return FXCollections.observableArrayList(
-                language.getProperty("BannerId"),
-                language.getProperty("FirstName"),
-                language.getProperty("LastName"),
-                language.getProperty("ContactPhone"),
-                language.getProperty("Email"),
-                language.getProperty("Credentials"),
-                language.getProperty("DateOfLatestCredentialsStatus"),
-                language.getProperty("DateOfHire"),
-                language.getProperty("Status")
-        );
-    }
-
-    @Override
     protected ObservableList<String> dedicatedColumnHeaders() {
         return FXCollections.observableArrayList(
                 DBKey.BANNER_ID,
@@ -61,6 +46,21 @@ public class WorkerTransactionsController extends TransactionController {
                 DBKey.DATE_OF_LATEST_CREDENTIALS_STATUS,
                 DBKey.DATE_OF_HIRE,
                 DBKey.STATUS
+        );
+    }
+
+    @Override
+    public ObservableList<String> itemsSearchChoiceArray() {
+        return FXCollections.observableArrayList(
+                language.getProperty("BannerId"),
+                language.getProperty("FirstName"),
+                language.getProperty("LastName"),
+                language.getProperty("ContactPhone"),
+                language.getProperty("Email"),
+                language.getProperty("Credentials"),
+                language.getProperty("DateOfLatestCredentialsStatus"),
+                language.getProperty("DateOfHire"),
+                language.getProperty("Status")
         );
     }
 
@@ -217,10 +217,11 @@ public class WorkerTransactionsController extends TransactionController {
                 } else alertMessage.setText(language.getProperty("invalidStatus"));
             }
         }
-        if (input.equals("")) {
-            alertMessage.setText("emptyField");
-            return null;
-        }
+        if (input.equals("")) alertMessage.setText(language.getProperty("emptyField"));
         return null;
+    }
+
+    public int getType() {
+        return 0;
     }
 }

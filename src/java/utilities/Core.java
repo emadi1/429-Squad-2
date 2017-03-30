@@ -150,6 +150,7 @@ public class Core {
             library.setProperty("completeFields", "Please fill out all necessary fields.");
             library.setProperty("emptyField", "Please complete field.");
             library.setProperty("dateFormat", "MM-DD-YYYY");
+            library.setProperty("invalidPassword", "Invalid Password");
 
             // Student Alerts
             library.setProperty("addStudentSuccess", "Student Borrower successfully added!");
@@ -176,6 +177,7 @@ public class Core {
             library.setProperty("addWorkerSuccess", "Worker added successfully!");
             library.setProperty("addWorkerFail", "Failed to add worker.");
             library.setProperty("invalidPassword", "Invalid Password.");
+            library.setProperty("invalidCredentials", "Invalid Credentials");
 
             // Buttons
             library.setProperty("Modify", "Modify");
@@ -278,6 +280,7 @@ public class Core {
             library.setProperty("completeFields", "Veuillez remplir tout les champs nécessaires.");
             library.setProperty("emptyField", "Veuillez remplir le champ.");
             library.setProperty("dateFormat", "DD-MM-YYYY");
+            library.setProperty("invalidPassword", "Mot de passe incorrect.");
 
             // Student Alerts
             library.setProperty("addStudentSuccess", "Etudiant a été ajouté avec succès!");
@@ -303,6 +306,7 @@ public class Core {
             library.setProperty("existingBannerId", "BannerID existe deja dans le systeme.");
             library.setProperty("addWorkerSuccess", "Ouvrier ajoute avec succes!");
             library.setProperty("addWorkerFail", "N'a pas pu ajouter de l'ouvrier.");
+            library.setProperty("invalidCredentials", "Les informations d'identification invalides.");
 
             // Buttons
             library.setProperty("Modify", "Modifier");

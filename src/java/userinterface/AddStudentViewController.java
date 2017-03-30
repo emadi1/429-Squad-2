@@ -54,6 +54,8 @@ public class AddStudentViewController extends StudentBorrowerTransactionsControl
     public void initialize(URL location, ResourceBundle resources) {
         ObservableList<String> statusList = FXCollections.observableArrayList(language.getProperty("Active"), language.getProperty("Inactive"));
         ObservableList<String> standingList = FXCollections.observableArrayList(language.getProperty("GoodStanding"), language.getProperty("Delinquent"));
+
+        // Set Text's text
         submit.setText(language.getProperty("Add"));
         bannerId.setText(language.getProperty("PromptBannerId"));
         firstName.setText(language.getProperty("PromptFirstName"));
@@ -65,6 +67,18 @@ public class AddStudentViewController extends StudentBorrowerTransactionsControl
         notes.setText(language.getProperty("PromptNotes"));
         borrowerStatus.setText(language.getProperty("PromptBorrowerStatus"));
         status.setText(language.getProperty("PromptStatus"));
+
+        // Set PromptText in text fields
+        BannerId.setPromptText(language.getProperty("BannerId"));
+        FirstName.setPromptText(language.getProperty("FirstName"));
+        LastName.setPromptText(language.getProperty("LastName"));
+        ContactPhone.setPromptText(language.getProperty("ContactPhone"));
+        Email.setPromptText(language.getProperty("Email"));
+        DateOfLatestBorrowerStatus.setPromptText(language.getProperty("DateOfLatestBorrowerStatus"));
+        DateOfRegistration.setPromptText(language.getProperty("DateOfRegistration"));
+        Notes.setPromptText(language.getProperty("Notes"));
+
+        // Add TextFields to ArrayList
         textFieldList = new ArrayList<>();
         textFieldList.add(FirstName);
         textFieldList.add(LastName);

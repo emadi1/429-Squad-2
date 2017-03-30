@@ -9,12 +9,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import models.Book;
 import models.BookCollection;
+import models.Worker;
 import utilities.Core;
 import java.io.IOException;
 import java.net.URL;
@@ -30,17 +33,6 @@ public class BookTransactionsController extends TransactionController {
     @FXML private Text alertMessage;
     private Core core = Core.getInstance();
     private Properties language = core.getLang();
-    private String Barcode = language.getProperty("Barcode");
-    private String Title = language.getProperty("Title");
-    private String Discipline = language.getProperty("Discipline");
-    private String Author = language.getProperty("Author");
-    private String Publisher = language.getProperty("Publisher");
-    private String YearOfPublication = language.getProperty("YearOfPublication");
-    private String ISBN = language.getProperty("ISBN");
-    private String BookCondition = language.getProperty("BookCondition");
-    private String SuggestedPrice = language.getProperty("SuggestedPrice");
-    private String Notes = language.getProperty("Notes");
-    private String Status = language.getProperty("Status");
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -50,7 +42,6 @@ public class BookTransactionsController extends TransactionController {
         bookHeader.setText(language.getProperty("BookTransactions"));
         add.setText(language.getProperty("Add"));
         search.setText(language.getProperty("Search"));
-        //if (core.getUser().getCredentials().equals("Ordinary")) modify.setDisable(true);
         setTableView();
     }
 
@@ -77,15 +68,15 @@ public class BookTransactionsController extends TransactionController {
     @Override
     public ObservableList<String> itemsSearchChoiceArray() {
         return FXCollections.observableArrayList(
-                Barcode,
-                Title,
-                Discipline,
-                Author,
-                Publisher,
-                YearOfPublication,
-                ISBN,
-                BookCondition,
-                Status);
+                language.getProperty("Barcode"),
+                language.getProperty("Title"),
+                language.getProperty("Discipline"),
+                language.getProperty("Author"),
+                language.getProperty("Publisher"),
+                language.getProperty("YearOfPublication"),
+                language.getProperty("ISBN"),
+                language.getProperty("BookCondition"),
+                language.getProperty("Status"));
     }
 
     protected void setTableView(){
@@ -96,6 +87,42 @@ public class BookTransactionsController extends TransactionController {
             column.setCellValueFactory(new PropertyValueFactory<Book, String>(property));
             tableView.getColumns().add(column);
         }
+        tableView.setRowFactory(tableView ->{
+
+            final TableRow<Book> row = new TableRow<>();
+
+            row.setOnMouseClicked((event) -> {
+
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                    Book book = row.getItem();
+                    core.setModBook(book);
+                    if (core.getUser().getCredentials().equals(language.getProperty("Administrator"))) {
+                        try {
+                            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifyworkerbook.fxml"));
+                            Stage stage = new Stage();
+                            Scene scene = new Scene(root);
+                            stage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
+                            stage.setScene(scene);
+                            stage.setTitle(language.getProperty("modifyBookTitle"));
+                            stage.setResizable(false);
+                            stage.show();
+                        } catch (IOException | NullPointerException exception) {
+                            exception.printStackTrace();
+                        }
+                    }
+                } else alertMessage.setText(language.getProperty("invalidCredentials"));
+            });
+
+            row.hoverProperty().addListener((observable) -> {
+                final Book book = row.getItem();
+                if (book != null) {
+                    Tooltip tp = new Tooltip("at row tool");
+                    Tooltip.install(row, tp);
+                    tp.setText(book.toolTipToString());
+                }
+            });
+            return row;
+        });
     }
 
     public void add(ActionEvent actionEvent) throws NullPointerException, IOException {
@@ -114,7 +141,8 @@ public class BookTransactionsController extends TransactionController {
     }
 
     @Override
-    protected ObservableList querySelector(){
+    protected ObservableList querySelector() {
+
         BookCollection bookCollection = new BookCollection();
         String input = searchField.getText();
         String search = searchChoice.getSelectionModel().getSelectedItem();
@@ -184,7 +212,9 @@ public class BookTransactionsController extends TransactionController {
                     return FXCollections.observableList(books);
                 } else alertMessage.setText(language.getProperty("invalidStatus"));
             }
-        } return null;
+        }
+        if (input.equals("")) alertMessage.setText(language.getProperty("emptyField"));
+        return null;
     }
 
     public int getType() {

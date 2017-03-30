@@ -24,6 +24,7 @@ import static models.Book.generateDiscipline;
  */
 public class AddBookViewController implements Initializable {
 
+    private ArrayList<TextField> textFieldList;
     private Properties lang = Core.getInstance().getLang();
     private BookCollection bookCollection = new BookCollection();
     private ObservableList<String> conditionList = FXCollections.observableArrayList(lang.getProperty("Good"), lang.getProperty("Damaged"));
@@ -36,11 +37,9 @@ public class AddBookViewController implements Initializable {
     @FXML private ComboBox<String> BookCondition, Status;
     @FXML private Button submit;
 
-    ArrayList<TextField> textFieldList;
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        textFieldList = new ArrayList<>();
+        // Set Text's text
         barcode.setText(lang.getProperty("PromptBarcode"));
         title.setText(lang.getProperty("PromptTitle"));
         author1.setText(lang.getProperty("PromptAuthor1"));
@@ -56,6 +55,21 @@ public class AddBookViewController implements Initializable {
         status.setText(lang.getProperty("PromptStatus"));
         submit.setText(lang.getProperty("Add"));
 
+        // Set PromptText in text fields
+        Barcode.setPromptText(lang.getProperty("Barcode"));
+        Title.setPromptText(lang.getProperty("Title"));
+        Author1.setPromptText(lang.getProperty("Author1"));
+        Author2.setPromptText(lang.getProperty("Author2"));
+        Author3.setPromptText(lang.getProperty("Author3"));
+        Author4.setPromptText(lang.getProperty("Author4"));
+        Publisher.setPromptText(lang.getProperty("Publisher"));
+        YearOfPublication.setPromptText(lang.getProperty("YearOfPublication"));
+        ISBN.setPromptText(lang.getProperty("ISBN"));
+        SuggestedPrice.setPromptText(lang.getProperty("SuggestedPrice"));
+        Notes.setPromptText(lang.getProperty("Notes"));
+
+        // Add TextFields to ArrayList
+        textFieldList = new ArrayList<>();
         textFieldList.add(Barcode);
         textFieldList.add(Title);
         textFieldList.add(Author1);

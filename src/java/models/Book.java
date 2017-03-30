@@ -1,5 +1,6 @@
 package models;
 import exception.InvalidPrimaryKeyException;
+import utilities.Core;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -12,6 +13,7 @@ import java.util.Vector;
  */
 
 public class Book extends EntityBase {
+    private Properties language = Core.getInstance().getLang();
     private static final String myTableName = "Book";
     private String updateStatusMessage = "";
     private Properties dependencies;
@@ -109,71 +111,9 @@ public class Book extends EntityBase {
     public void update() {
         updateStateInDatabase();
     }
-
     public void insert() {
         insertStateInDatabase();
     }
-
-    public String getBarcode() {
-        return persistentState.getProperty("Barcode");
-    }
-
-    public String getTitle() {
-        return persistentState.getProperty("Title");
-    }
-
-    public String getDiscipline() {
-        return persistentState.getProperty("Discipline");
-    }
-
-    public String getAuthor1() {
-        return persistentState.getProperty("Author1");
-    }
-
-    public String getAuthor2() {
-        return persistentState.getProperty("Author2");
-    }
-
-    public String getAuthor3() {
-        return persistentState.getProperty("Author3");
-    }
-
-    public String getAuthor4() {
-        return persistentState.getProperty("Author4");
-    }
-
-    public String getPublisher() {
-        return persistentState.getProperty("Publisher");
-    }
-
-    public String getYearOfPublication() {
-        return persistentState.getProperty("YearOfPublication");
-    }
-
-    public String getISBN() {
-        return persistentState.getProperty("ISBN");
-    }
-
-    public String getBookCondition() {
-        return persistentState.getProperty("BookCondition");
-    }
-
-    public String getSuggestedPrice() {
-        return persistentState.getProperty("SuggestedPrice");
-    }
-
-    public String getNotes() {
-        return persistentState.getProperty("Notes");
-    }
-
-    public String getStatus() {
-        return persistentState.getProperty("Status");
-    }
-
-    public void setTitle(String title) {
-        persistentState.setProperty("Title", title);
-    }
-
     public static String generateDiscipline(String prefix) {
         BookBarcodePrefixCollection bookBarcodePrefixCollection = new BookBarcodePrefixCollection();
         BookBarcodePrefix bookBarcodePrefix;
@@ -185,6 +125,54 @@ public class Book extends EntityBase {
         }
     }
 
+    // Getters
+    public String getBarcode() {
+        return persistentState.getProperty("Barcode");
+    }
+    public String getTitle() {
+        return persistentState.getProperty("Title");
+    }
+    public String getDiscipline() {
+        return persistentState.getProperty("Discipline");
+    }
+    public String getAuthor1() {
+        return persistentState.getProperty("Author1");
+    }
+    public String getAuthor2() {
+        return persistentState.getProperty("Author2");
+    }
+    public String getAuthor3() {
+        return persistentState.getProperty("Author3");
+    }
+    public String getAuthor4() {
+        return persistentState.getProperty("Author4");
+    }
+    public String getPublisher() {
+        return persistentState.getProperty("Publisher");
+    }
+    public String getYearOfPublication() {
+        return persistentState.getProperty("YearOfPublication");
+    }
+    public String getISBN() {
+        return persistentState.getProperty("ISBN");
+    }
+    public String getBookCondition() {
+        return persistentState.getProperty("BookCondition");
+    }
+    public String getSuggestedPrice() {
+        return persistentState.getProperty("SuggestedPrice");
+    }
+    public String getNotes() {
+        return persistentState.getProperty("Notes");
+    }
+    public String getStatus() {
+        return persistentState.getProperty("Status");
+    }
+    public void setTitle(String title) {
+        persistentState.setProperty("Title", title);
+    }
+
+    // Setters
     public void setDiscipline(String discipline) {
         persistentState.setProperty("Discipline", discipline);
     }
@@ -237,7 +225,23 @@ public class Book extends EntityBase {
                 persistentState.getProperty("Notes") + "; " +
                 persistentState.getProperty("Status");
     }
+    public String toolTipToString() {
 
+        return  language.getProperty("Barcode") + ": " + persistentState.getProperty("Barcode") + "\n" +
+                language.getProperty("Title") + ": " + persistentState.getProperty("Title") + "\n" +
+                language.getProperty("Discipline") + ": " + persistentState.getProperty("Discipline") + "\n" +
+                language.getProperty("Author1") + ": " + persistentState.getProperty("Author1") + "\n" +
+                language.getProperty("Author2") + ": " + persistentState.getProperty("Author2") + "\n" +
+                language.getProperty("Author3") + ": " + persistentState.getProperty("Author3") + "\n" +
+                language.getProperty("Author4") + ": " + persistentState.getProperty("Author4") + "\n" +
+                language.getProperty("Publisher") + ": " + persistentState.getProperty("Publisher") + "\n" +
+                language.getProperty("YearOfPublication") + ": " + persistentState.getProperty("YearOfPublication") + "\n" +
+                language.getProperty("ISBN") + ": " + persistentState.getProperty("ISBN") + "\n" +
+                language.getProperty("BookCondition") + ": " + persistentState.getProperty("BookCondition") + "\n" +
+                language.getProperty("SuggestedPrice") + ": " + persistentState.getProperty("SuggestedPrice") + "\n" +
+                language.getProperty("Notes") + ": " + persistentState.getProperty("Notes") + "\n" +
+                language.getProperty("Status") + ": " + persistentState.getProperty("Status");
+    }
     protected void initializeSchema(String tableName) {
         if (mySchema == null) {
             mySchema = getSchemaInfo(tableName);

@@ -32,11 +32,11 @@ import java.util.ResourceBundle;
  */
 public class SignInController implements Initializable {
 
-    @FXML ComboBox<String> language;
-    @FXML TextField bannerId;
-    @FXML TextField passwordPlain;
-    @FXML PasswordField password;
-    @FXML Circle pwUnhide;
+    @FXML private ComboBox<String> language;
+    @FXML private TextField bannerId;
+    @FXML private TextField passwordPlain;
+    @FXML private PasswordField password;
+    @FXML private Circle pwUnhide;
     @FXML private Text alertMessage;
     @FXML private Text signInHeader;
     @FXML private Text banner;
@@ -88,7 +88,7 @@ public class SignInController implements Initializable {
                     Scene scene = new Scene(root);
                     primaryStage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
                     primaryStage.setScene(scene);
-                    primaryStage.setTitle("Brockport Library System");
+                    primaryStage.setTitle(lang.getProperty("welcome"));
                     primaryStage.setResizable(false);
                     primaryStage.show();
                 } catch (Exception e) {

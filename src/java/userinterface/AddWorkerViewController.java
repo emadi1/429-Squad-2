@@ -58,6 +58,8 @@ public class AddWorkerViewController implements Initializable {
                 FXCollections.observableArrayList(lang.getProperty("Active"), lang.getProperty("Inactive"));
         ObservableList<String> credentialsList =
                 FXCollections.observableArrayList(lang.getProperty("Administrator"), lang.getProperty("Ordinary"));
+
+        // Set Text's text
         submit.setText(lang.getProperty("Add"));
         bannerId.setText(lang.getProperty("PromptBannerId"));
         password.setText(lang.getProperty("PromptPassword"));
@@ -69,6 +71,18 @@ public class AddWorkerViewController implements Initializable {
         dateOfLatestCredentialsStatus.setText(lang.getProperty("PromptDateOfLatestCredentialsStatus"));
         dateOfHire.setText(lang.getProperty("PromptDateOfHire"));
         status.setText(lang.getProperty("PromptStatus"));
+
+        // Set PromptText in text fields
+        BannerId.setPromptText(lang.getProperty("BannerId"));
+        Password.setPromptText(lang.getProperty("Password"));
+        FirstName.setPromptText(lang.getProperty("FirstName"));
+        LastName.setPromptText(lang.getProperty("LastName"));
+        ContactPhone.setPromptText(lang.getProperty("ContactPhone"));
+        Email.setPromptText(lang.getProperty("Email"));
+        DateOfLatestCredentialsStatus.setPromptText(lang.getProperty("dateFormat"));
+        DateOfHire.setPromptText(lang.getProperty("dateFormat"));
+
+        // Add TextFields to ArrayList
         textFieldList = new ArrayList<>();
         textFieldList.add(BannerId);
         textFieldList.add(Password);
@@ -82,14 +96,6 @@ public class AddWorkerViewController implements Initializable {
         textFieldList.add(DateOfHire);
         Status.setValue(lang.getProperty("Active"));
         Status.setItems(statusList);
-        BannerId.setPromptText(lang.getProperty("BannerId"));
-        Password.setPromptText(lang.getProperty("Password"));
-        FirstName.setPromptText(lang.getProperty("FirstName"));
-        LastName.setPromptText(lang.getProperty("LastName"));
-        ContactPhone.setPromptText(lang.getProperty("ContactPhone"));
-        Email.setPromptText(lang.getProperty("Email"));
-        DateOfLatestCredentialsStatus.setPromptText(lang.getProperty("dateFormat"));
-        DateOfHire.setPromptText(lang.getProperty("dateFormat"));
     }
 
     public void submit(ActionEvent event) {
