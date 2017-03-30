@@ -6,11 +6,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import models.Worker;
@@ -70,7 +72,7 @@ public class WorkerTransactionsController extends TransactionController {
         workerHeader.setText(language.getProperty("WorkerTransactions"));
         add.setText(language.getProperty("Add"));
         search.setText(language.getProperty("Search"));
-        if (core.getUser().getCredentials().equals("Ordinary")) modify.setDisable(true);
+        //if (core.getUser().getCredentials().equals("Ordinary")) modify.setDisable(true);
         try {
             setTableView();
         } catch (IOException e) {
@@ -79,6 +81,7 @@ public class WorkerTransactionsController extends TransactionController {
     }
 
     protected void setTableView() throws IOException {
+
         TableColumn column;
         for (String property : dedicatedColumnHeaders()) {
             column = new TableColumn(property);
@@ -116,7 +119,7 @@ public class WorkerTransactionsController extends TransactionController {
                 final Worker worker = row.getItem();
                 if (worker != null) {
                     Tooltip tp = new Tooltip("at row tool");
-                    tp.install(row, tp);
+                    Tooltip.install(row, tp);
                     tp.setText(worker.toolTipToString());
                 }
             });

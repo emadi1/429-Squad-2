@@ -76,7 +76,12 @@ public class AddBookViewController implements Initializable {
     public void submit(ActionEvent actionEvent) {
 
         Properties properties = new Properties();
-        int count = bookCollection.findBooksByBarcode(properties.getProperty("Barcode")).size();
+        int count = 0;
+        try {
+            count = bookCollection.findBooksByBarcode(properties.getProperty("Barcode")).size();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         if (Barcode.getText().length() != 5) {
             alertMessage.setText(lang.getProperty("invalidBarcodeLength"));

@@ -77,7 +77,7 @@ public class StudentBorrowerTransactionsController extends TransactionController
         studentHeader.setText(language.getProperty("StudentTransactions"));
         add.setText(language.getProperty("Add"));
         search.setText(language.getProperty("Search"));
-        if (core.getUser().getCredentials().equals("Ordinary")) modify.setDisable(true);
+        //if (core.getUser().getCredentials().equals("Ordinary")) modify.setDisable(true);
         try {
             setTableView();
         } catch (IOException e) {
@@ -89,7 +89,7 @@ public class StudentBorrowerTransactionsController extends TransactionController
         TableColumn column;
         for (String property : properties) {
             column = new TableColumn(property);
-            column.setMinWidth(86);
+            column.setMinWidth(100);
             column.setCellValueFactory(new PropertyValueFactory<StudentBorrower, String>(property));
             tableView.getColumns().add(column);
         }
@@ -123,7 +123,7 @@ public class StudentBorrowerTransactionsController extends TransactionController
                 final StudentBorrower studentBorrower = row.getItem();
                 if (studentBorrower != null) {
                     Tooltip tp = new Tooltip("at row tool");
-                    tp.install(row, tp);
+                    Tooltip.install(row, tp);
                     tp.setText(studentBorrower.toolTipToString());
                 }
             });

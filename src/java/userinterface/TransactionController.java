@@ -35,7 +35,6 @@ public abstract class TransactionController implements Initializable {
     @FXML protected TableView tableView;
     @FXML protected ChoiceBox<String> searchChoice;
     @FXML protected TextField searchField;
-    @FXML protected Button modify;
     @FXML protected Button search;
     @FXML protected Button add;
 
@@ -51,6 +50,7 @@ public abstract class TransactionController implements Initializable {
         if (observableList != null) {
             tableView.setItems(observableList);
         }
+
     }
 
     protected static boolean isNumeric(String string) {

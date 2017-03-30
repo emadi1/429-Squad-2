@@ -48,10 +48,9 @@ public class BookTransactionsController extends TransactionController {
         searchChoice.setItems(itemsSearchChoiceArray());
         searchChoice.getSelectionModel().selectFirst();
         bookHeader.setText(language.getProperty("BookTransactions"));
-        modify.setText(language.getProperty("Modify"));
         add.setText(language.getProperty("Add"));
         search.setText(language.getProperty("Search"));
-        if (core.getUser().getCredentials().equals("Ordinary")) modify.setDisable(true);
+        //if (core.getUser().getCredentials().equals("Ordinary")) modify.setDisable(true);
         setTableView();
     }
 
