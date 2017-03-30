@@ -109,6 +109,11 @@ public class AddBookViewController implements Initializable {
             return;
         }
 
+        if (Title.getText().length() > 64) {
+            alertMessage.setText("Title length too large.");
+            return;
+        }
+
         if (Title.getText().equals("") || Author1.getText().equals("") || Publisher.getText().equals("")
                 || YearOfPublication.getText().equals("") || ISBN.getText().equals("")
                 || SuggestedPrice.getText().equals("")) {

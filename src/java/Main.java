@@ -14,7 +14,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         Core core = Core.getInstance();
-        core.setLanguage("en_US");
+        core.setLanguage("fr_FR");
         launch(args);
     }
 
