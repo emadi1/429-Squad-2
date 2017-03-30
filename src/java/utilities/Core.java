@@ -1,6 +1,7 @@
 package utilities;
 
 import common.PropertyFile;
+import javafx.stage.Stage;
 import models.Book;
 import models.StudentBorrower;
 import models.Worker;
@@ -18,6 +19,7 @@ public class Core {
     private static Book modBook;
     private static StudentBorrower modStudentBorrower;
     private static String language = "";
+    private static Stage lastStage;
 
     //Private constructor
     private Core() {
@@ -43,6 +45,7 @@ public class Core {
     public String getLanguage() {
         return language;
     }
+    public Stage getLastStage() {return lastStage;}
     // Setters
     public void setModBook(Book book) {
         modBook = book;
@@ -59,6 +62,7 @@ public class Core {
     public void setLanguage(String lang) {
         language = lang;
     }
+    public void setLastStage(Stage stage) {lastStage = stage;}
 
     public Properties getLang() {
         Properties library = new Properties();

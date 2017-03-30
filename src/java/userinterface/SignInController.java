@@ -90,6 +90,8 @@ public class SignInController implements Initializable {
                     primaryStage.setScene(scene);
                     primaryStage.setTitle("Brockport Library System");
                     primaryStage.setResizable(false);
+                    core.getLastStage().close();
+                    core.setLastStage(primaryStage);
                     primaryStage.show();
                 } catch (Exception e) {
                     System.out.println("Can't open new window.");
