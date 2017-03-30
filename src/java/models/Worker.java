@@ -138,7 +138,7 @@ public class Worker extends EntityBase {
 
     public String toolTipToString() {
 
-        String tpString = language.getProperty("BannerId") + ": " + persistentState.getProperty("BannerId") + "\n" +
+        return language.getProperty("BannerId") + ": " + persistentState.getProperty("BannerId") + "\n" +
                 language.getProperty("FirstName") + ": " + persistentState.getProperty("FirstName") + "\n" +
                 language.getProperty("LastName") + ": " + persistentState.getProperty("LastName") + "\n" +
                 language.getProperty("ContactPhone") + ": " + persistentState.getProperty("ContactPhone") + "\n" +
@@ -148,23 +148,7 @@ public class Worker extends EntityBase {
                 language.getProperty("DateOfHire") + ": " + persistentState.getProperty("DateOfHire") + "\n" +
                 language.getProperty("Status") + ": " + persistentState.getProperty("Status") + "\n\n" +
                 "- Double click to modify -";
-
-
-
-
-
-        return tpString;
     }
-
-
-
-
-
-
-
-
-
-
 
 
     // Getters
@@ -189,9 +173,7 @@ public class Worker extends EntityBase {
     public String getCredentials() {
         return persistentState.getProperty(DBKey.CREDENTIALS);
     }
-    public String getDateOfLatestCredentialsStatus() {
-        return persistentState.getProperty(DBKey.DATE_OF_LATEST_CREDENTIALS_STATUS);
-    }
+    public String getDateOfLatestCredentialsStatus() {return persistentState.getProperty(DBKey.DATE_OF_LATEST_CREDENTIALS_STATUS);}
     public String getDateOfHire() {
         return persistentState.getProperty(DBKey.DATE_OF_HIRE);
     }

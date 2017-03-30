@@ -42,6 +42,5 @@
         </GridPane>
         <TableView fx:id="tableView" layoutX="10.0" layoutY="225.0" prefHeight="471.0" prefWidth="1069.0" />
         <Text fx:id="alertMessage" layoutX="229.0" layoutY="741.0" wrappingWidth="488.0" />
-        <Button fx:id="modify" layoutX="998.0" layoutY="709.0" mnemonicParsing="false" onAction="#modify" prefHeight="31.0" prefWidth="69.0" />
     </children>
 </AnchorPane>

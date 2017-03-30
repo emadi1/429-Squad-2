@@ -38,6 +38,7 @@ public class StudentBorrowerTransactionsController extends TransactionController
     Core core = Core.getInstance();
     private Properties language = Core.getInstance().getLang();
 
+    @Override
     public ObservableList<String> itemsSearchChoiceArray() {
         return FXCollections.observableArrayList(
                 language.getProperty("BannerId"),
@@ -51,6 +52,7 @@ public class StudentBorrowerTransactionsController extends TransactionController
                 language.getProperty("Status")
         );
     }
+
     @Override
     public ObservableList<String> dedicatedColumnHeaders() {
         return FXCollections.observableArrayList(
@@ -73,14 +75,17 @@ public class StudentBorrowerTransactionsController extends TransactionController
         searchChoice.setItems(itemsSearchChoiceArray());
         searchChoice.getSelectionModel().selectFirst();
         studentHeader.setText(language.getProperty("StudentTransactions"));
-        modify.setText(language.getProperty("Modify"));
         add.setText(language.getProperty("Add"));
         search.setText(language.getProperty("Search"));
         if (core.getUser().getCredentials().equals("Ordinary")) modify.setDisable(true);
-        setTableView();
+        try {
+            setTableView();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    protected void setTableView() {
+    protected void setTableView() throws IOException{
         TableColumn column;
         for (String property : properties) {
             column = new TableColumn(property);
@@ -88,6 +93,42 @@ public class StudentBorrowerTransactionsController extends TransactionController
             column.setCellValueFactory(new PropertyValueFactory<StudentBorrower, String>(property));
             tableView.getColumns().add(column);
         }
+
+        tableView.setRowFactory(tableView ->{
+
+            final TableRow<StudentBorrower> row = new TableRow<>();
+
+            row.setOnMouseClicked((event) -> {
+
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                    StudentBorrower studentBorrower = row.getItem();
+                    core.setModStudentBorrower(studentBorrower);
+
+                    try {
+                        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifystudentview.fxml"));
+                        Stage stage = new Stage();
+                        Scene scene = new Scene(root);
+                        stage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
+                        stage.setScene(scene);
+                        stage.setTitle(language.getProperty("modifyWorkerTitle"));
+                        stage.setResizable(false);
+                        stage.show();
+                    } catch (IOException | NullPointerException exception) {
+                        exception.printStackTrace();
+                    }
+                }
+            });
+
+            row.hoverProperty().addListener((observable) -> {
+                final StudentBorrower studentBorrower = row.getItem();
+                if (studentBorrower != null) {
+                    Tooltip tp = new Tooltip("at row tool");
+                    tp.install(row, tp);
+                    tp.setText(studentBorrower.toolTipToString());
+                }
+            });
+            return row;
+        });
     }
 
     @Override
@@ -106,28 +147,6 @@ public class StudentBorrowerTransactionsController extends TransactionController
         }
     }
 
-    @Override
-    public void modify(ActionEvent actionEvent) throws NullPointerException, IOException {
-        try {
-            StudentBorrower studentBorrower = (StudentBorrower) tableView.getSelectionModel().getSelectedItem();
-            String bannerId = studentBorrower.getBannerId();
-            core.setModStudentBorrower(studentBorrower);
-            if (bannerId != null) {
-                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifystudentview.fxml"));
-                Stage stage = new Stage();
-                Scene scene = new Scene(root);
-                stage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
-                stage.setScene(scene);
-                stage.setTitle(language.getProperty("modifyStudentTitle"));
-                stage.setResizable(false);
-                stage.show();
-            } else {
-                alertMessage.setText(language.getProperty("emptyField"));
-            }
-        } catch (NullPointerException|IOException exception) {
-            exception.printStackTrace();
-        }
-    }
 
     protected ObservableList querySelector(){
 
