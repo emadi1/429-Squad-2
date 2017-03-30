@@ -240,7 +240,8 @@ public class Book extends EntityBase {
                 language.getProperty("BookCondition") + ": " + persistentState.getProperty("BookCondition") + "\n" +
                 language.getProperty("SuggestedPrice") + ": " + persistentState.getProperty("SuggestedPrice") + "\n" +
                 language.getProperty("Notes") + ": " + persistentState.getProperty("Notes") + "\n" +
-                language.getProperty("Status") + ": " + persistentState.getProperty("Status");
+                language.getProperty("Status") + ": " + persistentState.getProperty("Status") + "\n\n" +
+                language.getProperty("doubleClickModify");
     }
     protected void initializeSchema(String tableName) {
         if (mySchema == null) {

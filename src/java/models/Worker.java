@@ -138,7 +138,7 @@ public class Worker extends EntityBase {
 
     public String toolTipToString() {
 
-        return language.getProperty("BannerId") + ": " + persistentState.getProperty("BannerId") + "\n" +
+        return  language.getProperty("BannerId") + ": " + persistentState.getProperty("BannerId") + "\n" +
                 language.getProperty("FirstName") + ": " + persistentState.getProperty("FirstName") + "\n" +
                 language.getProperty("LastName") + ": " + persistentState.getProperty("LastName") + "\n" +
                 language.getProperty("ContactPhone") + ": " + persistentState.getProperty("ContactPhone") + "\n" +
@@ -147,7 +147,7 @@ public class Worker extends EntityBase {
                 language.getProperty("DateOfLatestCredentialsStatus") + ": " + persistentState.getProperty("DateOfLatestCredentialsStatus") + "\n" +
                 language.getProperty("DateOfHire") + ": " + persistentState.getProperty("DateOfHire") + "\n" +
                 language.getProperty("Status") + ": " + persistentState.getProperty("Status") + "\n\n" +
-                "- Double click to modify -";
+                language.getProperty("doubleClickModify");
     }
 
 

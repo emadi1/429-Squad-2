@@ -135,7 +135,7 @@ public class StudentBorrower extends EntityBase {
 
     public String toolTipToString() {
 
-        return language.getProperty("BannerId") + ": " + persistentState.getProperty("BannerId") + "\n" +
+        return  language.getProperty("BannerId") + ": " + persistentState.getProperty("BannerId") + "\n" +
                 language.getProperty("FirstName") + ": " + persistentState.getProperty("FirstName") + "\n" +
                 language.getProperty("LastName") + ": " + persistentState.getProperty("LastName") + "\n" +
                 language.getProperty("ContactPhone") + ": " + persistentState.getProperty("ContactPhone") + "\n" +
@@ -144,7 +144,7 @@ public class StudentBorrower extends EntityBase {
                 language.getProperty("DateOfLatestBorrowerStatus") + ": " + persistentState.getProperty("DateOfLatestBorrowerStatus") + "\n" +
                 language.getProperty("DateOfRegistration") + ": " + persistentState.getProperty("DateOfRegistration") + "\n" +
                 language.getProperty("Status") + ": " + persistentState.getProperty("Status") + "\n\n" +
-                "- Double click to modify -";
+                language.getProperty("doubleClickModify");
     }
 
     // Getters

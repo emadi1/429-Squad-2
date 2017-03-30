@@ -102,19 +102,20 @@ public class StudentBorrowerTransactionsController extends TransactionController
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
                     StudentBorrower studentBorrower = row.getItem();
                     core.setModStudentBorrower(studentBorrower);
-
-                    try {
-                        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifystudentview.fxml"));
-                        Stage stage = new Stage();
-                        Scene scene = new Scene(root);
-                        stage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
-                        stage.setScene(scene);
-                        stage.setTitle(language.getProperty("modifyWorkerTitle"));
-                        stage.setResizable(false);
-                        stage.show();
-                    } catch (IOException | NullPointerException exception) {
-                        exception.printStackTrace();
-                    }
+                    if (core.getUser().getCredentials().equals("Administrator")) {
+                        try {
+                            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifystudentview.fxml"));
+                            Stage stage = new Stage();
+                            Scene scene = new Scene(root);
+                            stage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
+                            stage.setScene(scene);
+                            stage.setTitle(language.getProperty("modifyWorkerTitle"));
+                            stage.setResizable(false);
+                            stage.show();
+                        } catch (IOException | NullPointerException exception) {
+                            exception.printStackTrace();
+                        }
+                    } else alertMessage.setText(language.getProperty("invalidCredentials"));
                 }
             });
 

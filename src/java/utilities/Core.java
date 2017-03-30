@@ -151,6 +151,7 @@ public class Core {
             library.setProperty("emptyField", "Please complete field.");
             library.setProperty("dateFormat", "MM-DD-YYYY");
             library.setProperty("invalidPassword", "Invalid Password");
+            library.setProperty("doubleClickModify", "- Double click to modify -");
 
             // Student Alerts
             library.setProperty("addStudentSuccess", "Student Borrower successfully added!");
@@ -281,6 +282,7 @@ public class Core {
             library.setProperty("emptyField", "Veuillez remplir le champ.");
             library.setProperty("dateFormat", "DD-MM-YYYY");
             library.setProperty("invalidPassword", "Mot de passe incorrect.");
+            library.setProperty("doubleClickModify", "- Double cliquer pour modifier -");
 
             // Student Alerts
             library.setProperty("addStudentSuccess", "Etudiant a été ajouté avec succès!");

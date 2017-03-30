@@ -96,9 +96,9 @@ public class BookTransactionsController extends TransactionController {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
                     Book book = row.getItem();
                     core.setModBook(book);
-                    if (core.getUser().getCredentials().equals(language.getProperty("Administrator"))) {
+                    if (core.getUser().getCredentials().equals("Administrator")) {
                         try {
-                            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifyworkerbook.fxml"));
+                            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifybookview.fxml"));
                             Stage stage = new Stage();
                             Scene scene = new Scene(root);
                             stage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
@@ -110,7 +110,8 @@ public class BookTransactionsController extends TransactionController {
                             exception.printStackTrace();
                         }
                     }
-                } else alertMessage.setText(language.getProperty("invalidCredentials"));
+                    else alertMessage.setText(language.getProperty("invalidCredentials"));
+                }
             });
 
             row.hoverProperty().addListener((observable) -> {

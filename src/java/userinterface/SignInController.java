@@ -62,7 +62,6 @@ public class SignInController implements Initializable {
         bannerId.setPromptText(lang.getProperty("BannerId"));
         System.out.println(password.getStyle());
         signIn.setText(lang.getProperty("SignIn"));
-
         pwUnhide.hoverProperty().addListener(l->{
             unhidePassword();
         });
@@ -77,7 +76,7 @@ public class SignInController implements Initializable {
             Worker worker = (Worker)workerCollection.signInWorker(bannerId.getText()).elementAt(0);
             String pw = (String)worker.getState("Password");
             if (!pw.equals(password.getText()))
-                alertMessage.setText("Password Invalid");
+                alertMessage.setText(lang.getProperty("invalidPassword"));
             if (pw.equals(password.getText())) {
                 try {
                     password.clear();
@@ -107,7 +106,7 @@ public class SignInController implements Initializable {
             Scene scene = new Scene(root);
             primaryStage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
             primaryStage.setScene(scene);
-            primaryStage.setTitle("Brockport Library System!");
+            primaryStage.setTitle(lang.getProperty("welcome"));
             primaryStage.setResizable(false);
             primaryStage.show();
         } catch (Exception e) {
@@ -124,7 +123,7 @@ public class SignInController implements Initializable {
             Scene scene = new Scene(root);
             primaryStage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
             primaryStage.setScene(scene);
-            primaryStage.setTitle("Brockport Library System!");
+            primaryStage.setTitle(lang.getProperty("welcome"));
             primaryStage.setResizable(false);
             primaryStage.show();
         } catch (Exception e) {

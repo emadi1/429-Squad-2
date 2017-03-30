@@ -99,19 +99,21 @@ public class WorkerTransactionsController extends TransactionController {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
                     Worker worker = row.getItem();
                     core.setModWorker(worker);
-
-                    try {
-                        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifyworkerview.fxml"));
-                        Stage stage = new Stage();
-                        Scene scene = new Scene(root);
-                        stage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
-                        stage.setScene(scene);
-                        stage.setTitle(language.getProperty("modifyWorkerTitle"));
-                        stage.setResizable(false);
-                        stage.show();
-                    } catch (IOException | NullPointerException exception) {
-                        exception.printStackTrace();
-                    }
+                    System.out.println(core.getUser().getCredentials());
+                    if (core.getUser().getCredentials().equals("Administrator")) {
+                        try {
+                            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifyworkerview.fxml"));
+                            Stage stage = new Stage();
+                            Scene scene = new Scene(root);
+                            stage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
+                            stage.setScene(scene);
+                            stage.setTitle(language.getProperty("modifyWorkerTitle"));
+                            stage.setResizable(false);
+                            stage.show();
+                        } catch (IOException | NullPointerException exception) {
+                            exception.printStackTrace();
+                        }
+                    } else alertMessage.setText(language.getProperty("invalidCredentials"));
                 }
             });
 
