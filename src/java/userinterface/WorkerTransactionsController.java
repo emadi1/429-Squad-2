@@ -85,7 +85,7 @@ public class WorkerTransactionsController extends TransactionController {
         TableColumn column;
         for (String property : dedicatedColumnHeaders()) {
             column = new TableColumn(property);
-            column.setMinWidth(100);
+            column.setMinWidth(120);
             column.setCellValueFactory(new PropertyValueFactory<Worker, String>(property));
             tableView.getColumns().add(column);
         }
