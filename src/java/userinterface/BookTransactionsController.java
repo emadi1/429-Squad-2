@@ -113,28 +113,6 @@ public class BookTransactionsController extends TransactionController {
         }
     }
 
-    public void modify(ActionEvent actionEvent) throws NullPointerException, IOException {
-        try {
-            Book book = (Book) tableView.getItems().get(tableView.getFocusModel().getFocusedIndex());
-            String barcode = book.getBarcode();
-            core.setModBook(book);
-            if (barcode != null) {
-                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifybookview.fxml"));
-                Stage primaryStage = new Stage();
-                Scene scene = new Scene(root);
-                primaryStage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
-                primaryStage.setScene(scene);
-                primaryStage.setTitle("Modify Book");
-                primaryStage.setResizable(false);
-                primaryStage.show();
-            } else {
-                alertMessage.setText("Please select a book to modify");
-            }
-        } catch (NullPointerException|IOException exception) {
-            exception.printStackTrace();
-        }
-    }
-
     @Override
     protected ObservableList querySelector(){
         BookCollection bookCollection = new BookCollection();
@@ -211,20 +189,5 @@ public class BookTransactionsController extends TransactionController {
 
     public int getType() {
         return 0;
-    }
-
-    public void showModifyDialog() {
-        try {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifybookview.fxml"));
-            Stage primaryStage = new Stage();
-            Scene scene = new Scene(root);
-            primaryStage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
-            primaryStage.setScene(scene);
-            primaryStage.setTitle("Brockport Library System");
-            primaryStage.setResizable(false);
-            primaryStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

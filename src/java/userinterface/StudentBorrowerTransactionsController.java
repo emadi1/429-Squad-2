@@ -77,7 +77,6 @@ public class StudentBorrowerTransactionsController extends TransactionController
         studentHeader.setText(language.getProperty("StudentTransactions"));
         add.setText(language.getProperty("Add"));
         search.setText(language.getProperty("Search"));
-        //if (core.getUser().getCredentials().equals("Ordinary")) modify.setDisable(true);
         try {
             setTableView();
         } catch (IOException e) {

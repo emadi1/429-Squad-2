@@ -36,20 +36,20 @@ public class ModifyBookViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         submit.setText(language.getProperty("Modify"));
-        barcode.setText(language.getProperty("barcode"));
-        title.setText(language.getProperty("title"));
-        discipline.setText(language.getProperty("discipline"));
-        author1.setText(language.getProperty("author1"));
-        author2.setText(language.getProperty("author2"));
-        author3.setText(language.getProperty("author3"));
-        author4.setText(language.getProperty("author4"));
-        publisher.setText(language.getProperty("publisher"));
-        yearOfPublication.setText(language.getProperty("yearOfPublication"));
-        isbn.setText(language.getProperty("isbn"));
-        bookCondition.setText(language.getProperty("bookCondition"));
-        suggestedPrice.setText(language.getProperty("suggestedPrice"));
-        notes.setText(language.getProperty("notes"));
-        status.setText(language.getProperty("status"));
+        barcode.setText(language.getProperty("PromptBarcode"));
+        title.setText(language.getProperty("PromptTitle"));
+        discipline.setText(language.getProperty("PromptDiscipline"));
+        author1.setText(language.getProperty("PromptAuthor1"));
+        author2.setText(language.getProperty("PromptAuthor2"));
+        author3.setText(language.getProperty("PromptAuthor3"));
+        author4.setText(language.getProperty("PromptAuthor4"));
+        publisher.setText(language.getProperty("PromptPublisher"));
+        yearOfPublication.setText(language.getProperty("PromptYearOfPublication"));
+        isbn.setText(language.getProperty("PromptISBN"));
+        bookCondition.setText(language.getProperty("PromptBookCondition"));
+        suggestedPrice.setText(language.getProperty("PromptSuggestedPrice"));
+        notes.setText(language.getProperty("PromptNotes"));
+        status.setText(language.getProperty("PromptStatus"));
 
         Barcode.setText(core.getModBook().getBarcode());
         Barcode.setDisable(true);
@@ -79,6 +79,7 @@ public class ModifyBookViewController implements Initializable {
             try {
                 book.setDiscipline(Book.generateDiscipline(book.getBarcode().substring(0, 2)));
             } catch (Exception e) {
+                book.setDiscipline("None");
                 System.out.println("Exception: " + e);
             }
             book.setAuthor1(Author1.getText());
@@ -91,7 +92,10 @@ public class ModifyBookViewController implements Initializable {
             book.setBookCondition(BookCondition.getValue());
             book.setSuggestedPrice(SuggestedPrice.getText());
             book.setNotes(Notes.getText());
-            book.setStatus(Status.getValue());
+            if (BookCondition.getValue().equals(language.getProperty("Good"))) book.setBookCondition("Good");
+            else book.setBookCondition("Damaged");
+            if (Status.getValue().equals(language.getProperty("Active"))) book.setStatus("Active");
+            else book.setStatus("Inactive");
             book.update();
             alertMessage.setText(language.getProperty("modifyBookSuccess"));
         } catch (Exception e) {
