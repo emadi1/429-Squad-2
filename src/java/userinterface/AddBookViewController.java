@@ -41,16 +41,16 @@ public class AddBookViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         textFieldList = new ArrayList<>();
-        barcode.setText(lang.getProperty("barcode"));
-        title.setText(lang.getProperty("title"));
-        author1.setText(lang.getProperty("author1"));
-        author2.setText(lang.getProperty("author2"));
-        author3.setText(lang.getProperty("author3"));
-        author4.setText(lang.getProperty("author4"));
-        publisher.setText(lang.getProperty("publisher"));
-        yearOfPublication.setText(lang.getProperty("yearOfPublication"));
-        isbn.setText(lang.getProperty("isbn"));
-        bookCondition.setText(lang.getProperty("bookCondition"));
+        barcode.setText(lang.getProperty("PromptBarcode"));
+        title.setText(lang.getProperty("PromptTitle"));
+        author1.setText(lang.getProperty("PromptAuthor1"));
+        author2.setText(lang.getProperty("PromptAuthor2"));
+        author3.setText(lang.getProperty("PromptAuthor3"));
+        author4.setText(lang.getProperty("PromptAuthor4"));
+        publisher.setText(lang.getProperty("PromptPublisher"));
+        yearOfPublication.setText(lang.getProperty("PromptYearOfPublication"));
+        isbn.setText(lang.getProperty("PromptISBN"));
+        bookCondition.setText(lang.getProperty("PromptBookCondition"));
         suggestedPrice.setText(lang.getProperty("PromptSuggestedPrice"));
         notes.setText(lang.getProperty("PromptNotes"));
         status.setText(lang.getProperty("PromptStatus"));
@@ -105,6 +105,13 @@ public class AddBookViewController implements Initializable {
             for (TextField textField : textFieldList)
                 properties.put(textField.getId(), textField.getText());
         }
+
+        if (BookCondition.getValue().equals(lang.getProperty("Good"))) properties.put("BookCondition", "Good");
+        else properties.put("BookCondition", "Damaged");
+
+        if (Status.getValue().equals(lang.getProperty("Active"))) properties.put("Status", "Active");
+        else properties.put("Status", "Inactive");
+
 
         if (count == 0) {
             Book newBook = new Book(properties);
