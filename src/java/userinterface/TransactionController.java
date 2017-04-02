@@ -64,8 +64,6 @@ public abstract class TransactionController implements Initializable {
 
     protected abstract void add(ActionEvent actionEvent) throws NullPointerException, IOException;
 
-    protected abstract ObservableList<String> dedicatedColumnHeaders();
-
     protected abstract ObservableList<String> itemsSearchChoiceArray();
 
     protected abstract void setTableView() throws IOException;

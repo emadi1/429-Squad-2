@@ -33,37 +33,19 @@ public class BookTransactionsController extends TransactionController {
     @FXML private Text alertMessage;
     private Core core = Core.getInstance();
     private Properties language = core.getLang();
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-        searchChoice.setItems(itemsSearchChoiceArray());
-        searchChoice.getSelectionModel().selectFirst();
-        bookHeader.setText(language.getProperty("BookTransactions"));
-        add.setText(language.getProperty("Add"));
-        search.setText(language.getProperty("Search"));
-        setTableView();
-    }
-
-    @Override
-    protected ObservableList<String> dedicatedColumnHeaders() {
-        return FXCollections.observableArrayList(
-                DBKey.BARCODE,
-                DBKey.TITLE,
-                DBKey.DISCIPLINE,
-                DBKey.AUTHOR_1,
-                DBKey.AUTHOR_2,
-                DBKey.AUTHOR_3,
-                DBKey.AUTHOR_4,
-                DBKey.PUBLISHER,
-                DBKey.YEAR_OF_PUBLICATION,
-                DBKey.ISBN,
-                DBKey.CONDITION,
-                DBKey.SUGGESTED_PRICE,
-                DBKey.NOTES,
-                DBKey.STATUS
-        );
-    }
+    private TableColumn<Book, String> barcodeColumn = new TableColumn<>(language.getProperty("Barcode"));
+    private TableColumn<Book, String> titleColumn = new TableColumn<>(language.getProperty("Title"));
+    private TableColumn<Book, String> disciplineColumn = new TableColumn<>(language.getProperty("Discipline"));
+    private TableColumn<Book, String> author1Column = new TableColumn<>(language.getProperty("Author1"));
+    private TableColumn<Book, String> author2Column = new TableColumn<>(language.getProperty("Author2"));
+    private TableColumn<Book, String> author3Column = new TableColumn<>(language.getProperty("Author3"));
+    private TableColumn<Book, String> author4Column = new TableColumn<>(language.getProperty("Author4"));
+    private TableColumn<Book, String> publisherColumn = new TableColumn<>(language.getProperty("Publisher"));
+    private TableColumn<Book, String> yearOfPublicationColumn =
+            new TableColumn<>(language.getProperty("YearOfPublication"));
+    private TableColumn<Book, String> ISBNColumn = new TableColumn<>(language.getProperty("ISBN"));
+    private TableColumn<Book, String> bookConditionColumn = new TableColumn<>(language.getProperty("BookCondition"));
+    private TableColumn<Book, String> statusColumn = new TableColumn<>(language.getProperty("Status"));
 
     @Override
     public ObservableList<String> itemsSearchChoiceArray() {
@@ -79,14 +61,59 @@ public class BookTransactionsController extends TransactionController {
                 language.getProperty("Status"));
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        searchChoice.setItems(itemsSearchChoiceArray());
+        searchChoice.getSelectionModel().selectFirst();
+        bookHeader.setText(language.getProperty("BookTransactions"));
+        add.setText(language.getProperty("Add"));
+        search.setText(language.getProperty("Search"));
+        setTableView();
+    }
+
+
     protected void setTableView(){
-        TableColumn column;
-        for (String property : dedicatedColumnHeaders()) {
-            column = new TableColumn(property);
-            column.setMinWidth(60);
-            column.setCellValueFactory(new PropertyValueFactory<Book, String>(property));
-            tableView.getColumns().add(column);
-        }
+
+        barcodeColumn.setMinWidth(100);
+        titleColumn.setMinWidth(100);
+        disciplineColumn.setMinWidth(100);
+        author1Column.setMinWidth(100);
+        author2Column.setMinWidth(100);
+        author3Column.setMinWidth(100);
+        author4Column.setMinWidth(100);
+        publisherColumn.setMinWidth(100);
+        yearOfPublicationColumn.setMinWidth(100);
+        ISBNColumn.setMinWidth(100);
+        bookConditionColumn.setMinWidth(100);
+        statusColumn.setMinWidth(100);
+
+        barcodeColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.BARCODE));
+        titleColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.TITLE));
+        disciplineColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.DISCIPLINE));
+        author1Column.setCellValueFactory(new PropertyValueFactory<>(DBKey.AUTHOR_1));
+        author2Column.setCellValueFactory(new PropertyValueFactory<>(DBKey.AUTHOR_2));
+        author3Column.setCellValueFactory(new PropertyValueFactory<>(DBKey.AUTHOR_3));
+        author4Column.setCellValueFactory(new PropertyValueFactory<>(DBKey.AUTHOR_4));
+        publisherColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.PUBLISHER));
+        yearOfPublicationColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.YEAR_OF_PUBLICATION));
+        ISBNColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.ISBN));
+        bookConditionColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.CONDITION));
+        statusColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.STATUS));
+
+        tableView.getColumns().add(barcodeColumn);
+        tableView.getColumns().add(titleColumn);
+        tableView.getColumns().add(disciplineColumn);
+        tableView.getColumns().add(author1Column);
+        tableView.getColumns().add(author2Column);
+        tableView.getColumns().add(author3Column);
+        tableView.getColumns().add(author4Column);
+        tableView.getColumns().add(publisherColumn);
+        tableView.getColumns().add(yearOfPublicationColumn);
+        tableView.getColumns().add(ISBNColumn);
+        tableView.getColumns().add(bookConditionColumn);
+        tableView.getColumns().add(statusColumn);
+
         tableView.setRowFactory(tableView ->{
 
             final TableRow<Book> row = new TableRow<>();

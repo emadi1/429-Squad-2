@@ -33,21 +33,16 @@ public class WorkerTransactionsController extends TransactionController {
     @FXML private Text alertMessage;
     private Core core = Core.getInstance();
     private Properties language = core.getLang();
-
-    @Override
-    protected ObservableList<String> dedicatedColumnHeaders() {
-        return FXCollections.observableArrayList(
-                DBKey.BANNER_ID,
-                DBKey.FIRST_NAME,
-                DBKey.LAST_NAME,
-                DBKey.CONTACT_PHONE,
-                DBKey.EMAIL,
-                DBKey.CREDENTIALS,
-                DBKey.DATE_OF_LATEST_CREDENTIALS_STATUS,
-                DBKey.DATE_OF_HIRE,
-                DBKey.STATUS
-        );
-    }
+    private TableColumn<Worker, String> bannerIdColumn = new TableColumn<>(language.getProperty("BannerId"));
+    private TableColumn<Worker, String> firstNameColumn = new TableColumn<>(language.getProperty("FirstName"));
+    private TableColumn<Worker, String> lastNameColumn = new TableColumn<>(language.getProperty("LastName"));
+    private TableColumn<Worker, String> contactPhoneColumn = new TableColumn<>(language.getProperty("ContactPhone"));
+    private TableColumn<Worker, String> emailColumn = new TableColumn<>(language.getProperty("Email"));
+    private TableColumn<Worker, String> credentialsColumn = new TableColumn<>(language.getProperty("Credentials"));
+    private TableColumn<Worker, String> dateOfLatestCredentialsStatusColumn =
+            new TableColumn<>(language.getProperty("DateOfLatestCredentialsStatus"));
+    private TableColumn<Worker, String> dateOfHireColumn = new TableColumn<>(language.getProperty("DateOfHire"));
+    private TableColumn<Worker, String> statusColumn = new TableColumn<>(language.getProperty("Status"));
 
     @Override
     public ObservableList<String> itemsSearchChoiceArray() {
@@ -72,7 +67,6 @@ public class WorkerTransactionsController extends TransactionController {
         workerHeader.setText(language.getProperty("WorkerTransactions"));
         add.setText(language.getProperty("Add"));
         search.setText(language.getProperty("Search"));
-        //if (core.getUser().getCredentials().equals("Ordinary")) modify.setDisable(true);
         try {
             setTableView();
         } catch (IOException e) {
@@ -82,13 +76,36 @@ public class WorkerTransactionsController extends TransactionController {
 
     protected void setTableView() throws IOException {
 
-        TableColumn column;
-        for (String property : dedicatedColumnHeaders()) {
-            column = new TableColumn(property);
-            column.setMinWidth(100);
-            column.setCellValueFactory(new PropertyValueFactory<Worker, String>(property));
-            tableView.getColumns().add(column);
-        }
+        bannerIdColumn.setMinWidth(100);
+        firstNameColumn.setMinWidth(100);
+        lastNameColumn.setMinWidth(100);
+        contactPhoneColumn.setMinWidth(100);
+        emailColumn.setMinWidth(100);
+        credentialsColumn.setMinWidth(100);
+        dateOfLatestCredentialsStatusColumn.setMinWidth(100);
+        dateOfHireColumn.setMinWidth(100);
+        statusColumn.setMinWidth(100);
+
+        bannerIdColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.BANNER_ID));
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.FIRST_NAME));
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.LAST_NAME));
+        contactPhoneColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.CONTACT_PHONE));
+        emailColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.EMAIL));
+        credentialsColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.CREDENTIALS));
+        dateOfLatestCredentialsStatusColumn.setCellValueFactory
+                (new PropertyValueFactory<>(DBKey.DATE_OF_LATEST_CREDENTIALS_STATUS));
+        dateOfHireColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.DATE_OF_HIRE));
+        statusColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.STATUS));
+
+        tableView.getColumns().add(bannerIdColumn);
+        tableView.getColumns().add(firstNameColumn);
+        tableView.getColumns().add(lastNameColumn);
+        tableView.getColumns().add(contactPhoneColumn);
+        tableView.getColumns().add(emailColumn);
+        tableView.getColumns().add(credentialsColumn);
+        tableView.getColumns().add(dateOfLatestCredentialsStatusColumn);
+        tableView.getColumns().add(dateOfHireColumn);
+        tableView.getColumns().add(statusColumn);
 
         tableView.setRowFactory(tableView ->{
 

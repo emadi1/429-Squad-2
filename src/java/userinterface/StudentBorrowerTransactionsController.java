@@ -37,6 +37,19 @@ public class StudentBorrowerTransactionsController extends TransactionController
     @FXML private Text alertMessage;
     Core core = Core.getInstance();
     private Properties language = Core.getInstance().getLang();
+    private TableColumn<StudentBorrower, String> bannerIdColumn = new TableColumn<>(language.getProperty("BannerId"));
+    private TableColumn<StudentBorrower, String> firstNameColumn = new TableColumn<>(language.getProperty("FirstName"));
+    private TableColumn<StudentBorrower, String> lastNameColumn = new TableColumn<>(language.getProperty("LastName"));
+    private TableColumn<StudentBorrower, String> contactPhoneColumn =
+            new TableColumn<>(language.getProperty("ContactPhone"));
+    private TableColumn<StudentBorrower, String> emailColumn = new TableColumn<>(language.getProperty("Email"));
+    private TableColumn<StudentBorrower, String> borrowerStatusColumn = new
+            TableColumn<>(language.getProperty("BorrowerStatus"));
+    private TableColumn<StudentBorrower, String> dateOfLatestBorrowerStatusColumn =
+            new TableColumn<>(language.getProperty("DateOfLatestBorrowerStatus"));
+    private TableColumn<StudentBorrower, String> dateOfRegistrationColumn = new
+            TableColumn<>(language.getProperty("DateOfRegistration"));
+    private TableColumn<StudentBorrower, String> statusColumn = new TableColumn<>(language.getProperty("Status"));
 
     @Override
     public ObservableList<String> itemsSearchChoiceArray() {
@@ -54,24 +67,8 @@ public class StudentBorrowerTransactionsController extends TransactionController
     }
 
     @Override
-    public ObservableList<String> dedicatedColumnHeaders() {
-        return FXCollections.observableArrayList(
-                DBKey.BANNER_ID,
-                DBKey.FIRST_NAME,
-                DBKey.LAST_NAME,
-                DBKey.CONTACT_PHONE,
-                DBKey.EMAIL,
-                DBKey.BORROWER_STATUS,
-                DBKey.DATE_OF_LATEST_BORROWER_STATUS,
-                DBKey.DATE_OF_REGISTRATION,
-                DBKey.NOTES,
-                DBKey.STATUS
-        );
-    }
-
-    @Override
     public void initialize(URL location, ResourceBundle resources) {
-        properties = dedicatedColumnHeaders();
+
         searchChoice.setItems(itemsSearchChoiceArray());
         searchChoice.getSelectionModel().selectFirst();
         studentHeader.setText(language.getProperty("StudentTransactions"));
@@ -85,13 +82,37 @@ public class StudentBorrowerTransactionsController extends TransactionController
     }
 
     protected void setTableView() throws IOException{
-        TableColumn column;
-        for (String property : properties) {
-            column = new TableColumn(property);
-            column.setMinWidth(100);
-            column.setCellValueFactory(new PropertyValueFactory<StudentBorrower, String>(property));
-            tableView.getColumns().add(column);
-        }
+
+        bannerIdColumn.setMinWidth(100);
+        firstNameColumn.setMinWidth(100);
+        lastNameColumn.setMinWidth(100);
+        contactPhoneColumn.setMinWidth(100);
+        emailColumn.setMinWidth(100);
+        borrowerStatusColumn.setMinWidth(100);
+        dateOfLatestBorrowerStatusColumn.setMinWidth(100);
+        dateOfRegistrationColumn.setMinWidth(100);
+        statusColumn.setMinWidth(100);
+
+        bannerIdColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.BANNER_ID));
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.FIRST_NAME));
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.LAST_NAME));
+        contactPhoneColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.CONTACT_PHONE));
+        emailColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.EMAIL));
+        borrowerStatusColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.BORROWER_STATUS));
+        dateOfLatestBorrowerStatusColumn.setCellValueFactory
+                (new PropertyValueFactory<>(DBKey.DATE_OF_LATEST_BORROWER_STATUS));
+        dateOfRegistrationColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.DATE_OF_REGISTRATION));
+        statusColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.STATUS));
+
+        tableView.getColumns().add(bannerIdColumn);
+        tableView.getColumns().add(firstNameColumn);
+        tableView.getColumns().add(lastNameColumn);
+        tableView.getColumns().add(contactPhoneColumn);
+        tableView.getColumns().add(emailColumn);
+        tableView.getColumns().add(borrowerStatusColumn);
+        tableView.getColumns().add(dateOfLatestBorrowerStatusColumn);
+        tableView.getColumns().add(dateOfRegistrationColumn);
+        tableView.getColumns().add(statusColumn);
 
         tableView.setRowFactory(tableView ->{
 

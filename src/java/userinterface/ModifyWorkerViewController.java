@@ -58,10 +58,18 @@ public class ModifyWorkerViewController implements Initializable{
         Email.setText(core.getModWorker().getEmail());
         if (core.getUser().getCredentials().equals("Ordinary"))
             Credentials.setDisable(true);
-        Credentials.setValue(core.getModWorker().getCredentials());
+        if (core.getLanguage().equals("fr_FR")) {
+            Credentials.setItems(credentialsList);
+            Status.setItems(statusList);
+            if (core.getModWorker().getCredentials().equals(language.getProperty("Administrator")))
+                Credentials.setValue(language.getProperty("Administrator"));
+            else Credentials.setValue(language.getProperty("Ordinary"));
+            if (core.getModWorker().getStatus().equals(language.getProperty("Active")))
+                Status.setValue(language.getProperty("Active"));
+            else Status.setValue(language.getProperty("Inactive"));
+        }
         DateOfLatestCredentialsStatus.setText(core.getModWorker().getDateOfLatestCredentialsStatus());
         DateOfHire.setText(core.getModWorker().getDateOfHire());
-        Status.setValue(core.getModWorker().getStatus());
         Credentials.setItems(credentialsList);
         Status.setItems(statusList);
     }
@@ -75,10 +83,19 @@ public class ModifyWorkerViewController implements Initializable{
             worker.setLastName(LastName.getText());
             worker.setContactPhone(ContactPhone.getText());
             worker.setEmail(Email.getText());
-            worker.setCredentials(Credentials.getValue());
+            if (core.getLanguage().equals("fr_FR")) {
+                if (Credentials.getValue().equals(language.getProperty("Administrator")))
+                    worker.setCredentials("Administrator");
+                else worker.setCredentials("Ordinary");
+                if (Status.getValue().equals(language.getProperty("Active")))
+                    worker.setStatus("Active");
+                else worker.setStatus("Inactive");
+            } else {
+                worker.setCredentials(Credentials.getValue());
+                worker.setStatus(Status.getValue());
+            }
             worker.setDateOfLatestCredentialsStatus(DateOfLatestCredentialsStatus.getText());
             worker.setDateOfHire(DateOfHire.getText());
-            worker.setStatus(Status.getValue());
             worker.update();
             alertMessage.setText(language.getProperty("modifyWorkerSuccess"));
         } catch (Exception e) {
