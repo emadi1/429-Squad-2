@@ -98,7 +98,7 @@ public class BookTransactionsController extends TransactionController {
         publisherColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.PUBLISHER));
         yearOfPublicationColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.YEAR_OF_PUBLICATION));
         ISBNColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.ISBN));
-        bookConditionColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.CONDITION));
+        bookConditionColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.BOOK_CONDITION));
         statusColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.STATUS));
 
         tableView.getColumns().add(barcodeColumn);

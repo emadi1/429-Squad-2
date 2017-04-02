@@ -87,7 +87,8 @@ public class BookCollection extends EntityBase {
     }
 
     public Vector findBooksByBookCondition(String condition) {
-        String query = "SELECT * FROM " + myTableName + " WHERE Condition LIKE '%" + condition + "%' ORDER BY Title ASC";
+        String query = "SELECT * FROM " + myTableName + " WHERE " + DBKey.BOOK_CONDITION +
+                " LIKE '%" + DBKey.BOOK_CONDITION + "%' ORDER BY Title ASC";
         return runQuery(query);
     }
 
@@ -107,7 +108,7 @@ public class BookCollection extends EntityBase {
                 + DBKey.PUBLISHER + " AS " + language.getProperty(DBKey.PUBLISHER) + " "
                 + DBKey.YEAR_OF_PUBLICATION + " AS " + language.getProperty(DBKey.YEAR_OF_PUBLICATION) + " "
                 + DBKey.ISBN + " AS " + language.getProperty(DBKey.ISBN) + " "
-                + DBKey.CONDITION + " AS " + language.getProperty(DBKey.CONDITION) + " "
+                + DBKey.BOOK_CONDITION + " AS " + language.getProperty(DBKey.BOOK_CONDITION) + " "
                 + DBKey.SUGGESTED_PRICE + " AS " + language.getProperty(DBKey.SUGGESTED_PRICE) + " "
                 + DBKey.NOTES + " AS " + language.getProperty(DBKey.NOTES) + " "
                 + DBKey.STATUS + " AS " + language.getProperty(DBKey.STATUS);
