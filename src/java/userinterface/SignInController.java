@@ -13,8 +13,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -103,6 +101,7 @@ public class SignInController implements Initializable {
     public void skipAsAdmin(ActionEvent actionEvent) throws IOException {
         dummyWorker(1);
         core.setLanguage(language.getSelectionModel().getSelectedItem());
+        lang = core.getLang();
         try {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("mainview.fxml"));
             Stage primaryStage = new Stage();
@@ -120,6 +119,7 @@ public class SignInController implements Initializable {
     public void skipAsOrdinary(ActionEvent actionEvent) {
         dummyWorker(2);
         core.setLanguage(language.getSelectionModel().getSelectedItem());
+        lang = core.getLang();
         try {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("mainview.fxml"));
             Stage primaryStage = new Stage();
