@@ -27,7 +27,7 @@ public class Book extends EntityBase {
         if (allDataRetrieved != null) {
             int size = allDataRetrieved.size();
             if (size != 1) {
-                throw new InvalidPrimaryKeyException("Multiple accounts matching ID: "
+                throw new InvalidPrimaryKeyException("Multiple books matching ID: "
                         + barcode + " found.");
             } else {
                 Properties retrievedBookData = allDataRetrieved.elementAt(0);
@@ -51,7 +51,7 @@ public class Book extends EntityBase {
         setDependencies();
         persistentState = new Properties();
         Enumeration allKeys = props.propertyNames();
-        while (allKeys.hasMoreElements() == true) {
+        while (allKeys.hasMoreElements()) {
             String nextKey = (String)allKeys.nextElement();
             String nextValue = props.getProperty(nextKey);
             if (nextValue != null) {
@@ -85,6 +85,12 @@ public class Book extends EntityBase {
         stateChangeRequest(key, value);
     }
 
+    protected void initializeSchema(String tableName) {
+        if (mySchema == null) {
+            mySchema = getSchemaInfo(tableName);
+        }
+    }
+
     private void insertStateInDatabase() {
         try {
             Integer Barcode = insertPersistentState(mySchema, persistentState);
@@ -95,7 +101,6 @@ public class Book extends EntityBase {
             System.out.println("Error installing data: " + e);
         }
     }
-
     private void updateStateInDatabase() {
         try {
             Properties whereClause = new Properties();
@@ -107,7 +112,6 @@ public class Book extends EntityBase {
             System.out.println("Error installing data: " + e);
         }
     }
-
     public void update() {
         updateStateInDatabase();
     }
@@ -209,6 +213,8 @@ public class Book extends EntityBase {
     public void setStatus(String status) {
         persistentState.setProperty("Status", status);
     }
+
+    // toStrings
     public String toString() {
         return  persistentState.getProperty("Barcode") + "; " +
                 persistentState.getProperty("Title") + "; " +
@@ -242,10 +248,5 @@ public class Book extends EntityBase {
                 language.getProperty("Notes") + ": " + persistentState.getProperty("Notes") + "\n" +
                 language.getProperty("Status") + ": " + persistentState.getProperty("Status") + "\n\n" +
                 language.getProperty("doubleClickModify");
-    }
-    protected void initializeSchema(String tableName) {
-        if (mySchema == null) {
-            mySchema = getSchemaInfo(tableName);
-        }
     }
 }

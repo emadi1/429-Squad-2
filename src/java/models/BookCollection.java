@@ -13,21 +13,20 @@ public class BookCollection extends EntityBase {
     private static final String myTableName = "Book";
     private Vector<Book> books;
     private String updateStatusMessage = "";
-    private Properties language;
+    private Properties language = Core.getInstance().getLang();
 
     public BookCollection() {
         super(myTableName);
         Vector<Book> bookCollection = new Vector<>();
-        language = Core.getInstance().getLang();
     }
 
-    public Vector runQuery(String query) {
+    private Vector runQuery(String query) {
         try {
             Vector allDataRetrieved = getSelectQueryResult(query);
             if (allDataRetrieved != null) {
                 books = new Vector();
                 for (int index = 0; index < allDataRetrieved.size(); index++) {
-                    Properties data = (Properties)allDataRetrieved.elementAt(index);
+                    Properties data = (Properties) allDataRetrieved.elementAt(index);
                     Book book = new Book(data);
                     if (book != null) {
                         addBook(book);
@@ -40,24 +39,41 @@ public class BookCollection extends EntityBase {
         return books;
     }
 
+    private void addBook(Book book) {
+        books.add(book);
+    }
+
+    public void stateChangeRequest(String key, Object value) {
+        myRegistry.updateSubscribers(key, this);
+    }
+
+    protected void initializeSchema(String tableName) {
+        if (mySchema == null) mySchema = getSchemaInfo(tableName);
+    }
+
+    public Object getState(String key) {
+        if (key.equals("UpdateStatusMessage")) {
+            return updateStatusMessage;
+        }
+        return persistentState.getProperty(key);
+    }
+
+    // Queries
     public Vector findBooksByBarcode(String barcode) {
         String query = "SELECT * FROM " + myTableName + " WHERE (" + DBKey.BARCODE +
                 " = " + barcode + ") ORDER BY " + DBKey.TITLE + " ASC";
         return runQuery(query);
     }
-
     public Vector findBooksByTitle(String title) {
         String query = "SELECT * FROM " + myTableName + " WHERE " + DBKey.TITLE +
                 " LIKE '%" + title + "%' ORDER BY " + DBKey.TITLE + " ASC";
         return runQuery(query);
     }
-
     public Vector findBooksByDiscipline(String discipline) {
         String query = "SELECT * FROM " + myTableName + " WHERE " + DBKey.DISCIPLINE +
                 " LIKE '%" + discipline + "%' ORDER BY " + DBKey.TITLE + " ASC";
         return runQuery(query);
     }
-
     public Vector findBooksByAuthor(String author) {
         String query = "SELECT * FROM " + myTableName + " WHERE " +
                 DBKey.AUTHOR_1 + " LIKE '%" + author + "%' OR " +
@@ -67,31 +83,26 @@ public class BookCollection extends EntityBase {
                 DBKey.TITLE + " ASC";
         return runQuery(query);
     }
-
     public Vector findBooksByPublisher(String publisher) {
         String query = "SELECT * FROM " + myTableName + " WHERE " + DBKey.PUBLISHER +
                 " LIKE '%" + publisher + "%' ORDER BY " + DBKey.TITLE + " ASC";
         return runQuery(query);
     }
-
     public Vector findBooksByPublicationYear(String year) {
         String query = "SELECT * FROM " + myTableName + " WHERE (" + DBKey.YEAR_OF_PUBLICATION +
                 " = " + year + ") ORDER BY " + DBKey.TITLE + " ASC";
         return runQuery(query);
     }
-
     public Vector findBooksByISBN(String isbn) {
         String query = "SELECT * FROM " + myTableName + " WHERE " + DBKey.ISBN +
                 " LIKE '%" + isbn + "%' ORDER BY " + DBKey.TITLE + " ASC";
         return runQuery(query);
     }
-
     public Vector findBooksByBookCondition(String condition) {
         String query = "SELECT * FROM " + myTableName + " WHERE " + DBKey.BOOK_CONDITION +
                 " LIKE '%" + DBKey.BOOK_CONDITION + "%' ORDER BY Title ASC";
         return runQuery(query);
     }
-
     public Vector findBooksByStatus(String status) {
         String query = "SELECT * FROM " + myTableName + " WHERE Status LIKE '%" + status + "%' ORDER BY Status ASC";
         return runQuery(query);
@@ -112,26 +123,5 @@ public class BookCollection extends EntityBase {
                 + DBKey.SUGGESTED_PRICE + " AS " + language.getProperty(DBKey.SUGGESTED_PRICE) + " "
                 + DBKey.NOTES + " AS " + language.getProperty(DBKey.NOTES) + " "
                 + DBKey.STATUS + " AS " + language.getProperty(DBKey.STATUS);
-    }
-
-    public void addBook(Book book) {
-        books.add(book);
-    }
-
-    public void stateChangeRequest(String key, Object value) {
-        myRegistry.updateSubscribers(key, this);
-    }
-
-    protected void initializeSchema(String tableName) {
-        if (mySchema == null) {
-            mySchema = getSchemaInfo(tableName);
-        }
-    }
-
-    public Object getState(String key) {
-        if (key.equals("UpdateStatusMessage") == true) {
-            return updateStatusMessage;
-        }
-        return persistentState.getProperty(key);
     }
 }

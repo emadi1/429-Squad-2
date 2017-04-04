@@ -32,3 +32,4 @@ The last packet successfully received from the server was 1,130,034 milliseconds
 [3/30/17 4:25 PM]|BookBarcodePrefixCollection|getSchemaInfo|Error|NOTAG|null<SQL Exception: 0: No operations allowed after connection closed.>
 [3/30/17 4:25 PM]|BookBarcodePrefixCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 0: No operations allowed after connection closed.>
 [3/30/17 4:25 PM]|Book|getSchemaInfo|Error|NOTAG|null<SQL Exception: 0: No operations allowed after connection closed.>
+[4/2/17 8:19 PM]|Worker|insertPersistentState|Error|NOTAG|null<SQL Exception: 1406: Data truncation: Data too long for column 'Credentials' at row 1>

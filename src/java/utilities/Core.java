@@ -79,8 +79,8 @@ public class Core {
             library.setProperty("WorkerTransactions", "Worker Transactions");
             library.setProperty("BookTransactions", "Book Transactions");
             library.setProperty("StudentTransactions", "Student Transactions");
-            library.setProperty("CheckOutBook", "Check Out Books");
-            library.setProperty("CheckInBook", "Check In Books");
+            library.setProperty("CheckOutBook", "Check Out Book");
+            library.setProperty("CheckInBook", "Check In Book");
             library.setProperty("ListCheckedBooks", "List Checked Books");
 
             // Window Titles
