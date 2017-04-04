@@ -104,11 +104,8 @@ public class Test {
         }
     }
 
-    public static void printStudentBorrowers() {
 
-    }
-
-    public static void printWorkersByBannerId() {
+    private static void printWorkersByBannerId() {
         Scanner keyboard = new Scanner(System.in);
         System.out.print("Enter BannerID: ");
         String queryParam = keyboard.nextLine();
