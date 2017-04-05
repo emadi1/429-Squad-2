@@ -91,20 +91,30 @@ public class Worker extends EntityBase {
         }
     }
 
-    // Date formatting
-    public void frenchCredentialDate() {
+    // Data formatting
+    public void formatCredentialDate() {
         String date = persistentState.getProperty(DBKey.DATE_OF_LATEST_CREDENTIALS_STATUS);
         String month = date.substring(0, 2);
         String day = date.substring(3, 5);
         String year = date.substring(6);
         persistentState.setProperty(DBKey.DATE_OF_LATEST_CREDENTIALS_STATUS, day + "-" + month + "-" + year);
     }
-    public void frenchDateOfHire() {
+    public void formatDateOfHire() {
         String date = persistentState.getProperty(DBKey.DATE_OF_HIRE);
         String month = date.substring(0, 2);
         String day = date.substring(3, 5);
         String year = date.substring(6);
         persistentState.setProperty(DBKey.DATE_OF_HIRE, day + "-" + month + "-" + year);
+    }
+    public void formatCredentials() {
+        if (persistentState.getProperty(DBKey.CREDENTIALS).equals("Administrator"))
+            persistentState.setProperty(DBKey.CREDENTIALS, language.getProperty("Administrator"));
+        else persistentState.setProperty(DBKey.CREDENTIALS, language.getProperty("Ordinary"));
+    }
+    public void formatStatus() {
+        if (persistentState.getProperty(DBKey.STATUS).equals("Active"))
+            persistentState.setProperty(DBKey.STATUS, language.getProperty("Active"));
+        else persistentState.setProperty(DBKey.STATUS, language.getProperty("Inactive"));
     }
 
     // SQL Insert/Update

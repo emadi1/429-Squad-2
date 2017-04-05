@@ -348,4 +348,10 @@ public class Core {
             return day + '-' + month + '-' + year;
         return month + '-' + day + '-' + year;
     }
+    public static String formatDateToEnglish(String date) {
+        String day = date.substring(0, 2);
+        String month = date.substring(3, 5);
+        String year = date.substring(6);
+        return month + '-' + day + '-' + year;
+    }
 }

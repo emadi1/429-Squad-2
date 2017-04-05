@@ -21,6 +21,7 @@ import java.util.ResourceBundle;
  */
 public class ModifyWorkerViewController implements Initializable{
 
+    private String frenchDate = Core.formatDateToEnglish(Core.generateDate());
     private Core core = Core.getInstance();
     private Properties language = core.getLang();
     private ObservableList<String> statusList =
@@ -56,22 +57,16 @@ public class ModifyWorkerViewController implements Initializable{
         LastName.setText(core.getModWorker().getLastName());
         ContactPhone.setText(core.getModWorker().getContactPhone());
         Email.setText(core.getModWorker().getEmail());
-        if (core.getUser().getCredentials().equals("Ordinary"))
-            Credentials.setDisable(true);
-        if (core.getLanguage().equals("fr_FR")) {
-            Credentials.setItems(credentialsList);
-            Status.setItems(statusList);
-            if (core.getModWorker().getCredentials().equals(language.getProperty("Administrator")))
-                Credentials.setValue(language.getProperty("Administrator"));
-            else Credentials.setValue(language.getProperty("Ordinary"));
-            if (core.getModWorker().getStatus().equals(language.getProperty("Active")))
-                Status.setValue(language.getProperty("Active"));
-            else Status.setValue(language.getProperty("Inactive"));
-        }
-        DateOfLatestCredentialsStatus.setText(core.getModWorker().getDateOfLatestCredentialsStatus());
-        DateOfHire.setText(core.getModWorker().getDateOfHire());
         Credentials.setItems(credentialsList);
         Status.setItems(statusList);
+        if (core.getUser().getCredentials().equals("Ordinary"))
+            Credentials.setDisable(true);
+        Credentials.setValue(core.getModWorker().getCredentials());
+        Status.setValue(core.getModWorker().getStatus());
+        DateOfLatestCredentialsStatus.setText(core.getModWorker().getDateOfLatestCredentialsStatus());
+        //DateOfLatestCredentialsStatus.setDisable(true);
+        DateOfHire.setText(core.getModWorker().getDateOfHire());
+        //DateOfHire.setDisable(true);
     }
 
     public void submit(ActionEvent event) {
@@ -83,19 +78,20 @@ public class ModifyWorkerViewController implements Initializable{
             worker.setLastName(LastName.getText());
             worker.setContactPhone(ContactPhone.getText());
             worker.setEmail(Email.getText());
-            if (core.getLanguage().equals("fr_FR")) {
-                if (Credentials.getValue().equals(language.getProperty("Administrator")))
-                    worker.setCredentials("Administrator");
-                else worker.setCredentials("Ordinary");
-                if (Status.getValue().equals(language.getProperty("Active")))
-                    worker.setStatus("Active");
-                else worker.setStatus("Inactive");
-            } else {
-                worker.setCredentials(Credentials.getValue());
-                worker.setStatus(Status.getValue());
-            }
             worker.setDateOfLatestCredentialsStatus(DateOfLatestCredentialsStatus.getText());
             worker.setDateOfHire(DateOfHire.getText());
+            if (Credentials.getValue().equals(language.getProperty("Administrator")))
+                worker.setCredentials("Administrator");
+            else worker.setCredentials("Ordinary");
+            if (!core.getModWorker().getCredentials().equals(worker.getCredentials())) {
+                String date = Core.generateDate();
+                if (core.getLanguage().equals("fr_FR"))
+                    worker.setDateOfLatestCredentialsStatus(Core.formatDateToEnglish(date));
+                else worker.setDateOfLatestCredentialsStatus(date);
+            }
+            if (Status.getValue().equals(language.getProperty("Active")))
+                worker.setStatus("Active");
+            else worker.setStatus("Inactive");
             worker.update();
             alertMessage.setText(language.getProperty("modifyWorkerSuccess"));
         } catch (Exception e) {
