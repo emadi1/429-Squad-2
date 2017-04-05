@@ -14,14 +14,11 @@ import javafx.scene.text.Text;
 import models.Worker;
 import models.WorkerCollection;
 import utilities.Core;
-
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Properties;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
- * Created by Ders on 3/22/2017.
+ * Created by Ders & kevph on 3/22/2017.
  */
 public class AddWorkerViewController implements Initializable {
 
@@ -79,8 +76,10 @@ public class AddWorkerViewController implements Initializable {
         LastName.setPromptText(lang.getProperty("LastName"));
         ContactPhone.setPromptText(lang.getProperty("ContactPhone"));
         Email.setPromptText(lang.getProperty("Email"));
-        DateOfLatestCredentialsStatus.setPromptText(lang.getProperty("dateFormat"));
-        DateOfHire.setPromptText(lang.getProperty("dateFormat"));
+        DateOfLatestCredentialsStatus.setText(Core.generateDate());
+        DateOfHire.setText(Core.generateDate());
+        DateOfLatestCredentialsStatus.setDisable(true);
+        DateOfHire.setDisable(true);
 
         // Add TextFields to ArrayList
         textFieldList = new ArrayList<>();
@@ -143,7 +142,9 @@ public class AddWorkerViewController implements Initializable {
             alertMessage.setText(lang.getProperty("addWorkerSuccess"));
         } else alertMessage.setText(lang.getProperty("existingBannerId") + prop.getProperty(DBKey.BANNER_ID));
 
-        for (TextField t : textFieldList) { t.clear(); }
+        for (TextField t : textFieldList) {
+            t.clear();
+        }
         Credentials.setValue(lang.getProperty("Ordinary"));
         Status.setValue(lang.getProperty("Active"));
     }

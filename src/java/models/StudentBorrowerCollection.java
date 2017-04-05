@@ -14,11 +14,12 @@ public class StudentBorrowerCollection extends EntityBase {
     private Vector<StudentBorrower> students;
     private String updateStatusMessage = "";
     private Properties language;
+    private Core core = Core.getInstance();
 
     public StudentBorrowerCollection() {
         super(myTableName);
         Vector<StudentBorrower> studentBorrowerCollection = new Vector<>();
-        language = Core.getInstance().getLang();
+        language = core.getLang();
     }
 
     private Vector runQuery(String query) {
@@ -30,6 +31,10 @@ public class StudentBorrowerCollection extends EntityBase {
                     Properties data = (Properties) allDataRetrieved.elementAt(index);
                     StudentBorrower studentBorrower = new StudentBorrower(data);
                     if (studentBorrower != null) {
+                        if (core.getLanguage().equals("fr_FR")) {
+                            studentBorrower.frenchBorrowerStatusDate();
+                            studentBorrower.frenchRegistrationDate();
+                        }
                         addStudent(studentBorrower);
                     }
                 }

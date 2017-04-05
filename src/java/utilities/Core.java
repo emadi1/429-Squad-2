@@ -1,12 +1,12 @@
 package utilities;
-
-import common.PropertyFile;
 import javafx.stage.Stage;
 import models.Book;
 import models.StudentBorrower;
 import models.Worker;
 
+import java.util.Calendar;
 import java.util.Properties;
+import java.util.TimeZone;
 
 /**
  * Created by Anders and Kevin the Dynamic Duo on 3/24/2017.
@@ -334,5 +334,18 @@ public class Core {
         }
 
         return library;
+    }
+    public static String generateDate() {
+        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("EST"));
+        String day = Integer.toString(calendar.get(Calendar.DATE));
+        String month = Integer.toString(calendar.get(Calendar.MONTH) + 1);
+        String year = Integer.toString(calendar.get(Calendar.YEAR));
+        if (Integer.parseInt(day) < 10)
+            day = '0' + day;
+        if (Integer.parseInt(month) < 10)
+            month = '0' + month;
+        if (language.equals("fr_FR"))
+            return day + '-' + month + '-' + year;
+        return month + '-' + day + '-' + year;
     }
 }

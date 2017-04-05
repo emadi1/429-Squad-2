@@ -14,7 +14,7 @@ import java.util.Vector;
 public class StudentBorrower extends EntityBase {
     private static final String myTableName = "StudentBorrower";
     private String updateStatusMessage = "";
-    protected Properties dependencies;
+    private Properties dependencies;
     private Core core = Core.getInstance();
     private Properties language = core.getLang();
 
@@ -83,6 +83,13 @@ public class StudentBorrower extends EntityBase {
         stateChangeRequest(key, value);
     }
 
+    protected void initializeSchema(String tableName) {
+        if (mySchema == null) {
+            mySchema = getSchemaInfo(tableName);
+        }
+    }
+
+    // SQL Insert/Update
     private void updateStateInDatabase() {
         try {
             Properties whereClause = new Properties();
@@ -94,7 +101,6 @@ public class StudentBorrower extends EntityBase {
             updateStatusMessage = "Error updating Student Borrower data in database!";
         }
     }
-
     private void insertStateInDatabase() {
         try {
             Integer BannerId = insertPersistentState(mySchema, persistentState);
@@ -105,21 +111,30 @@ public class StudentBorrower extends EntityBase {
             System.out.println("Error installing data: " + e);
         }
     }
-
     public void update() {
         updateStateInDatabase();
     }
-
     public void insert() {
         insertStateInDatabase();
     }
 
-    protected void initializeSchema(String tableName) {
-        if (mySchema == null) {
-            mySchema = getSchemaInfo(tableName);
-        }
+    // Date formatting
+    public void frenchBorrowerStatusDate() {
+        String date = persistentState.getProperty(DBKey.DATE_OF_LATEST_BORROWER_STATUS);
+        String month = date.substring(0, 2);
+        String day = date.substring(3, 5);
+        String year = date.substring(6);
+        persistentState.setProperty(DBKey.DATE_OF_LATEST_BORROWER_STATUS, day + "-" + month + "-" + year);
+    }
+    public void frenchRegistrationDate() {
+        String date = persistentState.getProperty(DBKey.DATE_OF_REGISTRATION);
+        String month = date.substring(0, 2);
+        String day = date.substring(3, 5);
+        String year = date.substring(6);
+        persistentState.setProperty(DBKey.DATE_OF_REGISTRATION, day + "-" + month + "-" + year);
     }
 
+    // To String
     public String toString() {
         return  persistentState.getProperty("BannerId") + "; " +
                 persistentState.getProperty("FirstName") + "; " +
@@ -131,8 +146,6 @@ public class StudentBorrower extends EntityBase {
                 persistentState.getProperty("Notes") + "; " +
                 persistentState.getProperty("Status");
     }
-
-
     public String toolTipToString() {
 
         return  language.getProperty("BannerId") + ": " + persistentState.getProperty("BannerId") + "\n" +

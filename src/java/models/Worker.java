@@ -85,6 +85,29 @@ public class Worker extends EntityBase {
         stateChangeRequest(key, value);
     }
 
+    protected void initializeSchema(String tableName) {
+        if (mySchema == null) {
+            mySchema = getSchemaInfo(tableName);
+        }
+    }
+
+    // Date formatting
+    public void frenchCredentialDate() {
+        String date = persistentState.getProperty(DBKey.DATE_OF_LATEST_CREDENTIALS_STATUS);
+        String month = date.substring(0, 2);
+        String day = date.substring(3, 5);
+        String year = date.substring(6);
+        persistentState.setProperty(DBKey.DATE_OF_LATEST_CREDENTIALS_STATUS, day + "-" + month + "-" + year);
+    }
+    public void frenchDateOfHire() {
+        String date = persistentState.getProperty(DBKey.DATE_OF_HIRE);
+        String month = date.substring(0, 2);
+        String day = date.substring(3, 5);
+        String year = date.substring(6);
+        persistentState.setProperty(DBKey.DATE_OF_HIRE, day + "-" + month + "-" + year);
+    }
+
+    // SQL Insert/Update
     private void insertStateInDatabase() {
         try {
             Integer BannerId = insertPersistentState(mySchema, persistentState);
@@ -95,7 +118,6 @@ public class Worker extends EntityBase {
             System.out.println("Error installing data: " + e);
         }
     }
-
     private void updateStateInDatabase() {
         try {
             Properties whereClause = new Properties();
@@ -107,21 +129,14 @@ public class Worker extends EntityBase {
             System.out.println("Error installing data: " + e);
         }
     }
-
     public void insert() {
         insertStateInDatabase();
     }
-
     public void update() {
         updateStateInDatabase();
     }
 
-    protected void initializeSchema(String tableName) {
-        if (mySchema == null) {
-            mySchema = getSchemaInfo(tableName);
-        }
-    }
-
+    // To String
     public String toString() {
         return  persistentState.getProperty("BannerId") + "; " +
                 persistentState.getProperty("Password") + "; " +
@@ -134,8 +149,6 @@ public class Worker extends EntityBase {
                 persistentState.getProperty("DateOfHire") + "; " +
                 persistentState.getProperty("Status");
     }
-
-
     public String toolTipToString() {
 
         return  language.getProperty("BannerId") + ": " + persistentState.getProperty("BannerId") + "\n" +
@@ -149,7 +162,6 @@ public class Worker extends EntityBase {
                 language.getProperty("Status") + ": " + persistentState.getProperty("Status") + "\n\n" +
                 language.getProperty("doubleClickModify");
     }
-
 
     // Getters
     public String getBannerId() {

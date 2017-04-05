@@ -15,9 +15,7 @@ import models.StudentBorrowerCollection;
 import utilities.Core;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Properties;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
  * Created by Ders on 3/27/2017.
@@ -74,8 +72,10 @@ public class AddStudentViewController extends StudentBorrowerTransactionsControl
         LastName.setPromptText(language.getProperty("LastName"));
         ContactPhone.setPromptText(language.getProperty("ContactPhone"));
         Email.setPromptText(language.getProperty("Email"));
-        DateOfLatestBorrowerStatus.setPromptText(language.getProperty("DateOfLatestBorrowerStatus"));
-        DateOfRegistration.setPromptText(language.getProperty("DateOfRegistration"));
+        DateOfLatestBorrowerStatus.setText(Core.generateDate());
+        DateOfRegistration.setText(Core.generateDate());
+        DateOfLatestBorrowerStatus.setDisable(true);
+        DateOfRegistration.setDisable(true);
         Notes.setPromptText(language.getProperty("Notes"));
 
         // Add TextFields to ArrayList

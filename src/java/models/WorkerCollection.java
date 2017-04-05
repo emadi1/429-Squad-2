@@ -1,5 +1,4 @@
 package models;
-
 import database.DBKey;
 import utilities.Core;
 
@@ -14,6 +13,7 @@ public class WorkerCollection extends EntityBase {
     private Vector<Worker> workers;
     private String updateStatusMessage = "";
     private Properties language;
+    private Core core = Core.getInstance();
 
     public WorkerCollection() {
         super(myTableName);
@@ -31,6 +31,10 @@ public class WorkerCollection extends EntityBase {
                     Properties data = (Properties) allDataRetrieved.elementAt(index);
                     Worker worker = new Worker(data);
                     if (worker != null) {
+                        if (core.getLanguage().equals("fr_FR")) {
+                            worker.frenchCredentialDate();
+                            worker.frenchDateOfHire();
+                        }
                         addWorker(worker);
                     }
                 }
