@@ -17,6 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import models.StudentBorrower;
+import models.StudentBorrowerCollection;
 import models.Worker;
 import models.WorkerCollection;
 import utilities.Core;
@@ -28,44 +29,52 @@ import java.util.ResourceBundle;
 import java.util.Vector;
 
 
-public class CheckOutBookController implements Initializable {
+public class CheckOutBookController extends StudentBorrowerTransactionsController implements Initializable {
 
     private Core core = Core.getInstance();
     private Properties language = Core.getInstance().getLang();
-    @FXML private Text checkOutBook;
-    @FXML private Text bannerId;
-    @FXML private TextField BannerIdField;
-    @FXML private Text alertMessage;
+    @FXML
+    private Text checkOutBook;
+    @FXML
+    private Text bannerId;
+    @FXML
+    private TextField BannerId;
+    @FXML
+    private Text alertMessage;
 
     public void initialize(URL location, ResourceBundle resources) {
         checkOutBook.setText(language.getProperty("CheckOutBook"));
         bannerId.setText(language.getProperty("BannerId") + ":");
-        BannerIdField.setPromptText(language.getProperty("BannerId"));
+        BannerId.setPromptText(language.getProperty("BannerId"));
     }
 
-}
-//open worker folder and make sure password matches and is active
-/*
+
     public void submit(ActionEvent event) throws NullPointerException, IOException {
 
         Properties prop = new Properties();
-        WorkerCollection workerCollection = new WorkerCollection();
+        StudentBorrowerCollection studentBorrowerCollection = new StudentBorrowerCollection();
 
-        if (bannerId.getText().length() != 9) {
-            alertMessage.setText(language.getProperty("invalidBannerIdLength"));
+        if (BannerId.getText().length() != 9 || !isNumeric(BannerId.getText())) {
+            alertMessage.setText(language.getProperty("invalidBannerIdFormat"));
             return;
-        }
+        } else prop.put(BannerId.getId(), BannerId.getText());
 
-        int count = workerCollection.findWorkersByBannerId(prop.getProperty(DBKey.BANNER_ID)).size();
+
+        int count = studentBorrowerCollection.findStudentsByBannerId(prop.getProperty(DBKey.BANNER_ID)).size();
         if (count == 0) {
-            alertMessage.setText(language.getProperty("invalidWorker"));
+            alertMessage.setText(language.getProperty("invalidBorrower"));
         } else alertMessage.setText(language.getProperty("existingBannerId") + prop.getProperty(DBKey.BANNER_ID));
     }
 
 
+    //show form to enter student banner id(save bannerID)
+    //retrieve the students page ***call StudentBorrower- in student borrower
+    //make sure borrower exist, matches and is in good standing(save borrowerID)
+    //if does not exist display message to add borrower return to main screen
+    //if not in good standing display message that the borrower may not borrow
     protected ObservableList querySelector() {
 
-        WorkerCollection workerCollection = new WorkerCollection();
+        StudentBorrowerCollection studentBorrowerCollection = new StudentBorrowerCollection();
         String input = searchField.getText();
         String search = searchChoice.getSelectionModel().getSelectedItem();
 
@@ -73,17 +82,17 @@ public class CheckOutBookController implements Initializable {
 
             if (search.equals(language.getProperty("BannerId"))) {
                 if (input.length() == 9 && isNumeric(input)) {
-                    Vector workers = workerCollection.findWorkersByBannerId(input);
+                    Vector borrowers = studentBorrowerCollection.findStudentsByBannerId(input);
                     searchField.clear();
-                    return FXCollections.observableList(workers);
+                    return FXCollections.observableList(borrowers);
                 } else alertMessage.setText(language.getProperty("invalidBannerIdFormat"));
             }
 
             if (search.equals(language.getProperty("Status"))) {
                 if (input.equals(language.getProperty("Active"))) {
-                    Vector workers = workerCollection.findWorkerByStatus(input);
+                    Vector borrowers = studentBorrowerCollection.findStudentsByBannerId(input);
                     searchField.clear();
-                    return FXCollections.observableList(workers);
+                    return FXCollections.observableList(borrowers);
                 } else alertMessage.setText(language.getProperty("invalidStatus"));
             }
         }
@@ -91,16 +100,7 @@ public class CheckOutBookController implements Initializable {
         return null;
     }
 
-*/
-
-//show form to enter student banner id(save bannerID)
-    //retrieve the students page ***call StudentBorrower- in student borrower
-    //make sure borrower exist, matches and is in good standing(save borrowerID)
-    //if does not exist display message to add borrower return to main screen
-    //if not in good standing display message that the borrower may not borrow
-
-
-
+}
 
 
 //show checkoutbookview to enter barcode of book(save barcode)
