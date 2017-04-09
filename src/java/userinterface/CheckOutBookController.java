@@ -1,3 +1,4 @@
+/*
 package userinterface;
 
 import database.DBKey;
@@ -65,13 +66,14 @@ public class CheckOutBookController extends StudentBorrowerTransactionsControlle
             alertMessage.setText(language.getProperty("invalidBorrower"));
         } else alertMessage.setText(language.getProperty("existingBannerId") + prop.getProperty(DBKey.BANNER_ID));
     }
-
+*/
 
     //show form to enter student banner id(save bannerID)
     //retrieve the students page ***call StudentBorrower- in student borrower
     //make sure borrower exist, matches and is in good standing(save borrowerID)
     //if does not exist display message to add borrower return to main screen
     //if not in good standing display message that the borrower may not borrow
+/*
     protected ObservableList querySelector() {
 
         StudentBorrowerCollection studentBorrowerCollection = new StudentBorrowerCollection();
@@ -102,7 +104,7 @@ public class CheckOutBookController extends StudentBorrowerTransactionsControlle
 
 }
 
-
+*/
 //show checkoutbookview to enter barcode of book(save barcode)
 
 //find book and check to see if there is a rental page with that book already checked out

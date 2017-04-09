@@ -1,3 +1,4 @@
+/*
 package userinterface;
 
 import javafx.fxml.FXML;
@@ -13,9 +14,8 @@ import java.util.ArrayList;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
-/**
- * Created by JJ on 4/7/2017.
  */
+/*
 public class CheckOutBookViewController implements Initializable {
 
 
@@ -33,3 +33,4 @@ public class CheckOutBookViewController implements Initializable {
 
 
 }
+*/
