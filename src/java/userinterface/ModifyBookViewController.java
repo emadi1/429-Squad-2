@@ -10,7 +10,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import models.Book;
 import utilities.Core;
+
+import java.math.RoundingMode;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
@@ -90,7 +93,16 @@ public class ModifyBookViewController implements Initializable {
             book.setYearOfPublication(YearOfPublication.getText());
             book.setISBN(ISBN.getText());
             book.setBookCondition(BookCondition.getValue());
-            book.setSuggestedPrice(SuggestedPrice.getText());
+            if (core.getLanguage().equals("fr_FR")) {
+                String price = SuggestedPrice.getText().substring(2, SuggestedPrice.getText().length());
+                price = price.replaceAll(",", ".");
+                price = price.replaceAll(" ", ",");
+                DecimalFormat df = new DecimalFormat("#.##");
+                df.setRoundingMode(RoundingMode.CEILING);
+                String usPrice = df.format(Double.parseDouble(price) / 0.94);
+
+                book.setSuggestedPrice(usPrice);
+            } else book.setSuggestedPrice(SuggestedPrice.getText().substring(2, SuggestedPrice.getText().length()));
             book.setNotes(Notes.getText());
             if (BookCondition.getValue().equals(language.getProperty("Good"))) book.setBookCondition("Good");
             else book.setBookCondition("Damaged");

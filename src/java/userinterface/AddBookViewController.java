@@ -83,7 +83,6 @@ public class AddBookViewController implements Initializable {
         textFieldList.add(ISBN);
         BookCondition.setItems(conditionList);
         BookCondition.setValue(lang.getProperty("Good"));
-        textFieldList.add(SuggestedPrice);
         textFieldList.add(Notes);
         Status.setItems(statusList);
         Status.setValue(lang.getProperty("Active"));
@@ -130,20 +129,24 @@ public class AddBookViewController implements Initializable {
         if (BookCondition.getValue().equals(lang.getProperty("Good"))) properties.put("BookCondition", "Good");
         else properties.put("BookCondition", "Damaged");
 
+        if (Core.getInstance().getLanguage().equals("fr_FR")) {
+            String price = SuggestedPrice.getText();
+            price = price.replaceAll(",", ".");
+            double euroToDollar = Double.parseDouble(price) / 0.94;
+            String formattedPrice = "" + euroToDollar;
+            properties.put(SuggestedPrice.getId(), formattedPrice);
+        }
+
         if (Status.getValue().equals(lang.getProperty("Active"))) properties.put("Status", "Active");
         else properties.put("Status", "Inactive");
-
 
         if (count == 0) {
             Book newBook = new Book(properties);
             newBook.insert();
+            for (TextField t : textFieldList) { t.clear(); }
+            BookCondition.setValue(lang.getProperty("Good"));
+            Status.setValue(lang.getProperty("Active"));
             alertMessage.setText(lang.getProperty("addBookSuccess"));
-        } else {
-            alertMessage.setText(lang.getProperty("existingBarcode") + properties.getProperty("Barcode"));
-        }
-
-        for (TextField t : textFieldList) { t.clear(); }
-        BookCondition.setValue(lang.getProperty("Good"));
-        Status.setValue(lang.getProperty("Active"));
+        } else alertMessage.setText(lang.getProperty("existingBarcode") + properties.getProperty("Barcode"));
     }
 }

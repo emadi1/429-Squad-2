@@ -45,6 +45,7 @@ public class BookTransactionsController extends TransactionController {
             new TableColumn<>(language.getProperty("YearOfPublication"));
     private TableColumn<Book, String> ISBNColumn = new TableColumn<>(language.getProperty("ISBN"));
     private TableColumn<Book, String> bookConditionColumn = new TableColumn<>(language.getProperty("BookCondition"));
+    private TableColumn<Book, String> suggestedPriceColumn = new TableColumn<>(language.getProperty("SuggestedPrice"));
     private TableColumn<Book, String> statusColumn = new TableColumn<>(language.getProperty("Status"));
 
     @Override
@@ -86,6 +87,7 @@ public class BookTransactionsController extends TransactionController {
         yearOfPublicationColumn.setMinWidth(100);
         ISBNColumn.setMinWidth(100);
         bookConditionColumn.setMinWidth(100);
+        suggestedPriceColumn.setMinWidth(100);
         statusColumn.setMinWidth(100);
 
         barcodeColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.BARCODE));
@@ -99,6 +101,7 @@ public class BookTransactionsController extends TransactionController {
         yearOfPublicationColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.YEAR_OF_PUBLICATION));
         ISBNColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.ISBN));
         bookConditionColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.BOOK_CONDITION));
+        suggestedPriceColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.SUGGESTED_PRICE));
         statusColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.STATUS));
 
         tableView.getColumns().add(barcodeColumn);
@@ -112,6 +115,7 @@ public class BookTransactionsController extends TransactionController {
         tableView.getColumns().add(yearOfPublicationColumn);
         tableView.getColumns().add(ISBNColumn);
         tableView.getColumns().add(bookConditionColumn);
+        tableView.getColumns().add(suggestedPriceColumn);
         tableView.getColumns().add(statusColumn);
 
         tableView.setRowFactory(tableView ->{
