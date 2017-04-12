@@ -35,18 +35,19 @@ public class AddStudentViewController extends StudentBorrowerTransactionsControl
     @FXML private Text notes;
     @FXML private Text borrowerStatus;
     @FXML private Text status;
+    @FXML private Text alertMessage;
     @FXML private Button submit;
-    @FXML private TextField ContactPhone;
     @FXML private ComboBox<String> Status;
+    @FXML private ComboBox<String> BorrowerStatus;
     @FXML private TextField Email;
+    @FXML private TextField ContactPhone;
     @FXML private TextField DateOfRegistration;
     @FXML private TextField FirstName;
     @FXML private TextField BannerId;
     @FXML private TextField LastName;
     @FXML private TextField Notes;
-    @FXML private ComboBox<String> BorrowerStatus;
     @FXML private TextField DateOfLatestBorrowerStatus;
-    @FXML private Text alertMessage;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

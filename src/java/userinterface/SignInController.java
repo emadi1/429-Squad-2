@@ -67,7 +67,9 @@ public class SignInController implements Initializable {
 
     public void signIn(ActionEvent actionEvent) throws IOException {
         if (bannerId.getText().equals("") || password.getText().equals(""))
-            alertMessage.setText("Please enter BannerID/Password");
+            alertMessage.setText(lang.getProperty("completeFields"));
+        if (bannerId.getText().length() != 9 || !Core.isNumeric(bannerId.getText()))
+            alertMessage.setText(lang.getProperty("invalidBannerIdFormat"));
         else {
             // Query DB to create worker object.
             WorkerCollection workerCollection = new WorkerCollection();

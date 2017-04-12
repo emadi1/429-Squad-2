@@ -354,4 +354,12 @@ public class Core {
         String year = date.substring(6);
         return month + '-' + day + '-' + year;
     }
+    public static boolean isNumeric(String string) {
+        try {
+            double d = Double.parseDouble(string);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
 }
