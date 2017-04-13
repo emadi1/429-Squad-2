@@ -107,7 +107,12 @@ public class BookCollection extends EntityBase {
         String query = "SELECT * FROM " + myTableName + " WHERE Status LIKE '%" + status + "%' ORDER BY Status ASC";
         return runQuery(query);
     }
-
+    public Vector deleteBookFromTable(String barcode)
+    {
+        String query = "DELETE * FROM " + myTableName + " WHERE (" + DBKey.BARCODE +
+                " = " + barcode + ") ORDER BY " + DBKey.TITLE + " ASC";
+        return runQuery(query);
+    }
     private String getColumnsName() {
         return    DBKey.BARCODE + " AS " + language.getProperty(DBKey.BANNER_ID) + " "
                 + DBKey.TITLE + " AS " + language.getProperty(DBKey.TITLE) + " "

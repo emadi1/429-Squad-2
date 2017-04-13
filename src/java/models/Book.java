@@ -93,6 +93,8 @@ public class Book extends EntityBase {
 
     private void insertStateInDatabase() {
         try {
+            System.out.print(mySchema + "\n");
+            System.out.print(persistentState);
             Integer Barcode = insertPersistentState(mySchema, persistentState);
             persistentState.setProperty("Barcode", "" + Barcode.intValue());
             updateStatusMessage = "Book data for book ID: " + persistentState.getProperty("Barcode")

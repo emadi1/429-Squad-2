@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750" prefWidth="1076" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userinterface.CheckOutBookController">
+<AnchorPane prefHeight="750" prefWidth="1076" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userinterface.CheckOutBookViewController">
     <children>
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a8a87" height="62.0" layoutX="-1.0" stroke="#8a8a87" strokeType="INSIDE" width="1086.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a8a87" height="762.0" layoutX="-1.0" stroke="#8a8a87" strokeType="INSIDE" width="11.0" />
@@ -40,8 +41,14 @@
                 <RowConstraints maxHeight="44.0" minHeight="36.0" prefHeight="44.0" />
             </rowConstraints>
             <children>
-                <TextField fx:id="BannerIdField" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                <TextField fx:id="BannerId" onMouseClicked="#changedMyMind" prefHeight="25.0" prefWidth="352.0" promptText="Banner ID:" GridPane.columnIndex="2" GridPane.rowIndex="5" />
                 <Text fx:id="bannerId" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="311.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Button fx:id="submitId" mnemonicParsing="false" onAction="#submitId" prefHeight="25.0" prefWidth="85.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <TextField fx:id="barcodeTextField" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+            <Text fx:id="barcodePromptText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="311.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Button fx:id="submitBarcode" mnemonicParsing="false" onAction="#submitBarcode" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+            <Button fx:id="Override" mnemonicParsing="false" onAction="#overrideStatus" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+                
             </children>
         </GridPane>
     </children>

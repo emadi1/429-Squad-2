@@ -17,7 +17,7 @@ public class Core {
     private static Core core = null;
     private static Worker modWorker, user;
     private static Book modBook;
-    private static StudentBorrower modStudentBorrower;
+    private static StudentBorrower modStudentBorrower, rentee;
     private static String language = "";
     private static Stage lastStage;
 
@@ -42,6 +42,7 @@ public class Core {
     public StudentBorrower getModStudentBorrower() {
         return modStudentBorrower;
     }
+    public StudentBorrower getRentee(){return rentee;}
     public String getLanguage() {
         return language;
     }
@@ -61,6 +62,7 @@ public class Core {
     public void setModStudentBorrower(StudentBorrower studentBorrower) {
         modStudentBorrower = studentBorrower;
     }
+    public void setRentee(StudentBorrower studentBorrower){rentee = studentBorrower;}
     public void setLanguage(String lang) {
         language = lang;
     }
@@ -201,6 +203,7 @@ public class Core {
             library.setProperty("Ordinary", "Ordinary");
             library.setProperty("GoodStanding", "Good Standing");
             library.setProperty("Delinquent", "Delinquent");
+            library.setProperty("Override", "Override");
 
         } else if (language.equals("fr_FR")) {
             // Main View Buttons/ Text
@@ -331,6 +334,7 @@ public class Core {
             library.setProperty("Ordinary", "Ordinaire");
             library.setProperty("GoodStanding", "Bonne qualite");
             library.setProperty("Delinquent", "Delinquant");
+            library.setProperty("Override", "Passer Outre");
         }
 
         return library;
