@@ -43,10 +43,10 @@ public class JDBCBroker
 	private PropertyFile props = null;
 
 	// DB Access data
-	private String dbName = null;
-	private String username = null;
-	private String password = null;
-    private String server = null;
+	private String dbName = "spr17_csc429_emadi1";
+	private String username = "emadi1";
+	private String password = "Darkcloud2";
+    private String server = "127.0.0.1";
     
 	// singleton constructor
 	static public JDBCBroker getInstance()

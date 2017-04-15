@@ -92,6 +92,7 @@ public class Rental extends EntityBase {
     private void insertStateInDatabase() {
         try {
             Integer Id = insertAutoIncrementalPersistentState(mySchema, persistentState);
+
             persistentState.getProperty("Id", "" + Id.intValue());
             updateStatusMessage = "Rental data for Rental ID: " + persistentState.getProperty("Id")
                     + " installed successfully in database!";

@@ -1,10 +1,12 @@
 package utilities;
 import javafx.stage.Stage;
 import models.Book;
+import models.Rental;
 import models.StudentBorrower;
 import models.Worker;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Properties;
 import java.util.TimeZone;
 
@@ -17,7 +19,8 @@ public class Core {
     private static Core core = null;
     private static Worker modWorker, user;
     private static Book modBook;
-    private static StudentBorrower modStudentBorrower, rentee;
+    private static StudentBorrower modStudentBorrower;
+    private static Rental rentee;
     private static String language = "";
     private static Stage lastStage;
 
@@ -42,7 +45,7 @@ public class Core {
     public StudentBorrower getModStudentBorrower() {
         return modStudentBorrower;
     }
-    public StudentBorrower getRentee(){return rentee;}
+    public Rental getRentee(){return rentee;}
     public String getLanguage() {
         return language;
     }
@@ -62,7 +65,7 @@ public class Core {
     public void setModStudentBorrower(StudentBorrower studentBorrower) {
         modStudentBorrower = studentBorrower;
     }
-    public void setRentee(StudentBorrower studentBorrower){rentee = studentBorrower;}
+    public void setRentee(Rental rental){rentee = rental;}
     public void setLanguage(String lang) {
         language = lang;
     }
@@ -357,5 +360,29 @@ public class Core {
         String month = date.substring(3, 5);
         String year = date.substring(6);
         return month + '-' + day + '-' + year;
+    }
+
+    public static String computeDueDate()
+    {
+        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("EST"));
+        calendar.setTime(new Date());
+        calendar.add(Calendar.DATE, 14);
+        String day = Integer.toString(calendar.get(Calendar.DATE));
+        String month = Integer.toString(calendar.get(Calendar.MONTH) + 1);
+        String year = Integer.toString(calendar.get(Calendar.YEAR));
+        if (Integer.parseInt(day) < 10)
+            day = '0' + day;
+        if (Integer.parseInt(month) < 10)
+            month = '0' + month;
+        return  month + '-' + day + '-' + year;
+    }
+
+    public static boolean isNumeric(String string) {
+        try {
+            double d = Double.parseDouble(string);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
     }
 }
