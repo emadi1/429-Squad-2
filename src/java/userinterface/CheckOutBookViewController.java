@@ -47,12 +47,11 @@ public class CheckOutBookViewController implements Initializable {
         barcodeTextField.setPromptText(language.getProperty("Barcode"));
         submitId.setText(language.getProperty("Search"));
         submitBarcode.setText(language.getProperty("Search"));
-        barcodeTextField.setVisible(false);
+        barcodeTextField.setDisable(true);
         barcodePromptText.setText(language.getProperty("PromptBarcode"));
-        barcodePromptText.setVisible(false);
         overrideButton.setText(language.getProperty("Override"));
-        overrideButton.setVisible(false);
-
+        overrideButton.setDisable(true);
+        submitBarcode.setDisable(true);
 
 //      if (user.getCredentials().equals("Ordinary")) submit.setDisable(true);
     }
@@ -72,8 +71,7 @@ public class CheckOutBookViewController implements Initializable {
     public void submitId() {
 
         StudentBorrowerCollection studentBorrowerCollection = new StudentBorrowerCollection();
-        barcodeTextField.setVisible(true);
-        barcodePromptText.setVisible(true);
+
 
         Vector<StudentBorrower> students = studentBorrowerCollection.findStudentsByBannerId(BannerId.getText());
 
@@ -94,14 +92,14 @@ public class CheckOutBookViewController implements Initializable {
             //String borrowerStatus = (String) students.get(0);
             if (test.getBorrowerStatus().equals(language.getProperty("GoodStanding"))) {
                 // launch barcode
-                this.submitId.setDisable(true);
-
+                barcodeTextField.setDisable(false);
+                submitBarcode.setDisable(false);
 
             } else {
                 // ALERT WINDOW
                 alertMessage.setText("Dis guy cant rent shit");
-                if (user.getCredentials() == "Administrator") {
-                    overrideButton.setVisible(true);
+                if (user.getCredentials().equals("Administrator")) {
+                    overrideButton.setDisable(false);
                 }
             }
         }
@@ -144,11 +142,11 @@ public class CheckOutBookViewController implements Initializable {
 
     public void changedMyMind() {
         this.submitId.setDisable(false);
-        barcodeTextField.setVisible(false);
-        barcodePromptText.setVisible(false);
+
     }
 
     public void overrideStatus() {
-        submitBarcode();
+        submitBarcode.setDisable(false);
+        barcodeTextField.setDisable(false);
     }
 }
