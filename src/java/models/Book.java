@@ -1,5 +1,4 @@
 package models;
-import database.DBKey;
 import exception.InvalidPrimaryKeyException;
 import utilities.Core;
 
@@ -92,21 +91,6 @@ public class Book extends EntityBase {
         }
     }
 
-    // Data formatting
-    public void formatPrice() {
-        double euro = Double.parseDouble(persistentState.getProperty(DBKey.SUGGESTED_PRICE)) * 0.94;
-        double trim = euro * 100;
-        int euroTrim = (int)trim;
-        euro = (double)euroTrim / 100.0;
-        String euroString = "€ " + euro;
-        euroString = euroString.replace('.', ',');
-        String dollarString = "$ " + persistentState.getProperty(DBKey.SUGGESTED_PRICE);
-        if (Core.getInstance().getLanguage().equals("fr_FR"))
-            persistentState.setProperty(DBKey.SUGGESTED_PRICE, euroString);
-        else persistentState.setProperty(DBKey.SUGGESTED_PRICE, dollarString);
-    }
-
-    // SQL Insert/Update methods
     private void insertStateInDatabase() {
         try {
             System.out.print(mySchema + "\n");

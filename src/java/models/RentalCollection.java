@@ -29,7 +29,7 @@ public class RentalCollection extends EntityBase {
                     Properties data = (Properties) allDataRetrieved.elementAt(index);
                     Rental rental = new Rental(data);
                     if (rental != null)
-                    addRental(rental);
+                        addRental(rental);
                 }
             }
         } catch (Exception e) {

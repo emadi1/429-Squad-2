@@ -1,10 +1,12 @@
 package utilities;
 import javafx.stage.Stage;
 import models.Book;
+import models.Rental;
 import models.StudentBorrower;
 import models.Worker;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Properties;
 import java.util.TimeZone;
 
@@ -18,6 +20,7 @@ public class Core {
     private static Worker modWorker, user;
     private static Book modBook;
     private static StudentBorrower modStudentBorrower;
+    private static Rental rentee;
     private static String language = "";
     private static Stage lastStage;
 
@@ -42,6 +45,7 @@ public class Core {
     public StudentBorrower getModStudentBorrower() {
         return modStudentBorrower;
     }
+    public Rental getRentee(){return rentee;}
     public String getLanguage() {
         return language;
     }
@@ -61,6 +65,7 @@ public class Core {
     public void setModStudentBorrower(StudentBorrower studentBorrower) {
         modStudentBorrower = studentBorrower;
     }
+    public void setRentee(Rental rental){rentee = rental;}
     public void setLanguage(String lang) {
         language = lang;
     }
@@ -177,6 +182,9 @@ public class Core {
             library.setProperty("addBookFail", "Failed to add book.");
             library.setProperty("modifyBookSuccess", "Book updated successfully!");
             library.setProperty("modifyBookFail", "Failed to update book.");
+            library.setProperty("checkInBookSucess", "Book checked in." );
+            library.setProperty("checkInBookFail", "Book not checked in.");
+
 
             // Worker Alerts
             library.setProperty("invalidBannerIdFormat", "BannerID must be 9 digits long.");
@@ -201,6 +209,7 @@ public class Core {
             library.setProperty("Ordinary", "Ordinary");
             library.setProperty("GoodStanding", "Good Standing");
             library.setProperty("Delinquent", "Delinquent");
+            library.setProperty("Override", "Override");
 
         } else if (language.equals("fr_FR")) {
             // Main View Buttons/ Text
@@ -261,6 +270,7 @@ public class Core {
             library.setProperty("PromptStatus", "Statut:");
             library.setProperty("Status", "Statut");
 
+
             // Worker Data Models/Text
             library.setProperty("PromptBannerId", "Banner ID:");
             library.setProperty("BannerId", "Banner ID");
@@ -308,6 +318,8 @@ public class Core {
             library.setProperty("addBookFail", "L'ajout du livre à échoué.");
             library.setProperty("modifyBookSuccess", "Le livre a été mis à jour avec succès!");
             library.setProperty("modifyBookFail", "La mise à jour du livre à échoué.");
+            library.setProperty("checkInBookSucess", "in french Book checked in." );
+            library.setProperty("checkInBookFail", "in french Book not checked in.");
 
             // Worker Alerts
             library.setProperty("invalidBannerIdFormat", "BannerID doit avoir des 9 chiffres seul.");
@@ -331,6 +343,7 @@ public class Core {
             library.setProperty("Ordinary", "Ordinaire");
             library.setProperty("GoodStanding", "Bonne qualite");
             library.setProperty("Delinquent", "Delinquant");
+            library.setProperty("Override", "Passer Outre");
         }
 
         return library;
@@ -354,6 +367,22 @@ public class Core {
         String year = date.substring(6);
         return month + '-' + day + '-' + year;
     }
+
+    public static String computeDueDate()
+    {
+        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("EST"));
+        calendar.setTime(new Date());
+        calendar.add(Calendar.DATE, 14);
+        String day = Integer.toString(calendar.get(Calendar.DATE));
+        String month = Integer.toString(calendar.get(Calendar.MONTH) + 1);
+        String year = Integer.toString(calendar.get(Calendar.YEAR));
+        if (Integer.parseInt(day) < 10)
+            day = '0' + day;
+        if (Integer.parseInt(month) < 10)
+            month = '0' + month;
+        return  month + '-' + day + '-' + year;
+    }
+
     public static boolean isNumeric(String string) {
         try {
             double d = Double.parseDouble(string);

@@ -11,6 +11,19 @@ import java.util.Vector;
 
 /**
  * Created by kevph on 3/20/2017.
+ package models;
+
+ import database.DBKey;
+ import exception.InvalidPrimaryKeyException;
+ import utilities.Core;
+
+ import java.sql.SQLException;
+ import java.util.Enumeration;
+ import java.util.Properties;
+ import java.util.Vector;
+
+ /**
+ * Created by kevph on 3/20/2017.
  */
 public class Rental extends EntityBase {
     private Properties language = Core.getInstance().getLang();

@@ -29,7 +29,7 @@ public class BookCollection extends EntityBase {
                     Properties data = (Properties) allDataRetrieved.elementAt(index);
                     Book book = new Book(data);
                     if (book != null) {
-                        book.formatPrice();
+     //                   book.formatPrice();
                         addBook(book);
                     }
                 }
