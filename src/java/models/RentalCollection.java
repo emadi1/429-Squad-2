@@ -62,6 +62,11 @@ public class RentalCollection extends EntityBase {
                 " = " + id + ") ORDER BY " + DBKey.ID + " ASC";
         return runQuery(query);
     }
+    public Vector checkoutRental(String id) {
+        String query =  "DELETE * FROM " + myTableName + " WHERE (" + DBKey.ID +
+                " = " + id + ") ORDER BY " + DBKey.ID + " ASC";
+        return runQuery(query);
+    }
     public Vector findRentalsByBorrowerId(String borrowerId) {
         String query = "SELECT * FROM " + myTableName + " WHERE (" + DBKey.BORROWER_ID +
                 " = " + borrowerId + ") ORDER BY " + DBKey.ID + " ASC";
@@ -82,7 +87,7 @@ public class RentalCollection extends EntityBase {
                 " = " + workerId + ") ORDER BY " + DBKey.ID + " ASC";
         return runQuery(query);
     }
-    public Vector findRentalsyDueDate(String date) {
+    public Vector findRentalsByDueDate(String date) {
         String query = "SELECT * FROM " + myTableName + " WHERE " + DBKey.DUE_DATE +
                 " LIKE '%" + date + "%' ORDER BY " + DBKey.ID + " ASC";
         return runQuery(query);

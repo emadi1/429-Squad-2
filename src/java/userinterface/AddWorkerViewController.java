@@ -57,7 +57,7 @@ public class AddWorkerViewController implements Initializable {
                 FXCollections.observableArrayList(lang.getProperty("Administrator"), lang.getProperty("Ordinary"));
 
         // Set Text's text
-        submit.setText(lang.getProperty("Add"));
+        submit.setText(lang.getProperty("Ad"));
         bannerId.setText(lang.getProperty("PromptBannerId"));
         password.setText(lang.getProperty("PromptPassword"));
         firstName.setText(lang.getProperty("PromptFirstName"));

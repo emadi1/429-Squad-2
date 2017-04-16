@@ -67,6 +67,7 @@ public class StudentBorrowerCollection extends EntityBase {
         String query = "SELECT * FROM " + myTableName + " ORDER BY " + DBKey.LAST_NAME + " ASC";
         return runQuery(query);
     }
+
     public Vector findStudentsByBannerId(String bannerId) {
         String query = "SELECT * FROM " + myTableName + " WHERE (" + DBKey.BANNER_ID +  " = " + bannerId + ") ORDER BY " + DBKey.LAST_NAME + " ASC";
         System.out.println(query);
