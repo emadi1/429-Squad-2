@@ -9,6 +9,8 @@ import java.util.Properties;
 import java.util.Vector;
 
 /**
+ * Model class to represent entities in the StudentBorrower table.
+ *
  * Created by Ders & a little kevph on 3/24/2017
  */
 public class StudentBorrower extends EntityBase {
@@ -18,6 +20,13 @@ public class StudentBorrower extends EntityBase {
     private Core core = Core.getInstance();
     private Properties language = core.getLang();
 
+    /**
+     * Constructor using an existing student borrower's banner ID.
+     *
+     * @param bannerId Unique ID of the student whose information will populate the new object.
+     * @throws InvalidPrimaryKeyException Thrown if the given Banner ID does not correspond to an
+     * existing student.
+     */
     public StudentBorrower(String bannerId) throws InvalidPrimaryKeyException {
         super(myTableName);
         setDependencies();
@@ -45,6 +54,11 @@ public class StudentBorrower extends EntityBase {
         }
     }
 
+    /**
+     * Constructor using a {@code Properties} object to create a new student borrower.
+     *
+     * @param props list of properties of the new student (first name, last name, email, etc.)
+     */
     public StudentBorrower(Properties props) {
         super(myTableName);
         setDependencies();
@@ -58,16 +72,29 @@ public class StudentBorrower extends EntityBase {
         }
     }
 
+    /**
+     * {@code StudentBorrower}'s implementation of the {@link java.lang.String#compareTo(String) compareTo(String)} method.
+     *
+     * Used to compare two distinct {@code StudentBorrower} objects.
+     *
+     * @param first The first {@code StudentBorrower} to be compared
+     * @param second The second {@code StudentBorrower} to be compared
+     * @return 0 if they're the same, otherwise either -1 or 1.
+     */
     public static int compare(StudentBorrower first, StudentBorrower second) {
         String firstStudentBorrower = (String)first.getState("BannerId");
         String secondStudentBorrower = (String)second.getState("BannerId");
         return firstStudentBorrower.compareTo(secondStudentBorrower);
     }
 
+    /**
+     * Book's implementation of the {@link impresario.ModelRegistry#setDependencies(Properties) setDependencies(Properties)} method.
+     */
     private void setDependencies() {
         dependencies = new Properties();
         myRegistry.setDependencies(dependencies);
     }
+
 
     public Object getState(String key) {
         if (key.equals("UpdateStatusMessage") == true)
@@ -79,6 +106,11 @@ public class StudentBorrower extends EntityBase {
         myRegistry.updateSubscribers(key, this);
     }
 
+    /**
+     * Used solely to call {@link #stateChangeRequest(String, Object) stateChangeRequest(key, value)}
+     * @param key Key of state to change
+     * @param value Value of state to change
+     */
     public void updateState(String key, Object value) {
         stateChangeRequest(key, value);
     }
@@ -89,7 +121,9 @@ public class StudentBorrower extends EntityBase {
         }
     }
 
-    // SQL Insert/Update
+    /**
+     * Private method used by {@link #update()} to update the {@code StudentBorrower}'s entry in the database.
+     */
     private void updateStateInDatabase() {
         try {
             Properties whereClause = new Properties();
@@ -101,6 +135,10 @@ public class StudentBorrower extends EntityBase {
             updateStatusMessage = "Error updating Student Borrower data in database!";
         }
     }
+
+    /**
+     * Private method used by {@link #insert()} to insert the {@code StudentBorrower} into the database.
+     */
     private void insertStateInDatabase() {
         try {
             Integer BannerId = insertPersistentState(mySchema, persistentState);
@@ -111,14 +149,24 @@ public class StudentBorrower extends EntityBase {
             System.out.println("Error installing data: " + e);
         }
     }
+
+    /**
+     * Update the {@code StudentBorrower}'s entry in the database.
+     */
     public void update() {
         updateStateInDatabase();
     }
+
+    /**
+     * Insert the {@code Student Borrower} into the database.
+     */
     public void insert() {
         insertStateInDatabase();
     }
 
-    // Date formatting
+    /**
+     * Formats the borrower status date in French (DD/MM/YYYY) format.
+     */
     public void frenchBorrowerStatusDate() {
         String date = persistentState.getProperty(DBKey.DATE_OF_LATEST_BORROWER_STATUS);
         String month = date.substring(0, 2);
@@ -126,6 +174,10 @@ public class StudentBorrower extends EntityBase {
         String year = date.substring(6);
         persistentState.setProperty(DBKey.DATE_OF_LATEST_BORROWER_STATUS, day + "-" + month + "-" + year);
     }
+
+    /**
+     * Formats the borrower status date in French (DD/MM/YYYY) format.
+     */
     public void frenchRegistrationDate() {
         String date = persistentState.getProperty(DBKey.DATE_OF_REGISTRATION);
         String month = date.substring(0, 2);
