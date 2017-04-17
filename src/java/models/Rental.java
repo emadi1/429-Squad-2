@@ -172,6 +172,16 @@ public class Rental extends EntityBase {
         persistentState.setProperty(DBKey.CHECK_IN_WORKER_ID, workerId);
     }
 
+    public String toolTipToString() {
+        return  language.getProperty("Id") + ": " + persistentState.getProperty(DBKey.ID) + "\n" +
+                language.getProperty("BorrowerId") + ": " + persistentState.getProperty(DBKey.BORROWER_ID) + "\n" +
+                language.getProperty("BookId") + ": " + persistentState.getProperty(DBKey.BOOK_ID) + "\n" +
+                language.getProperty("CheckOutDate") + ": " + persistentState.getProperty(DBKey.CHECK_OUT_DATE) + "\n" +
+                language.getProperty("CheckOutWorkerId") + ": " + persistentState.getProperty(DBKey.CHECK_OUT_WORKER_ID) + "\n" +
+                language.getProperty("DueDate") + ": " + persistentState.getProperty(DBKey.DUE_DATE) + "\n" +
+                language.getProperty("CheckInDate") + ": " + persistentState.getProperty(DBKey.CHECK_IN_DATE) + "\n" +
+                language.getProperty("CheckInWorkerId") + ": " + persistentState.getProperty(DBKey.CHECK_IN_WORKER_ID);
+    }
     public String toString() {
         return  persistentState.getProperty(DBKey.ID) + "; " +
                 persistentState.getProperty(DBKey.BORROWER_ID) + "; " +
