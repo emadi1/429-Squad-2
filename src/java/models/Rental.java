@@ -89,6 +89,25 @@ public class Rental extends EntityBase {
         }
     }
 
+    // Data formatting
+    public void formatData() {
+        String dueDate = persistentState.getProperty(DBKey.DUE_DATE);
+        String checkInDate = persistentState.getProperty(DBKey.CHECK_IN_DATE);
+        String checkOutDate = persistentState.getProperty(DBKey.CHECK_OUT_DATE);
+        String month = dueDate.substring(0, 2);
+        String day = dueDate.substring(3, 5);
+        String year = dueDate.substring(6);
+        persistentState.setProperty(DBKey.DUE_DATE, day + '-' + month + '-' + year);
+        month = checkInDate.substring(0, 2);
+        day = checkInDate.substring(3, 5);
+        year = checkInDate.substring(6);
+        persistentState.setProperty(DBKey.CHECK_IN_DATE, day + '-' + month + '-' + year);
+        month = checkOutDate.substring(0, 2);
+        day = checkOutDate.substring(3, 5);
+        year = checkOutDate.substring(6);
+        persistentState.setProperty(DBKey.CHECK_OUT_DATE, day + '-' + month + '-' + year);
+    }
+
     private void insertStateInDatabase() {
         try {
             Integer Id = insertAutoIncrementalPersistentState(mySchema, persistentState);

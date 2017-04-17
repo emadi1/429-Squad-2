@@ -31,10 +31,7 @@ public class StudentBorrowerCollection extends EntityBase {
                     Properties data = (Properties) allDataRetrieved.elementAt(index);
                     StudentBorrower studentBorrower = new StudentBorrower(data);
                     if (studentBorrower != null) {
-                        if (core.getLanguage().equals("fr_FR")) {
-                            studentBorrower.frenchBorrowerStatusDate();
-                            studentBorrower.frenchRegistrationDate();
-                        }
+                        if (core.getLanguage().equals("fr_FR")) studentBorrower.formatData();
                         addStudent(studentBorrower);
                     }
                 }
