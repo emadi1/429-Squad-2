@@ -65,7 +65,7 @@ public class CheckInBookViewController extends RentalTransactionsController impl
                 for (Rental rental : rentals)
                     if (rental.getCheckInDate().equals(""))
                         oldRental = rental;
-                    else alertMessage.setText("Book with ID " + barcode + " not currently checked out.");
+                    else alertMessage.setText(language.getProperty("BookNotCheckedOut") + barcode);
                 oldRental.setCheckInDate(Core.generateEnglishDate());
                 oldRental.setCheckInWorkerId(Core.getInstance().getUser().getBannerId());
                 oldRental.update();
@@ -80,7 +80,8 @@ public class CheckInBookViewController extends RentalTransactionsController impl
                         studentBorrower.setDateOfLatestBorrowerStatus(Core.generateEnglishDate());
                     }
                 }
-            } else alertMessage.setText("No book matching ID: " + barcode);
+                alertMessage.setText(language.getProperty("CheckInSuccess"));
+            } else alertMessage.setText(language.getProperty("NoBookWithId") + barcode);
         } catch (Exception e) {
             e.printStackTrace();
         }
