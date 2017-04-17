@@ -201,6 +201,10 @@ public class Core {
             //Rental Alerts
             library.setProperty("invalidBorrowerStatus", "Borrower Status is 'Delinquent.'");
             library.setProperty("AdministratorOverride", "Administrator Override.");
+            library.setProperty("BookNotCheckedOut", "Book with ID not currently checked out: ");
+            library.setProperty("NoBookWithId", "No book matching ID: ");
+            library.setProperty("CheckOutSuccess", "Book successfully checked out!");
+            library.setProperty("CheckInSuccess", "Book successfully checked in!");
 
             // Buttons
             library.setProperty("Modify", "Modify");
@@ -301,6 +305,17 @@ public class Core {
             library.setProperty("PromptStatus", "Statut:");
             library.setProperty("Status", "Statut");
 
+            // Rental Data Models/Text
+            library.setProperty("Id", "ID");
+            library.setProperty("BorrowerId", "");
+            library.setProperty("BookId", "");
+            library.setProperty("CheckOutDate", "");
+            library.setProperty("CheckOutWorkerId", "");
+            library.setProperty("DueDate", "");
+            library.setProperty("CheckInDate", "");
+            library.setProperty("CheckInWorkerId", "");
+
+
             // General Alerts
             library.setProperty("invalidDateFormat", "La date doit être en format: DD-MM-YYYY");
             library.setProperty("completeFields", "Veuillez remplir tout les champs nécessaires.");
@@ -316,7 +331,6 @@ public class Core {
             library.setProperty("modifyStudentFail", "La mise à jour de l'étudiant à échoué.");
             library.setProperty("deleteStudentSuccess", "Etudiant a été supprimé avec succès.");
             library.setProperty("deleteStudentFail", "La suppression de l'étudiant à échoué.");
-            library.setProperty("invalidBorrowerStatus", "");
 
             // Book Alerts
             library.setProperty("invalidBarcodeLength", "Le code a barres doit comporter 5 chiffres.");
@@ -339,6 +353,10 @@ public class Core {
             // Rental Alerts
             library.setProperty("invalidBorrowerStatus", "");
             library.setProperty("AdministratorOverride", "");
+            library.setProperty("BookNotCheckedOut", "");
+            library.setProperty("NoBookWithId", "");
+            library.setProperty("CheckOutSuccess", "");
+            library.setProperty("CheckInSuccess", "");
 
             // Buttons
             library.setProperty("Modify", "Modifier");
