@@ -153,6 +153,16 @@ public class Core {
             library.setProperty("PromptStatus", "Status:");
             library.setProperty("Status", "Status");
 
+            // Rental Data Models/Text
+            library.setProperty("Id", "ID");
+            library.setProperty("BorrowerId", "Borrower ID");
+            library.setProperty("BookId", "Book ID");
+            library.setProperty("CheckOutDate", "Check Out Date");
+            library.setProperty("CheckOutWorkerId", "Check Out Worker ID");
+            library.setProperty("DueDate", "Due Date");
+            library.setProperty("CheckInDate", "Check In Date");
+            library.setProperty("CheckInWorkerId", "Check In Worker ID");
+
             // General Alerts
             library.setProperty("invalidDateFormat", "Date must be in format: mm-dd-yyyy");
             library.setProperty("completeFields", "Please fill out all necessary fields.");
@@ -188,6 +198,10 @@ public class Core {
             library.setProperty("invalidPassword", "Invalid Password.");
             library.setProperty("invalidCredentials", "Invalid Credentials");
 
+            //Rental Alerts
+            library.setProperty("invalidBorrowerStatus", "Borrower Status is 'Delinquent.'");
+            library.setProperty("AdministratorOverride", "Administrator Override.");
+
             // Buttons
             library.setProperty("Modify", "Modify");
             library.setProperty("Add", "Add");
@@ -201,6 +215,9 @@ public class Core {
             library.setProperty("Ordinary", "Ordinary");
             library.setProperty("GoodStanding", "Good Standing");
             library.setProperty("Delinquent", "Delinquent");
+            library.setProperty("Override", "Override?");
+            library.setProperty("Submit", "Submit");
+            library.setProperty("Verify", "Verify");
 
         } else if (language.equals("fr_FR")) {
             // Main View Buttons/ Text
@@ -299,6 +316,7 @@ public class Core {
             library.setProperty("modifyStudentFail", "La mise à jour de l'étudiant à échoué.");
             library.setProperty("deleteStudentSuccess", "Etudiant a été supprimé avec succès.");
             library.setProperty("deleteStudentFail", "La suppression de l'étudiant à échoué.");
+            library.setProperty("invalidBorrowerStatus", "");
 
             // Book Alerts
             library.setProperty("invalidBarcodeLength", "Le code a barres doit comporter 5 chiffres.");
@@ -318,6 +336,10 @@ public class Core {
             library.setProperty("addWorkerFail", "N'a pas pu ajouter de l'ouvrier.");
             library.setProperty("invalidCredentials", "Les informations d'identification invalides.");
 
+            // Rental Alerts
+            library.setProperty("invalidBorrowerStatus", "");
+            library.setProperty("AdministratorOverride", "");
+
             // Buttons
             library.setProperty("Modify", "Modifier");
             library.setProperty("Add", "Ajouter");
@@ -331,6 +353,8 @@ public class Core {
             library.setProperty("Ordinary", "Ordinaire");
             library.setProperty("GoodStanding", "Bonne qualite");
             library.setProperty("Delinquent", "Delinquant");
+            library.setProperty("Submit", "Entrer");
+            library.setProperty("Verify", "Vérifier");
         }
 
         return library;
@@ -340,12 +364,18 @@ public class Core {
         String day = Integer.toString(calendar.get(Calendar.DATE));
         String month = Integer.toString(calendar.get(Calendar.MONTH) + 1);
         String year = Integer.toString(calendar.get(Calendar.YEAR));
-        if (Integer.parseInt(day) < 10)
-            day = '0' + day;
-        if (Integer.parseInt(month) < 10)
-            month = '0' + month;
-        if (language.equals("fr_FR"))
-            return day + '-' + month + '-' + year;
+        if (Integer.parseInt(day) < 10) day = '0' + day;
+        if (Integer.parseInt(month) < 10) month = '0' + month;
+        if (language.equals("fr_FR")) return day + '-' + month + '-' + year;
+        else return month + '-' + day + '-' + year;
+    }
+    public static String generateEnglishDate() {
+        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("EST"));
+        String day = Integer.toString(calendar.get(Calendar.DATE));
+        String month = Integer.toString(calendar.get(Calendar.MONTH) + 1);
+        String year = Integer.toString(calendar.get(Calendar.YEAR));
+        if (Integer.parseInt(day) < 10) day = '0' + day;
+        if (Integer.parseInt(month) < 10) month = '0' + month;
         return month + '-' + day + '-' + year;
     }
     public static String formatDateToEnglish(String date) {

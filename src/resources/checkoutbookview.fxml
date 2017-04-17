@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -9,40 +11,39 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750" prefWidth="1076" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userinterface.CheckOutBookController">
+<AnchorPane prefHeight="750" prefWidth="1076" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userinterface.CheckOutBookViewController">
     <children>
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a8a87" height="62.0" layoutX="-1.0" stroke="#8a8a87" strokeType="INSIDE" width="1086.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a8a87" height="762.0" layoutX="-1.0" stroke="#8a8a87" strokeType="INSIDE" width="11.0" />
-        <Text fx:id="checkOutBook" fill="WHITE" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="1080">
+        <Text fx:id="title" fill="WHITE" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="1080">
             <font>
                 <Font size="40.0" />
             </font>
         </Text>
-        <GridPane layoutX="9.0" layoutY="61.0" prefHeight="700.0" prefWidth="1073.0">
+        <GridPane layoutX="10.0" layoutY="75.0" prefHeight="150.0" prefWidth="1069.0">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="15.0" prefWidth="15.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="200.0" prefWidth="200.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="455.0" minWidth="385.0" prefWidth="431.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="15.0" prefWidth="119.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="15.0" prefWidth="137.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="428.0" minWidth="200.0" prefWidth="272.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="540.0" minWidth="376.0" prefWidth="482.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="178.0" minWidth="15.0" prefWidth="178.0" />
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="54.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="44.0" minHeight="36.0" prefHeight="44.0" />
             </rowConstraints>
             <children>
-                <TextField fx:id="BannerIdField" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                <Text fx:id="bannerId" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="311.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                <TextField fx:id="bannerIdField" prefHeight="31.0" prefWidth="375.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                <TextField fx:id="barcodeField" prefHeight="31.0" prefWidth="375.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                <Button fx:id="verify" alignment="CENTER" contentDisplay="CENTER" minWidth="75" onAction="#verify" prefHeight="31.0" prefWidth="75.0" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                <Button fx:id="submit" alignment="CENTER" contentDisplay="CENTER" minWidth="75" onAction="#submit" prefHeight="31.0" prefWidth="75.0" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                <Button fx:id="override" alignment="CENTER" contentDisplay="CENTER" minWidth="75" onAction="#override" prefHeight="31.0" prefWidth="75.0" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                <Text fx:id="bannerIdText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="339.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Text fx:id="barcodeText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="337.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Text fx:id="alertMessage" textAlignment="CENTER" wrappingWidth="482.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
             </children>
         </GridPane>
+        <TableView fx:id="tableView" layoutX="10.0" layoutY="225.0" prefHeight="471.0" prefWidth="1069.0" />
     </children>
 </AnchorPane>

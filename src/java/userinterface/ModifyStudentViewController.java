@@ -20,10 +20,10 @@ import java.util.ResourceBundle;
  */
 public class ModifyStudentViewController implements Initializable {
 
-    private ObservableList<String> statusList = FXCollections.observableArrayList("Active", "Inactive");
-    private ObservableList<String> borrowerStatusList = FXCollections.observableArrayList("Good", "Delinquent");
     private Core core = Core.getInstance();
     Properties language = core.getLang();
+    private ObservableList<String> statusList = FXCollections.observableArrayList(language.getProperty("Active"), language.getProperty("Inactive"));
+    private ObservableList<String> borrowerStatusList = FXCollections.observableArrayList(language.getProperty("GoodStanding"), language.getProperty("Delinquent"));
 
     @FXML private Text bannerId;
     @FXML private Text firstName;

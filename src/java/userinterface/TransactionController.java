@@ -1,24 +1,12 @@
 package userinterface;
-
-import database.Persistable;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.control.*;
-import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import models.EntityBase;
-import models.StudentBorrower;
-import models.Worker;
-import utilities.Core;
-
 import java.io.IOException;
 import java.net.URL;
-import java.util.Properties;
 import java.util.ResourceBundle;
 
 /**
@@ -26,8 +14,6 @@ import java.util.ResourceBundle;
  */
 public abstract class TransactionController implements Initializable {
 
-    private Core core = Core.getInstance();
-    private Properties language = core.getLang();
     ObservableList<String> properties;
     @FXML protected Text workerHeader;
     @FXML protected Text bookHeader;

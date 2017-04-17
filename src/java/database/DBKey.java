@@ -45,11 +45,11 @@ public class DBKey {
     public static final String ID = "Id";
     public static final String BORROWER_ID = "BorrowerId";
     public static final String BOOK_ID = "BookId";
-    public static final String CHECK_OUT_DATE = "CheckoutDate";
-    public static final String CHECK_OUT_WORKER_ID = "CheckoutWorkerId";
+    public static final String CHECK_OUT_DATE = "CheckOutDate";
+    public static final String CHECK_OUT_WORKER_ID = "CheckOutWorkerId";
     public static final String DUE_DATE = "DueDate";
-    public static final String CHECK_IN_DATE = "CheckinDate";
-    public static final String CHECK_IN_WORKER_ID = "CheckinWorkerId";
+    public static final String CHECK_IN_DATE = "CheckInDate";
+    public static final String CHECK_IN_WORKER_ID = "CheckInWorkerId";
 
     // MaxDueDate
     public static final String CURRENT_MAX_DUE_DATE = "CurrentMaxDueDate";
