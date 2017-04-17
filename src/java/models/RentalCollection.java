@@ -28,8 +28,10 @@ public class RentalCollection extends EntityBase {
                 for (int index = 0; index < allDataRetrieved.size(); index++) {
                     Properties data = (Properties) allDataRetrieved.elementAt(index);
                     Rental rental = new Rental(data);
-                    if (rental != null)
-                    addRental(rental);
+                    if (rental != null) {
+                        if (Core.getInstance().getLanguage().equals("fr_FR")) rental.formatData();
+                        addRental(rental);
+                    }
                 }
             }
         } catch (Exception e) {
@@ -62,36 +64,43 @@ public class RentalCollection extends EntityBase {
                 " = " + id + ") ORDER BY " + DBKey.ID + " ASC";
         return runQuery(query);
     }
+
     public Vector findRentalsByBorrowerId(String borrowerId) {
         String query = "SELECT * FROM " + myTableName + " WHERE (" + DBKey.BORROWER_ID +
                 " = " + borrowerId + ") ORDER BY " + DBKey.ID + " ASC";
         return runQuery(query);
     }
+
     public Vector findRentalsByBookId(String bookId) {
         String query = "SELECT * FROM " + myTableName + " WHERE (" + DBKey.BOOK_ID +
                 " = " + bookId + ") ORDER BY " + DBKey.ID + " ASC";
         return runQuery(query);
     }
+
     public Vector findRentalsByCheckOutDate(String date) {
         String query = "SELECT * FROM " + myTableName + " WHERE " + DBKey.CHECK_OUT_DATE +
                 " LIKE '%" + date + "%' ORDER BY " + DBKey.ID + " ASC";
         return runQuery(query);
     }
+
     public Vector findRentalsByCheckOutWorkerId(String workerId) {
         String query = "SELECT * FROM " + myTableName + " WHERE (" + DBKey.CHECK_OUT_WORKER_ID +
                 " = " + workerId + ") ORDER BY " + DBKey.ID + " ASC";
         return runQuery(query);
     }
+
     public Vector findRentalsyDueDate(String date) {
         String query = "SELECT * FROM " + myTableName + " WHERE " + DBKey.DUE_DATE +
                 " LIKE '%" + date + "%' ORDER BY " + DBKey.ID + " ASC";
         return runQuery(query);
     }
+
     public Vector findRentalsByCheckInDate(String date) {
         String query = "SELECT * FROM " + myTableName + " WHERE " + DBKey.CHECK_IN_DATE +
                 " LIKE '%" + date + "%' ORDER BY " + DBKey.ID + " ASC";
         return runQuery(query);
     }
+
     public Vector findRentalsByCheckInWorkerId(String workerId) {
         String query = "SELECT * FROM " + myTableName + " WHERE (" + DBKey.CHECK_IN_WORKER_ID +
                 " = " + workerId + ") ORDER BY " + DBKey.CHECK_IN_WORKER_ID + " ASC";

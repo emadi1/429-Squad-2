@@ -119,19 +119,20 @@ public class StudentBorrower extends EntityBase {
     }
 
     // Date formatting
-    public void frenchBorrowerStatusDate() {
+    public void formatData() {
         String date = persistentState.getProperty(DBKey.DATE_OF_LATEST_BORROWER_STATUS);
         String month = date.substring(0, 2);
         String day = date.substring(3, 5);
         String year = date.substring(6);
         persistentState.setProperty(DBKey.DATE_OF_LATEST_BORROWER_STATUS, day + "-" + month + "-" + year);
-    }
-    public void frenchRegistrationDate() {
-        String date = persistentState.getProperty(DBKey.DATE_OF_REGISTRATION);
-        String month = date.substring(0, 2);
-        String day = date.substring(3, 5);
-        String year = date.substring(6);
+        date = persistentState.getProperty(DBKey.DATE_OF_REGISTRATION);
+        month = date.substring(0, 2);
+        day = date.substring(3, 5);
+        year = date.substring(6);
         persistentState.setProperty(DBKey.DATE_OF_REGISTRATION, day + "-" + month + "-" + year);
+        if (persistentState.getProperty(DBKey.STATUS).equals("Active"))
+            persistentState.setProperty(DBKey.STATUS, language.getProperty("Active"));
+        else persistentState.setProperty(DBKey.STATUS, language.getProperty("Inactive"));
     }
 
     // To String

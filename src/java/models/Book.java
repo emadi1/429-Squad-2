@@ -124,7 +124,7 @@ public class Book extends EntityBase {
     }
 
     // Data formatting
-    public void formatPrice() {
+    public void formatData() {
         double euro = Double.parseDouble(persistentState.getProperty(DBKey.SUGGESTED_PRICE)) * 0.94;
         double trim = euro * 100;
         int euroTrim = (int)trim;
@@ -135,6 +135,9 @@ public class Book extends EntityBase {
         if (Core.getInstance().getLanguage().equals("fr_FR"))
             persistentState.setProperty(DBKey.SUGGESTED_PRICE, euroString);
         else persistentState.setProperty(DBKey.SUGGESTED_PRICE, dollarString);
+        if (persistentState.getProperty(DBKey.STATUS).equals("Active"))
+            persistentState.setProperty(DBKey.STATUS, language.getProperty("Active"));
+        else persistentState.setProperty(DBKey.STATUS, language.getProperty("Inactive"));
     }
 
     /**
@@ -150,7 +153,6 @@ public class Book extends EntityBase {
             System.out.println("Error installing data: " + e);
         }
     }
-
     /**
      * Private method used by {@link #update()} to update the {@code Book}'s entry in the database.
      */

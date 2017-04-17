@@ -31,12 +31,7 @@ public class WorkerCollection extends EntityBase {
                     Properties data = (Properties) allDataRetrieved.elementAt(index);
                     Worker worker = new Worker(data);
                     if (worker != null) {
-                        if (core.getLanguage().equals("fr_FR")) {
-                            worker.formatCredentialDate();
-                            worker.formatDateOfHire();
-                            worker.formatCredentials();
-                            worker.formatStatus();
-                        }
+                        if (core.getLanguage().equals("fr_FR")) worker.formatData();
                         addWorker(worker);
                     }
                 }
