@@ -15,7 +15,7 @@ import java.net.URL;
 import java.util.*;
 
 /**
- * Created by kevtr0n on 4/15/17.
+ * Created by Eli and kevtr0n on 4/15/17.
  */
 public class CheckOutBookViewController extends RentalTransactionsController implements Initializable {
 
@@ -55,9 +55,7 @@ public class CheckOutBookViewController extends RentalTransactionsController imp
             e.printStackTrace();
         }
     }
-
-    @Override
-    protected void setTableView() throws IOException {
+    @Override protected void setTableView() throws IOException {
         id.setMinWidth(100);
         borrowerId.setMinWidth(100);
         bookId.setMinWidth(100);
@@ -100,9 +98,7 @@ public class CheckOutBookViewController extends RentalTransactionsController imp
             return row;
         });
     }
-
-    @FXML
-    private int verify() {
+    @FXML private int verify() {
         student = bannerIdField.getText();
         bannerId = bannerIdField.getText();
         try {
@@ -123,16 +119,12 @@ public class CheckOutBookViewController extends RentalTransactionsController imp
         }
         return 1;
     }
-
     @FXML private void override() {
         barcodeField.setDisable(false);
         submit.setDisable(false);
         alertMessage.setText(language.getProperty("AdministratorOverride"));
     }
-
-    @Override
-    @FXML
-    protected int submit() {
+    @Override @FXML protected int submit() {
         Properties data = new Properties();
         String barcode = barcodeField.getText();
         Vector<Book> books = bookCollection.findBooksByBarcode(barcode);
@@ -161,7 +153,6 @@ public class CheckOutBookViewController extends RentalTransactionsController imp
         } else alertMessage.setText(language.getProperty("NoBookWithId"));
         return 1;
     }
-
     private String generateDueDate() {
         Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("EST"));
         calendar.setTime(new Date());
