@@ -289,13 +289,13 @@ public class Core {
 
             // Rental Data Models/Text
             library.setProperty("Id", "ID");
-            library.setProperty("BorrowerId", "");
-            library.setProperty("BookId", "");
-            library.setProperty("CheckOutDate", "");
-            library.setProperty("CheckOutWorkerId", "");
-            library.setProperty("DueDate", "");
-            library.setProperty("CheckInDate", "");
-            library.setProperty("CheckInWorkerId", "");
+            library.setProperty("BorrowerId", ""); //#######################################COMPLETE
+            library.setProperty("BookId", ""); //#######################################COMPLETE
+            library.setProperty("CheckOutDate", ""); //#######################################COMPLETE
+            library.setProperty("CheckOutWorkerId", ""); //#######################################COMPLETE
+            library.setProperty("DueDate", ""); //#######################################COMPLETE
+            library.setProperty("CheckInDate", ""); //#######################################COMPLETE
+            library.setProperty("CheckInWorkerId", ""); //#######################################COMPLETE
 
 
             // General Alerts
@@ -331,15 +331,15 @@ public class Core {
             library.setProperty("addWorkerSuccess", "Ouvrier ajoute avec succes!");
             library.setProperty("addWorkerFail", "N'a pas pu ajouter de l'ouvrier.");
             library.setProperty("invalidCredentials", "Les informations d'identification invalides.");
-            library.setProperty("invalidPhoneFormat", "");
+            library.setProperty("invalidPhoneFormat", ""); //#######################################COMPLETE
 
             // Rental Alerts
-            library.setProperty("invalidBorrowerStatus", "");
-            library.setProperty("AdministratorOverride", "");
-            library.setProperty("BookNotCheckedOut", "");
-            library.setProperty("NoBookWithId", "");
-            library.setProperty("CheckOutSuccess", "");
-            library.setProperty("CheckInSuccess", "");
+            library.setProperty("invalidBorrowerStatus", ""); //#######################################COMPLETE
+            library.setProperty("AdministratorOverride", ""); //#######################################COMPLETE
+            library.setProperty("BookNotCheckedOut", ""); //#######################################COMPLETE
+            library.setProperty("NoBookWithId", ""); //#######################################COMPLETE
+            library.setProperty("CheckOutSuccess", ""); //#######################################COMPLETE
+            library.setProperty("CheckInSuccess", ""); //#######################################COMPLETE
 
             // Buttons
             library.setProperty("Modify", "Modifier");
@@ -356,6 +356,7 @@ public class Core {
             library.setProperty("Delinquent", "Delinquant");
             library.setProperty("Submit", "Entrer");
             library.setProperty("Verify", "Vérifier");
+            library.setProperty("Override", ""); //#######################################COMPLETE
         }
 
         return library;
