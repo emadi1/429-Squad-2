@@ -40,6 +40,8 @@ public class CheckOutBookViewController implements Initializable {
     private Button overrideButton;
     @FXML
     private Text alertMessage;
+    @FXML
+    private Text CheckOutBook;
 
     public void initialize(URL location, ResourceBundle resources) {
         bannerId.setText(language.getProperty("PromptBannerId"));
@@ -52,8 +54,8 @@ public class CheckOutBookViewController implements Initializable {
         overrideButton.setText(language.getProperty("Override"));
         overrideButton.setDisable(true);
         submitBarcode.setDisable(true);
+        CheckOutBook.setText(language.getProperty("CheckOutBook"));
 
-//      if (user.getCredentials().equals("Ordinary")) submit.setDisable(true);
     }
 
     /**
@@ -94,10 +96,14 @@ public class CheckOutBookViewController implements Initializable {
                 // launch barcode
                 barcodeTextField.setDisable(false);
                 submitBarcode.setDisable(false);
+                alertMessage.setText("This student is in good standing");
 
             } else {
                 // ALERT WINDOW
-                alertMessage.setText("Dis guy cant rent shit");
+                alertMessage.setText("This student is unable to check out a book");
+                barcodeTextField.setDisable(true);
+                submitBarcode.setDisable(true);
+
                 if (user.getCredentials().equals("Administrator")) {
                     overrideButton.setDisable(false);
                 }
@@ -119,7 +125,7 @@ public class CheckOutBookViewController implements Initializable {
 
                 Vector<Rental> rentals = rentalCollection.findRentalsByBookId(barcodeTextField.getText());
                 for (Rental rental : rentals) {
-                    if (rental.getCheckInDate().equals(null) || rental.getCheckInDate().equals("")) {
+                    if (rental.getCheckInDate() == null || rental.getCheckInDate().equals("")) {
                         alertMessage.setText("Book Currently Checked Out!");
                         return 0;
                     }
@@ -133,10 +139,12 @@ public class CheckOutBookViewController implements Initializable {
                 System.out.println(data.toString());
                 Rental rental = new Rental(data);
                 rental.insert();
+                alertMessage.setText("Book Successfully Checked Out!");
+
             }
+
         }
-        System.out.println("Book Checked Out Successfully");
-        return 1;
+                return 1;
     }
 
 
@@ -148,5 +156,6 @@ public class CheckOutBookViewController implements Initializable {
     public void overrideStatus() {
         submitBarcode.setDisable(false);
         barcodeTextField.setDisable(false);
+        alertMessage.setText("Student Status Overriden");
     }
 }
