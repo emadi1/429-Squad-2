@@ -21,7 +21,7 @@ public class Core {
     private static String language = "";
     private static Stage lastStage;
 
-    //Private constructor
+    // Singleton pattern
     private Core() {
     }
     public static Core getInstance() {
@@ -29,6 +29,7 @@ public class Core {
             core = new Core();
         return core;
     }
+
     // Getters
     public Book getModBook() {
         return modBook;
@@ -48,26 +49,6 @@ public class Core {
     public Stage getLastStage() {
         return lastStage;
     }
-    // Setters
-    public void setModBook(Book book) {
-        modBook = book;
-    }
-    public void setUser(Worker worker) {
-        user = worker;
-    }
-    public void setModWorker(Worker worker) {
-        modWorker = worker;
-    }
-    public void setModStudentBorrower(StudentBorrower studentBorrower) {
-        modStudentBorrower = studentBorrower;
-    }
-    public void setLanguage(String lang) {
-        language = lang;
-    }
-    public void setStage(Stage stage) {
-        lastStage = stage;
-    }
-
     public Properties getLang() {
         Properties library = new Properties();
         if (language.equals("en_US")) {
@@ -197,6 +178,7 @@ public class Core {
             library.setProperty("addWorkerFail", "Failed to add worker.");
             library.setProperty("invalidPassword", "Invalid Password.");
             library.setProperty("invalidCredentials", "Invalid Credentials");
+            library.setProperty("invalidPhoneFormat", "Phone must be in format: '###-##########'");
 
             //Rental Alerts
             library.setProperty("invalidBorrowerStatus", "Borrower Status is 'Delinquent.'");
@@ -349,6 +331,7 @@ public class Core {
             library.setProperty("addWorkerSuccess", "Ouvrier ajoute avec succes!");
             library.setProperty("addWorkerFail", "N'a pas pu ajouter de l'ouvrier.");
             library.setProperty("invalidCredentials", "Les informations d'identification invalides.");
+            library.setProperty("invalidPhoneFormat", "");
 
             // Rental Alerts
             library.setProperty("invalidBorrowerStatus", "");
@@ -377,6 +360,28 @@ public class Core {
 
         return library;
     }
+
+    // Setters
+    public void setModBook(Book book) {
+        modBook = book;
+    }
+    public void setUser(Worker worker) {
+        user = worker;
+    }
+    public void setModWorker(Worker worker) {
+        modWorker = worker;
+    }
+    public void setModStudentBorrower(StudentBorrower studentBorrower) {
+        modStudentBorrower = studentBorrower;
+    }
+    public void setLanguage(String lang) {
+        language = lang;
+    }
+    public void setStage(Stage stage) {
+        lastStage = stage;
+    }
+
+    // Generators/Formatting
     public static String generateDate() {
         Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("EST"));
         String day = Integer.toString(calendar.get(Calendar.DATE));

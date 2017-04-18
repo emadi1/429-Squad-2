@@ -96,11 +96,11 @@ public class AddWorkerViewController implements Initializable {
         Status.setValue(lang.getProperty("Active"));
         Status.setItems(statusList);
     }
-
     public void submit(ActionEvent event) {
 
         Properties prop = new Properties();
         WorkerCollection workerCollection = new WorkerCollection();
+        String phoneNum = ContactPhone.getText();
 
         if (BannerId.getText().length() != 9) {
             alertMessage.setText(lang.getProperty("invalidBannerIdLength"));
@@ -133,6 +133,12 @@ public class AddWorkerViewController implements Initializable {
             prop.setProperty("DateOfLatestCredentialsStatus", credDay + "-" + credMonth + "-" + credYear);
         }
 
+        if (phoneNum.length() != 14 || phoneNum.charAt(3) != '-' ||
+                !Core.isNumeric(phoneNum.substring(0, 3)) || !Core.isNumeric(phoneNum.substring(5))) {
+            alertMessage.setText(lang.getProperty("invalidPhoneFormat"));
+            return;
+        } else prop.put(DBKey.CONTACT_PHONE, ContactPhone.getText());
+
         int count = workerCollection.findWorkersByBannerId(prop.getProperty(DBKey.BANNER_ID)).size();
         if (count == 0) {
             prop.put(Status.getId(), Status.getSelectionModel().getSelectedItem());
@@ -142,9 +148,7 @@ public class AddWorkerViewController implements Initializable {
             alertMessage.setText(lang.getProperty("addWorkerSuccess"));
         } else alertMessage.setText(lang.getProperty("existingBannerId") + prop.getProperty(DBKey.BANNER_ID));
 
-        for (TextField t : textFieldList) {
-            t.clear();
-        }
+        for (TextField t : textFieldList) t.clear();
         Credentials.setValue(lang.getProperty("Ordinary"));
         Status.setValue(lang.getProperty("Active"));
     }

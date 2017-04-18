@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 import java.util.Vector;
 
 /**
- * Created by kevtr0n on 4/15/17.
+ * Created by Jen and kevtr0n on 4/15/17.
  */
 public class CheckInBookViewController extends RentalTransactionsController implements Initializable {
 
@@ -47,7 +47,6 @@ public class CheckInBookViewController extends RentalTransactionsController impl
             e.printStackTrace();
         }
     }
-
     @Override @FXML protected int submit() throws RuntimeException {
         // Check for barcode format
         String barcode = barcodeField.getText();
@@ -63,7 +62,7 @@ public class CheckInBookViewController extends RentalTransactionsController impl
                 tableView.setItems(FXCollections.observableList(rentals));
                 Rental oldRental = null;
                 for (Rental rental : rentals)
-                    if (rental.getCheckInDate().equals(""))
+                    if (rental.getCheckInDate() == null)
                         oldRental = rental;
                     else alertMessage.setText(language.getProperty("BookNotCheckedOut") + barcode);
                 oldRental.setCheckInDate(Core.generateEnglishDate());
@@ -87,8 +86,6 @@ public class CheckInBookViewController extends RentalTransactionsController impl
         }
         return 1;
     }
-
-
     @Override protected void setTableView() throws IOException {
         id.setMinWidth(100);
         borrowerId.setMinWidth(100);
