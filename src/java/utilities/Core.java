@@ -289,13 +289,13 @@ public class Core {
 
             // Rental Data Models/Text
             library.setProperty("Id", "ID");
-            library.setProperty("BorrowerId", ""); //#######################################COMPLETE
-            library.setProperty("BookId", ""); //#######################################COMPLETE
-            library.setProperty("CheckOutDate", ""); //#######################################COMPLETE
-            library.setProperty("CheckOutWorkerId", ""); //#######################################COMPLETE
-            library.setProperty("DueDate", ""); //#######################################COMPLETE
-            library.setProperty("CheckInDate", ""); //#######################################COMPLETE
-            library.setProperty("CheckInWorkerId", ""); //#######################################COMPLETE
+            library.setProperty("BorrowerId", "identifiant de l'emprunteur"); //#######################################CHECK
+            library.setProperty("BookId", "ID du livre"); //#######################################CHECK
+            library.setProperty("CheckOutDate", "Date de paiement"); //#######################################CHECK
+            library.setProperty("CheckOutWorkerId", "Identifiant de travail"); //#######################################CHECK
+            library.setProperty("DueDate", "date d'échéance");//#####################CHECK
+            library.setProperty("CheckInDate", "Date d'arrivée");//#####################CHECK
+            library.setProperty("CheckInWorkerId", "Vérifier l'identifiant du travailleur");//#######################CHECK
 
 
             // General Alerts
@@ -331,15 +331,15 @@ public class Core {
             library.setProperty("addWorkerSuccess", "Ouvrier ajoute avec succes!");
             library.setProperty("addWorkerFail", "N'a pas pu ajouter de l'ouvrier.");
             library.setProperty("invalidCredentials", "Les informations d'identification invalides.");
-            library.setProperty("invalidPhoneFormat", ""); //#######################################COMPLETE
+            library.setProperty("invalidPhoneFormat", "Format de téléphone invalide"); //#######################################CHECK
 
             // Rental Alerts
-            library.setProperty("invalidBorrowerStatus", ""); //#######################################COMPLETE
-            library.setProperty("AdministratorOverride", ""); //#######################################COMPLETE
-            library.setProperty("BookNotCheckedOut", ""); //#######################################COMPLETE
-            library.setProperty("NoBookWithId", ""); //#######################################COMPLETE
-            library.setProperty("CheckOutSuccess", ""); //#######################################COMPLETE
-            library.setProperty("CheckInSuccess", ""); //#######################################COMPLETE
+            library.setProperty("invalidBorrowerStatus", "Statut d'emprunteur invalide"); //#######################################CHECK
+            library.setProperty("AdministratorOverride", "L'annulation de l'administrateur"); //#######################################CHECK
+            library.setProperty("BookNotCheckedOut", "Livre non sorti"); //#######################################CHECK
+            library.setProperty("NoBookWithId", "Aucun livre avec cet identifiant"); //#######################################CHECK
+            library.setProperty("CheckOutSuccess", "Vérifier le succès"); //#######################################CHECK
+            library.setProperty("CheckInSuccess", "Vérifier le succès"); //#######################################CHECK
 
             // Buttons
             library.setProperty("Modify", "Modifier");
@@ -356,7 +356,7 @@ public class Core {
             library.setProperty("Delinquent", "Delinquant");
             library.setProperty("Submit", "Entrer");
             library.setProperty("Verify", "Vérifier");
-            library.setProperty("Override", ""); //#######################################COMPLETE
+            library.setProperty("Override", "Surcharger");
         }
 
         return library;
