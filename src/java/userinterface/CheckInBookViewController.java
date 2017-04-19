@@ -51,7 +51,7 @@ public class CheckInBookViewController implements Initializable {
 
 
             if (rc.isEmpty()) {
-                System.out.print("Rental not found");
+                alertMessage.setText(lang.getProperty("rentalNotFound"));
             } else {
                 try {
                     Vector<Rental> rentals = rentalCollection.findRentalsByBookId(Barcode.getText());
