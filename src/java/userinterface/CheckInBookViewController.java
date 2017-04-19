@@ -49,47 +49,32 @@ public class CheckInBookViewController implements Initializable {
             RentalCollection rentalCollection = new RentalCollection();
             Vector rc = rentalCollection.findRentalsByBookId(barcode);
 
+
             if (rc.isEmpty()) {
                 System.out.print("Rental not found");
             } else {
                 try {
                     Vector<Rental> rentals = rentalCollection.findRentalsByBookId(Barcode.getText());
                     Rental rental = rentals.get(0);
+                    String checkOutDate = rental.getCheckOutDate();
+                    String checkInDate = rental.getCheckInDate();
 
-                    if (rental.getCheckOutDate() != null || !rental.getCheckOutDate().equals("")) {
-                        if (rental.getCheckInDate() == null || rental.getCheckInDate().equals("")) {
-
-                            String stringcheckInDate = Core.generateDate();
-                            String stringDueDate = rentals.get(0).getDueDate();
-                            DateFormat stringformat = new SimpleDateFormat("MMMM d, yyyy");
-                            Date dueDate = stringformat.parse(stringDueDate);
-                            Date checkInDate = stringformat.parse(stringcheckInDate);
-
-                            if (checkInDate.equals(dueDate) || checkInDate.before(dueDate)) {
-                                rental.setCheckInDate(stringcheckInDate);
-                                alertMessage.setText(lang.getProperty("checkInBookSucess"));
-
-                            } else {
-                                rental.setCheckInDate(stringcheckInDate);
-                                alertMessage.setText(lang.getProperty("checkInBookLate"));
-                            }
-
-                            Properties data = new Properties();
-                            data.put(DBKey.CHECK_OUT_WORKER_ID, user.getBannerId());
-                            data.put(DBKey.CHECK_IN_DATE, rental.getCheckInDate());
-                            rental.insert();
-
-                        }
+                    if (checkOutDate != null|| checkOutDate != "") {
+                     if (checkInDate != null|| checkInDate != "") {
+                            rental.setCheckInDate(Core.formatDateToEnglish(Core.generateDate()));
+                            rental.setCheckInWorkerId(Core.getInstance().getUser().getBannerId());
+                            alertMessage.setText(lang.getProperty("checkInBookSuccess"));
+                     }
                     } else {
-                        alertMessage.setText(lang.getProperty("This book is not checked out."));
+                        alertMessage.setText(lang.getProperty("bookAlreadyCheckedOut"));
                     }
 
-                } catch (ParseException e) {
+                } catch (Exception e) {
                     alertMessage.setText(lang.getProperty("checkInBookFail"));
                 }
             }
         } else {
-            alertMessage.setText(lang.getProperty("Barcode must be 5 digits."));
+            alertMessage.setText(lang.getProperty("invalidBarcodeLength"));
         }
     }
 }
