@@ -1,3 +1,4 @@
+import common.PropertyFile;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,14 +15,14 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         Core core = Core.getInstance();
-        core.setLanguage("en_US");
+        PropertyFile file = new PropertyFile("language.ini");
+        core.setLanguage(file.getProperty("language"));
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) throws IOException {
         Core core = Core.getInstance();
-        core.setLanguage("en_US");
         primaryStage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
         Parent root = FXMLLoader.load(getClass().getResource("signinview.fxml"));
         Scene scene = new Scene(root);
