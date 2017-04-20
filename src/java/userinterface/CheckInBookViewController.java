@@ -59,27 +59,33 @@ public class CheckInBookViewController extends RentalTransactionsController impl
             // Check to see if book exists in database
             if (books.size() == 1) {
                 Vector<Rental> rentals = rentalCollection.findRentalsByBookId(barcode);
-                tableView.setItems(FXCollections.observableList(rentals));
                 Rental oldRental = null;
-                for (Rental rental : rentals)
-                    if (rental.getCheckInDate() == null)
-                        oldRental = rental;
-                    else alertMessage.setText(language.getProperty("BookNotCheckedOut") + barcode);
-                oldRental.setCheckInDate(Core.generateEnglishDate());
-                oldRental.setCheckInWorkerId(Core.getInstance().getUser().getBannerId());
-                oldRental.update();
-                StudentBorrower studentBorrower = (StudentBorrower) studentBorrowerCollection.findStudentsByBannerId(oldRental.getBorrowerId()).get(0);
-                if (studentBorrower.getBorrowerStatus().equals(language.getProperty("Delinquent"))) {
-                    rentals = rentalCollection.findRentalsByBorrowerId(studentBorrower.getBannerId());
-                    boolean isDelinquent = false;
+                if (rentals.size() != 0) {
                     for (Rental rental : rentals)
-                        if (rental.getCheckInDate().equals("")) isDelinquent = true;
-                    if (!isDelinquent) {
-                        studentBorrower.setBorrowerStatus("Good Standing");
-                        studentBorrower.setDateOfLatestBorrowerStatus(Core.generateEnglishDate());
+                        if (rental.getCheckInDate() == null)
+                            oldRental = rental;
+                    if (oldRental == null) {
+                        alertMessage.setText(language.getProperty("BookNotCheckedOut") + barcode);
+                        return 0;
                     }
+                    oldRental.setCheckInDate(Core.generateEnglishDate());
+                    oldRental.setCheckInWorkerId(Core.getInstance().getUser().getBannerId());
+                    oldRental.update();
+                    rentals = rentalCollection.findRentalsByBookId(barcode);
+                    tableView.setItems(FXCollections.observableList(rentals));
+                    StudentBorrower studentBorrower = (StudentBorrower) studentBorrowerCollection.findStudentsByBannerId(oldRental.getBorrowerId()).get(0);
+                    if (studentBorrower.getBorrowerStatus().equals(language.getProperty("Delinquent"))) {
+                        rentals = rentalCollection.findRentalsByBorrowerId(studentBorrower.getBannerId());
+                        boolean isDelinquent = false;
+                        for (Rental rental : rentals)
+                            if (rental.getCheckInDate().equals("")) isDelinquent = true;
+                        if (!isDelinquent) {
+                            studentBorrower.setBorrowerStatus("Good Standing");
+                            studentBorrower.setDateOfLatestBorrowerStatus(Core.generateEnglishDate());
+                        }
+                    }
+                    alertMessage.setText(language.getProperty("CheckInSuccess"));
                 }
-                alertMessage.setText(language.getProperty("CheckInSuccess"));
             } else alertMessage.setText(language.getProperty("NoBookWithId") + barcode);
         } catch (Exception e) {
             e.printStackTrace();

@@ -184,6 +184,7 @@ public class Core {
             library.setProperty("invalidBorrowerStatus", "Borrower Status is 'Delinquent.'");
             library.setProperty("AdministratorOverride", "Administrator Override.");
             library.setProperty("BookNotCheckedOut", "Book with ID not currently checked out: ");
+            library.setProperty("BookCheckedOut", "Book is currently checked out.");
             library.setProperty("NoBookWithId", "No book matching ID: ");
             library.setProperty("CheckOutSuccess", "Book successfully checked out!");
             library.setProperty("CheckInSuccess", "Book successfully checked in!");
@@ -302,7 +303,7 @@ public class Core {
             library.setProperty("invalidDateFormat", "La date doit être en format: DD-MM-YYYY");
             library.setProperty("completeFields", "Veuillez remplir tout les champs nécessaires.");
             library.setProperty("emptyField", "Veuillez remplir le champ.");
-            library.setProperty("dateFormat", "DD-MM-YYYY");
+            library.setProperty("dateFormat", "jj-mm-aaaa");
             library.setProperty("invalidPassword", "Mot de passe incorrect.");
             library.setProperty("doubleClickModify", "- Double cliquer pour modifier -");
 
@@ -336,8 +337,9 @@ public class Core {
             // Rental Alerts
             library.setProperty("invalidBorrowerStatus", "Statut d'emprunteur invalide"); //#######################################CHECK
             library.setProperty("AdministratorOverride", "L'annulation de l'administrateur"); //#######################################CHECK
-            library.setProperty("BookNotCheckedOut", "Livre non sorti"); //#######################################CHECK
-            library.setProperty("NoBookWithId", "Aucun livre avec cet identifiant"); //#######################################CHECK
+            library.setProperty("BookNotCheckedOut", "Livre non sorti: "); //#######################################CHECK
+            library.setProperty("BookCheckedOut", "Livre sorti"); // ############################################CHECK
+            library.setProperty("NoBookWithId", "Aucun livre avec cet identifiant: "); //#######################################CHECK
             library.setProperty("CheckOutSuccess", "Vérifier le succès"); //#######################################CHECK
             library.setProperty("CheckInSuccess", "Vérifier le succès"); //#######################################CHECK
 

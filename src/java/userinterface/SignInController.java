@@ -52,7 +52,8 @@ public class SignInController implements Initializable {
         passwordPlain.setVisible(false);
         passwordPlain.setManaged(false);
         language.setItems(languages);
-        language.setValue("en_US");
+        if (core.getLanguage().equals("fr_FR")) language.setValue("fr_FR");
+        else language.setValue("en_US");
         signInHeader.setText(lang.getProperty("signIn"));
         banner.setText(lang.getProperty("PromptBannerId"));
         pw.setText(lang.getProperty("PromptPassword"));

@@ -125,33 +125,39 @@ public class CheckOutBookViewController extends RentalTransactionsController imp
         alertMessage.setText(language.getProperty("AdministratorOverride"));
     }
     @Override @FXML protected int submit() {
-        Properties data = new Properties();
-        String barcode = barcodeField.getText();
-        Vector<Book> books = bookCollection.findBooksByBarcode(barcode);
-        if (books.size() == 1) {
-            if (barcode.length() == 5 && Core.isNumeric(barcode)) {
-                boolean canRent = true;
-                Vector<Rental> rentals = rentalCollection.findRentalsByBookId(barcode);
-                for (Rental rental : rentals) {
-                    if (rental.getCheckInDate() != null && !rental.getCheckInDate().equals("")) {
-                        canRent = false;
+        try {
+            Properties data = new Properties();
+            String barcode = barcodeField.getText();
+            Vector<Book> books = bookCollection.findBooksByBarcode(barcode);
+            if (books.size() == 1) {
+                if (barcode.length() == 5 && Core.isNumeric(barcode)) {
+                    boolean canRent = true;
+                    Vector<Rental> rentals = rentalCollection.findRentalsByBookId(barcode);
+                    for (Rental rental : rentals) {
+                        if (rental.getCheckInDate() == null) {
+                            System.out.println(canRent);
+                            canRent = false;
+                        }
                     }
+                    if (canRent) {
+                        data.put(DBKey.BORROWER_ID, student);
+                        data.put(DBKey.BOOK_ID, barcode);
+                        data.put(DBKey.CHECK_OUT_WORKER_ID, Core.getInstance().getUser().getBannerId());
+                        data.put(DBKey.CHECK_OUT_DATE, Core.generateEnglishDate());
+                        data.put(DBKey.DUE_DATE, generateDueDate());
+                        System.out.println(data.toString());
+                        Rental rental = new Rental(data);
+                        rental.insert();
+                        alertMessage.setText(language.getProperty("CheckOutSuccess"));
+                        tableView.setItems(FXCollections.observableList(rentalCollection.findRentalsByBorrowerId(student)));
+                    } else alertMessage.setText(language.getProperty("BookCheckedOut"));
                 }
-                if (canRent) {
-                    data.put(DBKey.BORROWER_ID, student);
-                    data.put(DBKey.BOOK_ID, barcode);
-                    data.put(DBKey.CHECK_OUT_WORKER_ID, Core.getInstance().getUser().getBannerId());
-                    data.put(DBKey.CHECK_OUT_DATE, Core.generateEnglishDate());
-                    data.put(DBKey.DUE_DATE, generateDueDate());
-                    System.out.println(data.toString());
-                    Rental rental = new Rental(data);
-                    rental.insert();
-                    alertMessage.setText(language.getProperty("CheckOutSuccess"));
-                    tableView.setItems(FXCollections.observableList(rentalCollection.findRentalsByBorrowerId(student)));
-                }
-            }
-        } else alertMessage.setText(language.getProperty("NoBookWithId"));
-        return 1;
+            } else alertMessage.setText(language.getProperty("NoBookWithId"));
+            return 1;
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
     private String generateDueDate() {
         Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("EST"));
