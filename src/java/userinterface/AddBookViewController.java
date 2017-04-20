@@ -135,7 +135,7 @@ public class AddBookViewController implements Initializable {
             double euroToDollar = Double.parseDouble(price) / 0.94;
             String formattedPrice = "" + euroToDollar;
             properties.put(SuggestedPrice.getId(), formattedPrice);
-        }
+        } else properties.put(SuggestedPrice.getId(), SuggestedPrice.getText());
 
         if (Status.getValue().equals(lang.getProperty("Active"))) properties.put("Status", "Active");
         else properties.put("Status", "Inactive");
