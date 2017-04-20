@@ -212,24 +212,24 @@ public class Core {
             library.setProperty("Override", "Override");
 
         } else if (language.equals("fr_FR")) {
-            // Main View Buttons/ Text
-            library.setProperty("welcome", "EOP Bibliotheque Systeme");
+// Main View Buttons/ Text
+            library.setProperty("welcome", "EOP Bibliotheque Système");
             library.setProperty("signIn", "Connectez-vous ci-dessous");
-            library.setProperty("SignIn", "Se Connecter");
-            library.setProperty("WorkerTransactions", "Operations des Travaileurs");
-            library.setProperty("BookTransactions", "Transactions de Livres");
-            library.setProperty("StudentTransactions", "Transactions Etudiantes");
-            library.setProperty("CheckOutBook", "Consulter les Livres");
-            library.setProperty("CheckInBook", "Verifier dans les Livres");
-            library.setProperty("ListCheckedBooks", "Liste des Livres Verifiés");
+            library.setProperty("SignIn", "Se connecter");
+            library.setProperty("WorkerTransactions", "Opérations des Travaileurs");
+            library.setProperty("BookTransactions", "Transactions de livres");
+            library.setProperty("StudentTransactions", "Transactions étudiantes");
+            library.setProperty("CheckOutBook", "Consulter un livre");
+            library.setProperty("CheckInBook", "Enregistrer un livre");
+            library.setProperty("ListCheckedBooks", "Liste des livres enregistrés");
 
             // Window Titles
             library.setProperty("addWorkerTitle", "EOP Bibliotheque Systeme - Ajouter un travailleur");
-            library.setProperty("modifyWorkerTitle", "EOP Bibliotheque Systeme - Modifier travailleur");
-            library.setProperty("addStudentTitle", "EOP Bibliotheque Systeme - Ajouter l'etudiant emprunteur");
-            library.setProperty("modifyStudentTitle", "EOP Bibliotheque Systeme - Modifier etudiant emprunteur");
+            library.setProperty("modifyWorkerTitle", "EOP Bibliotheque Systeme - Modifier un travailleur");
+            library.setProperty("addStudentTitle", "EOP Bibliotheque Systeme - Ajouter l'étudiant emprunteur");
+            library.setProperty("modifyStudentTitle", "EOP Bibliotheque Systeme - Modifier l'étudiant emprunteur");
             library.setProperty("addBookTitle", "EOP Bibliotheque Systeme - Ajouter un livre");
-            library.setProperty("modifyBookTitle", "EOP Bibliotheque Systeme - Modifier le livre");
+            library.setProperty("modifyBookTitle", "EOP Bibliotheque Systeme - Modifier un livre");
 
             // Student Borrower Data Model/ Text
             library.setProperty("PromptBorrowerStatus", "Statut de l'emprunteur");
@@ -237,7 +237,7 @@ public class Core {
             library.setProperty("PromptDateOfLatestBorrowerStatus", "Date du dernier statut de l'emprunteur:");
             library.setProperty("DateOfLatestBorrowerStatus", "Date du dernier statut de l'emprunteur");
             library.setProperty("PromptDateOfRegistration", "Date d'enregistrement:");
-            library.setProperty("DateOfRegistration", "Date d'enregistremen");
+            library.setProperty("DateOfRegistration", "Date d'enregistrement");
 
             // Book Data Model/ Text
             library.setProperty("PromptBarcode", "Code barre:");
@@ -263,13 +263,12 @@ public class Core {
             library.setProperty("ISBN", "ISBN");
             library.setProperty("PromptBookCondition", "Etat du livre:");
             library.setProperty("BookCondition", "Etat du livre");
-            library.setProperty("PromptSuggestedPrice", "Prix Suggere:");
-            library.setProperty("SuggestedPrice", "Prix Suggere");
+            library.setProperty("PromptSuggestedPrice", "Prix suggéré:");
+            library.setProperty("SuggestedPrice", "Prix suggéré");
             library.setProperty("PromptNotes", "Remarques:");
             library.setProperty("Notes", "Remarques");
             library.setProperty("PromptStatus", "Statut:");
             library.setProperty("Status", "Statut");
-
 
             // Worker Data Models/Text
             library.setProperty("PromptBannerId", "Banner ID:");
@@ -281,8 +280,8 @@ public class Core {
             library.setProperty("PromptFirstName", "Prénom:");
             library.setProperty("LastName", "Nom de Famille");
             library.setProperty("PromptLastName", "Nom de Famille:");
-            library.setProperty("PromptContactPhone", "Numéro du Contact:");
-            library.setProperty("ContactPhone", "Numéro du Contact");
+            library.setProperty("PromptContactPhone", "Numéro de contact:");
+            library.setProperty("ContactPhone", "Numéro de contact");
             library.setProperty("PromptEmail", "Email:");
             library.setProperty("Email", "Email");
             library.setProperty("PromptCredentials", "Lettres de créance:");
@@ -295,7 +294,7 @@ public class Core {
             library.setProperty("Status", "Statut");
 
             // General Alerts
-            library.setProperty("invalidDateFormat", "La date doit être en format: DD-MM-YYYY");
+            library.setProperty("invalidDateFormat", "La date doit être au format: DD-MM-YYYY");
             library.setProperty("completeFields", "Veuillez remplir tout les champs nécessaires.");
             library.setProperty("emptyField", "Veuillez remplir le champ.");
             library.setProperty("dateFormat", "DD-MM-YYYY");
@@ -303,46 +302,47 @@ public class Core {
             library.setProperty("doubleClickModify", "- Double cliquer pour modifier -");
 
             // Student Alerts
-            library.setProperty("addStudentSuccess", "Etudiant a été ajouté avec succès!");
-            library.setProperty("addStudentFail", "L'ajout de l'étudiant à échoué.");
-            library.setProperty("modifyStudentSuccess", "Etudiant a été mis à jour avec succès!");
-            library.setProperty("modifyStudentFail", "La mise à jour de l'étudiant à échoué.");
-            library.setProperty("deleteStudentSuccess", "Etudiant a été supprimé avec succès.");
-            library.setProperty("deleteStudentFail", "La suppression de l'étudiant à échoué.");
+            library.setProperty("addStudentSuccess", "L'étudiant a été ajouté avec succès!");
+            library.setProperty("addStudentFail", "L'ajout de l'étudiant a échoué.");
+            library.setProperty("modifyStudentSuccess", "L'étudiant a été mis à jour avec succès!");
+            library.setProperty("modifyStudentFail", "La mise à jour de l'étudiant a échoué.");
+            library.setProperty("deleteStudentSuccess", "L'étudiant a été supprimé avec succès.");
+            library.setProperty("deleteStudentFail", "La suppression de l'étudiant a échoué.");
 
             // Book Alerts
-            library.setProperty("invalidBarcodeLength", "Le code a barres doit comporter 5 chiffres.");
-            library.setProperty("existingBarcode", "Le code a barre existe deja: ");
-            library.setProperty("yearFormat", "L'annee de publication doit etre en format: yyyy");
-            library.setProperty("addBookSuccess", "Le livre à été ajouté avec succes!");
-            library.setProperty("addBookFail", "L'ajout du livre à échoué.");
+            library.setProperty("invalidBarcodeLength", "Le code barre doit être composé de 5 chiffres.");
+            library.setProperty("existingBarcode", "Ce code barre existe déjà: ");
+            library.setProperty("yearFormat", "L'année de publication doit être au format: yyyy");
+            library.setProperty("addBookSuccess", "Le livre a été ajouté avec succès!");
+            library.setProperty("addBookFail", "L'ajout du livre a échoué.");
             library.setProperty("modifyBookSuccess", "Le livre a été mis à jour avec succès!");
-            library.setProperty("modifyBookFail", "La mise à jour du livre à échoué.");
-            library.setProperty("checkInBookSucess", "in french Book checked in." );
-            library.setProperty("checkInBookFail", "in french Book not checked in.");
+            library.setProperty("modifyBookFail", "La mise à jour du livre a échoué.");
+            library.setProperty("checkInBookSucess", "L'enregistrement du livre a été faite avec succès.");
+            library.setProperty("checkInBookFail", "L'enregistrement du livre a échoué.");
+
 
             // Worker Alerts
-            library.setProperty("invalidBannerIdFormat", "BannerID doit avoir des 9 chiffres seul.");
-            library.setProperty("modifyWorkerSuccess", "Ouvrier mis a jour avec succes!");
-            library.setProperty("modifyWorkerFail", "La mise à jour du ouvrier à échoué.");
-            library.setProperty("existingBannerId", "BannerID existe deja dans le systeme.");
-            library.setProperty("addWorkerSuccess", "Ouvrier ajoute avec succes!");
-            library.setProperty("addWorkerFail", "N'a pas pu ajouter de l'ouvrier.");
-            library.setProperty("invalidCredentials", "Les informations d'identification invalides.");
+            library.setProperty("invalidBannerIdFormat", "Le BannerID doit être uniquement composé de 9 chiffres.");
+            library.setProperty("modifyWorkerSuccess", "Le travailleur a été mis a jour avec succes!");
+            library.setProperty("modifyWorkerFail", "La mise à jour du travailleur a échoué.");
+            library.setProperty("existingBannerId", "Ce BannerID existe déjà dans la base de donnée.");
+            library.setProperty("addWorkerSuccess", "Le travailleur a été ajouté avec succès!");
+            library.setProperty("addWorkerFail", "L'ajout du travailleur a échoué.");
+            library.setProperty("invalidCredentials", "Les informations d'identification sont invalides.");
 
             // Buttons
             library.setProperty("Modify", "Modifier");
             library.setProperty("Add", "Ajouter");
             library.setProperty("Delete", "Effacer");
-            library.setProperty("Good", "Bien");
-            library.setProperty("Damaged", "Endommage");
+            library.setProperty("Good", "BIen");
+            library.setProperty("Damaged", "Endommagé");
             library.setProperty("Active", "Actif");
             library.setProperty("Inactive", "Inactif");
             library.setProperty("Search", "Chercher");
             library.setProperty("Administrator", "Administrateur");
             library.setProperty("Ordinary", "Ordinaire");
-            library.setProperty("GoodStanding", "Bonne qualite");
-            library.setProperty("Delinquent", "Delinquant");
+            library.setProperty("GoodStanding", "Bonne qualité");
+            library.setProperty("Delinquent", "Délinquant");
             library.setProperty("Override", "Passer Outre");
         }
 
