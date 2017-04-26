@@ -22,6 +22,7 @@ import java.util.Base64;
 
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import models.Worker;
 import models.WorkerCollection;
 import utilities.Core;
@@ -55,6 +56,7 @@ public class AddWorkerViewController implements Initializable {
     @FXML private TextField LastName;
     @FXML private TextField ContactPhone;
     @FXML private TextField Email;
+    @FXML private TextField CountryCode;
     @FXML private ComboBox<String> Credentials;
     @FXML private TextField DateOfLatestCredentialsStatus;
     @FXML private TextField DateOfHire;
@@ -76,6 +78,7 @@ public class AddWorkerViewController implements Initializable {
 
         // Set Text's text
         submit.setText(lang.getProperty("Add"));
+
         bannerId.setText(lang.getProperty("PromptBannerId"));
         password.setText(lang.getProperty("PromptPassword"));
         firstName.setText(lang.getProperty("PromptFirstName"));
@@ -98,6 +101,7 @@ public class AddWorkerViewController implements Initializable {
         DateOfHire.setText(Core.generateDate());
         DateOfLatestCredentialsStatus.setDisable(true);
         DateOfHire.setDisable(true);
+        CountryCode.setPromptText("Country");
 
         // Add TextFields to ArrayList
         textFieldList = new ArrayList<>();
@@ -119,6 +123,12 @@ public class AddWorkerViewController implements Initializable {
         Properties prop = new Properties();
         WorkerCollection workerCollection = new WorkerCollection();
         String phoneNum = ContactPhone.getText();
+
+        if (phoneNum.contains("-")) {
+            phoneNum = phoneNum.replaceAll("-", "");
+        }
+
+        phoneNum = CountryCode.getText() + "-" + phoneNum;
 
         if (BannerId.getText().length() != 9) {
             alertMessage.setText(lang.getProperty("invalidBannerIdLength"));
@@ -155,7 +165,7 @@ public class AddWorkerViewController implements Initializable {
                 !Core.isNumeric(phoneNum.substring(0, 3)) || !Core.isNumeric(phoneNum.substring(5))) {
             alertMessage.setText(lang.getProperty("invalidPhoneFormat"));
             return;
-        } else prop.put(DBKey.CONTACT_PHONE, ContactPhone.getText());
+        } else prop.put(DBKey.CONTACT_PHONE, phoneNum);
 
         int count = workerCollection.findWorkersByBannerId(prop.getProperty(DBKey.BANNER_ID)).size();
         if (count == 0) {

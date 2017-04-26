@@ -8,12 +8,13 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userinterface.AddWorkerViewController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="465.0" style="-fx-background-color: darkgreen" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userinterface.AddWorkerViewController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="0.0" prefWidth="0.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="324.0" minWidth="10.0" prefWidth="324.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="117.0" minWidth="8.0" prefWidth="8.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="325.0" minWidth="10.0" prefWidth="325.0" />
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="117.0" minWidth="3.0" prefWidth="3.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="117.0" minWidth="20.0" prefWidth="20.0" />
     </columnConstraints>
     <rowConstraints>
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -31,27 +32,41 @@
         <RowConstraints maxHeight="31.0" minHeight="0.0" prefHeight="4.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Text fx:id="bannerId" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-        <Text fx:id="password" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-        <Text fx:id="firstName" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-        <Text fx:id="lastName" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-        <Text fx:id="contactPhone" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-        <Text fx:id="email" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-        <Text fx:id="credentials" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-        <Text fx:id="dateOfLatestCredentialsStatus" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-        <Text fx:id="dateOfHire" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-        <Text fx:id="status" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-        <TextField fx:id="BannerId" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-        <TextField fx:id="Password" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-        <TextField fx:id="FirstName" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-        <TextField fx:id="LastName" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-        <TextField fx:id="ContactPhone" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-        <TextField fx:id="Email" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-        <TextField fx:id="DateOfLatestCredentialsStatus" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-        <TextField fx:id="DateOfHire" GridPane.columnIndex="2" GridPane.rowIndex="9" />
-        <ComboBox fx:id="Credentials" prefHeight="31.0" prefWidth="349.0" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-        <Button id="submit" fx:id="submit" mnemonicParsing="false" onAction="#submit" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="11" />
-        <ComboBox fx:id="Status" prefHeight="31.0" prefWidth="330.0" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+        <Text fx:id="bannerId" fill="#dcc404" style="-fx-font-weight: bold"  strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
+        <Text fx:id="password" fill="#dcc404" style="-fx-font-weight: bold" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
+        <Text fx:id="firstName" fill="#dcc404" style="-fx-font-weight: bold" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
+        <Text fx:id="lastName" fill="#dcc404" style="-fx-font-weight: bold" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" />
+        <Text fx:id="contactPhone" fill="#dcc404" style="-fx-font-weight: bold" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" />
+        <Text fx:id="email" fill="#dcc404" style="-fx-font-weight: bold" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" />
+        <Text fx:id="credentials" fill="#dcc404" style="-fx-font-weight: bold" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" />
+        <Text fx:id="dateOfLatestCredentialsStatus" fill="#dcc404" style="-fx-font-weight: bold" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="8" />
+        <Text fx:id="dateOfHire" fill="#dcc404" style="-fx-font-weight: bold" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="9" />
+        <Text fx:id="status" fill="#dcc404" style="-fx-font-weight: bold" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" />
+        <TextField fx:id="BannerId" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+        <TextField fx:id="Password" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+        <TextField fx:id="FirstName" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+        <TextField fx:id="LastName" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+        <TextField fx:id="Email" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+        <TextField fx:id="DateOfLatestCredentialsStatus" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+        <TextField fx:id="DateOfHire" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+        <ComboBox fx:id="Credentials" prefHeight="31.0" prefWidth="349.0" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+        <Button id="submit" fx:id="submit" mnemonicParsing="false" onAction="#submit" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="11" />
+        <ComboBox fx:id="Status" prefHeight="31.0" prefWidth="330.0" GridPane.columnIndex="3" GridPane.rowIndex="10" />
         <Text fx:id="alertMessage" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+      <GridPane GridPane.columnIndex="3" GridPane.rowIndex="5">
+        <columnConstraints>
+          <ColumnConstraints minWidth="57.0" prefWidth="57.0" />
+          <ColumnConstraints minWidth="10.0" prefWidth="10.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+
+          <TextField fx:id="CountryCode" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+          <TextField fx:id="ContactPhone" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+          <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" - " GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+      </GridPane>
     </children>
 </GridPane>
