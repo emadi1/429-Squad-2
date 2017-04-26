@@ -15,10 +15,7 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.UnsupportedEncodingException;
-import java.security.AlgorithmParameters;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
+import java.security.*;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.InvalidParameterSpecException;
 import java.util.Base64;
@@ -28,6 +25,8 @@ import javafx.scene.text.Text;
 import models.Worker;
 import models.WorkerCollection;
 import utilities.Core;
+import utilities.PWEncrypt;
+
 import java.net.URL;
 import java.util.*;
 
@@ -63,15 +62,9 @@ public class AddWorkerViewController implements Initializable {
     @FXML private Button submit;
     @FXML private Text alertMessage;
 
-    Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-    byte[] salt = new String("12345678").getBytes();
-    int keyLength = 128;
-    int iterations = 40000;
-    String masterPassword = "thisisnotsafe";
-    SecretKeySpec key = createKey(masterPassword.toCharArray(), salt, iterations, keyLength);
+    private PWEncrypt pwEncrypt = PWEncrypt.getInstance();
 
-
-    public AddWorkerViewController() throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeySpecException {
+    public AddWorkerViewController() throws GeneralSecurityException {
     }
 
     @Override
@@ -121,7 +114,7 @@ public class AddWorkerViewController implements Initializable {
         Status.setValue(lang.getProperty("Active"));
         Status.setItems(statusList);
     }
-    public void submit(ActionEvent event) throws IllegalBlockSizeException, BadPaddingException, InvalidParameterSpecException, InvalidKeyException, UnsupportedEncodingException {
+    public void submit(ActionEvent event) throws GeneralSecurityException, UnsupportedEncodingException {
 
         Properties prop = new Properties();
         WorkerCollection workerCollection = new WorkerCollection();
@@ -168,7 +161,7 @@ public class AddWorkerViewController implements Initializable {
         if (count == 0) {
             prop.put(Status.getId(), Status.getSelectionModel().getSelectedItem());
             prop.put(Credentials.getId(), Credentials.getSelectionModel().getSelectedItem());
-            prop.put("Password", encrypt(Password.getText(), key, cipher));
+            prop.put("Password", pwEncrypt.encryptKicker(Password.getText()));
             Worker newWorker = new Worker(prop);
             newWorker.insert();
             alertMessage.setText(lang.getProperty("addWorkerSuccess"));
@@ -177,28 +170,5 @@ public class AddWorkerViewController implements Initializable {
         for (TextField t : textFieldList) t.clear();
         Credentials.setValue(lang.getProperty("Ordinary"));
         Status.setValue(lang.getProperty("Active"));
-    }
-
-
-    private static SecretKeySpec createKey (char[] password, byte[] salt, int iteration, int keyLength) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512");
-        PBEKeySpec keySpec = new PBEKeySpec(password, salt, iteration, keyLength);
-        SecretKey tempKey = keyFactory.generateSecret(keySpec);
-        return new SecretKeySpec(tempKey.getEncoded(), "AES");
-    }
-
-
-    private static String encrypt(String unencryptedPass, SecretKeySpec key, Cipher cipher) throws InvalidKeyException, InvalidParameterSpecException, UnsupportedEncodingException, BadPaddingException, IllegalBlockSizeException {
-        cipher.init(Cipher.ENCRYPT_MODE, key);
-        AlgorithmParameters parameters = cipher.getParameters();
-        IvParameterSpec ivParameterSpec = parameters.getParameterSpec(IvParameterSpec.class);
-        byte[] cryptoText = cipher.doFinal(unencryptedPass.getBytes("UTF-8"));
-        byte[] iv = ivParameterSpec.getIV();
-        return base64Encode(iv) + ":" + base64Encode(cryptoText);
-    }
-
-
-    private static String base64Encode(byte[] bytes) {
-        return Base64.getEncoder().encodeToString(bytes);
     }
 }

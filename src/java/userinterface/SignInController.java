@@ -19,20 +19,19 @@ import javafx.stage.Stage;
 import models.Worker;
 import models.WorkerCollection;
 import utilities.Core;
+import utilities.PWEncrypt;
+
 import javax.crypto.*;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
-import java.security.InvalidAlgorithmParameterException;
+import java.security.*;
 import java.util.Base64;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
-import java.security.AlgorithmParameters;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.InvalidParameterSpecException;
 import java.util.Properties;
@@ -57,13 +56,9 @@ public class SignInController implements Initializable {
     private Core core = Core.getInstance();
     private Properties lang = core.getLang();
 
-    Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-    byte[] salt = new String("12345678").getBytes();
-    int keyLength = 128;
-    int iterations = 40000;
-    String masterPassword = "thisisnotsafe";
+    private PWEncrypt pwEncrypt = PWEncrypt.getInstance();
 
-    public SignInController() throws NoSuchPaddingException, NoSuchAlgorithmException {
+    public SignInController() throws GeneralSecurityException {
 
     }
 
@@ -85,7 +80,7 @@ public class SignInController implements Initializable {
         });
     }
 
-    public void signIn(ActionEvent actionEvent) throws IOException, InvalidKeySpecException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidParameterSpecException, InvalidKeyException, InvalidAlgorithmParameterException {
+    public void signIn(ActionEvent actionEvent) throws IOException, GeneralSecurityException {
         if (bannerId.getText().equals("") || password.getText().equals(""))
             alertMessage.setText(lang.getProperty("completeFields"));
         if (bannerId.getText().length() != 9 || !Core.isNumeric(bannerId.getText()))
@@ -94,15 +89,8 @@ public class SignInController implements Initializable {
             // Query DB to create worker object.
             WorkerCollection workerCollection = new WorkerCollection();
             Worker worker = (Worker)workerCollection.signInWorker(bannerId.getText()).elementAt(0);
-//            String pw = (String)worker.getState("Password");
 
-            SecretKeySpec key = createKey(masterPassword.toCharArray(), salt, iterations, keyLength);
-            String pw = decrypt((String)worker.getState("Password"), key, cipher);
-
-            System.out.println("Original: " + password.getText());
-            String encryptedPassword = encrypt(password.getText(), key, cipher);
-            System.out.println("Encrypted: " + encryptedPassword);
-            System.out.println("Decrypted: " + decrypt(encryptedPassword, key, cipher));
+            String pw = pwEncrypt.decryptKicker((String)worker.getState("Password"));
 
             if (!pw.equals(password.getText()))
                 alertMessage.setText(lang.getProperty("invalidPassword"));
@@ -212,40 +200,5 @@ public class SignInController implements Initializable {
 
             passwordPlain.textProperty().bindBidirectional(password.textProperty());
         }
-    }
-
-
-    private static SecretKeySpec createKey (char[] password, byte[] salt, int iteration, int keyLength) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512");
-        PBEKeySpec keySpec = new PBEKeySpec(password, salt, iteration, keyLength);
-        SecretKey tempKey = keyFactory.generateSecret(keySpec);
-        return new SecretKeySpec(tempKey.getEncoded(), "AES");
-    }
-
-
-    private static String encrypt(String unencryptedPass, SecretKeySpec key, Cipher cipher) throws InvalidKeyException, InvalidParameterSpecException, UnsupportedEncodingException, BadPaddingException, IllegalBlockSizeException {
-        cipher.init(Cipher.ENCRYPT_MODE, key);
-        AlgorithmParameters parameters = cipher.getParameters();
-        IvParameterSpec ivParameterSpec = parameters.getParameterSpec(IvParameterSpec.class);
-        byte[] cryptoText = cipher.doFinal(unencryptedPass.getBytes("UTF-8"));
-        byte[] iv = ivParameterSpec.getIV();
-        return base64Encode(iv) + ":" + base64Encode(cryptoText);
-    }
-
-
-    private static String base64Encode(byte[] bytes) {
-        return Base64.getEncoder().encodeToString(bytes);
-    }
-
-
-    private static String decrypt(String string, SecretKeySpec key, Cipher cipher) throws IOException, InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
-        String iv = string.split(":")[0];
-        String property = string.split(":")[1];
-        cipher.init(Cipher.DECRYPT_MODE, key, new IvParameterSpec(base64Decode(iv)));
-        return new String(cipher.doFinal(base64Decode(property)), "UTF-8");
-    }
-
-    private static byte[] base64Decode(String property) throws IOException {
-        return Base64.getDecoder().decode(property);
     }
 }

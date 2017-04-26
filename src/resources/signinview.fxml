@@ -44,15 +44,15 @@
                 <Text fx:id="alertMessage" textAlignment="CENTER" wrappingWidth="335.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                 <TextField id="bannerId" fx:id="bannerId" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                 <Button fx:id="signIn" mnemonicParsing="false" onAction="#signIn" prefHeight="31.0" prefWidth="123.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                <!--<Button fx:id="skip" mnemonicParsing="false" onAction="#skipAsAdmin" text="Skip as Admin" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                <Button fx:id="skip" mnemonicParsing="false" onAction="#skipAsAdmin" text="Skip as Admin" GridPane.columnIndex="2" GridPane.rowIndex="3">
                    <font>
                       <Font size="12.0" />
                    </font></Button>
-                <Button fx:id="skipAsOrdinary" mnemonicParsing="false" onAction="#skipAsOrdinary" text="Skip as Ordinary" GridPane.columnIndex="2" GridPane.rowIndex="3">
-                   <font>
-                      <Font size="12.0" />
-                   </font>
-                </Button>-->
+                <!--<Button fx:id="skipAsOrdinary" mnemonicParsing="false" onAction="#skipAsOrdinary" text="Skip as Ordinary" GridPane.columnIndex="2" GridPane.rowIndex="3">-->
+                   <!--<font>-->
+                      <!--<Font size="12.0" />-->
+                   <!--</font>-->
+                <!--</Button>-->
                 <PasswordField fx:id="password" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                 <TextField fx:id="passwordPlain" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                 <Circle fx:id="pwUnhide" fill="DODGERBLUE" opacity="0.25" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="2">

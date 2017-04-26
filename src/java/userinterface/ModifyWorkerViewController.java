@@ -1,4 +1,5 @@
 package userinterface;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 import models.Worker;
 import utilities.Core;
+import utilities.PWEncrypt;
 
 import javax.crypto.*;
 import javax.crypto.spec.IvParameterSpec;
@@ -19,10 +21,7 @@ import javax.crypto.spec.SecretKeySpec;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
-import java.security.AlgorithmParameters;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
+import java.security.*;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.InvalidParameterSpecException;
 import java.util.Base64;
@@ -49,14 +48,9 @@ public class ModifyWorkerViewController implements Initializable{
     @FXML private ComboBox<String> Status, Credentials;
     @FXML private Button submit;
 
-    Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-    byte[] salt = new String("12345678").getBytes();
-    int keyLength = 128;
-    int iterations = 40000;
-    String masterPassword = "thisisnotsafe";
-    SecretKeySpec key = createKey(masterPassword.toCharArray(), salt, iterations, keyLength);
+    private PWEncrypt pwEncrypt = PWEncrypt.getInstance();
 
-    public ModifyWorkerViewController() throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeySpecException {
+    public ModifyWorkerViewController() throws GeneralSecurityException {
     }
 
     @Override
@@ -76,7 +70,7 @@ public class ModifyWorkerViewController implements Initializable{
         BannerId.setText(core.getModWorker().getBannerId());
         BannerId.setDisable(true);
         try {
-            Password.setText(decrypt(core.getModWorker().getPassword(), key, cipher));
+            Password.setText(pwEncrypt.decryptKicker(core.getModWorker().getPassword()));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -100,7 +94,7 @@ public class ModifyWorkerViewController implements Initializable{
         try {
             alertMessage.setText("");
             Worker worker = core.getModWorker();
-            worker.setPassword(encrypt(Password.getText(), key, cipher));
+            worker.setPassword(pwEncrypt.encryptKicker(Password.getText()));
             worker.setFirstName(FirstName.getText());
             worker.setLastName(LastName.getText());
             worker.setContactPhone(ContactPhone.getText());
@@ -124,40 +118,5 @@ public class ModifyWorkerViewController implements Initializable{
         } catch (Exception e) {
             alertMessage.setText(language.getProperty("modifyWorkerFail"));
         }
-    }
-
-
-    private static SecretKeySpec createKey (char[] password, byte[] salt, int iteration, int keyLength) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512");
-        PBEKeySpec keySpec = new PBEKeySpec(password, salt, iteration, keyLength);
-        SecretKey tempKey = keyFactory.generateSecret(keySpec);
-        return new SecretKeySpec(tempKey.getEncoded(), "AES");
-    }
-
-
-    private static String encrypt(String unencryptedPass, SecretKeySpec key, Cipher cipher) throws InvalidKeyException, InvalidParameterSpecException, UnsupportedEncodingException, BadPaddingException, IllegalBlockSizeException {
-        cipher.init(Cipher.ENCRYPT_MODE, key);
-        AlgorithmParameters parameters = cipher.getParameters();
-        IvParameterSpec ivParameterSpec = parameters.getParameterSpec(IvParameterSpec.class);
-        byte[] cryptoText = cipher.doFinal(unencryptedPass.getBytes("UTF-8"));
-        byte[] iv = ivParameterSpec.getIV();
-        return base64Encode(iv) + ":" + base64Encode(cryptoText);
-    }
-
-
-    private static String base64Encode(byte[] bytes) {
-        return Base64.getEncoder().encodeToString(bytes);
-    }
-
-
-    private static String decrypt(String string, SecretKeySpec key, Cipher cipher) throws IOException, InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
-        String iv = string.split(":")[0];
-        String property = string.split(":")[1];
-        cipher.init(Cipher.DECRYPT_MODE, key, new IvParameterSpec(base64Decode(iv)));
-        return new String(cipher.doFinal(base64Decode(property)), "UTF-8");
-    }
-
-    private static byte[] base64Decode(String property) throws IOException {
-        return Base64.getDecoder().decode(property);
     }
 }
