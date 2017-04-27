@@ -1,5 +1,6 @@
 package userinterface;
 
+import database.DBKey;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,6 +10,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 import javafx.fxml.FXML;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import models.Worker;
 import utilities.Core;
@@ -43,7 +45,7 @@ public class ModifyWorkerViewController implements Initializable{
 
     @FXML private Text bannerId, password, firstName, lastName, contactPhone, email, alertMessage;
     @FXML private Text credentials, dateOfLatestCredentialsStatus, dateOfHire, status;
-    @FXML private TextField BannerId, Password, FirstName, LastName, ContactPhone;
+    @FXML private TextField BannerId, Password, FirstName, LastName, ContactPhone, CountryCode;
     @FXML private TextField Email, DateOfLatestCredentialsStatus, DateOfHire;
     @FXML private ComboBox<String> Status, Credentials;
     @FXML private Button submit;
@@ -76,7 +78,8 @@ public class ModifyWorkerViewController implements Initializable{
         }
         FirstName.setText(core.getModWorker().getFirstName());
         LastName.setText(core.getModWorker().getLastName());
-        ContactPhone.setText(core.getModWorker().getContactPhone());
+        ContactPhone.setText(core.getModWorker().getContactPhone().substring(4));
+        CountryCode.setText(core.getModWorker().getContactPhone().substring(0,3));
         Email.setText(core.getModWorker().getEmail());
         Credentials.setItems(credentialsList);
         Status.setItems(statusList);
@@ -93,11 +96,28 @@ public class ModifyWorkerViewController implements Initializable{
     public void submit(ActionEvent event) {
         try {
             alertMessage.setText("");
+
+            String phoneNum = ContactPhone.getText();
             Worker worker = core.getModWorker();
+
+            if (phoneNum.contains("-")) {
+                phoneNum = phoneNum.replaceAll("-", "");
+            }
+
+            phoneNum = CountryCode.getText() + "-" + phoneNum;
+
             worker.setPassword(pwEncrypt.encryptKicker(Password.getText()));
             worker.setFirstName(FirstName.getText());
             worker.setLastName(LastName.getText());
-            worker.setContactPhone(ContactPhone.getText());
+//            worker.setContactPhone(ContactPhone.getText());
+
+            if (phoneNum.length() != 14 || phoneNum.charAt(3) != '-' ||
+                    !Core.isNumeric(phoneNum.substring(0, 3)) || !Core.isNumeric(phoneNum.substring(5))) {
+                alertMessage.setText(language.getProperty("invalidPhoneFormat"));
+                alertMessage.setFill(Paint.valueOf("dcc404"));
+                return;
+            } else worker.setContactPhone(phoneNum);
+
             worker.setEmail(Email.getText());
             worker.setDateOfLatestCredentialsStatus(DateOfLatestCredentialsStatus.getText());
             worker.setDateOfHire(DateOfHire.getText());
@@ -115,8 +135,10 @@ public class ModifyWorkerViewController implements Initializable{
             else worker.setStatus("Inactive");
             worker.update();
             alertMessage.setText(language.getProperty("modifyWorkerSuccess"));
+            alertMessage.setFill(Paint.valueOf("dcc404"));
         } catch (Exception e) {
             alertMessage.setText(language.getProperty("modifyWorkerFail"));
+            alertMessage.setFill(Paint.valueOf("dcc404"));
         }
     }
 }

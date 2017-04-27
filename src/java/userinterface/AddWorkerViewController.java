@@ -21,6 +21,7 @@ import java.security.spec.InvalidParameterSpecException;
 import java.util.Base64;
 
 import javafx.fxml.FXML;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import models.Worker;
@@ -140,12 +141,14 @@ public class AddWorkerViewController implements Initializable {
                 || DateOfLatestCredentialsStatus.getText().charAt(2) != '-'
                 || DateOfLatestCredentialsStatus.getText().charAt(5) != '-') {
             alertMessage.setText(lang.getProperty("invalidDateFormat"));
+            alertMessage.setFill(Paint.valueOf("dcc404"));
             return;
         }
 
         for (TextField textField : textFieldList) {
             if (textField.getText().equals("")) {
                 alertMessage.setText(lang.getProperty("completeFields"));
+                alertMessage.setFill(Paint.valueOf("dcc404"));
                 return;
             } else prop.put(textField.getId(), textField.getText());
         }
@@ -177,6 +180,7 @@ public class AddWorkerViewController implements Initializable {
         if (phoneNum.length() != 14 || phoneNum.charAt(3) != '-' ||
                 !Core.isNumeric(phoneNum.substring(0, 3)) || !Core.isNumeric(phoneNum.substring(5))) {
             alertMessage.setText(lang.getProperty("invalidPhoneFormat"));
+            alertMessage.setFill(Paint.valueOf("dcc404"));
             return;
         } else prop.put(DBKey.CONTACT_PHONE, phoneNum);
 
@@ -186,7 +190,11 @@ public class AddWorkerViewController implements Initializable {
             Worker newWorker = new Worker(prop);
             newWorker.insert();
             alertMessage.setText(lang.getProperty("addWorkerSuccess"));
-        } else alertMessage.setText(lang.getProperty("existingBannerId") + prop.getProperty(DBKey.BANNER_ID));
+            alertMessage.setFill(Paint.valueOf("dcc404"));
+        } else {
+            alertMessage.setText(lang.getProperty("existingBannerId") + prop.getProperty(DBKey.BANNER_ID));
+            alertMessage.setFill(Paint.valueOf("dcc404"));
+        }
 
         for (TextField t : textFieldList) t.clear();
 
