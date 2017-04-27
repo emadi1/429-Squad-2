@@ -1,5 +1,6 @@
 package userinterface;
 
+import database.DBKey;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -55,8 +56,9 @@ public class SignInController implements Initializable {
     private ObservableList<String> languages = FXCollections.observableArrayList("en_US", "fr_FR");
     private Core core = Core.getInstance();
     private Properties lang = core.getLang();
-
     private PWEncrypt pwEncrypt = PWEncrypt.getInstance();
+    private WorkerCollection workerCollection = new WorkerCollection();
+    private final String image = "https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png";
 
     public SignInController() throws GeneralSecurityException {
 
@@ -75,7 +77,7 @@ public class SignInController implements Initializable {
         bannerId.setPromptText(lang.getProperty("BannerId"));
         System.out.println(password.getStyle());
         signIn.setText(lang.getProperty("SignIn"));
-        pwUnhide.hoverProperty().addListener(l->{
+        pwUnhide.hoverProperty().addListener(l -> {
             unhidePassword();
         });
     }
@@ -87,15 +89,10 @@ public class SignInController implements Initializable {
             alertMessage.setText(lang.getProperty("invalidBannerIdFormat"));
         else {
             // Query DB to create worker object.
-            WorkerCollection workerCollection = new WorkerCollection();
-            Worker worker = (Worker)workerCollection.signInWorker(bannerId.getText()).elementAt(0);
-
-            String pw = pwEncrypt.decryptKicker((String)worker.getState("Password"));
-
-            if (!pw.equals(password.getText()))
-                alertMessage.setText(lang.getProperty("invalidPassword"));
-            if (pw.equals(password.getText())) {
-                try {
+            try {
+                Worker worker = (Worker) workerCollection.signInWorker(bannerId.getText()).elementAt(0);
+                String pw = pwEncrypt.decryptKicker((String) worker.getState(DBKey.PASSWORD));
+                if (pw.equals(password.getText())) {
                     password.clear();
                     core.setUser(worker);
                     core.setLanguage(language.getSelectionModel().getSelectedItem());
@@ -103,17 +100,19 @@ public class SignInController implements Initializable {
                     Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("mainview.fxml"));
                     Stage primaryStage = new Stage();
                     Scene scene = new Scene(root);
-                    primaryStage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
+                    primaryStage.getIcons().add(new Image(image));
                     primaryStage.setScene(scene);
                     primaryStage.setTitle(lang.getProperty("welcome"));
                     primaryStage.setResizable(false);
                     core.getLastStage().close();
                     core.setStage(primaryStage);
                     primaryStage.show();
-                } catch (Exception e) {
-                    System.out.println("Can't open new window.");
-                }
+                } else alertMessage.setText(lang.getProperty("invalidPassword"));
+            } catch (Exception e) {
+                alertMessage.setText(lang.getProperty("noWorker"));
+                System.out.println("Can't open new window.");
             }
+
         }
     }
 
@@ -182,22 +181,18 @@ public class SignInController implements Initializable {
 
     private void unhidePassword() {
 
+        // Bind the textField and passwordField text values bidirectionally.
+        passwordPlain.textProperty().bindBidirectional(password.textProperty());
         passwordPlain.setManaged(true);
         passwordPlain.setVisible(true);
-
         password.setManaged(false);
         password.setVisible(false);
 
-        // Bind the textField and passwordField text values bidirectionally.
-        passwordPlain.textProperty().bindBidirectional(password.textProperty());
-
-        if (! pwUnhide.isHover()) {
+        if (!pwUnhide.isHover()) {
             passwordPlain.setManaged(false);
             passwordPlain.setVisible(false);
-
             password.setManaged(true);
             password.setVisible(true);
-
             passwordPlain.textProperty().bindBidirectional(password.textProperty());
         }
     }

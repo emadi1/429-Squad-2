@@ -86,6 +86,7 @@ public class AddBookViewController implements Initializable {
         textFieldList.add(Notes);
         Status.setItems(statusList);
         Status.setValue(lang.getProperty("Active"));
+        Status.setDisable(true);
     }
 
     public void submit(ActionEvent actionEvent) {

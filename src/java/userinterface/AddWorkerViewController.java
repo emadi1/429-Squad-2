@@ -111,12 +111,12 @@ public class AddWorkerViewController implements Initializable {
         textFieldList.add(LastName);
         textFieldList.add(ContactPhone);
         textFieldList.add(Email);
+        textFieldList.add(CountryCode);
         Credentials.setValue(lang.getProperty("Ordinary"));
         Credentials.setItems(credentialsList);
-        textFieldList.add(DateOfLatestCredentialsStatus);
-        textFieldList.add(DateOfHire);
         Status.setValue(lang.getProperty("Active"));
         Status.setItems(statusList);
+        Status.setDisable(true);
     }
     public void submit(ActionEvent event) throws GeneralSecurityException, UnsupportedEncodingException {
 
@@ -159,6 +159,19 @@ public class AddWorkerViewController implements Initializable {
             String credYear = DateOfLatestCredentialsStatus.getText().substring(6);
             prop.setProperty("DateOfHire", hireDay + "-" + hireMonth + "-" + hireYear);
             prop.setProperty("DateOfLatestCredentialsStatus", credDay + "-" + credMonth + "-" + credYear);
+            if (Credentials.getValue().equals(lang.getProperty("Administrator")))
+                prop.put(DBKey.CREDENTIALS, "Administrator");
+            else prop.put(DBKey.CREDENTIALS, "Ordinary");
+            if (Status.getValue().equals(lang.getProperty("Active")))
+                prop.put(DBKey.STATUS, "Active");
+            else prop.put(DBKey.STATUS, "Inactive");
+        } else {
+            if (Credentials.getValue().equals(lang.getProperty("Administrator")))
+                prop.put(DBKey.CREDENTIALS, "Administrator");
+            else prop.put(DBKey.CREDENTIALS, "Ordinary");
+            if (Status.getValue().equals(lang.getProperty("Active")))
+                prop.put(DBKey.STATUS, "Active");
+            else prop.put(DBKey.STATUS, "Inactive");
         }
 
         if (phoneNum.length() != 14 || phoneNum.charAt(3) != '-' ||
@@ -169,8 +182,6 @@ public class AddWorkerViewController implements Initializable {
 
         int count = workerCollection.findWorkersByBannerId(prop.getProperty(DBKey.BANNER_ID)).size();
         if (count == 0) {
-            prop.put(Status.getId(), Status.getSelectionModel().getSelectedItem());
-            prop.put(Credentials.getId(), Credentials.getSelectionModel().getSelectedItem());
             prop.put("Password", pwEncrypt.encryptKicker(Password.getText()));
             Worker newWorker = new Worker(prop);
             newWorker.insert();
@@ -178,6 +189,7 @@ public class AddWorkerViewController implements Initializable {
         } else alertMessage.setText(lang.getProperty("existingBannerId") + prop.getProperty(DBKey.BANNER_ID));
 
         for (TextField t : textFieldList) t.clear();
+
         Credentials.setValue(lang.getProperty("Ordinary"));
         Status.setValue(lang.getProperty("Active"));
     }

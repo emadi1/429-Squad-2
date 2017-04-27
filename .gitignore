@@ -234,3 +234,4 @@ ErrorLog\.txt
 /.idea/
 /dbConfig.ini
 /src/java/Test.java
+Main.iml

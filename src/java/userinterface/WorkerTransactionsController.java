@@ -117,7 +117,7 @@ public class WorkerTransactionsController extends TransactionController {
                     Worker worker = row.getItem();
                     core.setModWorker(worker);
                     System.out.println(core.getUser().getCredentials());
-                    if (core.getUser().getCredentials().equals("Administrator")) {
+                    if (core.getUser().getCredentials().equals(language.getProperty("Administrator"))) {
                         try {
                             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifyworkerview.fxml"));
                             Stage stage = new Stage();

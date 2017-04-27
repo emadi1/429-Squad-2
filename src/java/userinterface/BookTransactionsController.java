@@ -127,7 +127,7 @@ public class BookTransactionsController extends TransactionController {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
                     Book book = row.getItem();
                     core.setModBook(book);
-                    if (core.getUser().getCredentials().equals("Administrator")) {
+                    if (core.getUser().getCredentials().equals(language.getProperty("Administrator"))) {
                         try {
                             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifybookview.fxml"));
                             Stage stage = new Stage();

@@ -179,6 +179,7 @@ public class Core {
             library.setProperty("invalidPassword", "Invalid Password.");
             library.setProperty("invalidCredentials", "Invalid Credentials");
             library.setProperty("invalidPhoneFormat", "Phone must be in format: '###-##########'");
+            library.setProperty("noWorker", "No worker with that Banner ID");
 
             //Rental Alerts
             library.setProperty("invalidBorrowerStatus", "Borrower Status is 'Delinquent.'");
@@ -333,6 +334,7 @@ public class Core {
             library.setProperty("addWorkerFail", "N'a pas pu ajouter de l'ouvrier.");
             library.setProperty("invalidCredentials", "Les informations d'identification invalides.");
             library.setProperty("invalidPhoneFormat", "Format de téléphone invalide"); //#######################################CHECK
+            library.setProperty("noWorker", "");
 
             // Rental Alerts
             library.setProperty("invalidBorrowerStatus", "Statut d'emprunteur invalide"); //#######################################CHECK

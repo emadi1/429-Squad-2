@@ -123,7 +123,7 @@ public class StudentBorrowerTransactionsController extends TransactionController
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
                     StudentBorrower studentBorrower = row.getItem();
                     core.setModStudentBorrower(studentBorrower);
-                    if (core.getUser().getCredentials().equals("Administrator")) {
+                    if (core.getUser().getCredentials().equals(language.getProperty("Administrator"))) {
                         try {
                             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifystudentview.fxml"));
                             Stage stage = new Stage();

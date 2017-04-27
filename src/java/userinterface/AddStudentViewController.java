@@ -89,6 +89,7 @@ public class AddStudentViewController extends StudentBorrowerTransactionsControl
         BorrowerStatus.setItems(standingList);
         Status.setValue(language.getProperty("Active"));
         Status.setItems(statusList);
+        Status.setDisable(true);
     }
 
     public void submit(ActionEvent event) {
