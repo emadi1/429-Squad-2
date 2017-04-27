@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import models.StudentBorrower;
 import utilities.Core;
@@ -35,7 +36,7 @@ public class ModifyStudentViewController implements Initializable {
     @FXML private Text notes;
     @FXML private Text borrowerStatus;
     @FXML private Text status;
-    @FXML private TextField ContactPhone;
+    @FXML private TextField ContactPhone, CountryCode;
     @FXML private ComboBox<String> Status;
     @FXML private TextField Email;
     @FXML private Button submit;
@@ -55,7 +56,10 @@ public class ModifyStudentViewController implements Initializable {
         Notes.setText(core.getModStudentBorrower().getNotes());
         FirstName.setText(core.getModStudentBorrower().getFirstName());
         LastName.setText(core.getModStudentBorrower().getLastName());
-        ContactPhone.setText(core.getModStudentBorrower().getContactPhone());
+//        ContactPhone.setText(core.getModStudentBorrower().getContactPhone());
+        ContactPhone.setText(core.getModStudentBorrower().getContactPhone().substring(4));
+        CountryCode.setText(core.getModStudentBorrower().getContactPhone().substring(0,3));
+
         Email.setText(core.getModStudentBorrower().getEmail());
         BorrowerStatus.setValue(core.getModStudentBorrower().getBorrowerStatus());
         DateOfLatestBorrowerStatus.setText(core.getModStudentBorrower().getDateOfLatestBorrowerStatus());
@@ -79,10 +83,25 @@ public class ModifyStudentViewController implements Initializable {
     public void submit(ActionEvent actionEvent) {
         alertMessage.setText("");
         StudentBorrower studentBorrower = core.getModStudentBorrower();
+        String phoneNum = ContactPhone.getText();
+
+        if (phoneNum.contains("-")) {
+            phoneNum = phoneNum.replaceAll("-", "");
+        }
+
+        phoneNum = CountryCode.getText() + "-" + phoneNum;
+
+        if (phoneNum.length() != 14 || phoneNum.charAt(3) != '-' ||
+                !Core.isNumeric(phoneNum.substring(0, 3)) || !Core.isNumeric(phoneNum.substring(5))) {
+            alertMessage.setText(language.getProperty("invalidPhoneFormat"));
+            alertMessage.setFill(Paint.valueOf("dcc404"));
+            return;
+        } else studentBorrower.setContactPhone(phoneNum);
+
         studentBorrower.setNotes(Notes.getText());
         studentBorrower.setFirstName(FirstName.getText());
         studentBorrower.setLastName(LastName.getText());
-        studentBorrower.setContactPhone(ContactPhone.getText());
+        studentBorrower.setContactPhone(phoneNum);
         studentBorrower.setEmail(Email.getText());
         studentBorrower.setBorrowerStatus(BorrowerStatus.getValue());
         studentBorrower.setDateOfLatestBorrowerStatus(DateOfLatestBorrowerStatus.getText());

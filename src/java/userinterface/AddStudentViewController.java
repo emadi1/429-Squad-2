@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import models.StudentBorrower;
 import models.StudentBorrowerCollection;
@@ -40,7 +41,7 @@ public class AddStudentViewController extends StudentBorrowerTransactionsControl
     @FXML private ComboBox<String> Status;
     @FXML private ComboBox<String> BorrowerStatus;
     @FXML private TextField Email;
-    @FXML private TextField ContactPhone;
+    @FXML private TextField ContactPhone, CountryCode;
     @FXML private TextField DateOfRegistration;
     @FXML private TextField FirstName;
     @FXML private TextField BannerId;
@@ -78,6 +79,7 @@ public class AddStudentViewController extends StudentBorrowerTransactionsControl
         DateOfLatestBorrowerStatus.setDisable(true);
         DateOfRegistration.setDisable(true);
         Notes.setPromptText(language.getProperty("Notes"));
+        CountryCode.setPromptText("Country");
 
         // Add TextFields to ArrayList
         textFieldList = new ArrayList<>();
@@ -97,6 +99,26 @@ public class AddStudentViewController extends StudentBorrowerTransactionsControl
         Properties prop = new Properties();
         StudentBorrowerCollection studentBorrowerCollection = new StudentBorrowerCollection();
 
+        String phoneNum = ContactPhone.getText();
+
+        if (phoneNum.contains("-")) {
+            phoneNum = phoneNum.replaceAll("-", "");
+        }
+
+        phoneNum = CountryCode.getText() + "-" + phoneNum;
+
+        if (phoneNum.length() != 14 || phoneNum.charAt(3) != '-' ||
+                !Core.isNumeric(phoneNum.substring(0, 3)) || !Core.isNumeric(phoneNum.substring(5))) {
+            alertMessage.setText(language.getProperty("invalidPhoneFormat"));
+            alertMessage.setFill(Paint.valueOf("dcc404"));
+            return;
+        } //else prop.put(DBKey.CONTACT_PHONE, phoneNum);
+
+        if (BannerId.getText().length() != 9) {
+            alertMessage.setText(language.getProperty("invalidBannerIdLength"));
+            return;
+        }
+
         if (BannerId.getText().length() != 9 || !isNumeric(BannerId.getText())) {
             alertMessage.setText(language.getProperty("invalidBannerIdFormat"));
             return;
@@ -108,6 +130,8 @@ public class AddStudentViewController extends StudentBorrowerTransactionsControl
                 return;
             } prop.put(textField.getId(), textField.getText());
         }
+
+        prop.put(DBKey.CONTACT_PHONE, phoneNum);
 
         if (DateOfLatestBorrowerStatus.getText().length() != 10 || DateOfRegistration.getText().length() != 10 ||
                 DateOfLatestBorrowerStatus.getText().charAt(2) != '-' || DateOfRegistration.getText().charAt(2) != '-' ||
