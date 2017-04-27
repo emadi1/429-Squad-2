@@ -39,8 +39,14 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Text fx:id="banner" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
-                <Text fx:id="pw" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                <Text fx:id="banner" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin></Text>
+                <Text fx:id="pw" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin></Text>
                 <Text fx:id="alertMessage" textAlignment="CENTER" wrappingWidth="335.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                 <TextField id="bannerId" fx:id="bannerId" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                 <Button fx:id="signIn" mnemonicParsing="false" onAction="#signIn" prefHeight="31.0" prefWidth="123.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
