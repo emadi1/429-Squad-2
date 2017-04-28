@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userinterface.AddBookViewController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: darkgreen" prefHeight="450.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userinterface.AddBookViewController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="6.0" prefWidth="6.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="213.0" />
@@ -36,59 +36,59 @@
       <RowConstraints maxHeight="30.0" minHeight="1.0" prefHeight="23.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Text fx:id="barcode" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+        <Text fx:id="barcode" fill="#dcc404" style="-fx-font-weight: bold" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets right="5.0" />
          </GridPane.margin></Text>
-        <Text fx:id="title" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+        <Text fx:id="title" fill="#dcc404" style="-fx-font-weight: bold" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets right="5.0" />
          </GridPane.margin></Text>
-        <Text fx:id="author1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+        <Text fx:id="author1" fill="#dcc404" style="-fx-font-weight: bold" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets right="5.0" />
          </GridPane.margin></Text>
-        <Text fx:id="author2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+        <Text fx:id="author2" fill="#dcc404" style="-fx-font-weight: bold" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets right="5.0" />
          </GridPane.margin></Text>
-        <Text fx:id="author3" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+        <Text fx:id="author3" fill="#dcc404" style="-fx-font-weight: bold" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
          <GridPane.margin>
             <Insets right="5.0" />
          </GridPane.margin></Text>
-        <Text fx:id="author4" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+        <Text fx:id="author4" fill="#dcc404" style="-fx-font-weight: bold" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
          <GridPane.margin>
             <Insets right="5.0" />
          </GridPane.margin></Text>
-        <Text fx:id="publisher" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+        <Text fx:id="publisher" fill="#dcc404" style="-fx-font-weight: bold" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
          <GridPane.margin>
             <Insets right="5.0" />
          </GridPane.margin></Text>
-        <Text fx:id="yearOfPublication" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+        <Text fx:id="yearOfPublication" fill="#dcc404" style="-fx-font-weight: bold" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
          <GridPane.margin>
             <Insets right="5.0" />
          </GridPane.margin></Text>
-        <Text fx:id="isbn" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
+        <Text fx:id="isbn" fill="#dcc404" style="-fx-font-weight: bold" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
          <GridPane.margin>
             <Insets right="5.0" />
          </GridPane.margin></Text>
-        <Text fx:id="bookCondition" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="10">
+        <Text fx:id="bookCondition" fill="#dcc404" style="-fx-font-weight: bold" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="10">
          <GridPane.margin>
             <Insets right="5.0" />
          </GridPane.margin></Text>
-        <Text fx:id="suggestedPrice" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="11">
+        <Text fx:id="suggestedPrice" fill="#dcc404" style="-fx-font-weight: bold" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="11">
          <GridPane.margin>
             <Insets right="5.0" />
          </GridPane.margin></Text>
-        <Text fx:id="notes" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="12">
+        <Text fx:id="notes" fill="#dcc404" style="-fx-font-weight: bold" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="12">
          <GridPane.margin>
             <Insets right="5.0" />
          </GridPane.margin></Text>
-        <Text fx:id="status" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="13">
+        <Text fx:id="status" fill="#dcc404" style="-fx-font-weight: bold" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="13">
          <GridPane.margin>
             <Insets right="5.0" />
          </GridPane.margin></Text>
-        <Text fx:id="alertMessage" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="14">
+        <Text fx:id="alertMessage" fill="#dcc404" style="-fx-font-weight: bold" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="14">
          <GridPane.margin>
             <Insets right="5.0" />
          </GridPane.margin></Text>

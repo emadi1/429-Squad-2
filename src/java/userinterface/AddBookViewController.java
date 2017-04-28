@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import models.Book;
 import models.BookBarcodePrefixCollection;
@@ -101,16 +102,19 @@ public class AddBookViewController implements Initializable {
 
         if (Barcode.getText().length() != 5) {
             alertMessage.setText(lang.getProperty("invalidBarcodeLength"));
+            alertMessage.setFill(Paint.valueOf("dcc404"));
             return;
         }
 
         if (YearOfPublication.getText().length() != 4) {
             alertMessage.setText(lang.getProperty("yearFormat"));
+            alertMessage.setFill(Paint.valueOf("dcc404"));
             return;
         }
 
         if (Title.getText().length() > 64) {
             alertMessage.setText("Title length too large.");
+            alertMessage.setFill(Paint.valueOf("dcc404"));
             return;
         }
 
@@ -118,6 +122,7 @@ public class AddBookViewController implements Initializable {
                 || YearOfPublication.getText().equals("") || ISBN.getText().equals("")
                 || SuggestedPrice.getText().equals("")) {
             alertMessage.setText(lang.getProperty("completeFields"));
+            alertMessage.setFill(Paint.valueOf("dcc404"));
             return;
         } else {
             properties.put(BookCondition.getId(), BookCondition.getSelectionModel().getSelectedItem());
@@ -148,6 +153,10 @@ public class AddBookViewController implements Initializable {
             BookCondition.setValue(lang.getProperty("Good"));
             Status.setValue(lang.getProperty("Active"));
             alertMessage.setText(lang.getProperty("addBookSuccess"));
-        } else alertMessage.setText(lang.getProperty("existingBarcode") + properties.getProperty("Barcode"));
+            alertMessage.setFill(Paint.valueOf("dcc404"));
+        } else {
+            alertMessage.setText(lang.getProperty("existingBarcode") + properties.getProperty("Barcode"));
+            alertMessage.setFill(Paint.valueOf("dcc404"));
+        }
     }
 }

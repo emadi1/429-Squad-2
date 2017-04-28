@@ -116,17 +116,20 @@ public class AddStudentViewController extends StudentBorrowerTransactionsControl
 
         if (BannerId.getText().length() != 9) {
             alertMessage.setText(language.getProperty("invalidBannerIdLength"));
+            alertMessage.setFill(Paint.valueOf("dcc404"));
             return;
         }
 
         if (BannerId.getText().length() != 9 || !isNumeric(BannerId.getText())) {
             alertMessage.setText(language.getProperty("invalidBannerIdFormat"));
+            alertMessage.setFill(Paint.valueOf("dcc404"));
             return;
         } else prop.put(BannerId.getId(), BannerId.getText());
 
         for (TextField textField : textFieldList) {
             if (textField.getText().equals("")) {
                 alertMessage.setText(language.getProperty("completeFields"));
+                alertMessage.setFill(Paint.valueOf("dcc404"));
                 return;
             } prop.put(textField.getId(), textField.getText());
         }
@@ -137,6 +140,7 @@ public class AddStudentViewController extends StudentBorrowerTransactionsControl
                 DateOfLatestBorrowerStatus.getText().charAt(2) != '-' || DateOfRegistration.getText().charAt(2) != '-' ||
                 DateOfLatestBorrowerStatus.getText().charAt(5) != '-' || DateOfRegistration.getText().charAt(5) != '-') {
             alertMessage.setText(language.getProperty("invalidDateFormat"));
+            alertMessage.setFill(Paint.valueOf("dcc404"));
             return;
         } else {
             prop.put(DateOfLatestBorrowerStatus.getId(), DateOfLatestBorrowerStatus.getText());
@@ -162,7 +166,11 @@ public class AddStudentViewController extends StudentBorrowerTransactionsControl
             StudentBorrower newStudentBorrower = new StudentBorrower(prop);
             newStudentBorrower.insert();
             alertMessage.setText(language.getProperty("addStudentSuccess"));
-        } else alertMessage.setText(language.getProperty("existingBannerId") + prop.getProperty(DBKey.BANNER_ID));
+            alertMessage.setFill(Paint.valueOf("dcc404"));
+        } else {
+            alertMessage.setText(language.getProperty("existingBannerId") + prop.getProperty(DBKey.BANNER_ID));
+            alertMessage.setFill(Paint.valueOf("dcc404"));
+        }
 
         for (TextField t : textFieldList) { t.clear(); }
         BannerId.clear();
