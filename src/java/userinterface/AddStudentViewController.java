@@ -174,8 +174,7 @@ public class AddStudentViewController extends StudentBorrowerTransactionsControl
 
         for (TextField t : textFieldList) { t.clear(); }
         BannerId.clear();
-        DateOfRegistration.clear();
-        DateOfLatestBorrowerStatus.clear();
+        CountryCode.clear();
         Notes.clear();
         BorrowerStatus.setValue(language.getProperty("GoodStanding"));
         Status.setValue(language.getProperty("Active"));

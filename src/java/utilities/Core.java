@@ -159,6 +159,7 @@ public class Core {
             library.setProperty("modifyStudentFail", "Failed to modify student borrower.");
             library.setProperty("deleteStudentSuccess", "Student Borrower deleted.");
             library.setProperty("deleteStudentFail", "Failed to delete student borrower.");
+            library.setProperty("noStudent", "No Student exists with that Banner ID");
 
             // Book Alerts
             library.setProperty("invalidBarcodeLength", "Barcode must be 5 digits long.");
@@ -315,6 +316,7 @@ public class Core {
             library.setProperty("modifyStudentFail", "La mise à jour de l'étudiant à échoué.");
             library.setProperty("deleteStudentSuccess", "Etudiant a été supprimé avec succès.");
             library.setProperty("deleteStudentFail", "La suppression de l'étudiant à échoué.");
+            library.setProperty("noStudent", "");
 
             // Book Alerts
             library.setProperty("invalidBarcodeLength", "Le code a barres doit comporter 5 chiffres.");
@@ -362,7 +364,6 @@ public class Core {
             library.setProperty("Verify", "Vérifier");
             library.setProperty("Override", "Surcharger");
         }
-
         return library;
     }
 
