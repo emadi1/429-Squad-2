@@ -106,4 +106,13 @@ public class RentalCollection extends EntityBase {
                 " = " + workerId + ") ORDER BY " + DBKey.CHECK_IN_WORKER_ID + " ASC";
         return runQuery(query);
     }
+
+    public Vector findAllCheckedOutBooks() {
+        String query = "SELECT r.Id, r.DueDate, r.CheckOutDate, CONCAT(sb.FirstName, ' ', sb.LastName) AS Borrower, b.Title" +
+                "FROM Rental r, StudentBorrower sb, Book b" +
+                "WHERE r.BookId = b.Barcode" +
+                "AND sb.BannerId = r.BorrowerId" +
+                "AND r.CheckInDate IS NULL;";
+        return runQuery(query);
+    }
 }

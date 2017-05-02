@@ -49,11 +49,8 @@ public class CheckOutBookViewController extends RentalTransactionsController imp
         barcodeField.setDisable(true);
         override.setDisable(true);
         submit.setDisable(true);
-        try {
-            setTableView();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        try {setTableView();}
+        catch (IOException e) {e.printStackTrace();}
     }
     @Override protected void setTableView() throws IOException {
         id.setMinWidth(100);

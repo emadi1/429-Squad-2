@@ -79,7 +79,6 @@ public class AddWorkerViewController implements Initializable {
 
         // Set Text's text
         submit.setText(lang.getProperty("Add"));
-
         bannerId.setText(lang.getProperty("PromptBannerId"));
         password.setText(lang.getProperty("PromptPassword"));
         firstName.setText(lang.getProperty("PromptFirstName"));
@@ -175,6 +174,8 @@ public class AddWorkerViewController implements Initializable {
             if (Status.getValue().equals(lang.getProperty("Active")))
                 prop.put(DBKey.STATUS, "Active");
             else prop.put(DBKey.STATUS, "Inactive");
+            prop.setProperty(DBKey.DATE_OF_HIRE, DateOfHire.getText());
+            prop.setProperty(DBKey.DATE_OF_LATEST_CREDENTIALS_STATUS, DateOfLatestCredentialsStatus.getText());
         }
 
         if (phoneNum.length() != 14 || phoneNum.charAt(3) != '-' ||
@@ -184,9 +185,11 @@ public class AddWorkerViewController implements Initializable {
             return;
         } else prop.put(DBKey.CONTACT_PHONE, phoneNum);
 
+
         int count = workerCollection.findWorkersByBannerId(prop.getProperty(DBKey.BANNER_ID)).size();
         if (count == 0) {
             prop.put("Password", pwEncrypt.encryptKicker(Password.getText()));
+            System.out.println(prop);
             Worker newWorker = new Worker(prop);
             newWorker.insert();
             alertMessage.setText(lang.getProperty("addWorkerSuccess"));
