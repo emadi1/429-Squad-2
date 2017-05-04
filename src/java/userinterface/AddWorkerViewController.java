@@ -112,7 +112,6 @@ public class AddWorkerViewController implements Initializable {
         textFieldList.add(LastName);
         textFieldList.add(ContactPhone);
         textFieldList.add(Email);
-        textFieldList.add(CountryCode);
         Credentials.setValue(lang.getProperty("Ordinary"));
         Credentials.setItems(credentialsList);
         Status.setValue(lang.getProperty("Active"));
@@ -197,7 +196,7 @@ public class AddWorkerViewController implements Initializable {
         }
 
         for (TextField t : textFieldList) t.clear();
-
+        CountryCode.clear();
         Credentials.setValue(lang.getProperty("Ordinary"));
         Status.setValue(lang.getProperty("Active"));
     }
