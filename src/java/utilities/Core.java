@@ -79,6 +79,7 @@ public class Core {
             library.setProperty("DateOfLatestBorrowerStatus", "Date of Latest Borrower Status");
             library.setProperty("PromptDateOfRegistration", "Date of Registration:");
             library.setProperty("DateOfRegistration", "Date of Registration");
+            library.setProperty("BorrowerName", "Name");
 
             // Book Data Model/ Text
             library.setProperty("PromptBarcode", "Barcode:");
@@ -235,6 +236,7 @@ public class Core {
             library.setProperty("DateOfLatestBorrowerStatus", "Date du dernier statut de l'emprunteur");
             library.setProperty("PromptDateOfRegistration", "Date d'enregistrement:");
             library.setProperty("DateOfRegistration", "Date d'enregistremen");
+            library.setProperty("BorrowerName", "Nom");
 
             // Book Data Model/ Text
             library.setProperty("PromptBarcode", "Code barre:");

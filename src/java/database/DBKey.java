@@ -24,6 +24,7 @@ public class DBKey {
     public static final String BORROWER_STATUS = "BorrowerStatus";
     public static final String DATE_OF_LATEST_BORROWER_STATUS = "DateOfLatestBorrowerStatus";
     public static final String DATE_OF_REGISTRATION = "DateOfRegistration";
+    public static final String BORRWER_NAME = "BorrowerName";
 
     // Book
     public static final String BARCODE = "Barcode";

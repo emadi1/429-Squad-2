@@ -57,7 +57,6 @@ public class SignInController implements Initializable {
     private Core core = Core.getInstance();
     private Properties lang = core.getLang();
     private PWEncrypt pwEncrypt = PWEncrypt.getInstance();
-    private WorkerCollection workerCollection = new WorkerCollection();
     private final String image = "https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png";
 
     public SignInController() throws GeneralSecurityException {
@@ -83,6 +82,8 @@ public class SignInController implements Initializable {
     }
 
     public void signIn(ActionEvent actionEvent) throws IOException, GeneralSecurityException {
+        WorkerCollection workerCollection = new WorkerCollection();
+
         if (bannerId.getText().equals("") || password.getText().equals(""))
             alertMessage.setText(lang.getProperty("completeFields"));
         if (bannerId.getText().length() != 9 || !Core.isNumeric(bannerId.getText()))

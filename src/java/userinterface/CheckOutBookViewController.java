@@ -28,8 +28,8 @@ public class CheckOutBookViewController extends RentalTransactionsController imp
     private BookCollection bookCollection = new BookCollection();
     private RentalCollection rentalCollection = new RentalCollection();
     private StudentBorrowerCollection studentBorrowerCollection = new StudentBorrowerCollection();
-    private TableColumn<Rental, String> id = new TableColumn<>(language.getProperty("Id"));
     private TableColumn<Rental, String> borrowerId = new TableColumn<>(language.getProperty("BorrowerId"));
+    private TableColumn<Rental, String> id = new TableColumn<>(language.getProperty("Id"));
     private TableColumn<Rental, String> bookId = new TableColumn<>(language.getProperty("BookId"));
     private TableColumn<Rental, String> checkOutDate = new TableColumn<>(language.getProperty("CheckOutDate"));
     private TableColumn<Rental, String> checkOutWorkerId = new TableColumn<>(language.getProperty("CheckOutWorkerId"));
