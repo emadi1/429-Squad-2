@@ -188,7 +188,7 @@ public class Core {
             library.setProperty("BookNotCheckedOut", "Book with ID not currently checked out: ");
             library.setProperty("BookCheckedOut", "Book is currently checked out.");
             library.setProperty("NoBookWithId", "No book matching ID: ");
-            library.setProperty("CheckOutSuccess", "Book successfully checked out!");
+            library.setProperty("CheckOutSuccess", "successfully checked out by");
             library.setProperty("CheckInSuccess", "Book successfully checked in!");
 
             // Buttons
@@ -344,7 +344,7 @@ public class Core {
             library.setProperty("BookNotCheckedOut", "Livre non sorti: "); //#######################################CHECK
             library.setProperty("BookCheckedOut", "Livre sorti"); // ############################################CHECK
             library.setProperty("NoBookWithId", "Aucun livre avec cet identifiant: "); //#######################################CHECK
-            library.setProperty("CheckOutSuccess", "Vérifier le succès"); //#######################################CHECK
+            library.setProperty("CheckOutSuccess", "Vérifier le succès por"); //#######################################CHECK
             library.setProperty("CheckInSuccess", "Vérifier le succès"); //#######################################CHECK
 
             // Buttons

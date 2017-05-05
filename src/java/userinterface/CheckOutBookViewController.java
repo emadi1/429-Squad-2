@@ -23,8 +23,9 @@ public class CheckOutBookViewController extends RentalTransactionsController imp
     @FXML private TextField barcodeField, bannerIdField;
     @FXML private Button submit, verify, override;
     @FXML private TableView tableView;
-    private String student, bannerId;
+    private String student, bannerId, book;
     private Properties language = Core.getInstance().getLang();
+    private Core core = Core.getInstance();
     private BookCollection bookCollection = new BookCollection();
     private RentalCollection rentalCollection = new RentalCollection();
     private StudentBorrowerCollection studentBorrowerCollection = new StudentBorrowerCollection();
@@ -101,6 +102,7 @@ public class CheckOutBookViewController extends RentalTransactionsController imp
     @FXML private int verify() {
         student = bannerIdField.getText();
         bannerId = bannerIdField.getText();
+
         try {
             if (bannerId.length() == 9 && Core.isNumeric(bannerId)) {
                 if (studentBorrowerCollection.findStudentsByBannerId(bannerId).size() == 1) {
@@ -150,7 +152,9 @@ public class CheckOutBookViewController extends RentalTransactionsController imp
                         System.out.println(data.toString());
                         Rental rental = new Rental(data);
                         rental.insert();
-                        alertMessage.setText(language.getProperty("CheckOutSuccess"));
+                        Book cBook = books.get(0);
+                        StudentBorrower studentBorrower = (StudentBorrower) studentBorrowerCollection.findStudentsByBannerId(bannerId).get(0);
+                        alertMessage.setText(cBook.getTitle() + " " + language.getProperty("CheckOutSuccess") + " " + studentBorrower.getFirstName() + " " + studentBorrower.getLastName());
                         tableView.setItems(FXCollections.observableList(rentalCollection.findRentalsByBorrowerId(student)));
                     } else alertMessage.setText(language.getProperty("BookCheckedOut"));
                 }
