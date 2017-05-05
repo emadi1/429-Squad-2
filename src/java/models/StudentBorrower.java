@@ -95,7 +95,6 @@ public class StudentBorrower extends EntityBase {
         myRegistry.setDependencies(dependencies);
     }
 
-
     public Object getState(String key) {
         if (key.equals("UpdateStatusMessage") == true)
             return updateStatusMessage;

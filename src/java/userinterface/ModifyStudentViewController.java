@@ -98,7 +98,7 @@ public class ModifyStudentViewController implements Initializable {
             return;
         } else studentBorrower.setContactPhone(phoneNum);
 
-        studentBorrower.setNotes(Notes.getText());
+        if (Notes.getText() != null) studentBorrower.setNotes(Notes.getText());
         studentBorrower.setFirstName(FirstName.getText());
         studentBorrower.setLastName(LastName.getText());
         studentBorrower.setContactPhone(phoneNum);

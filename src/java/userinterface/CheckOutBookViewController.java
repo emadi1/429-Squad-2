@@ -103,16 +103,18 @@ public class CheckOutBookViewController extends RentalTransactionsController imp
         bannerId = bannerIdField.getText();
         try {
             if (bannerId.length() == 9 && Core.isNumeric(bannerId)) {
-                StudentBorrower studentBorrower = (StudentBorrower) studentBorrowerCollection.findStudentsByBannerId(bannerId).get(0);
-                tableView.setItems(FXCollections.observableList(rentalCollection.findRentalsByBorrowerId(student)));
-                if (studentBorrower.getBorrowerStatus().equals("Good Standing")) {
-                    barcodeField.setDisable(false);
-                    submit.setDisable(false);
-                } else {
-                    alertMessage.setText(language.getProperty("invalidBorrowerStatus"));
-                    if (Core.getInstance().getUser().getCredentials().equals("Administrator"))
-                        override.setDisable(false);
-                }
+                if (studentBorrowerCollection.findStudentsByBannerId(bannerId).size() == 1) {
+                    StudentBorrower studentBorrower = (StudentBorrower) studentBorrowerCollection.findStudentsByBannerId(bannerId).get(0);
+                    tableView.setItems(FXCollections.observableList(rentalCollection.findRentalsByBorrowerId(student)));
+                    if (studentBorrower.getBorrowerStatus().equals("Good Standing")) {
+                        barcodeField.setDisable(false);
+                        submit.setDisable(false);
+                    } else {
+                        alertMessage.setText(language.getProperty("invalidBorrowerStatus"));
+                        if (Core.getInstance().getUser().getCredentials().equals("Administrator"))
+                            override.setDisable(false);
+                    }
+                } else alertMessage.setText(language.getProperty("noStudent"));
             } else alertMessage.setText(language.getProperty("invalidBannerIdFormat"));
         } catch (Exception e) {
             e.printStackTrace();

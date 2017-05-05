@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import models.Book;
 import utilities.Core;
@@ -110,8 +111,10 @@ public class ModifyBookViewController implements Initializable {
             else book.setStatus("Inactive");
             book.update();
             alertMessage.setText(language.getProperty("modifyBookSuccess"));
+            alertMessage.setFill(Paint.valueOf("dcc404"));
         } catch (Exception e) {
             alertMessage.setText(language.getProperty("modifyBookFail"));
+            alertMessage.setFill(Paint.valueOf("dcc404"));
         }
     }
 }

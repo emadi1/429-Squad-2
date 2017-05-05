@@ -74,16 +74,6 @@ public class CheckInBookViewController extends RentalTransactionsController impl
                     rentals = rentalCollection.findRentalsByBookId(barcode);
                     tableView.setItems(FXCollections.observableList(rentals));
                     StudentBorrower studentBorrower = (StudentBorrower) studentBorrowerCollection.findStudentsByBannerId(oldRental.getBorrowerId()).get(0);
-                    if (studentBorrower.getBorrowerStatus().equals(language.getProperty("Delinquent"))) {
-                        rentals = rentalCollection.findRentalsByBorrowerId(studentBorrower.getBannerId());
-                        boolean isDelinquent = false;
-                        for (Rental rental : rentals)
-                            if (rental.getCheckInDate().equals("")) isDelinquent = true;
-                        if (!isDelinquent) {
-                            studentBorrower.setBorrowerStatus("Good Standing");
-                            studentBorrower.setDateOfLatestBorrowerStatus(Core.generateEnglishDate());
-                        }
-                    }
                     alertMessage.setText(language.getProperty("CheckInSuccess"));
                 }
             } else alertMessage.setText(language.getProperty("NoBookWithId") + barcode);

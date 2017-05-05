@@ -164,6 +164,7 @@ public class Core {
             library.setProperty("modifyStudentFail", "Failed to modify student borrower.");
             library.setProperty("deleteStudentSuccess", "Student Borrower deleted.");
             library.setProperty("deleteStudentFail", "Failed to delete student borrower.");
+            library.setProperty("noStudent", "No Student exists with that Banner ID");
 
             // Book Alerts
             library.setProperty("invalidBarcodeLength", "Barcode must be 5 digits long.");
@@ -238,7 +239,7 @@ public class Core {
             library.setProperty("PromptDateOfLatestBorrowerStatus", "Date du dernier statut de l'emprunteur:");
             library.setProperty("DateOfLatestBorrowerStatus", "Date du dernier statut de l'emprunteur");
             library.setProperty("PromptDateOfRegistration", "Date d'enregistrement:");
-            library.setProperty("DateOfRegistration", "Date d'enregistremen");
+            library.setProperty("DateOfRegistration", "Date d'enregistrement");
 
             // Book Data Model/ Text
             library.setProperty("PromptBarcode", "Code barre:");
@@ -300,13 +301,13 @@ public class Core {
             library.setProperty("BookId", "ID du livre"); //#######################################CHECK
             library.setProperty("CheckOutDate", "Date de paiement"); //#######################################CHECK
             library.setProperty("CheckOutWorkerId", "Identifiant de travail"); //#######################################CHECK
-            library.setProperty("DueDate", "date d'échéance");//#####################CHECK
+            library.setProperty("DueDate", "Date d'échéance");//#####################CHECK
             library.setProperty("CheckInDate", "Date d'arrivée");//#####################CHECK
             library.setProperty("CheckInWorkerId", "Vérifier l'identifiant du travailleur");//#######################CHECK
 
 
             // General Alerts
-            library.setProperty("invalidDateFormat", "La date doit être en format: DD-MM-YYYY");
+            library.setProperty("invalidDateFormat", "La date doit être au format: DD-MM-YYYY");
             library.setProperty("completeFields", "Veuillez remplir tout les champs nécessaires.");
             library.setProperty("emptyField", "Veuillez remplir le champ.");
             library.setProperty("dateFormat", "jj-mm-aaaa");
@@ -315,34 +316,35 @@ public class Core {
 
             // Student Alerts
             library.setProperty("addStudentSuccess", "Etudiant a été ajouté avec succès!");
-            library.setProperty("addStudentFail", "L'ajout de l'étudiant à échoué.");
+            library.setProperty("addStudentFail", "L'ajout de l'étudiant a échoué.");
             library.setProperty("modifyStudentSuccess", "Etudiant a été mis à jour avec succès!");
-            library.setProperty("modifyStudentFail", "La mise à jour de l'étudiant à échoué.");
+            library.setProperty("modifyStudentFail", "La mise à jour de l'étudiant a échoué.");
             library.setProperty("deleteStudentSuccess", "Etudiant a été supprimé avec succès.");
-            library.setProperty("deleteStudentFail", "La suppression de l'étudiant à échoué.");
+            library.setProperty("deleteStudentFail", "La suppression de l'étudiant a échoué.");
+            library.setProperty("noStudent", "");
 
             // Book Alerts
-            library.setProperty("invalidBarcodeLength", "Le code a barres doit comporter 5 chiffres.");
-            library.setProperty("existingBarcode", "Le code a barre existe deja: ");
-            library.setProperty("yearFormat", "L'annee de publication doit etre en format: yyyy");
-            library.setProperty("addBookSuccess", "Le livre à été ajouté avec succes!");
-            library.setProperty("addBookFail", "L'ajout du livre à échoué.");
+            library.setProperty("invalidBarcodeLength", "Le code barre doit avoir 5 chiffres.");
+            library.setProperty("existingBarcode", "Le code barre existe déjà: ");
+            library.setProperty("yearFormat", "L'annee de publication doit être au format: yyyy");
+            library.setProperty("addBookSuccess", "Le livre a été ajouté avec succès!");
+            library.setProperty("addBookFail", "L'ajout du livre a échoué.");
             library.setProperty("modifyBookSuccess", "Le livre a été mis à jour avec succès!");
-            library.setProperty("modifyBookFail", "La mise à jour du livre à échoué.");
+            library.setProperty("modifyBookFail", "La mise à jour du livre a échoué.");
 
             // Worker Alerts
-            library.setProperty("invalidBannerIdFormat", "BannerID doit avoir des 9 chiffres seul.");
-            library.setProperty("modifyWorkerSuccess", "Ouvrier mis a jour avec succes!");
-            library.setProperty("modifyWorkerFail", "La mise à jour du ouvrier à échoué.");
-            library.setProperty("existingBannerId", "BannerID existe deja dans le systeme.");
-            library.setProperty("addWorkerSuccess", "Ouvrier ajoute avec succes!");
-            library.setProperty("addWorkerFail", "N'a pas pu ajouter de l'ouvrier.");
-            library.setProperty("invalidCredentials", "Les informations d'identification invalides.");
-            library.setProperty("invalidPhoneFormat", "Format de téléphone invalide"); //#######################################CHECK
+            library.setProperty("invalidBannerIdFormat", "BannerID doit avoir 9 chiffres uniquement.");
+            library.setProperty("modifyWorkerSuccess", "Ouvrier mis a jour avec succès!");
+            library.setProperty("modifyWorkerFail", "La mise à jour du ouvrier a échoué.");
+            library.setProperty("existingBannerId", "Le BannerID existe déjà dans le systeme.");
+            library.setProperty("addWorkerSuccess", "Ouvrier ajouté avec succès!");
+            library.setProperty("addWorkerFail", "N'a pas pu ajouter l'ouvrier.");
+            library.setProperty("invalidCredentials", "Les informations d'identification sont invalides.");
+            library.setProperty("invalidPhoneFormat", "Format du téléphone invalide"); //#######################################CHECK
             library.setProperty("noWorker", "");
 
             // Rental Alerts
-            library.setProperty("invalidBorrowerStatus", "Statut d'emprunteur invalide"); //#######################################CHECK
+            library.setProperty("invalidBorrowerStatus", "Statut de l'emprunteur invalide"); //#######################################CHECK
             library.setProperty("AdministratorOverride", "L'annulation de l'administrateur"); //#######################################CHECK
             library.setProperty("BookNotCheckedOut", "Livre non sorti: "); //#######################################CHECK
             library.setProperty("BookCheckedOut", "Livre sorti"); // ############################################CHECK
@@ -355,19 +357,18 @@ public class Core {
             library.setProperty("Add", "Ajouter");
             library.setProperty("Delete", "Effacer");
             library.setProperty("Good", "Bien");
-            library.setProperty("Damaged", "Endommage");
+            library.setProperty("Damaged", "Endommagé");
             library.setProperty("Active", "Actif");
             library.setProperty("Inactive", "Inactif");
             library.setProperty("Search", "Chercher");
             library.setProperty("Administrator", "Administrateur");
             library.setProperty("Ordinary", "Ordinaire");
-            library.setProperty("GoodStanding", "Bonne qualite");
-            library.setProperty("Delinquent", "Delinquant");
+            library.setProperty("GoodStanding", "Bonne qualité");
+            library.setProperty("Delinquent", "Délinquant");
             library.setProperty("Submit", "Entrer");
             library.setProperty("Verify", "Vérifier");
             library.setProperty("Override", "Surcharger");
         }
-
         return library;
     }
 
