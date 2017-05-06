@@ -1,6 +1,8 @@
 package utilities;
+import javafx.collections.ObservableList;
 import javafx.stage.Stage;
 import models.Book;
+import models.EntityBase;
 import models.StudentBorrower;
 import models.Worker;
 
