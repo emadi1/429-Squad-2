@@ -44,7 +44,7 @@ public class RentedBookCollection extends Persistable {
 
     public Vector findAllCheckedOutBooks() {
         String query = "SELECT r.Id, r.BookId, b.Title, r.BorrowerId, CONCAT(s.FirstName, ' ', s.LastName) " +
-                "AS BorrowerName, r.CheckOutDate, r.DueDate FROM Rental r JOIN Book b ON b.Barcode = r.BookId JOIN " + 
+                "AS BorrowerName, r.CheckOutDate, r.DueDate FROM Rental r JOIN Book b ON b.Barcode = r.BookId JOIN " +
                 "StudentBorrower s ON s.BannerId = r.BorrowerId WHERE r.CheckInDate IS NULL;";
         return runQuery(query);
     }
