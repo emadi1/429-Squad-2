@@ -81,7 +81,7 @@ public class Core {
             library.setProperty("DateOfLatestBorrowerStatus", "Date of Latest Borrower Status");
             library.setProperty("PromptDateOfRegistration", "Date of Registration:");
             library.setProperty("DateOfRegistration", "Date of Registration");
-            library.setProperty("BorrowerName", "Name");
+            library.setProperty("BorrowerName", "Borrower Name");
 
             // Book Data Model/ Text
             library.setProperty("PromptBarcode", "Barcode:");
@@ -146,6 +146,7 @@ public class Core {
             library.setProperty("DueDate", "Due Date");
             library.setProperty("CheckInDate", "Check In Date");
             library.setProperty("CheckInWorkerId", "Check In Worker ID");
+            library.setProperty("WorkerName", "Worker Name");
 
             // General Alerts
             library.setProperty("invalidDateFormat", "Date must be in format: mm-dd-yyyy");
@@ -303,6 +304,7 @@ public class Core {
             library.setProperty("DueDate", "date d'échéance");//#####################CHECK
             library.setProperty("CheckInDate", "Date d'arrivée");//#####################CHECK
             library.setProperty("CheckInWorkerId", "Vérifier l'identifiant du travailleur");//#######################CHECK
+            library.setProperty("WorkerName", "");
 
 
             // General Alerts

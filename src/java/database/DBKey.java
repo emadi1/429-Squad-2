@@ -51,6 +51,5 @@ public class DBKey {
     public static final String CHECK_IN_DATE = "CheckInDate";
     public static final String CHECK_IN_WORKER_ID = "CheckInWorkerId";
     public static final String BORROWER_NAME = "BorrowerName";
-
-
+    public static final String WORKER_NAME = "WorkerName";
 }
