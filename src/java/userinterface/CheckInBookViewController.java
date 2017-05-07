@@ -83,15 +83,6 @@ public class CheckInBookViewController extends RentalTransactionsController impl
         return 1;
     }
     @Override protected void setTableView() throws IOException {
-        id.setMinWidth(100);
-        borrowerId.setMinWidth(100);
-        bookId.setMinWidth(100);
-        checkOutDate.setMinWidth(100);
-        checkOutWorkerId.setMinWidth(100);
-        dueDate.setMinWidth(100);
-        checkInDate.setMinWidth(100);
-        checkInWorkerId.setMinWidth(100);
-
         id.setCellValueFactory(new PropertyValueFactory<>(DBKey.ID));
         borrowerId.setCellValueFactory(new PropertyValueFactory<>(DBKey.BORROWER_ID));
         bookId.setCellValueFactory(new PropertyValueFactory<>(DBKey.BOOK_ID));
@@ -109,6 +100,8 @@ public class CheckInBookViewController extends RentalTransactionsController impl
         tableView.getColumns().add(dueDate);
         tableView.getColumns().add(checkInDate);
         tableView.getColumns().add(checkInWorkerId);
+
+        Core.resizeColumns(tableView);
 
         tableView.setRowFactory(tableView -> {
 

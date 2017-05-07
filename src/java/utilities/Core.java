@@ -1,4 +1,9 @@
 package utilities;
+import com.sun.javafx.tk.FontMetrics;
+import com.sun.javafx.tk.Toolkit;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import models.Book;
 import models.StudentBorrower;
@@ -420,5 +425,18 @@ public class Core {
             return false;
         }
         return true;
+    }
+
+    // Adjust width of columns to match headers
+    public static void resizeColumns(TableView tableView) {
+        FontMetrics fontMetrics = Toolkit.getToolkit().getFontLoader().getFontMetrics(new Font("Arial Bold", 18));
+
+        for (int i = 0; i < 8; i++) {
+            TableColumn currentColumn = (TableColumn)tableView.getColumns().get(i);
+            String text = currentColumn.getText();
+            double textWidth = fontMetrics.computeStringWidth(text);
+            currentColumn.setMinWidth(textWidth + 10);
+            currentColumn.setPrefWidth(textWidth + 10);
+        }
     }
 }
