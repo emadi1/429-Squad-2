@@ -2,11 +2,17 @@ package userinterface;
 
 import database.DBKey;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import models.*;
 import utilities.Core;
 
@@ -144,6 +150,8 @@ public class CheckOutBookViewController extends RentalTransactionsController imp
                         }
                     }
                     if (canRent) {
+
+
                         data.put(DBKey.BORROWER_ID, student);
                         data.put(DBKey.BOOK_ID, barcode);
                         data.put(DBKey.CHECK_OUT_WORKER_ID, Core.getInstance().getUser().getBannerId());
@@ -154,7 +162,9 @@ public class CheckOutBookViewController extends RentalTransactionsController imp
                         rental.insert();
                         Book cBook = books.get(0);
                         StudentBorrower studentBorrower = (StudentBorrower) studentBorrowerCollection.findStudentsByBannerId(bannerId).get(0);
-                        alertMessage.setText(cBook.getTitle() + " " + language.getProperty("CheckOutSuccess") + " " + studentBorrower.getFirstName() + " " + studentBorrower.getLastName());
+                        core.setModStudentBorrower(studentBorrower);
+                        core.setModBook(cBook);
+                        success();
                         tableView.setItems(FXCollections.observableList(rentalCollection.findRentalsByBorrowerId(student)));
                     } else alertMessage.setText(language.getProperty("BookCheckedOut"));
                 }
@@ -165,6 +175,23 @@ public class CheckOutBookViewController extends RentalTransactionsController imp
             return 0;
         }
     }
+
+
+    public void success() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("successpopupview.fxml"));
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+
+        } catch (NullPointerException|IOException exception) {
+            exception.printStackTrace();
+        }
+    }
+
     private String generateDueDate() {
         Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("EST"));
         calendar.setTime(new Date());
