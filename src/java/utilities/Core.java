@@ -1,6 +1,7 @@
 package utilities;
 import javafx.stage.Stage;
 import models.Book;
+import models.Rental;
 import models.StudentBorrower;
 import models.Worker;
 
@@ -17,6 +18,7 @@ public class Core {
     private static Core core = null;
     private static Worker modWorker, user;
     private static Book modBook;
+    private static Rental modRental;
     private static StudentBorrower modStudentBorrower;
     private static String language = "";
     private static Stage lastStage;
@@ -43,6 +45,7 @@ public class Core {
     public StudentBorrower getModStudentBorrower() {
         return modStudentBorrower;
     }
+    public Rental getModRental(){return modRental;}
     public String getLanguage() {
         return language;
     }
@@ -79,6 +82,8 @@ public class Core {
             library.setProperty("DateOfLatestBorrowerStatus", "Date of Latest Borrower Status");
             library.setProperty("PromptDateOfRegistration", "Date of Registration:");
             library.setProperty("DateOfRegistration", "Date of Registration");
+            library.setProperty("StudentBorrower", "Student:");
+
 
             // Book Data Model/ Text
             library.setProperty("PromptBarcode", "Barcode:");
@@ -140,9 +145,13 @@ public class Core {
             library.setProperty("BookId", "Book ID");
             library.setProperty("CheckOutDate", "Check Out Date");
             library.setProperty("CheckOutWorkerId", "Check Out Worker ID");
+            library.setProperty("PromptCheckOutDate", "Check Out Date:");
             library.setProperty("DueDate", "Due Date");
+            library.setProperty("PromptDueDate", "Due Date:");
             library.setProperty("CheckInDate", "Check In Date");
             library.setProperty("CheckInWorkerId", "Check In Worker ID");
+            library.setProperty("CheckoutStatus", "Checkout Status:");
+            library.setProperty("Successful", "Successful");
 
             // General Alerts
             library.setProperty("invalidDateFormat", "Date must be in format: mm-dd-yyyy");
@@ -191,6 +200,7 @@ public class Core {
             library.setProperty("CheckOutSuccess", "successfully checked out by");
             library.setProperty("CheckInSuccess", "Book successfully checked in!");
 
+
             // Buttons
             library.setProperty("Modify", "Modify");
             library.setProperty("Add", "Add");
@@ -235,6 +245,8 @@ public class Core {
             library.setProperty("DateOfLatestBorrowerStatus", "Date du dernier statut de l'emprunteur");
             library.setProperty("PromptDateOfRegistration", "Date d'enregistrement:");
             library.setProperty("DateOfRegistration", "Date d'enregistrement");
+            library.setProperty("StudentBorrower", "Étudiant:");
+
 
             // Book Data Model/ Text
             library.setProperty("PromptBarcode", "Code barre:");
@@ -346,6 +358,8 @@ public class Core {
             library.setProperty("NoBookWithId", "Aucun livre avec cet identifiant: "); //#######################################CHECK
             library.setProperty("CheckOutSuccess", "Vérifier le succès por"); //#######################################CHECK
             library.setProperty("CheckInSuccess", "Vérifier le succès"); //#######################################CHECK
+            library.setProperty("CheckoutStatus", "Statut de caisse");
+            library.setProperty("Successful", "Réussi");
 
             // Buttons
             library.setProperty("Modify", "Modifier");
@@ -380,6 +394,7 @@ public class Core {
     public void setModStudentBorrower(StudentBorrower studentBorrower) {
         modStudentBorrower = studentBorrower;
     }
+    public void setModRental(Rental rental){modRental = rental;}
     public void setLanguage(String lang) {
         language = lang;
     }

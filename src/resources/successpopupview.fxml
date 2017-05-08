@@ -24,7 +24,16 @@
             <ColumnConstraints maxWidth="117.0" minWidth="42.0" prefWidth="42.0" />
          </columnConstraints>
          <children>
-            <Text fx:id="success"/>
+            <Text fx:id="titlePrompt" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Text fx:id="titleResponse" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Text fx:id="studentNamePrompt" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Text fx:id="studentNameResponse" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Text fx:id="currentDatePrompt" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Text fx:id="currentDateResponse" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Text fx:id="dueDatePrompt" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Text fx:id="dueDateResponse" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Text fx:id="checkoutStatusPrompt" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" />
+            <Text fx:id="checkoutStatusResponse" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" />
          </children>
       </GridPane>
    </children>

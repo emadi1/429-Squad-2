@@ -164,6 +164,7 @@ public class CheckOutBookViewController extends RentalTransactionsController imp
                         StudentBorrower studentBorrower = (StudentBorrower) studentBorrowerCollection.findStudentsByBannerId(bannerId).get(0);
                         core.setModStudentBorrower(studentBorrower);
                         core.setModBook(cBook);
+                        core.setModRental(rental);
                         success();
                         tableView.setItems(FXCollections.observableList(rentalCollection.findRentalsByBorrowerId(student)));
                     } else alertMessage.setText(language.getProperty("BookCheckedOut"));

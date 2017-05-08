@@ -19,13 +19,31 @@ public class SuccessPopUpController implements Initializable{
     private Core core = Core.getInstance();
     Properties language = core.getLang();
 
-    @FXML private Text success;
+    @FXML private Text checkoutStatusPrompt;
+    @FXML private Text checkoutStatusResponse;
+    @FXML private Text titlePrompt;
+    @FXML private Text titleResponse;
+    @FXML private Text studentNamePrompt;
+    @FXML private Text studentNameResponse;
+    @FXML private Text currentDatePrompt;
+    @FXML private Text currentDateResponse;
+    @FXML private Text dueDatePrompt;
+    @FXML private Text dueDateResponse;
 
     public void initialize(URL location, ResourceBundle resources) {
 
-        success.setText(core.getModBook().getTitle() + " " + language.getProperty("CheckOutSuccess") + " " +
-                core.getModStudentBorrower().getFirstName() + " " + core.getModStudentBorrower().getLastName());
-        success.setFont(Font.font(24));
-        success.setTextAlignment(TextAlignment.CENTER);
+        checkoutStatusPrompt.setText(language.getProperty("CheckoutStatus"));
+        checkoutStatusResponse.setText(language.getProperty("Successful"));
+        titlePrompt.setText(language.getProperty("PromptTitle"));
+        titleResponse.setText(core.getModBook().getTitle());
+        studentNamePrompt.setText(language.getProperty("StudentBorrower"));
+        studentNameResponse.setText(core.getModStudentBorrower().getFirstName() + " " + core
+                .getModStudentBorrower().getLastName());
+        currentDatePrompt.setText(language.getProperty("PromptCheckOutDate"));
+        currentDateResponse.setText(core.generateDate());
+        dueDatePrompt.setText(language.getProperty("PromptDueDate"));
+        dueDateResponse.setText(core.getModRental().getDueDate());
+
+
     }
 }
