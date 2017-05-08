@@ -24,6 +24,7 @@ public class ListCheckedBooksController extends Persistable implements Initializ
 
     @FXML
     private TableView tableView;
+    private int columnSize = 125;
     private Properties language = Core.getInstance().getLang();
     private TableColumn<RentedBook, String> id = new TableColumn<>(language.getProperty("Id"));
     private TableColumn<RentedBook, String> bookId = new TableColumn<>(language.getProperty("BookId"));
@@ -35,13 +36,13 @@ public class ListCheckedBooksController extends Persistable implements Initializ
 
 
     private void setTableView() {
-        id.setMinWidth(125);
-        bookId.setMinWidth(125);
-        bookTitle.setMinWidth(125);
-        borrowerId.setMinWidth(125);
-        borrowerName.setMinWidth(125);
-        checkOutDate.setMinWidth(125);
-        dueDate.setMinWidth(125);
+        id.setMinWidth(columnSize);
+        bookId.setMinWidth(columnSize);
+        bookTitle.setMinWidth(columnSize);
+        borrowerId.setMinWidth(columnSize);
+        borrowerName.setMinWidth(columnSize);
+        checkOutDate.setMinWidth(columnSize);
+        dueDate.setMinWidth(columnSize);
 
         id.setCellValueFactory(new PropertyValueFactory<>(DBKey.ID));
         bookId.setCellValueFactory(new PropertyValueFactory<>(DBKey.BOOK_ID));
@@ -67,6 +68,7 @@ public class ListCheckedBooksController extends Persistable implements Initializ
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        if (Core.getInstance().getLanguage().equals("fr_FR")) columnSize += 25;
         setTableView();
         tableView.refresh();
     }

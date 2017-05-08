@@ -23,6 +23,7 @@ public class CheckInBookViewController extends RentalTransactionsController impl
     @FXML private TextField barcodeField;
     @FXML private TableView tableView;
     @FXML private Button submit;
+    private int columnSize = 100;
     private Properties language = Core.getInstance().getLang();
     private BookCollection bookCollection = new BookCollection();
     private RentalCollection rentalCollection = new RentalCollection();
@@ -41,11 +42,10 @@ public class CheckInBookViewController extends RentalTransactionsController impl
         barcodeText.setText(language.getProperty("Barcode") + ":");
         title.setText(language.getProperty("CheckInBook"));
         submit.setText(language.getProperty("Submit"));
-        try {
-            setTableView();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        if (Core.getInstance().getLanguage().equals("fr_FR"))
+            columnSize += 25;
+        try {setTableView();}
+        catch (IOException e) {e.printStackTrace();}
     }
     @Override @FXML protected int submit() throws RuntimeException {
         // Check for barcode format
@@ -83,14 +83,14 @@ public class CheckInBookViewController extends RentalTransactionsController impl
         return 1;
     }
     @Override protected void setTableView() throws IOException {
-        id.setMinWidth(100);
-        borrowerId.setMinWidth(100);
-        bookId.setMinWidth(100);
-        checkOutDate.setMinWidth(100);
-        checkOutWorkerId.setMinWidth(100);
-        dueDate.setMinWidth(100);
-        checkInDate.setMinWidth(100);
-        checkInWorkerId.setMinWidth(100);
+        id.setMinWidth(columnSize - 50);
+        borrowerId.setMinWidth(columnSize);
+        bookId.setMinWidth(columnSize);
+        checkOutDate.setMinWidth(columnSize + 25);
+        checkOutWorkerId.setMinWidth(columnSize + 25);
+        dueDate.setMinWidth(columnSize + 25);
+        checkInDate.setMinWidth(columnSize + 25);
+        checkInWorkerId.setMinWidth(columnSize + 50);
 
         id.setCellValueFactory(new PropertyValueFactory<>(DBKey.ID));
         borrowerId.setCellValueFactory(new PropertyValueFactory<>(DBKey.BORROWER_ID));
