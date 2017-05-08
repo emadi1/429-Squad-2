@@ -19,13 +19,12 @@ public class SuccessPopUpController implements Initializable{
     private Core core = Core.getInstance();
     Properties language = core.getLang();
 
-    @FXML
-    private Text success;
-
+    @FXML private Text success;
 
     public void initialize(URL location, ResourceBundle resources) {
 
-        success.setText(core.getModBook().getTitle() + " " + language.getProperty("CheckOutSuccess") + " " + core.getModStudentBorrower().getFirstName() + " " + core.getModStudentBorrower().getLastName());
+        success.setText(core.getModBook().getTitle() + " " + language.getProperty("CheckOutSuccess") + " " +
+                core.getModStudentBorrower().getFirstName() + " " + core.getModStudentBorrower().getLastName());
         success.setFont(Font.font(24));
         success.setTextAlignment(TextAlignment.CENTER);
     }

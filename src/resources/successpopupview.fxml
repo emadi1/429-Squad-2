@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userinterface.SuccessPopUpController">
+<AnchorPane prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userinterface.SuccessPopUpController">
    <children>
-      <Text fx:id="success" layoutX="100.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" />
+      <GridPane prefHeight="300" prefWidth="500">
+         <rowConstraints>
+            <RowConstraints prefHeight="50.0" />
+            <RowConstraints prefHeight="50.0" />
+            <RowConstraints prefHeight="50.0" />
+            <RowConstraints prefHeight="50.0" />
+            <RowConstraints prefHeight="50.0" />
+            <RowConstraints prefHeight="50.0" />
+         </rowConstraints>
+         <columnConstraints>
+            <ColumnConstraints maxWidth="119.0" minWidth="36.0" prefWidth="36.0" />
+            <ColumnConstraints maxWidth="214.0" minWidth="131.0" prefWidth="153.0" />
+            <ColumnConstraints maxWidth="269.0" minWidth="131.0" prefWidth="269.0" />
+            <ColumnConstraints maxWidth="117.0" minWidth="42.0" prefWidth="42.0" />
+         </columnConstraints>
+         <children>
+            <Text fx:id="success"/>
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>
