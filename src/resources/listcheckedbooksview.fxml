@@ -7,9 +7,17 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 <AnchorPane prefHeight="750" prefWidth="926" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userinterface.ListCheckedBooksController">
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="black" height="62.0" layoutX="-1.0" stroke="black" strokeType="INSIDE" width="1080.0" />
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="black" height="760.0" layoutX="-1.0" stroke="black" strokeType="INSIDE" width="11.0" />
+    <Text fx:id="titleHeader" fill="WHITE" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="1076">
+        <font>
+            <Font size="40.0" />
+        </font>
+    </Text>
     <children>
-
         <GridPane layoutX="10.0" layoutY="75.0" prefHeight="150.0" prefWidth="1069.0">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="167.0" minWidth="15.0" prefWidth="167.0" />
@@ -27,6 +35,6 @@
                 <Text fx:id="alertMessage" wrappingWidth="350" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             </children>
         </GridPane>
-        <TableView fx:id="tableView" layoutX="10.0" layoutY="21.0" prefHeight="675.0" prefWidth="1059.0" />
+        <TableView fx:id="tableView" layoutX="10.0" layoutY="62.0" prefHeight="660.0" prefWidth="1069.0" />
     </children>
 </AnchorPane>

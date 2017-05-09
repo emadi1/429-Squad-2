@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import models.*;
 import utilities.Core;
 
@@ -22,8 +23,8 @@ import java.util.ResourceBundle;
 
 public class ListCheckedBooksController extends Persistable implements Initializable {
 
-    @FXML
-    private TableView tableView;
+    @FXML private Text titleHeader;
+    @FXML private TableView tableView;
     private int columnSize = 150;
     private Properties language = Core.getInstance().getLang();
     private TableColumn<RentedBook, String> bookId = new TableColumn<>(language.getProperty("BookId"));
@@ -61,6 +62,7 @@ public class ListCheckedBooksController extends Persistable implements Initializ
         tableView.getColumns().add(checkOutDate);
         tableView.getColumns().add(dueDate);
 
+        titleHeader.setText(language.getProperty("ListCheckedBooks"));
         RentedBookCollection rentedBookCollection = new RentedBookCollection();
         System.out.println(rentedBookCollection.findAllCheckedOutBooks());
 
