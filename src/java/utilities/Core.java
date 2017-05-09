@@ -96,6 +96,7 @@ public class Core {
             library.setProperty("PromptDateOfRegistration", "Date of Registration:");
             library.setProperty("DateOfRegistration", "Date of Registration");
             library.setProperty("BorrowerName", "Borrower Name");
+            library.setProperty("StudentBorrower", "Student: ");
 
             // Book Data Model/ Text
             library.setProperty("PromptBarcode", "Barcode:");
