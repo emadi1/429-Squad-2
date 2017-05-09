@@ -32,17 +32,27 @@ public class SuccessPopUpController implements Initializable{
 
     public void initialize(URL location, ResourceBundle resources) {
 
-        checkoutStatusPrompt.setText(language.getProperty("CheckoutStatus"));
+        if (Core.getPopupFlag() == 1) {
+
+            checkoutStatusPrompt.setText(language.getProperty("CheckOutStatus"));
+            dueDatePrompt.setText(language.getProperty("DueDate"));
+            dueDateResponse.setText(core.getModRental().getDueDate());
+
+        } else if (Core.getPopupFlag() == 0) {
+
+            checkoutStatusPrompt.setText(language.getProperty("CheckInStatus"));
+            dueDatePrompt.setText(language.getProperty("CheckInDate"));
+            dueDateResponse.setText(core.generateDate());
+        }
+
         checkoutStatusResponse.setText(language.getProperty("Successful"));
         titlePrompt.setText(language.getProperty("PromptTitle"));
         titleResponse.setText(core.getModBook().getTitle());
         studentNamePrompt.setText(language.getProperty("StudentBorrower"));
         studentNameResponse.setText(core.getModStudentBorrower().getFirstName() + " " + core
                 .getModStudentBorrower().getLastName());
-        currentDatePrompt.setText(language.getProperty("PromptCheckOutDate"));
+        currentDatePrompt.setText(language.getProperty("CheckOutDate"));
         currentDateResponse.setText(core.generateDate());
-        dueDatePrompt.setText(language.getProperty("PromptDueDate"));
-        dueDateResponse.setText(core.getModRental().getDueDate());
 
 
     }

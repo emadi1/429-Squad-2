@@ -22,6 +22,7 @@ public class Core {
     private static StudentBorrower modStudentBorrower;
     private static String language = "";
     private static Stage lastStage;
+    private static int popupFlag;
 
     // Singleton pattern
     private Core() {
@@ -52,6 +53,11 @@ public class Core {
     public Stage getLastStage() {
         return lastStage;
     }
+
+    public static int getPopupFlag() {
+        return popupFlag;
+    }
+
     public Properties getLang() {
         Properties library = new Properties();
         if (language.equals("en_US")) {
@@ -147,10 +153,10 @@ public class Core {
             library.setProperty("CheckOutWorkerId", "Check Out Worker ID");
             library.setProperty("PromptCheckOutDate", "Check Out Date:");
             library.setProperty("DueDate", "Due Date");
-            library.setProperty("PromptDueDate", "Due Date:");
             library.setProperty("CheckInDate", "Check In Date");
             library.setProperty("CheckInWorkerId", "Check In Worker ID");
-            library.setProperty("CheckoutStatus", "Checkout Status:");
+            library.setProperty("CheckOutStatus", "Checkout Status:");
+            library.setProperty("CheckInStatus", "Check-in Status:");
             library.setProperty("Successful", "Successful");
 
             // General Alerts
@@ -358,7 +364,8 @@ public class Core {
             library.setProperty("NoBookWithId", "Aucun livre avec cet identifiant: "); //#######################################CHECK
             library.setProperty("CheckOutSuccess", "Vérifier le succès por"); //#######################################CHECK
             library.setProperty("CheckInSuccess", "Vérifier le succès"); //#######################################CHECK
-            library.setProperty("CheckoutStatus", "Statut de caisse");
+            library.setProperty("CheckOutStatus", "Statut de caisse");
+            library.setProperty("CheckInStatus", "Statut de verification");
             library.setProperty("Successful", "Réussi");
 
             // Buttons
@@ -400,6 +407,10 @@ public class Core {
     }
     public void setStage(Stage stage) {
         lastStage = stage;
+    }
+
+    public static void setPopupFlag(int popupFlag) {
+        Core.popupFlag = popupFlag;
     }
 
     // Generators/Formatting

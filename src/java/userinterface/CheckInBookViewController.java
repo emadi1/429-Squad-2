@@ -2,10 +2,15 @@ package userinterface;
 import database.DBKey;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import models.*;
 import utilities.Core;
 import java.io.IOException;
@@ -23,7 +28,10 @@ public class CheckInBookViewController extends RentalTransactionsController impl
     @FXML private TextField barcodeField;
     @FXML private TableView tableView;
     @FXML private Button submit;
+
     private Properties language = Core.getInstance().getLang();
+    private Core core = Core.getInstance();
+
     private BookCollection bookCollection = new BookCollection();
     private RentalCollection rentalCollection = new RentalCollection();
     private StudentBorrowerCollection studentBorrowerCollection = new StudentBorrowerCollection();
@@ -35,6 +43,8 @@ public class CheckInBookViewController extends RentalTransactionsController impl
     private TableColumn<Rental, String> dueDate = new TableColumn<>(language.getProperty("DueDate"));
     private TableColumn<Rental, String> checkInDate = new TableColumn<>(language.getProperty("CheckInDate"));
     private TableColumn<Rental, String> checkInWorkerId = new TableColumn<>(language.getProperty("CheckInWorkerId"));
+
+
 
     public void initialize(URL location, ResourceBundle resources) {
         barcodeField.setPromptText(language.getProperty("Barcode"));
@@ -74,6 +84,15 @@ public class CheckInBookViewController extends RentalTransactionsController impl
                     rentals = rentalCollection.findRentalsByBookId(barcode);
                     tableView.setItems(FXCollections.observableList(rentals));
                     StudentBorrower studentBorrower = (StudentBorrower) studentBorrowerCollection.findStudentsByBannerId(oldRental.getBorrowerId()).get(0);
+
+                    Book cBook = books.get(0);
+                    core.setModStudentBorrower(studentBorrower);
+                    core.setModBook(cBook);
+                    core.setModRental(oldRental);
+                    Core.setPopupFlag(0);
+                    success();
+
+
                     alertMessage.setText(language.getProperty("CheckInSuccess"));
                 }
             } else alertMessage.setText(language.getProperty("NoBookWithId") + barcode);
@@ -82,6 +101,8 @@ public class CheckInBookViewController extends RentalTransactionsController impl
         }
         return 1;
     }
+
+
     @Override protected void setTableView() throws IOException {
         id.setMinWidth(100);
         borrowerId.setMinWidth(100);
@@ -124,5 +145,21 @@ public class CheckInBookViewController extends RentalTransactionsController impl
             });
             return row;
         });
+    }
+
+
+    public void success() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("successpopupview.fxml"));
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/en/e/ef/Brockp_Gold_Eagles_logo.png"));
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+
+        } catch (NullPointerException|IOException exception) {
+            exception.printStackTrace();
+        }
     }
 }
