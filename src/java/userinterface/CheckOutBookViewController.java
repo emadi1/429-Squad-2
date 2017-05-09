@@ -2,7 +2,6 @@ package userinterface;
 
 import database.DBKey;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -29,7 +28,7 @@ public class CheckOutBookViewController extends RentalTransactionsController imp
     @FXML private TextField barcodeField, bannerIdField;
     @FXML private Button submit, verify, override;
     @FXML private TableView tableView;
-    private String student, bannerId, book;
+    private String student, bannerId;
     private Properties language = Core.getInstance().getLang();
     private Core core = Core.getInstance();
     private BookCollection bookCollection = new BookCollection();
@@ -108,7 +107,6 @@ public class CheckOutBookViewController extends RentalTransactionsController imp
     @FXML private int verify() {
         student = bannerIdField.getText();
         bannerId = bannerIdField.getText();
-
         try {
             if (bannerId.length() == 9 && Core.isNumeric(bannerId)) {
                 if (studentBorrowerCollection.findStudentsByBannerId(bannerId).size() == 1) {
@@ -150,8 +148,6 @@ public class CheckOutBookViewController extends RentalTransactionsController imp
                         }
                     }
                     if (canRent) {
-
-
                         data.put(DBKey.BORROWER_ID, student);
                         data.put(DBKey.BOOK_ID, barcode);
                         data.put(DBKey.CHECK_OUT_WORKER_ID, Core.getInstance().getUser().getBannerId());
@@ -160,6 +156,8 @@ public class CheckOutBookViewController extends RentalTransactionsController imp
                         System.out.println(data.toString());
                         Rental rental = new Rental(data);
                         rental.insert();
+                        alertMessage.setText(language.getProperty("CheckOutSuccess"));
+                        tableView.refresh();
                         Book cBook = books.get(0);
                         StudentBorrower studentBorrower = (StudentBorrower) studentBorrowerCollection.findStudentsByBannerId(bannerId).get(0);
                         core.setModStudentBorrower(studentBorrower);

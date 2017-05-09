@@ -136,6 +136,7 @@ public class ModifyWorkerViewController implements Initializable{
             worker.update();
             alertMessage.setText(language.getProperty("modifyWorkerSuccess"));
             alertMessage.setFill(Paint.valueOf("dcc404"));
+            core.getTableView().refresh();
         } catch (Exception e) {
             alertMessage.setText(language.getProperty("modifyWorkerFail"));
             alertMessage.setFill(Paint.valueOf("dcc404"));

@@ -56,7 +56,6 @@ public class ModifyStudentViewController implements Initializable {
         Notes.setText(core.getModStudentBorrower().getNotes());
         FirstName.setText(core.getModStudentBorrower().getFirstName());
         LastName.setText(core.getModStudentBorrower().getLastName());
-//        ContactPhone.setText(core.getModStudentBorrower().getContactPhone());
         ContactPhone.setText(core.getModStudentBorrower().getContactPhone().substring(4));
         CountryCode.setText(core.getModStudentBorrower().getContactPhone().substring(0,3));
 
@@ -110,5 +109,6 @@ public class ModifyStudentViewController implements Initializable {
         studentBorrower.update();
         System.out.println(studentBorrower.toString());
         alertMessage.setText("Student Borrower successfully updated");
+        core.getTableView().refresh();
     }
 }

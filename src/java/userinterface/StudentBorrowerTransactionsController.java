@@ -36,6 +36,7 @@ public class StudentBorrowerTransactionsController extends TransactionController
 
     @FXML private Text alertMessage;
     Core core = Core.getInstance();
+    private int columnSize = 100;
     private Properties language = Core.getInstance().getLang();
     private TableColumn<StudentBorrower, String> bannerIdColumn = new TableColumn<>(language.getProperty("BannerId"));
     private TableColumn<StudentBorrower, String> firstNameColumn = new TableColumn<>(language.getProperty("FirstName"));
@@ -74,24 +75,22 @@ public class StudentBorrowerTransactionsController extends TransactionController
         studentHeader.setText(language.getProperty("StudentTransactions"));
         add.setText(language.getProperty("Add"));
         search.setText(language.getProperty("Search"));
-        try {
-            setTableView();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        if (Core.getInstance().getLanguage().equals("fr_FR")) columnSize += 25;
+        try {setTableView();}
+        catch (IOException e) {e.printStackTrace();}
     }
 
     protected void setTableView() throws IOException{
 
-        bannerIdColumn.setMinWidth(100);
-        firstNameColumn.setMinWidth(100);
-        lastNameColumn.setMinWidth(100);
-        contactPhoneColumn.setMinWidth(100);
-        emailColumn.setMinWidth(100);
-        borrowerStatusColumn.setMinWidth(100);
-        dateOfLatestBorrowerStatusColumn.setMinWidth(100);
-        dateOfRegistrationColumn.setMinWidth(100);
-        statusColumn.setMinWidth(100);
+        bannerIdColumn.setMinWidth(columnSize);
+        firstNameColumn.setMinWidth(columnSize);
+        lastNameColumn.setMinWidth(columnSize);
+        contactPhoneColumn.setMinWidth(columnSize);
+        emailColumn.setMinWidth(columnSize);
+        borrowerStatusColumn.setMinWidth(columnSize);
+        dateOfLatestBorrowerStatusColumn.setMinWidth(columnSize + 25);
+        dateOfRegistrationColumn.setMinWidth(columnSize + 25);
+        statusColumn.setMinWidth(columnSize);
 
         bannerIdColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.BANNER_ID));
         firstNameColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.FIRST_NAME));
@@ -125,6 +124,7 @@ public class StudentBorrowerTransactionsController extends TransactionController
                     core.setModStudentBorrower(studentBorrower);
                     if (core.getUser().getCredentials().equals(language.getProperty("Administrator"))) {
                         try {
+                            core.setTableView((TableView)tableView);
                             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifystudentview.fxml"));
                             Stage stage = new Stage();
                             Scene scene = new Scene(root);

@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
+import javafx.scene.control.TableView;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -31,6 +32,7 @@ import java.util.Vector;
 public class BookTransactionsController extends TransactionController {
 
     @FXML private Text alertMessage;
+    private int columnSize = 100;
     private Core core = Core.getInstance();
     private Properties language = core.getLang();
     private TableColumn<Book, String> barcodeColumn = new TableColumn<>(language.getProperty("Barcode"));
@@ -65,6 +67,8 @@ public class BookTransactionsController extends TransactionController {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        if (Core.getInstance().getLanguage().equals("fr_FR"))
+            columnSize += 25;
         searchChoice.setItems(itemsSearchChoiceArray());
         searchChoice.getSelectionModel().selectFirst();
         bookHeader.setText(language.getProperty("BookTransactions"));
@@ -72,23 +76,22 @@ public class BookTransactionsController extends TransactionController {
         search.setText(language.getProperty("Search"));
         setTableView();
     }
-
-
+    
     protected void setTableView(){
 
-        barcodeColumn.setMinWidth(100);
-        titleColumn.setMinWidth(100);
-        disciplineColumn.setMinWidth(100);
-        author1Column.setMinWidth(100);
-        author2Column.setMinWidth(100);
-        author3Column.setMinWidth(100);
-        author4Column.setMinWidth(100);
-        publisherColumn.setMinWidth(100);
-        yearOfPublicationColumn.setMinWidth(100);
-        ISBNColumn.setMinWidth(100);
-        bookConditionColumn.setMinWidth(100);
-        suggestedPriceColumn.setMinWidth(100);
-        statusColumn.setMinWidth(100);
+        barcodeColumn.setMinWidth(columnSize);
+        titleColumn.setMinWidth(columnSize);
+        disciplineColumn.setMinWidth(columnSize);
+        author1Column.setMinWidth(columnSize - 25);
+        author2Column.setMinWidth(columnSize - 25);
+        author3Column.setMinWidth(columnSize - 25);
+        author4Column.setMinWidth(columnSize - 25);
+        publisherColumn.setMinWidth(columnSize);
+        yearOfPublicationColumn.setMinWidth(columnSize + 25);
+        ISBNColumn.setMinWidth(columnSize);
+        bookConditionColumn.setMinWidth(columnSize);
+        suggestedPriceColumn.setMinWidth(columnSize);
+        statusColumn.setMinWidth(columnSize);
 
         barcodeColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.BARCODE));
         titleColumn.setCellValueFactory(new PropertyValueFactory<>(DBKey.TITLE));
@@ -129,6 +132,7 @@ public class BookTransactionsController extends TransactionController {
                     core.setModBook(book);
                     if (core.getUser().getCredentials().equals(language.getProperty("Administrator"))) {
                         try {
+                            core.setTableView((TableView)tableView);
                             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifybookview.fxml"));
                             Stage stage = new Stage();
                             Scene scene = new Scene(root);

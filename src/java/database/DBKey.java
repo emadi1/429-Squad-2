@@ -41,7 +41,7 @@ public class DBKey {
     // BookBarcodePrefix
     public static final String PREFIX_VALUE = "PrefixValue";
 
-    // Rental
+    // Rental/RentedBooks
     public static final String ID = "Id";
     public static final String BORROWER_ID = "BorrowerId";
     public static final String BOOK_ID = "BookId";
@@ -50,8 +50,6 @@ public class DBKey {
     public static final String DUE_DATE = "DueDate";
     public static final String CHECK_IN_DATE = "CheckInDate";
     public static final String CHECK_IN_WORKER_ID = "CheckInWorkerId";
-
-    // MaxDueDate
-    public static final String CURRENT_MAX_DUE_DATE = "CurrentMaxDueDate";
-
+    public static final String BORROWER_NAME = "BorrowerName";
+    public static final String WORKER_NAME = "WorkerName";
 }

@@ -241,11 +241,11 @@ public class Book extends EntityBase {
     public String getStatus() {
         return persistentState.getProperty("Status");
     }
+
+    // Setters
     public void setTitle(String title) {
         persistentState.setProperty("Title", title);
     }
-
-    // Setters
     public void setDiscipline(String discipline) {
         persistentState.setProperty("Discipline", discipline);
     }
