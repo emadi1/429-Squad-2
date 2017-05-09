@@ -28,6 +28,7 @@ public class CheckOutBookViewController extends RentalTransactionsController imp
     @FXML private TextField barcodeField, bannerIdField;
     @FXML private Button submit, verify, override;
     @FXML private TableView tableView;
+    private int columnSize = 125;
     private String student, bannerId;
     private Properties language = Core.getInstance().getLang();
     private Core core = Core.getInstance();
@@ -62,14 +63,14 @@ public class CheckOutBookViewController extends RentalTransactionsController imp
         }
     }
     @Override protected void setTableView() throws IOException {
-        id.setMinWidth(100);
-        borrowerId.setMinWidth(100);
-        bookId.setMinWidth(100);
-        checkOutDate.setMinWidth(100);
-        checkOutWorkerId.setMinWidth(100);
-        dueDate.setMinWidth(100);
-        checkInDate.setMinWidth(100);
-        checkInWorkerId.setMinWidth(100);
+        id.setMinWidth(columnSize - 50);
+        borrowerId.setMinWidth(columnSize);
+        bookId.setMinWidth(columnSize);
+        checkOutDate.setMinWidth(columnSize);
+        checkOutWorkerId.setMinWidth(columnSize);
+        dueDate.setMinWidth(columnSize);
+        checkInDate.setMinWidth(columnSize);
+        checkInWorkerId.setMinWidth(columnSize);
 
         id.setCellValueFactory(new PropertyValueFactory<>(DBKey.ID));
         borrowerId.setCellValueFactory(new PropertyValueFactory<>(DBKey.BORROWER_ID));
