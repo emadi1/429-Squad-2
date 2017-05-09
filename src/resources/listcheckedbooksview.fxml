@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
-
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <AnchorPane prefHeight="750" prefWidth="926" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userinterface.ListCheckedBooksController">
