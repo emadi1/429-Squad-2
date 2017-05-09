@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
+import javafx.scene.control.TableView;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -131,6 +132,7 @@ public class BookTransactionsController extends TransactionController {
                     core.setModBook(book);
                     if (core.getUser().getCredentials().equals(language.getProperty("Administrator"))) {
                         try {
+                            core.setTableView((TableView)tableView);
                             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifybookview.fxml"));
                             Stage stage = new Stage();
                             Scene scene = new Scene(root);

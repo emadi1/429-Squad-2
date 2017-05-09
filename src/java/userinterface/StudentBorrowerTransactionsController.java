@@ -124,6 +124,7 @@ public class StudentBorrowerTransactionsController extends TransactionController
                     core.setModStudentBorrower(studentBorrower);
                     if (core.getUser().getCredentials().equals(language.getProperty("Administrator"))) {
                         try {
+                            core.setTableView((TableView)tableView);
                             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifystudentview.fxml"));
                             Stage stage = new Stage();
                             Scene scene = new Scene(root);

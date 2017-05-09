@@ -112,6 +112,7 @@ public class ModifyBookViewController implements Initializable {
             book.update();
             alertMessage.setText(language.getProperty("modifyBookSuccess"));
             alertMessage.setFill(Paint.valueOf("dcc404"));
+            core.getTableView().refresh();
         } catch (Exception e) {
             alertMessage.setText(language.getProperty("modifyBookFail"));
             alertMessage.setFill(Paint.valueOf("dcc404"));

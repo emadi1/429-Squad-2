@@ -1,5 +1,6 @@
 package utilities;
 import javafx.collections.ObservableList;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import models.Book;
 import models.EntityBase;
@@ -16,6 +17,7 @@ import java.util.TimeZone;
 public class Core {
 
     // Attributes
+    private static TableView tableView;
     private static Core core = null;
     private static Worker modWorker, user;
     private static Book modBook;
@@ -33,6 +35,9 @@ public class Core {
     }
 
     // Getters
+    public TableView getTableView() {
+        return tableView;
+    }
     public Book getModBook() {
         return modBook;
     }
@@ -239,7 +244,7 @@ public class Core {
             library.setProperty("DateOfLatestBorrowerStatus", "Date du dernier statut de l'emprunteur");
             library.setProperty("PromptDateOfRegistration", "Date d'enregistrement:");
             library.setProperty("DateOfRegistration", "Date d'enregistremen");
-            library.setProperty("BorrowerName", "Nom");
+            library.setProperty("BorrowerName", "Nom d'étudiant");
 
             // Book Data Model/ Text
             library.setProperty("PromptBarcode", "Code barre:");
@@ -304,7 +309,7 @@ public class Core {
             library.setProperty("DueDate", "date d'échéance");//#####################CHECK
             library.setProperty("CheckInDate", "Date d'arrivée");//#####################CHECK
             library.setProperty("CheckInWorkerId", "Vérifier l'identifiant du travailleur");//#######################CHECK
-            library.setProperty("WorkerName", "");
+            library.setProperty("WorkerName", "Nom du travailleur");
 
 
             // General Alerts
@@ -374,6 +379,9 @@ public class Core {
     }
 
     // Setters
+    public void setTableView(TableView table) {
+        tableView = table;
+    }
     public void setModBook(Book book) {
         modBook = book;
     }

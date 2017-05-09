@@ -28,14 +28,14 @@ public class RentedBook {
     public Object getState(String key) {
         return persistentState.getProperty(key);
     }
-    public String getId() {
-        return persistentState.getProperty(DBKey.ID);
-    }
     public String getBookId() {
         return persistentState.getProperty(DBKey.BOOK_ID);
     }
     public String getTitle() {
         return persistentState.getProperty(DBKey.TITLE);
+    }
+    public String getWorkerName() {
+        return persistentState.getProperty(DBKey.WORKER_NAME);
     }
     public String getBorrowerId() {
         return persistentState.getProperty(DBKey.BORROWER_ID);
@@ -54,14 +54,14 @@ public class RentedBook {
     public void setState(String key, String value) {
         persistentState.setProperty(key, value);
     }
-    public void setId(String id) {
-        persistentState.setProperty(DBKey.ID, id);
-    }
     public void setBookId(String id) {
         persistentState.setProperty(DBKey.BOOK_ID, id);
     }
     public void setTitle(String title) {
         persistentState.setProperty(DBKey.TITLE, title);
+    }
+    public void setWorkerName(String name) {
+        persistentState.setProperty(DBKey.WORKER_NAME, name);
     }
     public void setBorrowerId(String id) {
         persistentState.setProperty(DBKey.BORROWER_ID, id);

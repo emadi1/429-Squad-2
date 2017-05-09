@@ -154,6 +154,7 @@ public class CheckOutBookViewController extends RentalTransactionsController imp
                         Rental rental = new Rental(data);
                         rental.insert();
                         alertMessage.setText(language.getProperty("CheckOutSuccess"));
+                        tableView.refresh();
                         tableView.setItems(FXCollections.observableList(rentalCollection.findRentalsByBorrowerId(student)));
                     } else alertMessage.setText(language.getProperty("BookCheckedOut"));
                 }

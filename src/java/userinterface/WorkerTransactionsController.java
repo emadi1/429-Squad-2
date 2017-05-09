@@ -118,6 +118,7 @@ public class WorkerTransactionsController extends TransactionController {
                     System.out.println(core.getUser().getCredentials());
                     if (core.getUser().getCredentials().equals(language.getProperty("Administrator"))) {
                         try {
+                            core.setTableView((TableView)tableView);
                             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("modifyworkerview.fxml"));
                             Stage stage = new Stage();
                             Scene scene = new Scene(root);

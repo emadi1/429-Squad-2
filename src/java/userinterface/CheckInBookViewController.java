@@ -73,8 +73,10 @@ public class CheckInBookViewController extends RentalTransactionsController impl
                     oldRental.update();
                     rentals = rentalCollection.findRentalsByBookId(barcode);
                     tableView.setItems(FXCollections.observableList(rentals));
-                    StudentBorrower studentBorrower = (StudentBorrower) studentBorrowerCollection.findStudentsByBannerId(oldRental.getBorrowerId()).get(0);
+                    StudentBorrower studentBorrower = (StudentBorrower)
+                            studentBorrowerCollection.findStudentsByBannerId(oldRental.getBorrowerId()).get(0);
                     alertMessage.setText(language.getProperty("CheckInSuccess"));
+                    tableView.refresh();
                 }
             } else alertMessage.setText(language.getProperty("NoBookWithId") + barcode);
         } catch (Exception e) {
