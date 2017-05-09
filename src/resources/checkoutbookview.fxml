@@ -39,8 +39,8 @@
                 <Button fx:id="verify" alignment="CENTER" contentDisplay="CENTER" minWidth="75" onAction="#verify" prefHeight="31.0" prefWidth="75.0" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                 <Button fx:id="submit" alignment="CENTER" contentDisplay="CENTER" minWidth="75" onAction="#submit" prefHeight="31.0" prefWidth="75.0" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                 <Button fx:id="override" alignment="CENTER" contentDisplay="CENTER" minWidth="75" onAction="#override" prefHeight="31.0" prefWidth="75.0" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                <Text fx:id="bannerIdText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="339.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <Text fx:id="barcodeText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="337.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Text fx:id="bannerIdText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Text fx:id="barcodeText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="273.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <Text fx:id="alertMessage" textAlignment="CENTER" wrappingWidth="482.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
             </children>
         </GridPane>

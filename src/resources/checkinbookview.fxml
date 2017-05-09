@@ -35,7 +35,7 @@
             <children>
                 <TextField fx:id="barcodeField" prefHeight="31.0" prefWidth="375.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                 <Button fx:id="submit" alignment="CENTER" contentDisplay="CENTER" minWidth="75" onAction="#submit" prefHeight="31.0" prefWidth="75.0" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                <Text fx:id="barcodeText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="428" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Text fx:id="barcodeText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="208.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <Text fx:id="alertMessage" wrappingWidth="350" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             </children>
         </GridPane>
